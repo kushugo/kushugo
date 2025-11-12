@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="fr" class="i18n-ready">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gouvernement.fr - Case Study | Hugo Ferrer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <style>
+        :root:not(.i18n-ready) [data-i18n] {
+            visibility: hidden;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #000091;
+            --secondary-color: #fff;
+            --accent-color: #6366f1;
+            --accent-secondary: #f5576c;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --dark-gray: #1a1a2e;
+            --dsfr-blue: #000091;
+            --dsfr-red: #e1000f;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header avec progress bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dsfr-blue), var(--dsfr-red));
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            gap: 0.8rem;
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 8rem 5% 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            opacity: 0;
+            animation: fadeInScale 0.5s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tag:nth-child(1) { animation-delay: 0.1s; }
+        .tag:nth-child(2) { animation-delay: 0.2s; }
+        .tag:nth-child(3) { animation-delay: 0.3s; }
+        .tag:nth-child(4) { animation-delay: 0.4s; }
+        .tag:nth-child(5) { animation-delay: 0.5s; }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.3s;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.5s;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            opacity: 0;
+            animation: fadeInScale 0.6s ease forwards;
+        }
+
+        .meta-item:nth-child(1) { animation-delay: 0.6s; }
+        .meta-item:nth-child(2) { animation-delay: 0.7s; }
+        .meta-item:nth-child(3) { animation-delay: 0.8s; }
+        .meta-item:nth-child(4) { animation-delay: 0.9s; }
+
+        .meta-item h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Hero Image avec Data Overlay */
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #000091 0%, #6366f1 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInScale 1s ease forwards 1s;
+        }
+
+        .hero-image.data-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+        }
+
+        .hero-image.data-hero picture,
+        .hero-image.data-hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .data-overlay {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            display: flex;
+            gap: 18px;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .data-overlay .kpi {
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 10px 14px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .data-overlay .kpi b {
+            display: block;
+            font-size: 26px;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .data-overlay .kpi span {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .hero-wrapper {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-zoom-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            z-index: 3;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+        }
+
+        .hero-zoom-button:hover {
+            background: rgba(15, 23, 42, 0.95);
+            transform: translateY(-1px);
+        }
+
+        /* Layout 2 colonnes */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(220px, 0.8fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            margin-bottom: 4rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 110px;
+            height: fit-content;
+        }
+
+        /* Table des matières */
+        .table-of-contents {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .toc-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .toc-item {
+            padding: 0.6rem 0;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .toc-item:hover {
+            color: var(--accent-color);
+            padding-left: 1.3rem;
+        }
+
+        .toc-item.active {
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Sections de contenu */
+        .content-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grille de stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Graphiques */
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        /* Méthodologie */
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .method-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .method-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .method-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Timeline processus */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-secondary));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-number {
+            grid-column: 2;
+            order: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-number {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .timeline-item .timeline-content {
+            justify-self: center;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: center;
+        }
+
+        /* Liste avec icônes */
+        .icon-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .icon-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-list li::before {
+            content: '✓';
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(245, 87, 108, 0.1));
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-color);
+        }
+
+        /* Section CTA finale */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 0, 145, 0.9), rgba(99, 102, 241, 0.85));
+            border-radius: 18px;
+            padding: 3.5rem 4rem;
+            margin-top: 5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+        }
+
+        .cta-section::before {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at center, rgba(245, 87, 108, 0.6), transparent 70%);
+            top: -140px;
+            right: -120px;
+        }
+
+        .cta-section::after {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
+            bottom: -120px;
+            left: -80px;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 720px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button.primary {
+            background: #fff;
+            color: var(--dsfr-blue);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 32px rgba(255, 255, 255, 0.25);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-2px);
+        }
+
+        .cta-disclaimer {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        img[data-lightbox] {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        img[data-lightbox]:hover {
+            transform: scale(1.02);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Média showcase */
+        .media-showcase {
+            margin: 3rem 0;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .media-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-caption {
+            padding: 1.5rem;
+        }
+
+        .media-caption h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .media-caption p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .single-media {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+        }
+
+        .single-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .single-media .media-caption {
+            padding: 2rem;
+        }
+
+        .single-media .media-caption h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .single-media .media-caption p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Insights grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .insight-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .insight-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .insight-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .insight-card li {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .insight-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Avant/Après sections */
+        .before-after-container {
+            margin: 3rem 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .before-section,
+        .after-section {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .before-section h3 {
+            background: linear-gradient(135deg, #fee, #fcc);
+            color: #c53030;
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .after-section h3 {
+            background: linear-gradient(135deg, #f0fff4, #c6f6d5);
+            color: #38a169;
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .before-section .media-item,
+        .after-section .media-item {
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .before-section .media-item:hover,
+        .after-section .media-item:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .before-section img,
+        .after-section img {
+            height: 300px;
+        }
+
+        .issues-list,
+        .improvements-list {
+            padding: 1.5rem;
+        }
+
+        .issues-list h4,
+        .improvements-list h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .issues-list .icon-list li::before {
+            background: #e53e3e;
+            content: '×';
+        }
+
+        .improvements-list .icon-list li::before {
+            background: #38a169;
+            content: '✓';
+        }
+
+        /* Métriques de transformation */
+        .transformation-metrics {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .transformation-metrics h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .metrics-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-before,
+        .metric-after {
+            text-align: center;
+            flex: 1;
+        }
+
+        .metric-before .value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e53e3e;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-after .value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38a169;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-before .label,
+        .metric-after .label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-arrow {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0 1rem;
+        }
+
+        .improvement {
+            display: block;
+            font-size: 0.8rem;
+            color: #38a169;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        /* Responsive pour médias */
+        @media (max-width: 968px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .metrics-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .metric-arrow {
+                transform: rotate(90deg);
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 968px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: auto 1fr;
+                gap: 1.25rem;
+                align-items: flex-start;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                grid-column: 2;
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .timeline-number {
+                position: relative;
+                left: 0;
+                margin: 0;
+                justify-self: center;
+            }
+
+            .timeline-item:nth-child(even) .timeline-number {
+                order: initial;
+                grid-column: 1;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+            .cta-section {
+                padding: 3rem 2.5rem;
+            }
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .data-overlay {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .data-overlay .kpi {
+                min-width: 100px;
+                padding: 8px 10px;
+            }
+
+            .data-overlay .kpi b {
+                font-size: 22px;
+            }
+            .cta-section {
+                margin-top: 3.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .project-hero {
+                padding: 6rem 5% 2rem;
+            }
+
+            .hero-image .data-overlay {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body data-page="gouvernement">
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
+            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+            </div>
+        </nav>
+        <div class="progress-bar"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="project-tags">
+            <span class="tag" data-i18n="gouv.tag.uxui">UX/UI Design</span>
+            <span class="tag" data-i18n="gouv.tag.publicservice">Service Public</span>
+            <span class="tag" data-i18n="gouv.tag.accessibility">Accessibilité</span>
+            <span class="tag" data-i18n="gouv.tag.year">2024</span>
+        </div>
+
+        <h1 data-i18n="gouv.title">Gouvernement.fr</h1>
+        <p class="project-subtitle" data-i18n="gouv.subtitle" data-i18n-mode="html">
+            En tant qu’UX/UI Designer au Service d’Information du Gouvernement (SIG), j’ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l’amélioration de la lisibilité, de l’accessibilité et de la cohérence visuelle des pages clés.
+        </p>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <h3 data-i18n="case.role">Rôle</h3>
+                <p data-i18n="gouv.role.value">UX/UI Designer – SIG (Services du Premier ministre)</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.team">Équipe</h3>
+                <p data-i18n="gouv.team.value">Designers, PM, data-analystes et développeurs du SIG</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.duration">Durée</h3>
+                <p data-i18n="gouv.duration.value">2 ans</p>
+            </div>
+        </div>
+
+        <!-- Hero avec KPIs -->
+        <div class="hero-wrapper">
+            <div class="hero-image data-hero">
+                <button class="hero-zoom-button" data-i18n="gouv.hero.zoom.text" data-i18n-attr="aria-label" aria-label="Agrandir l'image">🔍 Voir en grand</button>
+                <picture>
+                    <source srcset="bg-gouv.png" media="(max-width: 768px)">
+                    <source srcset="bg-gouv.png" media="(max-width: 1200px)">
+                    <img src="bg-gouv.png" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr — héro et section Politiques prioritaires" loading="lazy">
+                </picture>
+                <div class="data-overlay" aria-label="Impact et résultats mesurés">
+                    <div class="kpi">
+                        <b data-count="42" data-prefix="+" data-suffix="%">0%</b>
+                        <span data-i18n="gouv.kpi.cta">Taux de clic CTA</span>
+                    </div>
+                    <div class="kpi">
+                        <b data-count="35" data-prefix="-" data-suffix="%">0%</b>
+                        <span data-i18n="gouv.kpi.accesstime">Temps d'accès info</span>
+                    </div>
+                    <div class="kpi">
+                        <b data-count="100" data-suffix="%">0%</b>
+                        <span data-i18n="gouv.kpi.rgaa">Conformité RGAA</span>
+                    </div>
+                    <div class="kpi">
+                        <b data-count="28" data-prefix="+" data-suffix="%">0%</b>
+                        <span data-i18n="gouv.kpi.engagement">Engagement utilisateur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 2 colonnes -->
+    <div class="two-column-layout">
+        <!-- Contenu principal -->
+        <main class="main-content">
+
+            <!-- Contexte -->
+            <section id="contexte" class="content-section">
+                <h2 data-i18n="case.context">Contexte &amp; Enjeux</h2>
+                <p data-i18n="gouv.context.intro">
+                    Info.gouv.fr reçoit plusieurs millions de visites mensuelles et constitue le point d'entrée principal pour les citoyens souhaitant s'informer sur les politiques prioritaires du gouvernement. Face à des taux de rebond élevés (>60%) et une difficulté d'accès à l'information, une refonte s'imposait.
+                </p>
+                <p>
+                    <strong data-i18n="gouv.context.objectives.title">Les objectifs :</strong>
+                </p>
+                <ul class="icon-list">
+                    <li data-i18n="gouv.context.obj1">Améliorer la clarté et l'accessibilité des landing pages stratégiques</li>
+                    <li data-i18n="gouv.context.obj2">Augmenter le taux de conversion sur les CTA prioritaires (démarches, prises de RDV)</li>
+                    <li data-i18n="gouv.context.obj3">Garantir une conformité RGAA AA+ et une cohérence DSFR stricte</li>
+                    <li data-i18n="gouv.context.obj4">Réduire le temps d'accès à l'information critique pour les citoyens</li>
+                    <li data-i18n="gouv.context.obj5">Préparer l'infrastructure de mesure (tracking GA4, GTM, consent mode)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong data-i18n="gouv.context.challenge.label">Défi majeur :</strong> <span data-i18n="gouv.context.challenge.text">Concilier les exigences d'accessibilité réglementaires avec une expérience moderne et engageante, tout en respectant les contraintes du Design System de l'État français (DSFR).</span></p>
+                </div>
+            </section>
+
+            <!-- Méthodologie -->
+            <section id="methodologie" class="content-section">
+                <h2 data-i18n="case.method">Méthodologie UX &amp; Design</h2>
+                
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🔍</div>
+                        <h3 class="method-title" data-i18n="gouv.method.research.title">Recherche & Audit</h3>
+                        <p class="method-description" data-i18n="gouv.method.research.desc">
+                            Audit DSFR complet (composants, tokens, contraste), analyse heuristique, benchmarking des sites institutionnels européens, analyse GA4 des parcours à risque.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🎯</div>
+                        <h3 class="method-title" data-i18n="gouv.method.workshops.title">Ateliers de cadrage</h3>
+                        <p class="method-description" data-i18n="gouv.method.workshops.desc">
+                            Workshops FigJam multi-parties (métiers, communication, dev) pour définir objectifs, messages clés, objections et priorisation RICE/MoSCoW des features.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📐</div>
+                        <h3 class="method-title" data-i18n="gouv.method.architecture.title">Architecture & Wireframes</h3>
+                        <p class="method-description" data-i18n="gouv.method.architecture.desc">
+                            Simplification du sitemap (réduction profondeur de navigation), wireframes mobile-first annotés avec hiérarchie d'information optimisée (hero + preuves + CTA).
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🎨</div>
+                        <h3 class="method-title" data-i18n="gouv.method.design.title">Design haute-fidélité</h3>
+                        <p class="method-description" data-i18n="gouv.method.design.desc">
+                            Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions et transitions douces, validées et retenues par les équipes.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">⚡</div>
+                        <h3 class="method-title" data-i18n="gouv.method.prototype.title">Prototypage & Tests</h3>
+                        <p class="method-description" data-i18n="gouv.method.prototype.desc">
+                            Prototypes interactifs haute-fidélité avec scénarios de test utilisateur, variantes A/B pour optimisation des CTA et messages hero.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📊</div>
+                        <h3 class="method-title" data-i18n="gouv.method.measure.title">Mesure & Optimisation</h3>
+                        <p class="method-description" data-i18n="gouv.method.measure.desc">
+                            Plan de marquage GTM/GA4, définition des KPI UX (clic CTA, complétion démarche, scroll depth), check performance (lazy-load, poids médias).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benchmark UX -->
+            <section id="benchmark" class="content-section">
+                <h2 data-i18n="gouv.benchmark.title">Benchmark UX International</h2>
+                <p data-i18n="gouv.benchmark.intro">
+                    Analyse comparative des meilleures pratiques UX sur les sites gouvernementaux européens et nord-américains pour identifier les patterns d'excellence et les opportunités d'innovation.
+                </p>
+
+                <div class="media-showcase">
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <img src="image/Bench-UX-1.png" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.govuk.title">GOV.UK</h4>
+                                <p data-i18n="gouv.bench.govuk.desc">Excellence en navigation orientée tâche et messages orientés bénéfices utilisateur</p>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <img src="image/Bench-UX-2.png" alt="Benchmark Canada.ca - Structure d'information optimisée" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.canada.title">Canada.ca</h4>
+                                <p data-i18n="gouv.bench.canada.desc">Structure "How can we help you?" optimisant l'accès rapide aux services prioritaires</p>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <img src="image/Bench-UX-3.png" alt="Benchmark EU - Design épuré et recherche prioritaire" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.eu.title">European Union</h4>
+                                <p data-i18n="gouv.bench.eu.desc">Design épuré avec recherche prioritaire et architecture d'information claire</p>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <img src="image/Bench-UX-4.png" alt="Benchmark Portal - Catégorisation par domaine métier" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.portal.title">Government Portal</h4>
+                                <p data-i18n="gouv.bench.portal.desc">Catégorisation par domaines métiers avec iconographie claire et CTA explicites</p>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <img src="image/Bench-UX-5.png" alt="Benchmark France - Communication institutionnelle" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.france.title">Gouvernement.fr (avant)</h4>
+                                <p data-i18n="gouv.bench.france.desc">Approche communication institutionnelle avec focus actualités politiques</p>
+                            </div>
+                        </div>
+
+                        <div class="media-item">
+                            <img src="image/Bench-UX-6.png" alt="Benchmark Allemagne - Structure fédérale" loading="lazy">
+                            <div class="media-caption">
+                                <h4 data-i18n="gouv.bench.germany.title">Bundesregierung.de</h4>
+                                <p data-i18n="gouv.bench.germany.desc">Gestion complexe de la structure fédérale avec personnalisation du contenu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong data-i18n="gouv.bench.insight.label">Insight clé :</strong> <span data-i18n="gouv.bench.insight.text">Les sites les plus performants (GOV.UK, Canada.ca) privilégient une approche "service d'abord" vs "institution d'abord". L'accent est mis sur ce que peut accomplir l'utilisateur plutôt que sur la communication gouvernementale.</span></p>
+                </div>
+            </section>
+
+            <!-- Ateliers collaboratifs -->
+            <section id="ateliers" class="content-section">
+                <h2 data-i18n="gouv.workshops.title">Ateliers Collaboratifs</h2>
+                <p data-i18n="gouv.workshops.intro">
+                    Workshops FigJam multi-parties prenantes pour aligner les objectifs métiers, les contraintes techniques et les attentes utilisateurs. Approche "Design Thinking" adaptée au contexte institutionnel.
+                </p>
+
+                <div class="media-showcase">
+                    <div class="single-media">
+                        <img src="/mnt/user-data/uploads/atelier-gouv.png" alt="Atelier FigJam - Refonte Politiques Prioritaires" loading="lazy">
+                        <div class="media-caption">
+                            <h4 data-i18n="gouv.workshops.figjam.title">Atelier FigJam - Refonte Politiques Prioritaires</h4>
+                            <p data-i18n="gouv.workshops.figjam.desc">Session collaborative avec les équipes métiers, communication et technique pour identifier les irritants UX et co-construire les solutions. Méthode divergence → convergence avec priorisation RICE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.workshops.s1.title">🔍 Session 1 - Diagnostic</h4>
+                        <ul>
+                            <li data-i18n="gouv.workshops.s1.item1">Identification des points de friction utilisateur</li>
+                            <li data-i18n="gouv.workshops.s1.item2">Mapping des contraintes techniques et éditoriales</li>
+                            <li data-i18n="gouv.workshops.s1.item3">Analyse des objectifs métiers par direction</li>
+                        </ul>
+                    </div>
+
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.workshops.s2.title">💡 Session 2 - Idéation</h4>
+                        <ul>
+                            <li data-i18n="gouv.workshops.s2.item1">Brainstorming solutions UX (baromètre simplifié, CTA clairs)</li>
+                            <li data-i18n="gouv.workshops.s2.item2">Exploration de patterns d'interaction innovants</li>
+                            <li data-i18n="gouv.workshops.s2.item3">Validation faisabilité technique en temps réel</li>
+                        </ul>
+                    </div>
+
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.workshops.s3.title">✅ Session 3 - Décision</h4>
+                        <ul>
+                            <li data-i18n="gouv.workshops.s3.item1">Priorisation MoSCoW des fonctionnalités</li>
+                            <li data-i18n="gouv.workshops.s3.item2">Définition architecture d'information cible</li>
+                            <li data-i18n="gouv.workshops.s3.item3">Roadmap de déploiement par étapes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prototypage & Design System -->
+            <section id="prototypage" class="content-section">
+                <h2 data-i18n="gouv.prototype.title">Prototypage & Design System</h2>
+                <p data-i18n="gouv.prototype.intro">
+                    Adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
+                </p>
+
+                <div class="media-showcase">
+                    <div class="single-media">
+                        <img src="image/proto.png" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" loading="lazy">
+                        <div class="media-caption">
+                            <h4 data-i18n="gouv.prototype.ds.title">Design System - Adaptation DSFR</h4>
+                            <p data-i18n="gouv.prototype.ds.desc">Création de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires. Documentation complète des tokens, variants et guidelines d'usage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.prototype.structure.title">🧩 Structure</h4>
+                        <p data-i18n="gouv.prototype.structure.desc">Définition des éléments de composant avec hiérarchie claire et espacement cohérent selon les tokens DSFR.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.prototype.states.title">⚡ États</h4>
+                        <p data-i18n="gouv.prototype.states.desc">Gestion complète des états interactifs (défaut, survol, focus, désactivé) avec respect des contraintes d'accessibilité RGAA.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.prototype.style.title">🎨 Style</h4>
+                        <p data-i18n="gouv.prototype.style.desc">Déclinaisons visuelles (horizontales, verticales) avec bordures harmonisées et typographie système cohérente.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h4 data-i18n="gouv.prototype.alternatives.title">🔄 Alternatives</h4>
+                        <p data-i18n="gouv.prototype.alternatives.desc">Variantes desktop/mobile avec options d'affichage (vue desktop, cartes verticales) pour optimiser l'expérience multi-device.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong data-i18n="gouv.prototype.innovation.label">Innovation DSFR :</strong> <span data-i18n="gouv.prototype.innovation.text">Création de composants inédits tout en respectant strictement les contraintes du design system gouvernemental. Cette approche a permis de maintenir la cohérence visuelle tout en répondant aux besoins spécifiques du projet.</span></p>
+                </div>
+            </section>
+
+            <!-- Avant/Après Transformation -->
+            <section id="transformation" class="content-section">
+                <h2 data-i18n="gouv.transform.title">Transformation UX/UI : Avant / Après</h2>
+                <p data-i18n="gouv.transform.intro">
+                    Comparaison de l'expérience utilisateur avant et après la refonte. Focus sur l'amélioration de la lisibilité, de l'accessibilité et de l'engagement utilisateur à travers une approche data-driven.
+                </p>
+
+                <div class="before-after-container">
+                    <div class="comparison-grid">
+                        <div class="before-section">
+                            <h3 data-i18n="gouv.transform.before.title">Avant - Approche institutionnelle</h3>
+                            <div class="media-item">
+                                <img src="image/avant-ppg.jpeg" alt="Interface avant refonte - Focus actualités gouvernementales" loading="lazy">
+                                <div class="issues-list">
+                                    <h4 data-i18n="gouv.transform.before.issues">Problèmes identifiés :</h4>
+                                    <ul class="icon-list">
+                                        <li data-i18n="gouv.transform.before.issue1">Navigation complexe avec trop de niveaux</li>
+                                        <li data-i18n="gouv.transform.before.issue2">Contenu orienté "communication" vs "service"</li>
+                                        <li data-i18n="gouv.transform.before.issue3">Hiérarchie visuelle peu claire</li>
+                                        <li data-i18n="gouv.transform.before.issue4">CTA noyés dans le contenu éditorial</li>
+                                        <li data-i18n="gouv.transform.before.issue5">Accessibilité RGAA non optimale</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="after-section">
+                            <h3 data-i18n="gouv.transform.after.title">Après - Approche orientée utilisateur</h3>
+                            <div class="media-item">
+                                <img src="image/après-ppg.jpeg" alt="Interface après refonte - UX optimisée et accessibilité renforcée" loading="lazy">
+                                <div class="improvements-list">
+                                    <h4 data-i18n="gouv.transform.after.improvements">Améliorations apportées :</h4>
+                                    <ul class="icon-list">
+                                        <li data-i18n="gouv.transform.after.imp1">Architecture d'information simplifiée</li>
+                                        <li data-i18n="gouv.transform.after.imp2">Messages orientés bénéfices utilisateur</li>
+                                        <li data-i18n="gouv.transform.after.imp3">Hiérarchie visuelle renforcée (hero + preuves + CTA)</li>
+                                        <li data-i18n="gouv.transform.after.imp4">CTA clairement identifiables et accessibles</li>
+                                        <li data-i18n="gouv.transform.after.imp5">Conformité RGAA AA+ garantie</li>
+                                        <li data-i18n="gouv.transform.after.imp6">Performance optimisée (lazy-loading, compression)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Métriques de transformation -->
+                <div class="transformation-metrics">
+                    <h3 data-i18n="gouv.transform.metrics.title">Impact mesurable de la transformation</h3>
+                    <div class="metrics-comparison">
+                        <div class="metric-item">
+                            <div class="metric-before">
+                                <span class="value">18%</span>
+                                <span class="label" data-i18n="gouv.transform.metric.cta.label">Taux de clic CTA</span>
+                            </div>
+                            <div class="metric-arrow">→</div>
+                            <div class="metric-after">
+                                <span class="value">42%</span>
+                                <span class="improvement">+24pts</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <div class="metric-before">
+                                <span class="value">5.2min</span>
+                                <span class="label" data-i18n="gouv.transform.metric.time.label">Temps d'accès info</span>
+                            </div>
+                            <div class="metric-arrow">→</div>
+                            <div class="metric-after">
+                                <span class="value">3.4min</span>
+                                <span class="improvement">-35%</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <div class="metric-before">
+                                <span class="value">62%</span>
+                                <span class="label" data-i18n="gouv.transform.metric.bounce.label">Taux de rebond</span>
+                            </div>
+                            <div class="metric-arrow">→</div>
+                            <div class="metric-after">
+                                <span class="value">34%</span>
+                                <span class="improvement">-45%</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <div class="metric-before">
+                                <span class="value">73%</span>
+                                <span class="label" data-i18n="gouv.transform.metric.access.label">Score accessibilité</span>
+                            </div>
+                            <div class="metric-arrow">→</div>
+                            <div class="metric-after">
+                                <span class="value">100%</span>
+                                <span class="improvement">+27pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="processus" class="content-section">
+                <h2 data-i18n="gouv.process.title">Processus de Design</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step1.title">Audit & Diagnostic</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step1.desc">
+                                Audit DSFR complet : identification des écarts de composants, tailles, interlignages, états focus/hover, ratios de contraste. Analyse des parcours GA4 pour identifier les points de friction.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step2.title">Ateliers de cadrage</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step2.desc">
+                                Workshops FigJam pour aligner métiers/communication/tech sur les politiques prioritaires (PPG). Cartographie des parcours critiques et priorisation des fonctionnalités.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step3.title">Wireframing & Architecture</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step3.desc">
+                                Création de wireframes mobile-first annotés avec hiérarchie d'information optimisée. Simplification du sitemap pour réduire la profondeur de navigation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step4.title">Design haute-fidélité</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step4.desc">
+                                Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions. Ajustements tokens (typo, couleurs, spacing) et composants pour garantir accessibilité AA+.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step5.title">Prototypage & Validation</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step5.desc">
+                                Prototypes interactifs avec scénarios de test utilisateur. Variantes A/B des sections hero pour optimiser les messages et CTA. Tests d'accessibilité (NVDA, VoiceOver).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">6</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="gouv.process.step6.title">Déploiement & Mesure</h3>
+                            <p class="timeline-description" data-i18n="gouv.process.step6.desc">
+                                Préparation du tracking (GTM, GA4, consent mode v2). Documentation développeur et design system. Suivi des KPI post-déploiement et optimisations continues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Résultats & Impact -->
+            <section id="resultats" class="content-section">
+                <h2 data-i18n="gouv.results.title">Résultats & Impact Mesurés</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.cta.value">+42%</div>
+                        <div class="stat-label" data-i18n="gouv.results.cta.label">Taux de clic CTA primaire</div>
+                        <div class="stat-description" data-i18n="gouv.results.cta.desc">
+                            Amélioration significative de la conversion grâce à une meilleure hiérarchie visuelle et des CTA orientés bénéfices.
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.time.value">-35%</div>
+                        <div class="stat-label" data-i18n="gouv.results.time.label">Temps d'accès à l'information</div>
+                        <div class="stat-description" data-i18n="gouv.results.time.desc">
+                            Réduction du temps moyen grâce à la structure en entonnoir et la simplification du parcours.
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.rgaa.value">100%</div>
+                        <div class="stat-label" data-i18n="gouv.results.rgaa.label">Conformité RGAA AA+</div>
+                        <div class="stat-description" data-i18n="gouv.results.rgaa.desc">
+                            Respect complet des standards d'accessibilité (contrastes, navigation clavier, lecteurs d'écran).
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.engagement.value">+28%</div>
+                        <div class="stat-label" data-i18n="gouv.results.engagement.label">Engagement utilisateur</div>
+                        <div class="stat-description" data-i18n="gouv.results.engagement.desc">
+                            Augmentation du temps passé et du scroll depth sur les pages stratégiques.
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.bounce.value">-45%</div>
+                        <div class="stat-label" data-i18n="gouv.results.bounce.label">Taux de rebond</div>
+                        <div class="stat-description" data-i18n="gouv.results.bounce.desc">
+                            Diminution importante du taux de rebond grâce aux messages hero orientés bénéfices.
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value" data-i18n="gouv.results.debt.value">-60%</div>
+                        <div class="stat-label" data-i18n="gouv.results.debt.label">Dette de design</div>
+                        <div class="stat-description" data-i18n="gouv.results.debt.desc">
+                            Réduction drastique grâce à la normalisation DSFR et la librairie Figma unifiée.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphiques -->
+                <div class="chart-container">
+                    <h3 class="chart-title" data-i18n="gouv.results.chart1.title">Évolution des indicateurs clés de performance</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="kpiChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3 class="chart-title" data-i18n="gouv.results.chart2.title">Impact avant / après refonte</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="beforeAfterChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Livrables -->
+            <section id="livrables" class="content-section">
+                <h2 data-i18n="gouv.deliverables.title">Livrables & Design System</h2>
+                
+                <p data-i18n="gouv.deliverables.intro">
+                    Au-delà des écrans, j'ai produit un ensemble complet de livrables pour garantir la pérennité et la scalabilité du projet :
+                </p>
+
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <div class="method-icon">📋</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.wireframes.title">Wireframes annotés</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.wireframes.desc">
+                            Séries complètes de wireframes mobile-first avec annotations détaillées sur la hiérarchie d'information et les comportements.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🎨</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.mockups.title">Maquettes haute-fidélité</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.mockups.desc">
+                            Maquettes Figma avec micro-interactions et transitions douces. Variantes de hero (titre court orienté bénéfice + preuve + CTA).
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📚</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.ds.title">Design System DSFR</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.ds.desc">
+                            Librairie Figma unifiée (atoms → templates) avec tokens normalisés (typo, spacing, couleurs) et guidelines d'usage.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🔧</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.doc.title">Documentation développeur</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.doc.desc">
+                            Documentation technique complète avec règles de responsive, nomenclature des composants, et exemples d'intégration.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">✅</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.audit.title">Rapport d'audit RGAA</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.audit.desc">
+                            Rapport détaillé des écarts identifiés et corrections appliquées pour garantir la conformité AA+.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📊</div>
+                        <h3 class="method-title" data-i18n="gouv.deliverables.tracking.title">Plan de marquage GA4</h3>
+                        <p class="method-description" data-i18n="gouv.deliverables.tracking.desc">
+                            Définition des événements à tracker (clic CTA, scroll depth, complétion démarche) et tableau de bord KPI UX.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Création d'une librairie Figma privée complète pour tableau complexe(atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation a permis de réduire le temps de design/intégration de 40% et d'améliorer l'homogénéité UI sur l'ensemble des projets.</span></p>
+                </div>
+            </section>
+
+            <!-- Apprentissages -->
+            <section id="apprentissages" class="content-section">
+                <h2 data-i18n="gouv.learnings.title">Apprentissages & Insights</h2>
+                
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="gouv.learnings.item1.label">L'accessibilité comme contrainte créative :</strong> <span data-i18n="gouv.learnings.item1.text">Le respect strict du RGAA AA+ n'est pas un frein à l'innovation, mais un cadre qui force à penser clarté et lisibilité. Les contraintes de contraste et de hiérarchie ont conduit à des choix de design plus forts et plus efficaces.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="gouv.learnings.item2.label">La puissance des messages orientés bénéfices :</strong> <span data-i18n="gouv.learnings.item2.text">Remplacer les titres institutionnels par des messages centrés sur les avantages concrets pour le citoyen a eu un impact direct et mesurable sur l'engagement (+28%) et la conversion (+42%).</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="gouv.learnings.item3.label">L'importance du cadrage multi-parties :</strong> <span data-i18n="gouv.learnings.item3.text">Les ateliers FigJam avec métiers, communication et tech ont permis d'aligner rapidement toutes les parties prenantes et d'éviter les allers-retours coûteux en fin de projet.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="gouv.learnings.item4.label">La mesure comme levier d'amélioration continue :</strong> <span data-i18n="gouv.learnings.item4.text">Le plan de marquage GA4 mis en place dès la conception a permis de suivre l'impact réel des décisions de design et d'itérer rapidement sur les zones à optimiser.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et la création d'une librairie Figma unifiée ont réduit la dette de design de 60% et accéléré significativement les futurs projets.</span>
+                    </li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong data-i18n="gouv.learnings.reflection.label">Réflexion clé :</strong> <span data-i18n="gouv.learnings.reflection.text">Dans un contexte de service public, chaque décision de design a un impact direct sur l'accès aux droits et aux services pour des millions de citoyens. Cette responsabilité impose une rigueur méthodologique et une attention aux détails qui vont bien au-delà de l'esthétique.</span></p>
+                </div>
+            </section>
+
+            <!-- Section CTA finale -->
+            <section id="cta" class="content-section cta-section">
+                <h2 data-i18n="gouv.cta.title">Prêt·e à faire évoluer vos services publics&nbsp;?</h2>
+                <p data-i18n="gouv.cta.subtitle">
+                    J'accompagne les organisations publiques et parapubliques pour transformer leurs plateformes numériques en expériences inclusives, accessibles et orientées impact. Parlons de vos prochains défis.
+                </p>
+                <div class="cta-actions">
+                    <a class="cta-button primary" href="mailto:hugoferrer.design@gmail.com" data-i18n="gouv.cta.primary">
+                        Discuter de votre projet
+                    </a>
+                    <a class="cta-button secondary" href="index.html#projets" data-i18n="gouv.cta.secondary">
+                        Explorer d'autres études de cas
+                    </a>
+                </div>
+                <span class="cta-disclaimer" data-i18n="gouv.cta.disclaimer">
+                    Réponse sous 48h – Possibilité de collaboration en régie ou en mission ciblée.
+                </span>
+            </section>
+
+        </main>
+
+        <!-- Sidebar Table des matières -->
+        <aside class="sidebar">
+            <div class="table-of-contents">
+                <h3 class="toc-title" data-i18n="gouv.toc.title">Sommaire</h3>
+                <div class="toc-item" data-section="contexte" data-i18n="gouv.toc.contexte">Contexte & Enjeux</div>
+                <div class="toc-item" data-section="methodologie" data-i18n="gouv.toc.methodologie">Méthodologie UX</div>
+                <div class="toc-item" data-section="benchmark" data-i18n="gouv.toc.benchmark">Benchmark UX</div>
+                <div class="toc-item" data-section="ateliers" data-i18n="gouv.toc.ateliers">Ateliers Collaboratifs</div>
+                <div class="toc-item" data-section="prototypage" data-i18n="gouv.toc.prototypage">Prototypage & DS</div>
+                <div class="toc-item" data-section="transformation" data-i18n="gouv.toc.transformation">Avant / Après</div>
+                <div class="toc-item" data-section="processus" data-i18n="gouv.toc.processus">Processus Design</div>
+                <div class="toc-item" data-section="resultats" data-i18n="gouv.toc.resultats">Résultats & Impact</div>
+                <div class="toc-item" data-section="livrables" data-i18n="gouv.toc.livrables">Livrables & DS</div>
+                <div class="toc-item" data-section="apprentissages" data-i18n="gouv.toc.apprentissages">Apprentissages</div>
+                <div class="toc-item" data-section="cta" data-i18n="gouv.toc.cta">Passer à l'action</div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">×</button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
+
+    <script>
+        // Progress bar au scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer pour animations
+        const sections = document.querySelectorAll('.content-section');
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Table des matières interactive
+        const tocItems = document.querySelectorAll('.toc-item');
+        tocItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                const section = document.getElementById(sectionId);
+                const headerOffset = 100;
+                const elementPosition = section.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Activer l'item de TOC selon la section visible
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Lightbox controller
+        const lightboxController = (() => {
+            const overlay = document.getElementById('lightboxOverlay');
+            const image = document.getElementById('lightboxImage');
+            const closeBtn = document.getElementById('lightboxClose');
+
+            function open(src, alt = '') {
+                if (!src) return;
+                image.src = src;
+                image.alt = alt;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close() {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    image.src = '';
+                    image.alt = '';
+                }, 200);
+                document.body.style.overflow = '';
+            }
+
+            closeBtn.addEventListener('click', close);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) close();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) close();
+            });
+
+            return { open, close };
+        })();
+
+        // Hero image zoom → ouvre la vraie image
+        const zoomBtn = document.querySelector('.hero-zoom-button');
+        const dataHero = document.querySelector('.hero-image.data-hero');
+        if (zoomBtn && dataHero) {
+            zoomBtn.addEventListener('click', () => {
+                const heroImg = dataHero.querySelector('img');
+                if (!heroImg) return;
+                const src = heroImg.currentSrc || heroImg.src;
+                if (!src) return;
+                lightboxController.open(src, heroImg.alt || 'Hero Info.gouv.fr');
+            });
+        }
+
+        // Lightbox automatique pour toutes les images
+        function enableLightboxOnImages() {
+            const candidates = document.querySelectorAll('img:not(#lightboxImage):not([data-no-lightbox])');
+
+            candidates.forEach(img => {
+                if (img.dataset.lightboxInit === '1') return;
+                if (img.closest('.lightbox-overlay')) return;
+
+                const bind = () => {
+                    if (img.dataset.lightboxInit === '1') return;
+                    const src = img.currentSrc || img.src;
+                    if (!src) return;
+                    if (!img.dataset.forceLightbox && img.naturalWidth && img.naturalHeight && img.naturalWidth <= 60 && img.naturalHeight <= 60) {
+                        return;
+                    }
+
+                    img.dataset.lightbox = 'true';
+                    img.dataset.lightboxInit = '1';
+                    img.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        const targetSrc = img.currentSrc || img.src;
+                        if (!targetSrc) return;
+                        lightboxController.open(targetSrc, img.alt || '');
+                    });
+                };
+
+                if (img.complete && img.naturalWidth) {
+                    bind();
+                } else {
+                    img.addEventListener('load', bind, { once: true });
+                }
+            });
+        }
+
+        enableLightboxOnImages();
+        document.addEventListener('DOMContentLoaded', enableLightboxOnImages);
+        window.addEventListener('load', () => {
+            setTimeout(enableLightboxOnImages, 400);
+        });
+
+        // Compteurs KPI animés
+        (function () {
+            const hero = document.querySelector('.hero-image.data-hero');
+            if (!hero) return;
+
+            const counters = hero.querySelectorAll('[data-count]');
+            if (!counters.length) return;
+
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduced) {
+                counters.forEach(el => {
+                    el.textContent =
+                        (el.dataset.prefix || '') +
+                        (el.dataset.count || '0') +
+                        (el.dataset.suffix || '');
+                    el.dataset.done = '1';
+                });
+                return;
+            }
+
+            function animate(el) {
+                el.dataset.done = '1';
+                const target = parseFloat(el.dataset.count || '0');
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1200;
+                const startTime = performance.now();
+                const ease = t => 1 - Math.pow(1 - t, 3);
+
+                function tick(now) {
+                    const progress = Math.min(1, (now - startTime) / duration);
+                    const value = Math.round(target * ease(progress));
+                    el.textContent = prefix + value + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            function run() {
+                counters.forEach(el => {
+                    if (!el.dataset.done) animate(el);
+                });
+            }
+
+            function isVisible(el) {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+            }
+
+            if (isVisible(hero)) run();
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        run();
+                        io.disconnect();
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            io.observe(hero);
+
+            let armed = true;
+            function onScroll() {
+                if (armed && isVisible(hero)) {
+                    armed = false;
+                    run();
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('load', () => {
+                if (isVisible(hero)) run();
+            });
+        })();
+
+        // Graphiques Chart.js
+        const palette = {
+            primary: 'rgba(99, 102, 241, 0.8)',
+            secondary: 'rgba(245, 87, 108, 0.8)',
+            tertiary: 'rgba(0, 0, 145, 0.8)',
+            quaternary: 'rgba(200, 200, 200, 0.5)'
+        };
+
+        const chartInstances = {
+            kpi: null,
+            beforeAfter: null,
+        };
+
+        const translate = (key, fallback) => {
+            if (window.__i18n && typeof window.__i18n.t === 'function') {
+                const value = window.__i18n.t(key);
+                if (value && value !== key) return value;
+            }
+            return fallback || key;
+        };
+
+        const renderCharts = () => {
+            if (typeof Chart === 'undefined') return;
+
+            const kpiCtx = document.getElementById('kpiChart');
+            if (chartInstances.kpi) {
+                chartInstances.kpi.destroy();
+                chartInstances.kpi = null;
+            }
+            if (kpiCtx) {
+                chartInstances.kpi = new Chart(kpiCtx, {
+                    type: 'line',
+                    data: {
+                        labels: [
+                            translate('gouv.chart.month1', 'Mois 1'),
+                            translate('gouv.chart.month2', 'Mois 2'),
+                            translate('gouv.chart.month3', 'Mois 3'),
+                            translate('gouv.chart.month4', 'Mois 4'),
+                            translate('gouv.chart.month5', 'Mois 5'),
+                            translate('gouv.chart.month6', 'Mois 6'),
+                        ],
+                        datasets: [
+                            {
+                                label: translate('gouv.chart.cta.label', 'Taux de clic CTA (%)'),
+                                data: [18, 22, 28, 35, 39, 42],
+                                borderColor: palette.primary,
+                                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                                tension: 0.4,
+                                fill: true,
+                            },
+                            {
+                                label: translate('gouv.chart.engagement.label', 'Engagement utilisateur (%)'),
+                                data: [45, 48, 52, 58, 63, 68],
+                                borderColor: palette.tertiary,
+                                backgroundColor: 'rgba(0, 0, 145, 0.1)',
+                                tension: 0.4,
+                                fill: true,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                },
+                            },
+                            x: {
+                                grid: {
+                                    display: false,
+                                },
+                            },
+                        },
+                    },
+                });
+            }
+
+            const beforeAfterCtx = document.getElementById('beforeAfterChart');
+            if (chartInstances.beforeAfter) {
+                chartInstances.beforeAfter.destroy();
+                chartInstances.beforeAfter = null;
+            }
+            if (beforeAfterCtx) {
+                chartInstances.beforeAfter = new Chart(beforeAfterCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            translate('gouv.chart.metric1', 'Taux de clic CTA'),
+                            translate('gouv.chart.metric2', 'Temps accès info (min)'),
+                            translate('gouv.chart.metric3', 'Taux de rebond'),
+                            translate('gouv.chart.metric4', 'Engagement'),
+                        ],
+                        datasets: [
+                            {
+                                label: translate('gouv.chart.before', 'Avant refonte'),
+                                data: [18, 5.2, 62, 45],
+                                backgroundColor: palette.quaternary,
+                                borderRadius: 8,
+                            },
+                            {
+                                label: translate('gouv.chart.after', 'Après refonte'),
+                                data: [42, 3.4, 34, 68],
+                                backgroundColor: palette.primary,
+                                borderRadius: 8,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                },
+                            },
+                            x: {
+                                grid: {
+                                    display: false,
+                                },
+                            },
+                        },
+                    },
+                });
+            }
+        };
+
+        renderCharts();
+        document.addEventListener('i18n:updated', renderCharts);
+    </script>
+    <script src="js/i18n.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="fr" class="i18n-ready">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Coach - Case Study | Hugo Ferrer</title>
+    <style>
+        :root:not(.i18n-ready) [data-i18n] {
+            visibility: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #f59e0b;
+            --accent-secondary: #ea580c;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --dark-gray: #1a1a2e;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header avec progress bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            gap: 0.8rem;
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 8rem 5% 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            opacity: 0;
+            animation: fadeInScale 0.5s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tag:nth-child(1) { animation-delay: 0.1s; }
+        .tag:nth-child(2) { animation-delay: 0.2s; }
+        .tag:nth-child(3) { animation-delay: 0.3s; }
+        .tag:nth-child(4) { animation-delay: 0.4s; }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.3s;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.5s;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            opacity: 0;
+            animation: fadeInScale 0.6s ease forwards;
+        }
+
+        .meta-item:nth-child(1) { animation-delay: 0.6s; }
+        .meta-item:nth-child(2) { animation-delay: 0.7s; }
+        .meta-item:nth-child(3) { animation-delay: 0.8s; }
+        .meta-item:nth-child(4) { animation-delay: 0.9s; }
+
+        .meta-item h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Hero Image avec Slider */
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInScale 1s ease forwards 1s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .hero-slide.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .hero-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-dot.is-active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .hero-zoom-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .hero-zoom-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Containers principaux */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .content-section {
+            padding: 3rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Cards et grilles */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Liste avec icônes */
+        .icon-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .icon-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
+        }
+
+        .icon-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .icon-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stats cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Quote */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.1));
+            padding: 3rem;
+            border-radius: 16px;
+            border-left: 5px solid var(--accent-color);
+            margin: 3rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .quote-box.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .quote-author {
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* NOUVELLE SECTION: Preuves de concept */
+        .proof-section {
+            background: var(--light-gray);
+            padding: 4rem 0;
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+
+        .proof-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .proof-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .proof-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .proof-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .proof-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(245, 158, 11, 0.2);
+        }
+
+        .proof-image-container {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proof-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .proof-card:hover .proof-image-container img {
+            transform: scale(1.05);
+        }
+
+        .proof-placeholder {
+            color: white;
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .proof-content {
+            padding: 1.5rem;
+        }
+
+        .proof-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .proof-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .proof-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Galerie de mockups */
+        .mockup-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .mockup-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.1));
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mockup-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .mockup-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mockup-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mockup-item:hover .mockup-overlay {
+            opacity: 1;
+        }
+
+        .mockup-overlay-text {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Prototype interactif */
+        .prototype-embed {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+        }
+
+        .prototype-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .prototype-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .prototype-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .prototype-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .prototype-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 12px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prototype-placeholder {
+            text-align: center;
+            color: #999;
+        }
+
+        .prototype-placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        /* Video showcase */
+        .video-showcase {
+            margin: 3rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            background: #000;
+        }
+
+        .video-container video,
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(234, 88, 12, 0.8));
+            color: white;
+        }
+
+        .video-placeholder-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Comparison slider */
+        .comparison-section {
+            margin: 4rem 0;
+        }
+
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-images {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .comparison-before,
+        .comparison-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .comparison-before img,
+        .comparison-after img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comparison-after {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+
+        .comparison-slider::before {
+            content: '↔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .comparison-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .comparison-label-before {
+            color: #999;
+        }
+
+        .comparison-label-after {
+            color: var(--accent-color);
+        }
+
+        /* Chart containers */
+        .chart-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .chart-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Steps cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .step-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Layout 2 colonnes */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(220px, 0.75fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            margin-bottom: 4rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .main-content > .content-section:first-of-type {
+            padding-top: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        /* Table des matières */
+        .toc {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .toc h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-item {
+            padding: 0.8rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .toc-item:hover {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            padding-left: 1.5rem;
+        }
+
+        .toc-item.active {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        /* Footer CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-gray), #16213e);
+            padding: 5rem 5%;
+            margin-top: 5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 6rem 5% 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid,
+            .stats-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .toc-sidebar {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 70px;
+            }
+
+            .timeline-item::before {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations supplémentaires */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .mt-4 { margin-top: 4rem; }
+
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .mb-4 { margin-bottom: 4rem; }
+    </style>
+</head>
+<body data-page="mastercoach">
+    <!-- Header fixe -->
+    <header>
+        <div class="progress-bar"></div>
+        <nav>
+            <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
+            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="project-hero">
+        <div class="project-tags">
+            <span class="tag">UX/UI Design</span>
+            <span class="tag">Application Mobile</span>
+            <span class="tag">Design System</span>
+            <span class="tag">Coaching</span>
+        </div>
+
+        <h1>Master Coach</h1>
+        <p class="project-subtitle">
+            Plateforme de coaching sportif connectée permettant aux coachs de gérer leurs clients 
+            et de créer des programmes d'entraînement personnalisés avec suivi en temps réel.
+        </p>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <h3>Client</h3>
+                <p>Master Coach SAS</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.role">Rôle</h3>
+                <p>Lead UX/UI Designer</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.duration">Durée</h3>
+                <p>8 mois</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.year">Année</h3>
+                <p>2024</p>
+            </div>
+        </div>
+
+        <!-- Hero Image avec Slider -->
+        <div class="hero-image">
+            <button class="hero-zoom-button" aria-label="Agrandir l'image">🔍</button>
+            <div class="hero-slider">
+                <div class="hero-slide is-active">
+                    <img src="https://via.placeholder.com/1200x500/f59e0b/ffffff?text=Master+Coach+-+Vue+d%27ensemble" alt="Vue d'ensemble Master Coach">
+                </div>
+                <div class="hero-slide">
+                    <img src="https://via.placeholder.com/1200x500/ea580c/ffffff?text=Interface+Coach" alt="Interface Coach">
+                </div>
+                <div class="hero-slide">
+                    <img src="https://via.placeholder.com/1200x500/f59e0b/ffffff?text=Application+Mobile" alt="Application Mobile">
+                </div>
+            </div>
+            <div class="hero-controls">
+                <span class="hero-dot is-active" data-slide="0"></span>
+                <span class="hero-dot" data-slide="1"></span>
+                <span class="hero-dot" data-slide="2"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox pour zoom -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Fermer">×</button>
+        <img src="" alt="">
+    </div>
+
+    <!-- Layout 2 colonnes -->
+    <div class="two-column-layout">
+        <div class="main-content">
+            <!-- Section Contexte -->
+            <section id="contexte" class="content-section">
+        <h2 class="section-title">📋 Contexte du projet</h2>
+        <p class="content-text">
+            <strong>Master Coach</strong> est une startup française spécialisée dans le coaching sportif digital. 
+            L'entreprise souhaitait créer une plateforme complète permettant aux coachs sportifs indépendants 
+            de digitaliser leur activité et d'offrir un suivi personnalisé à leurs clients.
+        </p>
+        <p class="content-text">
+            Le marché du coaching sportif en ligne connaît une croissance exponentielle, notamment depuis 2020. 
+            Les coachs recherchent des outils professionnels pour gérer leurs clients, créer des programmes 
+            d'entraînement et suivre les progrès en temps réel.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🎯 Objectif principal</h3>
+                <p>Créer une application intuitive permettant aux coachs de gérer efficacement leurs clients 
+                   et de délivrer des programmes d'entraînement de qualité professionnelle.</p>
+            </div>
+            <div class="info-card">
+                <h3>👥 Utilisateurs cibles</h3>
+                <p>Coachs sportifs indépendants, personal trainers, préparateurs physiques et leurs clients 
+                   cherchant un suivi personnalisé et professionnel.</p>
+            </div>
+            <div class="info-card">
+                <h3>⚡ Défis techniques</h3>
+                <p>Synchronisation en temps réel, gestion de vidéos d'exercices, système de notifications 
+                   intelligent et compatibilité avec les appareils de fitness connectés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Problématique -->
+    <section id="problematique" class="content-section">
+        <h2 class="section-title">🔍 Problématique identifiée</h2>
+        <p class="content-text">
+            Les coachs sportifs indépendants utilisaient principalement des <strong>outils disparates</strong> 
+            (Excel, WhatsApp, PDF) pour gérer leurs clients. Cette fragmentation causait des pertes de temps, 
+            des erreurs de suivi et une expérience client peu professionnelle.
+        </p>
+
+        <div class="quote-box">
+            "Je passe plus de temps à gérer mes tableaux Excel et à envoyer des messages qu'à réellement 
+            coacher mes clients. J'ai besoin d'une solution tout-en-un pour professionnaliser mon activité."
+            <div class="quote-author">— Sarah, Coach sportive indépendante</div>
+        </div>
+
+        <h3 class="mt-3 mb-2" style="font-size: 1.5rem; font-weight: 600;">Points de friction majeurs :</h3>
+        <ul class="icon-list">
+            <li>Absence d'outil centralisé pour gérer la relation client-coach</li>
+            <li>Difficulté à créer et partager des programmes d'entraînement visuels</li>
+            <li>Impossibilité de suivre les progrès des clients en temps réel</li>
+            <li>Communication fragmentée entre différentes applications</li>
+            <li>Manque de professionnalisme perçu par les clients</li>
+            <li>Temps administratif excessif au détriment du coaching</li>
+        </ul>
+    </section>
+
+    <!-- Section Recherche Utilisateur -->
+    <section id="recherche" class="content-section">
+        <h2 class="section-title">🔬 Recherche utilisateur</h2>
+        <p class="content-text">
+            J'ai mené une phase de recherche approfondie sur 3 mois pour comprendre les besoins réels 
+            des coachs et de leurs clients. Cette recherche a combiné plusieurs méthodologies.
+        </p>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Interviews qualitatives</h3>
+                <p>25 entretiens approfondis avec des coachs sportifs de différents profils 
+                   (fitness, musculation, préparation physique, yoga).</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Observation terrain</h3>
+                <p>10 sessions d'observation de coachs dans leur environnement de travail 
+                   pour identifier les workflows réels et les points de friction.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Questionnaires</h3>
+                <p>Survey distribué à 150 coachs et 300 clients pour quantifier les besoins 
+                   et valider les insights qualitatifs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Analyse concurrentielle</h3>
+                <p>Audit détaillé de 12 solutions existantes pour identifier les forces, 
+                   faiblesses et opportunités de différenciation.</p>
+            </div>
+        </div>
+
+        <h3 class="mt-4 mb-2" style="font-size: 1.5rem; font-weight: 600;">Insights clés découverts :</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📊 Insight #1</h3>
+                <p><strong>82% des coachs</strong> passent plus de 10 heures par semaine sur des tâches 
+                   administratives qui pourraient être automatisées.</p>
+            </div>
+            <div class="info-card">
+                <h3>💬 Insight #2</h3>
+                <p>Les clients valorisent le <strong>suivi visuel</strong> de leurs progrès 
+                   (photos, graphiques) plus que les simples chiffres.</p>
+            </div>
+            <div class="info-card">
+                <h3>🎥 Insight #3</h3>
+                <p>Les vidéos d'exercices avec <strong>démonstrations personnalisées</strong> 
+                   augmentent l'engagement de 67%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Concept et Stratégie -->
+    <section id="concept" class="content-section">
+        <h2 class="section-title">💡 Concept et stratégie UX</h2>
+        <p class="content-text">
+            Sur la base de la recherche, j'ai défini une <strong>stratégie UX centrée sur trois piliers</strong> : 
+            simplicité, personnalisation et professionnalisme. L'objectif était de créer une expérience 
+            qui fasse gagner du temps aux coachs tout en offrant une valeur ajoutée maximale à leurs clients.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item" data-step="01">
+                <h3>Architecture de l'information</h3>
+                <p>Création d'une structure claire séparant les espaces "Coach" et "Client" avec des 
+                   fonctionnalités adaptées à chaque rôle. Organisation des contenus selon le principe 
+                   de proximité et de hiérarchie visuelle.</p>
+            </div>
+            <div class="timeline-item" data-step="02">
+                <h3>Workflows optimisés</h3>
+                <p>Mapping détaillé des parcours utilisateurs critiques : création de programme, 
+                   ajout de client, suivi de progression. Chaque workflow a été testé et optimisé 
+                   pour minimiser le nombre d'étapes.</p>
+            </div>
+            <div class="timeline-item" data-step="03">
+                <h3>Design System</h3>
+                <p>Développement d'un système de design cohérent avec une palette énergique 
+                   (orange/rouge), une typographie claire et des composants réutilisables. 
+                   Guidelines pour assurer la cohérence sur tous les écrans.</p>
+            </div>
+            <div class="timeline-item" data-step="04">
+                <h3>Prototypage et tests</h3>
+                <p>Création de prototypes haute-fidélité testés avec 15 coachs en situation réelle. 
+                   Itérations basées sur les retours pour affiner l'expérience avant développement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION: Preuves de concept -->
+    <section id="preuves" class="proof-section">
+        <div class="proof-container">
+            <h2 class="proof-title">🎨 Preuves de concept & Réalisations</h2>
+            <p class="proof-subtitle">
+                Découvrez les mockups, prototypes interactifs et démonstrations visuelles 
+                du projet Master Coach
+            </p>
+
+            <!-- Grille de preuves de concept -->
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">📱</span>
+                        <!-- Remplacer par : <img src="chemin/vers/mockup1.png" alt="Écrans principaux"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">Mockups</span>
+                        <h3>Écrans principaux</h3>
+                        <p>Interface coach avec dashboard, gestion clients et création de programmes</p>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">🎯</span>
+                        <!-- Remplacer par : <img src="chemin/vers/prototype.png" alt="Prototype interactif"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">Prototype</span>
+                        <h3>Prototype interactif</h3>
+                        <p>Navigation complète avec interactions et animations réalistes</p>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">📊</span>
+                        <!-- Remplacer par : <img src="chemin/vers/userflow.png" alt="User flows"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">UX Research</span>
+                        <h3>User flows & Wireframes</h3>
+                        <p>Parcours utilisateurs détaillés et wireframes basse fidélité</p>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">🎨</span>
+                        <!-- Remplacer par : <img src="chemin/vers/design-system.png" alt="Design system"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">Design System</span>
+                        <h3>Composants & Guidelines</h3>
+                        <p>Bibliothèque de composants réutilisables et documentation</p>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">📸</span>
+                        <!-- Remplacer par : <img src="chemin/vers/screenshots.png" alt="Screenshots"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">Application finale</span>
+                        <h3>Screenshots de l'app</h3>
+                        <p>Captures d'écran de l'application en production</p>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div class="proof-image-container">
+                        <span class="proof-placeholder">🎬</span>
+                        <!-- Remplacer par : <img src="chemin/vers/video-demo.png" alt="Démo vidéo"> -->
+                    </div>
+                    <div class="proof-content">
+                        <span class="proof-label">Démo</span>
+                        <h3>Vidéo de démonstration</h3>
+                        <p>Présentation complète des fonctionnalités clés en action</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galerie de mockups détaillée -->
+            <h3 class="section-title mt-4">Galerie de Mockups</h3>
+            <div class="mockup-gallery">
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Dashboard Coach</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup1.png" alt="Dashboard"> -->
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Liste Clients</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup2.png" alt="Clients"> -->
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Création Programme</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup3.png" alt="Programme"> -->
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Profil Client</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup4.png" alt="Profil"> -->
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Suivi Progression</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup5.png" alt="Suivi"> -->
+                </div>
+                <div class="mockup-item">
+                    <div class="mockup-overlay">
+                        <span class="mockup-overlay-text">Messagerie</span>
+                    </div>
+                    <!-- Ajouter : <img src="mockup6.png" alt="Chat"> -->
+                </div>
+            </div>
+
+            <!-- Prototype interactif embeddé -->
+            <div class="prototype-embed mt-4">
+                <div class="prototype-header">
+                    <h3>🔗 Prototype interactif Figma</h3>
+                    <a href="#" class="prototype-link" target="_blank">
+                        Ouvrir en plein écran →
+                    </a>
+                </div>
+                <div class="prototype-frame">
+                    <div class="prototype-placeholder">
+                        <div class="prototype-placeholder-icon">🎨</div>
+                        <p><strong>Intégrer votre prototype Figma ici</strong></p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                            Utilisez l'iframe Figma ou ajoutez un lien vers votre prototype
+                        </p>
+                    </div>
+                    <!-- Pour intégrer un prototype Figma, utilisez :
+                    <iframe 
+                        style="border: none;" 
+                        width="100%" 
+                        height="600" 
+                        src="https://www.figma.com/embed?embed_host=share&url=VOTRE_URL_FIGMA" 
+                        allowfullscreen>
+                    </iframe>
+                    -->
+                </div>
+            </div>
+
+            <!-- Vidéo de démonstration -->
+            <div class="video-showcase mt-4">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div class="video-placeholder-icon">▶</div>
+                        <p style="font-size: 1.5rem; font-weight: 600;">Démo vidéo de l'application</p>
+                        <p>Ajoutez votre vidéo de démonstration ici</p>
+                    </div>
+                    <!-- Pour ajouter une vidéo :
+                    <video controls>
+                        <source src="chemin/vers/demo.mp4" type="video/mp4">
+                    </video>
+                    
+                    Ou pour YouTube/Vimeo :
+                    <iframe 
+                        src="https://www.youtube.com/embed/VIDEO_ID" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                    -->
+                </div>
+            </div>
+
+            <!-- Comparaison Avant/Après -->
+            <div class="comparison-section mt-4">
+                <h3 class="section-title text-center">Évolution du Design</h3>
+                <p class="content-text text-center mb-3">
+                    Glissez le curseur pour comparer les versions initiale et finale
+                </p>
+                <div class="comparison-container">
+                    <div class="comparison-images">
+                        <div class="comparison-before">
+                            <img src="https://via.placeholder.com/800x450/cccccc/666666?text=Version+Initiale" alt="Version initiale">
+                        </div>
+                        <div class="comparison-after">
+                            <img src="https://via.placeholder.com/800x450/f59e0b/ffffff?text=Version+Finale" alt="Version finale">
+                        </div>
+                        <div class="comparison-slider"></div>
+                    </div>
+                    <div class="comparison-labels">
+                        <span class="comparison-label-before">Avant</span>
+                        <span class="comparison-label-after">Après</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Solution Design -->
+    <section id="design" class="content-section">
+        <h2 class="section-title">🎨 Solution de design</h2>
+        <p class="content-text">
+            La solution finale est une <strong>application mobile native</strong> (iOS & Android) complétée 
+            par une interface web pour les coachs. Le design met l'accent sur la clarté, l'efficacité 
+            et une identité visuelle énergique qui inspire l'action.
+        </p>
+
+        <h3 class="mt-3 mb-2" style="font-size: 1.5rem; font-weight: 600;">Fonctionnalités principales :</h3>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>👤 Gestion de clients</h3>
+                <p>Dashboard centralisé avec vue d'ensemble des clients actifs, historique des séances, 
+                   objectifs et notes personnalisées.</p>
+            </div>
+            <div class="info-card">
+                <h3>📋 Création de programmes</h3>
+                <p>Builder intuitif par glisser-déposer avec bibliothèque d'exercices vidéo, 
+                   templates pré-conçus et personnalisation avancée.</p>
+            </div>
+            <div class="info-card">
+                <h3>📊 Suivi de progression</h3>
+                <p>Graphiques visuels de performance, comparaison avant/après en photos, 
+                   mesures corporelles et statistiques détaillées.</p>
+            </div>
+            <div class="info-card">
+                <h3>💬 Messagerie intégrée</h3>
+                <p>Chat en temps réel avec partage de médias, notifications push intelligentes 
+                   et historique de conversations.</p>
+            </div>
+            <div class="info-card">
+                <h3>📅 Planning et rappels</h3>
+                <p>Calendrier partagé avec synchronisation, rappels automatiques de séances 
+                   et gestion des absences.</p>
+            </div>
+            <div class="info-card">
+                <h3>🎥 Bibliothèque vidéo</h3>
+                <p>Collection de 500+ exercices avec vidéos HD, possibilité d'upload de vidéos 
+                   personnalisées et catégorisation intelligente.</p>
+            </div>
+        </div>
+
+        <!-- Charts de métriques -->
+        <div class="chart-block mt-4">
+            <h3 class="chart-title">📈 Évolution du taux de conversion</h3>
+            <div class="chart-container">
+                <canvas id="conversionChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-block">
+            <h3 class="chart-title">🎯 Métriques clés de performance</h3>
+            <div class="chart-container">
+                <canvas id="metricsChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Résultats -->
+    <section id="resultats" class="content-section">
+        <h2 class="section-title">🏆 Résultats et impact</h2>
+        <p class="content-text">
+            Le lancement de Master Coach en janvier 2024 a dépassé toutes les attentes. Les retours 
+            utilisateurs sont exceptionnellement positifs et les métriques confirment le succès 
+            de l'approche centrée utilisateur.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">4.6%</div>
+                <div class="stat-label">Taux de conversion visiteur → inscription</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3m45s</div>
+                <div class="stat-label">Temps moyen passé sur l'application</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.1K</div>
+                <div class="stat-label">Coachs actifs sur la plateforme</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.8/5</div>
+                <div class="stat-label">Note moyenne sur les stores</div>
+            </div>
+        </div>
+
+        <div class="quote-box mt-4">
+            "Master Coach a transformé ma façon de travailler. Je gagne 12 heures par semaine 
+            sur l'administratif et mes clients adorent le suivi visuel. Mon activité a augmenté 
+            de 40% en 6 mois !"
+            <div class="quote-author">— Marc, Coach sportif certifié</div>
+        </div>
+
+        <h3 class="mt-4 mb-2" style="font-size: 1.5rem; font-weight: 600;">Impacts mesurés :</h3>
+        <ul class="icon-list">
+            <li><strong>Gain de temps :</strong> Les coachs économisent en moyenne 12h/semaine sur les tâches administratives</li>
+            <li><strong>Satisfaction client :</strong> 94% des clients déclarent être plus motivés grâce au suivi visuel</li>
+            <li><strong>Rétention :</strong> Taux de rétention de 87% après 6 mois (vs 52% sans plateforme)</li>
+            <li><strong>Croissance business :</strong> Les coachs augmentent leur CA de 35% en moyenne dans les 6 premiers mois</li>
+            <li><strong>Engagement :</strong> 4.2 connexions/semaine par utilisateur actif</li>
+        </ul>
+    </section>
+
+    <!-- Section Apprentissages -->
+    <section id="apprentissages" class="content-section">
+        <h2 class="section-title">💭 Apprentissages clés</h2>
+        <p class="content-text">
+            Ce projet m'a permis de développer ma compréhension de la conception d'applications complexes 
+            avec double interface (coach/client) et gestion de contenus riches (vidéos, photos).
+        </p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🎯 Design pour deux personas</h3>
+                <p>L'importance de créer des expériences distinctes mais cohérentes pour des utilisateurs 
+                   aux besoins très différents (coachs vs clients).</p>
+            </div>
+            <div class="info-card">
+                <h3>⚡ Performance UX</h3>
+                <p>Les enjeux de performance dans une app avec beaucoup de médias : optimisation du chargement, 
+                   compression intelligente, lazy loading.</p>
+            </div>
+            <div class="info-card">
+                <h3>📱 Mobile-first thinking</h3>
+                <p>Concevoir d'abord pour mobile force à prioriser les fonctionnalités essentielles 
+                   et à simplifier l'interface.</p>
+            </div>
+            <div class="info-card">
+                <h3>🔄 Design System évolutif</h3>
+                <p>La valeur d'un design system bien documenté pour maintenir la cohérence 
+                   et faciliter l'évolution du produit.</p>
+            </div>
+        </div>
+    </section>
+
+        </div>
+
+        <aside class="sidebar">
+            <div class="toc">
+                <h3>Navigation</h3>
+                <div class="toc-item active" data-section="contexte">Contexte</div>
+                <div class="toc-item" data-section="problematique">Problématique</div>
+                <div class="toc-item" data-section="recherche">Recherche</div>
+                <div class="toc-item" data-section="concept">Concept</div>
+                <div class="toc-item" data-section="preuves">Preuves</div>
+                <div class="toc-item" data-section="design">Design</div>
+                <div class="toc-item" data-section="resultats">Résultats</div>
+                <div class="toc-item" data-section="apprentissages">Apprentissages</div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Intéressé par mon travail ?</h2>
+        <p>Découvrez mes autres projets ou discutons de votre prochain projet UX/UI</p>
+        <a href="index.html" class="cta-button">
+            Voir tous mes projets →
+        </a>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        // ============================================
+        // PROGRESS BAR AU SCROLL
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // ============================================
+        // HERO SLIDER
+        // ============================================
+        (function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            let currentSlide = 0;
+            const slideInterval = 4000;
+
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('is-active');
+                dots[currentSlide].classList.remove('is-active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('is-active');
+                dots[currentSlide].classList.add('is-active');
+            }
+
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+
+            // Auto-play
+            let autoplay = setInterval(nextSlide, slideInterval);
+
+            // Navigation par dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(autoplay);
+                    goToSlide(index);
+                    autoplay = setInterval(nextSlide, slideInterval);
+                });
+            });
+
+            // Pause on hover
+            const heroSlider = document.querySelector('.hero-slider');
+            if (heroSlider) {
+                heroSlider.addEventListener('mouseenter', () => clearInterval(autoplay));
+                heroSlider.addEventListener('mouseleave', () => {
+                    autoplay = setInterval(nextSlide, slideInterval);
+                });
+            }
+        })();
+
+        // ============================================
+        // LIGHTBOX / MODE CINÉMA
+        // ============================================
+        (function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const zoomBtn = document.querySelector('.hero-zoom-button');
+
+            function openLightbox() {
+                const activeSlide = document.querySelector('.hero-slide.is-active');
+                const activeImg = activeSlide ? activeSlide.querySelector('img') : null;
+                
+                if (activeImg) {
+                    lightboxImg.src = activeImg.src;
+                    lightboxImg.alt = activeImg.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (zoomBtn) zoomBtn.addEventListener('click', openLightbox);
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        })();
+
+        // ============================================
+        // INTERSECTION OBSERVER POUR LES ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments animés
+        document.querySelectorAll('.content-section, .info-card, .step-card, .stat-card, .quote-box, .icon-list li, .timeline-item, .chart-block').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // TABLE DES MATIÈRES INTERACTIVE
+        // ============================================
+        const tocItems = document.querySelectorAll('.toc-item');
+        const sections = document.querySelectorAll('.content-section');
+
+        tocItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Activer l'item de TOC selon la section visible
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // ============================================
+        // DÉLAIS D'ANIMATION POUR LES ÉLÉMENTS
+        // ============================================
+        document.querySelectorAll('.icon-list li').forEach((li, index) => {
+            li.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.step-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        // ============================================
+        // COMPARISON SLIDER (Avant/Après)
+        // ============================================
+        (function() {
+            const comparisonSlider = document.querySelector('.comparison-slider');
+            const comparisonAfter = document.querySelector('.comparison-after');
+            const comparisonContainer = document.querySelector('.comparison-container');
+
+            if (comparisonSlider && comparisonAfter && comparisonContainer) {
+                let isDragging = false;
+
+                function updateSlider(x) {
+                    const rect = comparisonContainer.getBoundingClientRect();
+                    const position = ((x - rect.left) / rect.width) * 100;
+                    const clampedPosition = Math.max(0, Math.min(100, position));
+                    
+                    comparisonSlider.style.left = clampedPosition + '%';
+                    comparisonAfter.style.clipPath = `inset(0 ${100 - clampedPosition}% 0 0)`;
+                }
+
+                comparisonSlider.addEventListener('mousedown', () => isDragging = true);
+                
+                document.addEventListener('mouseup', () => isDragging = false);
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (isDragging) {
+                        updateSlider(e.clientX);
+                    }
+                });
+
+                comparisonContainer.addEventListener('click', (e) => {
+                    updateSlider(e.clientX);
+                });
+
+                // Touch events pour mobile
+                comparisonSlider.addEventListener('touchstart', () => isDragging = true);
+                
+                document.addEventListener('touchend', () => isDragging = false);
+                
+                document.addEventListener('touchmove', (e) => {
+                    if (isDragging && e.touches[0]) {
+                        updateSlider(e.touches[0].clientX);
+                    }
+                });
+            }
+        })();
+
+        // ============================================
+        // CHARTS AVEC CHART.JS
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof Chart === 'undefined') {
+                console.warn('Chart.js non chargé');
+                return;
+            }
+
+            // Chart 1: Taux de conversion
+            const conversionCtx = document.getElementById('conversionChart');
+            if (conversionCtx) {
+                new Chart(conversionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Version initiale', 'Après optimisation UX', 'Avec vidéos intégrées'],
+                        datasets: [{
+                            label: 'Taux de conversion (%)',
+                            data: [2.1, 3.4, 4.6],
+                            backgroundColor: [
+                                'rgba(245, 158, 11, 0.6)',
+                                'rgba(245, 158, 11, 0.75)',
+                                'rgba(245, 158, 11, 0.9)'
+                            ],
+                            borderColor: [
+                                'rgba(245, 158, 11, 1)',
+                                'rgba(245, 158, 11, 1)',
+                                'rgba(245, 158, 11, 1)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 5,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart 2: Métriques clés
+            const metricsCtx = document.getElementById('metricsChart');
+            if (metricsCtx) {
+                new Chart(metricsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Taux de conversion', 'Temps moyen sur site', 'Partages vidéos'],
+                        datasets: [{
+                            label: 'Performance',
+                            data: [4.6, 225, 2100], // 4.6%, 3m45s = 225s, 2.1K partages
+                            backgroundColor: [
+                                'rgba(234, 88, 12, 0.7)',
+                                'rgba(245, 158, 11, 0.7)',
+                                'rgba(251, 191, 36, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(234, 88, 12, 1)',
+                                'rgba(245, 158, 11, 1)',
+                                'rgba(251, 191, 36, 1)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed.y;
+                                        
+                                        if (label.includes('conversion')) {
+                                            return value + '%';
+                                        } else if (label.includes('temps')) {
+                                            const minutes = Math.floor(value / 60);
+                                            const seconds = value % 60;
+                                            return minutes + 'm ' + seconds + 's';
+                                        } else if (label.includes('Partages')) {
+                                            return (value / 1000).toFixed(1) + 'K partages';
+                                        }
+                                        return value;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="js/i18n.js" defer></script>
+</body>
+</html>

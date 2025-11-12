@@ -1,0 +1,3461 @@
+<!DOCTYPE html>
+<html lang="fr" class="i18n-ready">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgoraSquare - Case Study | Hugo Ferrer</title>
+    <style>
+        :root:not(.i18n-ready) [data-i18n] {
+            visibility: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #667eea;
+            --accent-secondary: #764ba2;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --dark-gray: #1a1a2e;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header avec progress bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            gap: 0.8rem;
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 8rem 5% 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            opacity: 0;
+            animation: fadeInScale 0.5s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tag:nth-child(1) { animation-delay: 0.1s; }
+        .tag:nth-child(2) { animation-delay: 0.2s; }
+        .tag:nth-child(3) { animation-delay: 0.3s; }
+        .tag:nth-child(4) { animation-delay: 0.4s; }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.3s;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.5s;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            opacity: 0;
+            animation: fadeInScale 0.6s ease forwards;
+        }
+
+        .meta-item:nth-child(1) { animation-delay: 0.6s; }
+        .meta-item:nth-child(2) { animation-delay: 0.7s; }
+        .meta-item:nth-child(3) { animation-delay: 0.8s; }
+        .meta-item:nth-child(4) { animation-delay: 0.9s; }
+
+        .meta-item h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInScale 1s ease forwards 1s;
+        }
+
+        /* Images réelles dans hero */
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .hero-slide.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-image.data-hero picture,
+        .hero-image.data-hero img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            margin-top: 0%;
+            border-radius: 16px;
+            filter: brightness(0.97);
+        }
+
+        .data-overlay {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            display: flex;
+            gap: 18px;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-navigation {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-button {
+            pointer-events: auto;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(17, 24, 39, 0.4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-button:hover,
+        .hero-button:focus-visible {
+            transform: translateY(-1px);
+            background: rgba(99, 102, 241, 0.55);
+            border-color: rgba(255, 255, 255, 0.6);
+            outline: none;
+        }
+
+        .hero-button:active {
+            transform: scale(0.96);
+        }
+
+        .hero-zoom-button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(17, 24, 39, 0.4);
+            color: #fff;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            z-index: 4;
+        }
+
+        .hero-zoom-button:hover,
+        .hero-zoom-button:focus-visible {
+            transform: translateY(-1px);
+            background: rgba(99, 102, 241, 0.55);
+            border-color: rgba(255, 255, 255, 0.65);
+            outline: none;
+        }
+
+        .hero-zoom-button:active {
+            transform: scale(0.96);
+        }
+
+        .data-overlay .kpi {
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 10px 14px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .data-overlay .kpi b {
+            display: block;
+            font-size: 26px;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .data-overlay .kpi span {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .hero-wrapper {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 0%;
+        }
+
+        @media (max-width: 768px) {
+            .data-overlay {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .data-overlay .kpi {
+                min-width: 100px;
+                padding: 8px 10px;
+            }
+
+            .data-overlay .kpi b {
+                font-size: 22px;
+            }
+
+            .hero-button {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+
+            .hero-zoom-button {
+                top: 12px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero-navigation {
+                padding: 0 8px;
+            }
+
+            .hero-button {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
+            }
+
+            .hero-zoom-button {
+                top: 10px;
+                right: 10px;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Lightbox / Mode Cinéma */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            animation: lightboxZoomIn 0.3s ease;
+        }
+
+        @keyframes lightboxZoomIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus-visible {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: rotate(90deg);
+            outline: none;
+        }
+
+        .lightbox-close:active {
+            transform: scale(0.96);
+        }
+
+        /* Layout 2 colonnes */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(220px, 0.75fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            margin-bottom: 4rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        /* Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+            transform: translateX(5px);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Process Grid */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f3f7 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(99, 102, 241, 0.1);
+            line-height: 1;
+        }
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TOC Sidebar */
+        .toc {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .toc h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-item {
+            padding: 0.8rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .toc-item:hover {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            padding-left: 1.5rem;
+        }
+
+        .toc-item.active {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Chart blocks */
+        .chart-block {
+            margin: 2.4rem 0;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chart-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chart-container {
+            background: white;
+            padding: clamp(1.6rem, 1.2rem + 1vw, 2.2rem) clamp(1.6rem, 1.2rem + 1vw, 2.2rem) clamp(1.1rem, 0.9rem + 0.6vw, 1.6rem);
+            border-radius: 16px;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, 0.08);
+            position: relative;
+            --chart-height: clamp(260px, 42vw, 360px);
+        }
+
+        .chart-container[data-size="compact"] {
+            --chart-height: clamp(220px, 36vw, 300px);
+        }
+
+        .chart-container[data-size="wide"] {
+            --chart-height: clamp(280px, 44vw, 380px);
+        }
+
+        .chart-container canvas {
+            display: block;
+            width: 100% !important;
+            height: var(--chart-height) !important;
+            max-height: 400px;
+            margin-bottom: clamp(1.8rem, 1.4rem + 0.8vw, 2.6rem);
+        }
+
+        .chart-container[data-chart="doughnut"] canvas {
+            aspect-ratio: 1 / 1;
+            height: auto !important;
+            max-height: none;
+            max-width: min(360px, 100%);
+            margin: 0 auto clamp(1.8rem, 1.4rem + 0.8vw, 2.6rem);
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            color: var(--text-color);
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chart-legend li {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(231, 234, 255, 0.65);
+            box-shadow: 0 8px 18px rgba(102, 126, 234, 0.14);
+            border: 1px solid rgba(102, 126, 234, 0.12);
+        }
+
+        .chart-legend li span:first-of-type {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--legend-color, var(--accent-color));
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.18);
+            flex-shrink: 0;
+        }
+
+        .chart-legend li span:last-of-type {
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            background: none;
+            box-shadow: none;
+            line-height: 1.2;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .chart-header .chart-title {
+            margin-bottom: 0;
+        }
+
+        .chart-note {
+            margin-top: 0;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .chart-note__trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(102, 126, 234, 0.12);
+            border: 1px solid rgba(102, 126, 234, 0.28);
+            border-radius: 999px;
+            padding: 0.42rem 1.05rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 10px 28px rgba(102, 126, 234, 0.18);
+        }
+
+        .chart-note__trigger::before {
+            content: "ℹ️";
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .chart-note__trigger:focus-visible {
+            outline: 2px solid rgba(118, 75, 162, 0.45);
+            outline-offset: 3px;
+        }
+
+        .chart-note__trigger:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px rgba(102, 126, 234, 0.24);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .chart-note__trigger[aria-expanded="true"] {
+            background: rgba(102, 126, 234, 0.22);
+            border-color: rgba(102, 126, 234, 0.52);
+        }
+
+        .chart-note__bubble {
+            position: absolute;
+            bottom: calc(100% + 0.75rem);
+            left: 50%;
+            transform: translateX(-50%) translateY(0.35rem);
+            background: #fff;
+            color: #555;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            max-width: min(320px, calc(100vw - 3rem));
+            width: max-content;
+            min-width: 240px;
+            box-shadow: 0 22px 48px rgba(15, 23, 42, 0.22);
+            border: 1px solid rgba(102, 126, 234, 0.22);
+            font-size: 0.9rem;
+            line-height: 1.55;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s ease, transform 0.22s ease;
+            z-index: 5;
+        }
+
+        .chart-note__bubble::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: rgba(102, 126, 234, 0.22) transparent transparent transparent;
+        }
+
+        .chart-note__bubble::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+            z-index: 1;
+        }
+
+        .chart-note__bubble.is-visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .chart-note__bubble p {
+            margin: 0;
+        }
+
+        .chart-note__bubble[hidden] {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .chart-note {
+                justify-content: flex-start;
+            }
+
+            .chart-note__bubble {
+                left: 0;
+                transform: translateY(0.35rem);
+            }
+
+            .chart-note__bubble.is-visible {
+                transform: translateY(0);
+            }
+
+            .chart-note__bubble::after,
+            .chart-note__bubble::before {
+                left: 2.5rem;
+                transform: none;
+            }
+        }
+
+        .chart-insights {
+            list-style: none;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .chart-insights li {
+            background: white;
+            padding: 1.1rem 1.4rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.12);
+            border-left: 4px solid rgba(102, 126, 234, 0.35);
+            font-size: 0.98rem;
+            color: #555;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        .chart-insights li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 16px;
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .quote-box.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            color: rgba(99, 102, 241, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+        }
+
+        .quote-author {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-color);
+            padding-left: 3rem;
+        }
+
+        /* Icon List */
+        .icon-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .icon-list li {
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.8rem;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+            font-size: clamp(1rem, 0.9rem + 0.3vw, 1.15rem);
+            line-height: 1.7;
+            flex-wrap: wrap;
+        }
+
+        .icon-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .icon-list li::before {
+            content: '✓';
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .icon-list li strong {
+            display: block;
+            flex: 0 0 240px;
+            max-width: 240px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            line-height: 1.45;
+        }
+
+        .icon-list__description {
+            flex: 1 1 280px;
+            min-width: 0;
+            line-height: 1.7;
+        }
+
+        .icon-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        @media (max-width: 900px) {
+            .icon-list li {
+                gap: 1rem;
+            }
+
+            .icon-list li strong {
+                flex-basis: 210px;
+                max-width: 210px;
+            }
+
+            .icon-list__description {
+                flex-basis: 260px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .icon-list li {
+                gap: 0.85rem;
+            }
+
+            .icon-list li strong {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .icon-list__description {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-image .data-overlay {
+                display: none;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1.75rem;
+                margin-top: 3.5rem;
+            }
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content-section,
+            .info-card,
+            .step-card,
+            .stat-card,
+            .timeline-item,
+            .bar-item,
+            .icon-list li,
+            .quote-box {
+                transition: none !important;
+                transform: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 0, 145, 0.9), rgba(99, 102, 241, 0.85));
+            border-radius: 18px;
+            padding: 3.5rem 4rem;
+            margin-top: 5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+        }
+
+        .cta-section::before {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at center, rgba(245, 87, 108, 0.6), transparent 70%);
+            top: -140px;
+            right: -120px;
+        }
+
+        .cta-section::after {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
+            bottom: -120px;
+            left: -80px;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 720px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button.primary {
+            background: #fff;
+            color: var(--dark-gray);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 32px rgba(255, 255, 255, 0.25);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-2px);
+        }
+
+        .cta-disclaimer {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Styles pour images pleine largeur */
+        .full-width-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .full-width-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Media placeholder styles */
+        .media-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            color: #999;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .media-placeholder::before {
+            content: '📷 Espace réservé pour média';
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 6rem 5% 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .hero-image img {
+                height: 300px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .bar-label {
+                min-width: 100px;
+                font-size: 0.85rem;
+            }
+
+            .cta-section {
+                padding: 3rem 2.5rem;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Proof of Concept Cards */
+        .poc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .poc-card {
+            position: relative;
+            padding: 2.25rem;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            box-shadow: 0 18px 45px -25px rgba(102, 126, 234, 0.6);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.35s ease;
+        }
+
+        .poc-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .poc-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.5), transparent 55%);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .poc-card:hover {
+            box-shadow: 0 28px 60px -24px rgba(102, 126, 234, 0.7);
+        }
+
+        .poc-card__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(102, 126, 234, 0.14);
+            color: var(--accent-color);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .poc-card h4 {
+            margin: 0 0 1rem;
+            font-size: 1.35rem;
+            letter-spacing: -0.4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__lead {
+            color: #4b5563;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__highlights {
+            list-style: none;
+            margin: 0 0 1.75rem;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__highlights li {
+            font-size: 0.98rem;
+            color: #374151;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.65rem;
+            opacity: 0;
+            transform: translateX(-14px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .poc-card__highlights li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.18);
+        }
+
+        .poc-card.visible .poc-card__highlights li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .poc-card__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f2937;
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .poc-card__meta span::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .poc-card__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .poc-card__tag::before {
+            content: '↳';
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1100px) {
+            .poc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .poc-card *::selection {
+            background: rgba(102, 126, 234, 0.18);
+            color: inherit;
+        }
+
+        /* Mockup Embed */
+        .mockup-embed {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            box-shadow: 0 22px 55px -28px rgba(102, 126, 234, 0.55);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s ease;
+        }
+
+        .mockup-embed.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mockup-embed::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 55%);
+            pointer-events: none;
+        }
+
+        .mockup-embed header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mockup-embed h4 {
+            font-size: 1.35rem;
+            margin: 0;
+            letter-spacing: -0.35px;
+            color: var(--accent-color);
+        }
+
+        .mockup-embed p {
+            margin: 0;
+            font-size: 1rem;
+            color: #4b5563;
+        }
+
+        .mockup-embed a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 999px;
+            padding: 0.65rem 1.4rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--accent-color);
+            box-shadow: 0 10px 25px -18px rgba(102, 126, 234, 0.7);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .mockup-embed a::after {
+            content: '↗';
+            font-size: 0.95rem;
+        }
+
+        .mockup-embed a:hover,
+        .mockup-embed a:focus-visible {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 18px 32px -20px rgba(102, 126, 234, 0.8);
+            outline: none;
+        }
+
+        .mockup-embed iframe {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 540px;
+            border-radius: 16px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: white;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 1100px) {
+            .poc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup-embed {
+                padding: 2rem;
+            }
+
+            .mockup-embed iframe {
+                min-height: 480px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .mockup-embed {
+                padding: 1.75rem;
+            }
+
+            .mockup-embed iframe {
+                min-height: 420px;
+            }
+        }
+
+        .poc-card::before,
+        .mockup-embed::before,
+        .poc-card *::selection {
+            background: rgba(102, 126, 234, 0.18);
+            color: inherit;
+        }
+
+        .poc-card *::selection,
+        .mockup-embed *::selection {
+            background: rgba(102, 126, 234, 0.18);
+            color: inherit;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js" defer></script>
+</head>
+<body data-page="agorasquare">
+
+    <!-- Header avec progress bar -->
+    <header>
+        <nav>
+            <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
+            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+            </div>
+        </nav>
+        <div class="progress-bar" id="progressBar"></div>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-tags">
+            <span class="tag" data-i18n="agora.tag.uxui">UX/UI Design</span>
+            <span class="tag" data-i18n="agora.tag.b2b">B2B</span>
+            <span class="tag" data-i18n="agora.tag.webapp">Application Web</span>
+            <span class="tag" data-i18n="agora.tag.year">2022</span>
+        </div>
+
+        <h1 data-i18n="agora.title">AgoraSquare</h1>
+        <p class="project-subtitle" data-i18n="agora.subtitle">
+            Application complète pour les grossistes du marché de Rungis combinant 
+            prise de commande, solvabilité, facturation électronique et comptabilité.
+        </p>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <h3 data-i18n="case.role">Rôle</h3>
+                <p data-i18n="agora.role.value">Lead UX/UI Designer</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.duration">Durée</h3>
+                <p data-i18n="agora.duration.value">8 mois</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.team">Équipe</h3>
+                <p data-i18n="agora.team.value">4 personnes</p>
+            </div>
+            <div class="meta-item">
+                <h3 data-i18n="case.year">Année</h3>
+                <p data-i18n="agora.year.value">2022</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="hero-image data-hero hero-wrapper">
+        <picture>
+            <source srcset="image/agorasquare-hero-2.png" media="(max-width: 768px)">
+            <img src="image/agorasquare-hero.png" width="878" height="540" data-i18n="img.hero" data-i18n-attr="alt" alt="AgoraSquare — interface de gestion pour grossistes" loading="eager" onerror="this.style.display='none'">
+        </picture>
+                        <button class="hero-zoom-button" type="button" data-i18n="agora.hero.zoom.aria" data-i18n-attr="aria-label" data-i18n-no-text aria-label="Afficher en mode cinéma">⤢</button>
+        <div class="data-overlay">
+            <div class="kpi">
+                <b data-count="92" data-suffix=" %">0</b>
+                <span data-i18n="agora.kpi.adoption">Taux d'adoption</span>
+            </div>
+            <div class="kpi">
+                <b data-count="70" data-suffix=" %">0</b>
+                <span data-i18n="agora.kpi.productivity">Gain de productivité</span>
+            </div>
+            <div class="kpi">
+                <b data-count="30" data-prefix="-" data-suffix=" %">0</b>
+                <span data-i18n="agora.kpi.unpaid">Réduction des impayés</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 2 colonnes -->
+    <div class="two-column-layout">
+        
+        <!-- Contenu principal -->
+        <div class="main-content">
+            
+            <!-- Section Défi -->
+            <section class="content-section" id="defi">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <h2 data-i18n="case.challenge">Le Défi</h2>
+                </div>
+                
+                <h3 data-i18n="agora.challenge.context.title">Contexte</h3>
+                <p data-i18n="agora.challenge.context.p1" data-i18n-mode="html">
+                    Le marché de Rungis, plus grand marché de gros au monde, est le poumon de l'approvisionnement alimentaire français. 
+                    Pourtant, malgré leur position stratégique dans la distribution alimentaire, les grossistes utilisaient encore des 
+                    <strong>processus largement manuels</strong> pour gérer leurs opérations quotidiennes.
+                </p>
+
+                <p data-i18n="agora.challenge.context.p2">
+                    Entre feuilles Excel, carnets papier et systèmes obsolètes, ils perdaient un temps précieux dans un environnement 
+                    où chaque minute compte. Les commandes s'effectuaient par téléphone ou sur papier, la vérification de solvabilité 
+                    des clients était approximative, et la facturation manuelle générait d'innombrables erreurs.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici une photo du marché de Rungis ou des grossistes au travail -->
+                <!-- Exemple : <img src="image/rungis-context.jpg" alt="Grossistes travaillant au marché de Rungis" class="full-width-image"> -->
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label" data-i18n="agora.challenge.stats.wholesalers">Grossistes à Rungis</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label" data-i18n="agora.challenge.stats.errors">Erreurs de facturation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3h</div>
+                        <div class="stat-label" data-i18n="agora.challenge.stats.time">Horaire de début d'activité</div>
+                    </div>
+                </div>
+                
+                <h3 data-i18n="agora.challenge.issues.title">Problématiques Identifiées</h3>
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.challenge.issue1.label">Gestion des commandes inefficace</strong>
+                        <span data-i18n="agora.challenge.issue1.text">Saisie manuelle chronophage avec risques d'erreurs élevés</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.challenge.issue2.label">Absence de visibilité sur la solvabilité</strong>
+                        <span data-i18n="agora.challenge.issue2.text">Impayés récurrents faute d'informations financières</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.challenge.issue3.label">Facturation manuelle complexe</strong>
+                        <span data-i18n="agora.challenge.issue3.text">2 à 3 heures par jour consacrées à la facturation</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.challenge.issue4.label">Pas de centralisation des données</strong>
+                        <span data-i18n="agora.challenge.issue4.text">Informations dispersées entre plusieurs outils</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.challenge.issue5.label">Difficultés de suivi comptable</strong>
+                        <span data-i18n="agora.challenge.issue5.text">Réconciliation bancaire et comptabilité approximatives</span>
+                    </li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici un schéma ou infographie montrant les problématiques -->
+                <!-- Exemple : <img src="image/problematiques-schema.png" alt="Schéma des problématiques rencontrées" class="full-width-image"> -->
+                
+                <div class="info-card">
+                    <h3 data-i18n="agora.challenge.objective.title">Objectif Principal</h3>
+                    <p data-i18n="agora.challenge.objective.text" data-i18n-mode="html">
+                        Créer une <strong>application complète et intuitive</strong> qui digitalise l'ensemble du cycle commercial : 
+                        de la prise de commande jusqu'à la comptabilité, en passant par la vérification de solvabilité et la 
+                        facturation électronique. L'enjeu était de concevoir un outil suffisamment simple pour être adopté par 
+                        des professionnels peu familiers avec les outils numériques, tout en étant suffisamment puissant pour 
+                        gérer des opérations complexes.
+                    </p>
+                </div>
+
+                <h3 data-i18n="agora.challenge.constraints.title">Contraintes du Projet</h3>
+                <p data-i18n="agora.challenge.constraints.intro">
+                    Le projet devait répondre à plusieurs contraintes techniques et humaines spécifiques :
+                </p>
+                <ul class="icon-list">
+                    <li data-i18n="agora.challenge.constraint1">Interface utilisable dès 3h du matin, dans des conditions de luminosité variables</li>
+                    <li data-i18n="agora.challenge.constraint2">Compatibilité avec tablettes et ordinateurs pour flexibilité d'usage</li>
+                    <li data-i18n="agora.challenge.constraint3">Fonctionnement offline pour pallier les problèmes de connexion sur le marché</li>
+                    <li data-i18n="agora.challenge.constraint4">Intégration avec les systèmes comptables existants (EBP, Sage, Cegid)</li>
+                    <li data-i18n="agora.challenge.constraint5">Respect des normes de facturation électronique françaises</li>
+                </ul>
+            </section>
+
+            <!-- Section Recherche -->
+            <section class="content-section" id="recherche">
+                <div class="section-header">
+                    <div class="section-icon">🔍</div>
+                    <h2 data-i18n="agora.research.title">Phase de Recherche</h2>
+                </div>
+                
+                <h3 data-i18n="agora.research.methodology.title">Méthodologie</h3>
+                <p data-i18n="agora.research.methodology.p1">
+                    Pour comprendre les besoins réels des grossistes et concevoir une solution véritablement adaptée, j'ai adopté 
+                    une approche immersive. J'ai passé plusieurs semaines sur le marché de Rungis, observant les pratiques, 
+                    menant des entretiens approfondis et analysant les workflows existants dans leur contexte naturel.
+                </p>
+
+                <p data-i18n="agora.research.methodology.p2">
+                    Cette phase de recherche terrain a été essentielle pour saisir les nuances du métier, comprendre les contraintes 
+                    physiques (travail de nuit, environnement froid, manipulation de marchandises) et identifier les vrais points 
+                    de friction dans les processus quotidiens.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici des photos des sessions d'observation ou d'entretiens -->
+                <!-- Exemple : <img src="image/recherche-terrain.jpg" alt="Session d'observation sur le terrain" class="full-width-image"> -->
+
+                <div class="chart-block">
+                    <div class="chart-container" data-size="compact" data-chart="doughnut">
+                        <div class="chart-header">
+                            <div class="chart-title">Intensité de la recherche terrain</div>
+                            <div class="chart-note">
+                                <button class="chart-note__trigger" type="button" aria-expanded="false" aria-controls="chart-note-content-1">
+                                    Note méthodologique
+                                </button>
+                                <div class="chart-note__bubble" id="chart-note-content-1" role="tooltip" aria-hidden="true" hidden tabindex="-1">
+                                    <p data-i18n="agora.research.chart.note">Les volumes présentés correspondent aux activités réellement réalisées sur le terrain et ont servi à calibrer la phase de conception.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="researchBreakdownChart" aria-describedby="researchBreakdownLegend"></canvas>
+                        <ul class="chart-legend" id="researchBreakdownLegend">
+                            <li><span style="--legend-color:#667eea"></span> <span data-i18n="agora.research.chart.legend1">3 semaines d'immersion et 15 grossistes observés</span></li>
+                            <li><span style="--legend-color:#764ba2"></span> <span data-i18n="agora.research.chart.legend2">20 entretiens semi-directifs menés sur place</span></li>
+                            <li><span style="--legend-color:#a78bfa"></span> <span data-i18n="agora.research.chart.legend3">Cartographie de 8 workflows critiques</span></li>
+                            <li><span style="--legend-color:#c7d2fe"></span> <span data-i18n="agora.research.chart.legend4">3 ateliers de co-création avec 10 grossistes</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 data-i18n="agora.research.insights.title">Insights Clés Découverts</h3>
+                <p data-i18n="agora.research.insights.intro">
+                    Les observations et entretiens ont révélé des besoins et contraintes spécifiques qui ont guidé toutes les décisions de design :
+                </p>
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.research.insight1.label">Rythme de travail intense</strong>
+                        <span data-i18n="agora.research.insight1.text">Les grossistes travaillent dès 3h du matin dans des conditions difficiles (froid, fatigue)</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.research.insight2.label">Rapidité critique</strong>
+                        <span data-i18n="agora.research.insight2.text">La rapidité de saisie est cruciale pour éviter les pertes de marchandises périssables</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.research.insight3.label">Risque financier</strong>
+                        <span data-i18n="agora.research.insight3.text">Le manque de visibilité sur la solvabilité génère des impayés importants</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.research.insight4.label">Charge administrative</strong>
+                        <span data-i18n="agora.research.insight4.text">La facturation manuelle prend 2-3h par jour minimum, temps perdu sur le cœur de métier</span>
+                    </li>
+                        <li>
+                        <strong data-i18n="agora.research.insight5.label">Simplicité requise</strong>
+                        <span data-i18n="agora.research.insight5.text">Besoin d'une interface simple, sans fonctionnalités superflues qui ralentiraient l'usage</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.research.insight6.label">Connectivité instable</strong>
+                        <span data-i18n="agora.research.insight6.text">Problèmes de réseau fréquents nécessitant un mode offline robuste</span>
+                    </li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici des photos de personas, journey maps ou affinity diagrams -->
+                <!-- Exemple : <img src="image/personas-agorasquare.png" alt="Personas des utilisateurs cibles" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.research.personas.title">Personas Principaux</h3>
+                <p data-i18n="agora.research.personas.intro">
+                    À partir de cette recherche, j'ai identifié 3 personas principaux qui représentent les utilisateurs cibles de l'application :
+                </p>
+
+                <div class="info-card">
+                    <h4 data-i18n="agora.research.persona.pierre.title">Pierre, 52 ans - Grossiste en fruits et légumes</h4>
+                    <p>
+                        <strong data-i18n="agora.research.persona.pierre.objective">Objectif :</strong>
+                        <span data-i18n="agora.research.persona.pierre.objective.text">Traiter rapidement les commandes pour maximiser son chiffre d'affaires</span><br>
+                        <strong data-i18n="agora.research.persona.pierre.frustrations">Frustrations :</strong>
+                        <span data-i18n="agora.research.persona.pierre.frustrations.text">Perd du temps avec la paperasse, subit des impayés réguliers</span><br>
+                        <strong data-i18n="agora.research.persona.pierre.behavior">Comportement :</strong>
+                        <span data-i18n="agora.research.persona.pierre.behavior.text">Peu à l'aise avec les outils numériques, privilégie la simplicité</span>
+                    </p>
+                </div>
+
+                <!-- ESPACE MÉDIA : Insérer ici des cartes de personas détaillées -->
+                <!-- Exemple : <img src="image/persona-pierre.png" alt="Persona Pierre - Grossiste" class="full-width-image"> -->
+
+                <div class="quote-box">
+                    <p class="quote-text" data-i18n="agora.research.quote.text">
+                        On a besoin d'un outil rapide et fiable. Ici, chaque minute compte et 
+                        on ne peut pas se permettre de perdre du temps avec un système compliqué.
+                    </p>
+                    <p class="quote-author" data-i18n="agora.research.quote.author">— Pierre, grossiste en fruits et légumes depuis 25 ans</p>
+                </div>
+
+                <h3 data-i18n="agora.research.journey.title">Cartographie du Parcours Utilisateur</h3>
+                <p data-i18n="agora.research.journey.text">
+                    J'ai cartographié le parcours complet d'une journée type, de l'arrivée à 3h du matin jusqu'à la clôture comptable, 
+                    identifiant les moments clés, les émotions et les opportunités d'amélioration à chaque étape.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici une journey map ou un service blueprint -->
+                <!-- Exemple : <img src="image/journey-map.png" alt="Parcours utilisateur d'une journée type" class="full-width-image"> -->
+            </section>
+
+            <!-- Section Idéation -->
+            <section class="content-section" id="ideation">
+                <div class="section-header">
+                    <div class="section-icon">💡</div>
+                    <h2 data-i18n="agora.ideation.title">Idéation & Wireframes</h2>
+                </div>
+                
+                <h3 data-i18n="agora.ideation.architecture.title">Architecture de l'Information</h3>
+                <p data-i18n="agora.ideation.architecture.p1">
+                    À partir des insights de recherche, j'ai conçu une architecture d'information claire, structurée autour des 4 modules 
+                    principaux qui répondent aux besoins identifiés : Commandes, Clients & Solvabilité, Facturation et Comptabilité. 
+                    L'objectif était de créer des parcours optimisés pour la rapidité d'exécution dans des conditions de stress et fatigue.
+                </p>
+
+                <p data-i18n="agora.ideation.architecture.p2">
+                    Chaque module a été pensé pour minimiser la charge cognitive et réduire le nombre d'étapes nécessaires pour accomplir 
+                    les tâches les plus fréquentes. La navigation a été simplifiée au maximum, avec un accès direct aux fonctions essentielles 
+                    depuis l'écran d'accueil.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici un schéma de l'architecture de l'information ou sitemap -->
+                <!-- Exemple : <img src="image/architecture-information.png" alt="Architecture de l'information AgoraSquare" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.ideation.wireframes.title">Wireframes & Itérations</h3>
+                <p data-i18n="agora.ideation.wireframes.text">
+                    J'ai réalisé plusieurs séries de wireframes, testées et itérées avec les utilisateurs. Les premières versions étaient 
+                    trop complexes et ont été progressivement simplifiées suite aux retours des grossistes. Chaque écran a été optimisé 
+                    pour réduire le nombre de clics et faciliter la saisie rapide.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici des wireframes basse-fidélité ou croquis -->
+                <!-- Exemple : <img src="image/wireframes-v1.png" alt="Wireframes initiaux AgoraSquare" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.ideation.principles.title">Principes de Design Retenus</h3>
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.ideation.principle1.label">Rapidité d'exécution</strong>
+                        <span data-i18n="agora.ideation.principle1.text">Minimiser le nombre de clics et privilégier les actions directes (3 clics maximum pour toute action)</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.principle2.label">Prévention des erreurs</strong>
+                        <span data-i18n="agora.ideation.principle2.text">Validation temps réel avec messages clairs et suggestion automatique de corrections</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.principle3.label">Clarté visuelle</strong>
+                        <span data-i18n="agora.ideation.principle3.text">Hiérarchie forte, zones bien identifiées par couleurs, contrastes élevés pour lisibilité optimale</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.principle4.label">Adaptabilité</strong>
+                        <span data-i18n="agora.ideation.principle4.text">Design responsive tablette et desktop avec zones tactiles optimisées (minimum 48px)</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.principle5.label">Offline-first</strong>
+                        <span data-i18n="agora.ideation.principle5.text">Fonctionnement sans connexion stable avec synchronisation automatique dès le retour du réseau</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.principle6.label">Feedback immédiat</strong>
+                        <span data-i18n="agora.ideation.principle6.text">Retours visuels instantanés sur chaque action pour rassurer l'utilisateur</span>
+                    </li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici des wireframes haute-fidélité ou prototypes interactifs -->
+                <!-- Exemple : <img src="image/wireframes-hifi.png" alt="Wireframes haute-fidélité" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.ideation.flows.title">Flux Utilisateur Optimisés</h3>
+                <p data-i18n="agora.ideation.flows.intro">
+                    J'ai cartographié et optimisé les 3 flux critiques de l'application :
+                </p>
+
+                <div class="chart-block">
+                    <div class="chart-container" data-size="wide">
+                        <div class="chart-header">
+                            <div class="chart-title" data-i18n="agora.chart.userflows.title">Durée moyenne des parcours critiques (en minutes)</div>
+                            <div class="chart-note">
+                                <button class="chart-note__trigger" type="button" aria-expanded="false" aria-controls="chart-note-content-2">
+                                    Note méthodologique
+                                </button>
+                                <div class="chart-note__bubble" id="chart-note-content-2" role="tooltip" aria-hidden="true" hidden tabindex="-1">
+                                    <p data-i18n="agora.chart.userflows.note">Temps moyens mesurés lors des tests utilisateurs (n = 8 grossistes) sur des scénarios identiques.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="userFlowsChart" aria-describedby="userFlowsLegend"></canvas>
+                        <ul class="chart-legend" id="userFlowsLegend">
+                            <li><span style="--legend-color:#c7d2fe"></span> <span data-i18n="agora.chart.userflows.before">Avant refonte</span></li>
+                            <li><span style="--legend-color:#667eea"></span> <span data-i18n="agora.chart.userflows.after">Après livraison</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="chart-insights">
+                    <li>
+                        <strong data-i18n="agora.ideation.flow1.label">Prise de commande express</strong>
+                        <span data-i18n="agora.ideation.flow1.text">12 étapes et 5 minutes réduites à 4 étapes et 1,5 minute grâce à l'auto-complétion.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.flow2.label">Vérification de solvabilité</strong>
+                        <span data-i18n="agora.ideation.flow2.text">6 minutes de recherche dispersée ramenées à 2 minutes avec le score en temps réel.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.ideation.flow3.label">Facturation électronique</strong>
+                        <span data-i18n="agora.ideation.flow3.text">7 étapes et 15 minutes réduites à 3 étapes et 3 minutes via la génération automatique.</span>
+                    </li>
+                </ul>
+
+                <div class="chart-block">
+                    <div class="chart-container" data-size="compact">
+                        <div class="chart-header">
+                            <div class="chart-title" data-i18n="agora.chart.ordertime.title">Itérations de prototypage — temps de saisie d'une commande</div>
+                            <div class="chart-note">
+                                <button class="chart-note__trigger" type="button" aria-expanded="false" aria-controls="chart-note-content-3">
+                                    Note méthodologique
+                                </button>
+                                <div class="chart-note__bubble" id="chart-note-content-3" role="tooltip" aria-hidden="true" hidden tabindex="-1">
+                                    <p data-i18n="agora.chart.ordertime.note">Mesures réalisées sur des scénarios identiques lors des sessions de tests successives.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="orderTimeChart" aria-describedby="orderTimeLegend"></canvas>
+                        <ul class="chart-legend" id="orderTimeLegend">
+                            <li><span style="--legend-color:#667eea"></span> <span data-i18n="agora.chart.ordertime.legend">Durée moyenne (minutes)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 data-i18n="agora.prototype.tests.title">Tests Utilisateurs Itératifs</h3>
+                <p data-i18n="agora.prototype.tests.intro">
+                    À chaque étape de conception, j'ai réalisé des tests avec les grossistes pour valider les hypothèses et identifier 
+                    les points de friction. Ces tests ont permis d'affiner progressivement l'interface et d'atteindre un niveau d'utilisabilité 
+                    optimal pour le contexte d'usage spécifique.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici des photos de sessions de tests utilisateurs -->
+                <!-- Exemple : <img src="image/user-testing.jpg" alt="Session de tests utilisateurs" class="full-width-image"> -->
+            </section>
+
+            <!-- Section Prototype -->
+            <section class="content-section" id="prototype">
+                <div class="section-header">
+                    <div class="section-icon">🎨</div>
+                    <h2 data-i18n="agora.prototype.title">Prototypes & Design Final</h2>
+                </div>
+                
+                <h3 data-i18n="agora.prototype.highfi.title">Maquettes Haute-Fidélité</h3>
+                <p data-i18n="agora.prototype.highfi.text">
+                    À partir des wireframes validés, j'ai créé des maquettes haute-fidélité qui traduisent visuellement les principes 
+                    de design établis. L'interface a été pensée pour être lisible dans toutes les conditions d'utilisation : faible 
+                    luminosité matinale, reflets extérieurs, et conditions de fatigue des utilisateurs.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici des captures d'écran des maquettes principales -->
+                <!-- Exemple : <img src="image/mockups-dashboard.png" alt="Maquettes du dashboard principal" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.prototype.designsystem.title">Design System Complet</h3>
+                <p data-i18n="agora.prototype.designsystem.intro">
+                    J'ai développé un design system adapté au contexte spécifique des grossistes de Rungis. Chaque décision a été 
+                    guidée par les contraintes d'usage identifiées lors de la recherche : lisibilité en faible luminosité, zones 
+                    tactiles optimisées pour une utilisation en gants, codes couleurs intuitifs par statut.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.typo.title">Typographie</h4>
+                        <p data-i18n="agora.prototype.ds.typo.text">Police sans-serif avec tailles généreuses (16px minimum pour le corps de texte, 24px pour les titres). 
+                        Contraste élevé (ratio minimum 7:1) pour usage en extérieur et conditions de luminosité variables.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.colors.title">Palette de Couleurs</h4>
+                        <p data-i18n="agora.prototype.ds.colors.text">Système de couleurs par statut pour une compréhension immédiate : vert (payé/validé), orange (en attente/alerte), 
+                        rouge (problème/bloqué). Fond clair pour réduire la fatigue visuelle lors d'un usage prolongé.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.icons.title">Iconographie</h4>
+                        <p data-i18n="agora.prototype.ds.icons.text">Set de 45 icônes personnalisées, claires et reconnaissables même à petite taille. Style minimaliste pour 
+                        éviter toute ambiguïté et faciliter la mémorisation.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.components.title">Composants UI</h4>
+                        <p data-i18n="agora.prototype.ds.components.text">15 composants réutilisables (boutons, cartes, formulaires, tableaux) pour assurer cohérence et accélérer 
+                        le développement. Documentation complète pour l'équipe technique.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.grid.title">Grille & Espacements</h4>
+                        <p data-i18n="agora.prototype.ds.grid.text">Système de grille flexible avec espacements généreux (minimum 16px) pour éviter les erreurs de clic 
+                        et faciliter la navigation tactile.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="agora.prototype.ds.states.title">États & Interactions</h4>
+                        <p data-i18n="agora.prototype.ds.states.text">États clairement différenciés (normal, hover, actif, désactivé) avec feedback visuel immédiat. 
+                        Animations subtiles pour guider l'attention sans ralentir l'usage.</p>
+                    </div>
+                </div>
+
+                <!-- ESPACE MÉDIA : Insérer ici des planches du design system (couleurs, typo, composants) -->
+                <!-- Exemple : <img src="image/design-system.png" alt="Design system AgoraSquare" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.prototype.responsive.title">Interface Adaptative</h3>
+                <p data-i18n="agora.prototype.responsive.intro">
+                    L'application a été conçue pour s'adapter parfaitement aux deux contextes d'usage principaux identifiés lors 
+                    de la recherche :
+                </p>
+
+                <div class="info-card">
+                    <h4 data-i18n="agora.prototype.tablet.title">Mode Tablette (Terrain)</h4>
+                    <p data-i18n="agora.prototype.tablet.text">
+                        Interface tactile optimisée pour une utilisation d'une main, avec zones d'action de 48px minimum. 
+                        Disposition verticale privilégiée, actions principales en bas de l'écran pour faciliter l'accès au pouce. 
+                        Mode sombre disponible pour usage en faible luminosité.
+                    </p>
+                </div>
+
+                <!-- ESPACE MÉDIA : Insérer ici des maquettes du mode tablette -->
+                <!-- Exemple : <img src="image/tablet-interface.png" alt="Interface tablette AgoraSquare" class="full-width-image"> -->
+
+                <div class="info-card">
+                    <h4 data-i18n="agora.prototype.desktop.title">Mode Desktop (Bureau)</h4>
+                    <p data-i18n="agora.prototype.desktop.text">
+                        Interface multi-colonnes exploitant l'espace disponible pour afficher plus d'informations simultanément. 
+                        Raccourcis clavier pour utilisateurs avancés. Tableaux de données enrichis avec fonctions de tri et filtrage.
+                    </p>
+                </div>
+
+                <!-- ESPACE MÉDIA : Insérer ici des maquettes du mode desktop -->
+                <!-- Exemple : <img src="image/desktop-interface.png" alt="Interface desktop AgoraSquare" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.prototype.poc.title">Preuves de concept décisives</h3>
+                <p data-i18n="agora.prototype.poc.intro">
+                    Pour sécuriser la faisabilité technique et l'adoption côté métier, j'ai monté deux preuves de concept rapides
+                    avant d'engager les développements complets. Elles ont servi à valider les paris fonctionnels directement sur
+                    le terrain et à embarquer les équipes produit, finance et tech autour d'une vision commune.
+                </p>
+
+                <div class="poc-grid">
+                    <article class="poc-card">
+                        <span class="poc-card__badge" data-i18n="agora.prototype.poc1.badge">POC #1</span>
+                        <h4 data-i18n="agora.prototype.poc1.title">Commande express offline</h4>
+                        <p class="poc-card__lead" data-i18n="agora.prototype.poc1.lead">
+                            Prototype cliquable reproduisant la prise de commande depuis une tablette en mode dégradé. L'objectif :
+                            confirmer que les grossistes peuvent saisir une commande complète en moins de 90 secondes même sans
+                            réseau.
+                        </p>
+                        <ul class="poc-card__highlights">
+                            <li data-i18n="agora.prototype.poc1.item1">Synchronisation différée testée à Rungis à 5h du matin avec 6 grossistes volontaires.</li>
+                            <li data-i18n="agora.prototype.poc1.item2">Latence perçue divisée par trois grâce à la mise en cache locale et aux messages d'état instantanés.</li>
+                            <li data-i18n="agora.prototype.poc1.item3">Interface tactile simplifiée après deux itérations, réduisant de 42 % les erreurs d'article scanné.</li>
+                        </ul>
+                        <span class="poc-card__tag" data-i18n="agora.prototype.poc1.tag">Focus : mode offline-first</span>
+                        <div class="poc-card__meta">
+                            <span data-i18n="agora.prototype.poc1.duration">Durée : 12 jours</span>
+                            <span data-i18n="agora.prototype.poc1.tools">Outils : Figma, ProtoPie</span>
+                            <span data-i18n="agora.prototype.poc1.result">Résultat : Temps de saisie < 90 s validé</span>
+                        </div>
+                    </article>
+
+                    <article class="poc-card">
+                        <span class="poc-card__badge" data-i18n="agora.prototype.poc2.badge">POC #2</span>
+                        <h4 data-i18n="agora.prototype.poc2.title">Score de solvabilité en temps réel</h4>
+                        <p class="poc-card__lead" data-i18n="agora.prototype.poc2.lead">
+                            Mini-backend Node et maquette UI connectés à l'API Experian afin d'afficher un score fiable en moins de
+                            2 secondes. Ce test devait rassurer sur la viabilité business de la réduction des impayés.
+                        </p>
+                        <ul class="poc-card__highlights">
+                            <li data-i18n="agora.prototype.poc2.item1">Chaîne API + fallback Excel éprouvée avec l'équipe finance, couvrant 95 % du portefeuille clients.</li>
+                            <li data-i18n="agora.prototype.poc2.item2">Codes couleur et messages d'interprétation validés en 3 ateliers pour une lecture en < 3 secondes.</li>
+                            <li data-i18n="agora.prototype.poc2.item3">Passerelle de scoring exposée au CTO pour sécuriser l'intégration technique et la conformité RGPD.</li>
+                        </ul>
+                        <span class="poc-card__tag" data-i18n="agora.prototype.poc2.tag">Focus : solvabilité & data</span>
+                        <div class="poc-card__meta">
+                            <span data-i18n="agora.prototype.poc2.duration">Durée : 8 jours</span>
+                            <span data-i18n="agora.prototype.poc2.tools">Outils : Node.js, Airtable, Figma</span>
+                            <span data-i18n="agora.prototype.poc2.result">Résultat : Projection -30 % d'impayés</span>
+                        </div>
+                    </article>
+                </div>
+
+                <h3 data-i18n="agora.prototype.interactive.title">Prototype Interactif</h3>
+                <p data-i18n="agora.prototype.interactive.text">
+                    J'ai développé un prototype interactif dans Figma intégrant les principaux parcours utilisateurs. Ce prototype 
+                    a servi de référence pour les tests utilisateurs et la spécification technique auprès de l'équipe de développement.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici une capture ou vidéo du prototype interactif -->
+                <!-- Exemple : <img src="image/prototype-interactif.png" alt="Prototype interactif" class="full-width-image"> -->
+
+                <div class="info-card">
+                    <h3 data-i18n="agora.prototype.ab.title">Tests A/B - Ajustements Clés</h3>
+                    <p data-i18n="agora.prototype.ab.intro">
+                        Suite aux tests avec 8 grossistes à chaque itération, plusieurs ajustements majeurs ont été apportés :
+                    </p>
+                    <ul class="icon-list">
+                        <li>
+                            <strong data-i18n="agora.prototype.ab1.label">Taille des boutons</strong> 
+                            <span data-i18n="agora.prototype.ab1.text">Augmentation de 38px à 50px pour améliorer le taux de réussite des clics</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab2.label">Système de favoris</strong> 
+                            <span data-i18n="agora.prototype.ab2.text">Ajout d'un accès rapide aux clients récurrents, réduisant de 60% le temps de saisie</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab3.label">Simplification facturation</strong> 
+                            <span data-i18n="agora.prototype.ab3.text">Réduction de 7 étapes à 3 étapes suite aux retours utilisateurs</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab4.label">Recherche intelligente</strong> 
+                            <span data-i18n="agora.prototype.ab4.text">Implémentation d'une recherche prédictive avec tolérance aux fautes de frappe</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab5.label">Indicateurs visuels</strong> 
+                            <span data-i18n="agora.prototype.ab5.text">Renforcement des statuts visuels suite à des erreurs d'interprétation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3 data-i18n="agora.prototype.a11y.title">Accessibilité</h3>
+                <p data-i18n="agora.prototype.a11y.text">
+                    Bien que non requis initialement, j'ai intégré des principes d'accessibilité pour garantir une utilisation 
+                    confortable pour tous : contraste WCAG AAA, navigation clavier complète, labels descriptifs pour lecteurs d'écran.
+                </p>
+
+                <div class="mockup-embed">
+                    <header>
+                        <div>
+                            <h4 data-i18n="agora.prototype.figma.title">Prototype Figma interactif</h4>
+                            <p data-i18n="agora.prototype.figma.text">Explorez la maquette animée testée avec les grossistes et présentée aux équipes métiers.</p>
+                        </div>
+                        <a href="https://www.figma.com/proto/BfmmuypUtFqOUIrKSEKxvd/Brand-gora?page-id=0%3A1&node-id=1-9740&viewport=-2429%2C-423%2C0.11&t=1R6VuvzXD8plXBe3-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A9734&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer">Ouvrir dans Figma</a>
+                    </header>
+                    <iframe
+                        title="Prototype interactif AgoraSquare"
+                        loading="lazy"
+                        allowfullscreen
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FBfmmuypUtFqOUIrKSEKxvd%2FBrand-gora%3Fpage-id%3D0%253A1%26node-id%3D1-9740%26viewport%3D-2429%252C-423%252C0.11%26t%3D1R6VuvzXD8plXBe3-1%26scaling%3Dmin-zoom%26content-scaling%3Dfixed%26starting-point-node-id%3D1%253A9734%26show-proto-sidebar%3D1"></iframe>
+                </div>
+
+                <h3 data-i18n="agora.prototype.interactive.title">Prototype Interactif</h3>
+                <p data-i18n="agora.prototype.interactive.text">
+                    J'ai développé un prototype interactif dans Figma intégrant les principaux parcours utilisateurs. Ce prototype 
+                    a servi de référence pour les tests utilisateurs et la spécification technique auprès de l'équipe de développement.
+                </p>
+
+                <!-- ESPACE MÉDIA : Insérer ici une capture ou vidéo du prototype interactif -->
+                <!-- Exemple : <img src="image/prototype-interactif.png" alt="Prototype interactif" class="full-width-image"> -->
+
+                <div class="info-card">
+                    <h3 data-i18n="agora.prototype.ab.title">Tests A/B - Ajustements Clés</h3>
+                    <p data-i18n="agora.prototype.ab.intro">
+                        Suite aux tests avec 8 grossistes à chaque itération, plusieurs ajustements majeurs ont été apportés :
+                    </p>
+                    <ul class="icon-list">
+                        <li>
+                            <strong data-i18n="agora.prototype.ab1.label">Taille des boutons</strong> 
+                            <span data-i18n="agora.prototype.ab1.text">Augmentation de 38px à 50px pour améliorer le taux de réussite des clics</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab2.label">Système de favoris</strong> 
+                            <span data-i18n="agora.prototype.ab2.text">Ajout d'un accès rapide aux clients récurrents, réduisant de 60% le temps de saisie</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab3.label">Simplification facturation</strong> 
+                            <span data-i18n="agora.prototype.ab3.text">Réduction de 7 étapes à 3 étapes suite aux retours utilisateurs</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab4.label">Recherche intelligente</strong> 
+                            <span data-i18n="agora.prototype.ab4.text">Implémentation d'une recherche prédictive avec tolérance aux fautes de frappe</span>
+                        </li>
+                        <li>
+                            <strong data-i18n="agora.prototype.ab5.label">Indicateurs visuels</strong> 
+                            <span data-i18n="agora.prototype.ab5.text">Renforcement des statuts visuels suite à des erreurs d'interprétation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3 data-i18n="agora.prototype.a11y.title">Accessibilité</h3>
+                <p data-i18n="agora.prototype.a11y.text">
+                    Bien que non requis initialement, j'ai intégré des principes d'accessibilité pour garantir une utilisation 
+                    confortable pour tous : contraste WCAG AAA, navigation clavier complète, labels descriptifs pour lecteurs d'écran.
+                </p>
+            </section>
+
+            <!-- Section Résultats -->
+            <section class="content-section" id="resultats">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <h2 data-i18n="agora.results.title">Résultats & Impact</h2>
+                </div>
+                
+                <h3 data-i18n="agora.results.deployment.title">Déploiement & Adoption</h3>
+                <p data-i18n="agora.results.deployment.p1">
+                    Le déploiement auprès des premiers grossistes a démontré un impact significatif sur leur productivité et leur 
+                    rentabilité. La solution a été adoptée progressivement sur une période de 3 mois, avec un accompagnement 
+                    personnalisé pour chaque utilisateur.
+                </p>
+
+                <p data-i18n="agora.results.deployment.p2">
+                    Le taux d'adoption exceptionnellement élevé (92%) s'explique par l'approche centrée utilisateur tout au long 
+                    du projet : les grossistes ont été impliqués dès les phases initiales et ont pu constater les améliorations 
+                    concrètes sur leur travail quotidien dès les premiers jours d'utilisation.
+                </p>
+
+                <div class="chart-block">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="chart-title" data-i18n="agora.results.chart.title">Six mois après le lancement — indicateurs clés</div>
+                            <div class="chart-note">
+                                <button class="chart-note__trigger" type="button" aria-expanded="false" aria-controls="chart-note-content-4">
+                                    Note méthodologique
+                                </button>
+                                <div class="chart-note__bubble" id="chart-note-content-4" role="tooltip" aria-hidden="true" hidden tabindex="-1">
+                                    <p data-i18n="agora.results.kpi.note">Données consolidées sur 6 mois auprès des 25 premiers grossistes équipés.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="kpiPerformanceChart" aria-describedby="kpiPerformanceLegend"></canvas>
+                        <ul class="chart-legend" id="kpiPerformanceLegend">
+                            <li><span style="--legend-color:#667eea"></span> <span data-i18n="agora.results.kpi.legend1">92 % de taux d'adoption</span></li>
+                            <li><span style="--legend-color:#764ba2"></span> <span data-i18n="agora.results.kpi.legend2">+70 % de gain de productivité</span></li>
+                            <li><span style="--legend-color:#a78bfa"></span> <span data-i18n="agora.results.kpi.legend3">-30 % d'impayés</span></li>
+                            <li><span style="--legend-color:#c7d2fe"></span> <span data-i18n="agora.results.kpi.legend4">88 % de satisfaction (4,4/5)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 data-i18n="agora.results.impact.title">Impact Business Mesurable</h3>
+                <p data-i18n="agora.results.impact.note">
+                    Temps administratif, taux d'erreurs et délai de paiement mesurés sur un panel de 25 grossistes équipés.
+                </p>
+                <div class="chart-block">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="chart-title" data-i18n="agora.results.impact.title">Impact business mesuré (avant vs après)</div>
+                            <div class="chart-note">
+                                <button class="chart-note__trigger" type="button" aria-expanded="false" aria-controls="chart-note-content-5">
+                                    Note méthodologique
+                                </button>
+                                <div class="chart-note__bubble" id="chart-note-content-5" role="tooltip" aria-hidden="true" hidden tabindex="-1">
+                                    <p data-i18n="agora.results.impact.note">Temps administratif, taux d'erreurs et délai de paiement mesurés sur un panel de 25 grossistes équipés.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="businessImpactChart" aria-describedby="businessImpactLegend"></canvas>
+                        <ul class="chart-legend" id="businessImpactLegend">
+                            <li><span style="--legend-color:#c7d2fe"></span> <span data-i18n="agora.results.impact.legend1">Avant AgoraSquare</span></li>
+                            <li><span style="--legend-color:#667eea"></span> <span data-i18n="agora.results.impact.legend2">Après déploiement</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="chart-insights">
+                    <li>
+                        <strong data-i18n="agora.results.impact1.label">Temps dédié aux tâches administratives</strong> 
+                        <span data-i18n="agora.results.impact1.text">de 3 h/jour à 0,8 h/jour, soit plus de 2 heures récupérées chaque jour.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.results.impact2.label">Erreurs de facturation</strong> 
+                        <span data-i18n="agora.results.impact2.text">taux réduit de 40 % à 6 %, soit près de 15 000 € économisés par an et par grossiste.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.results.impact3.label">Délai moyen de paiement</strong> 
+                        <span data-i18n="agora.results.impact3.text">de 45 à 30 jours, améliorant immédiatement la trésorerie.</span>
+                    </li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici des témoignages vidéo ou photos des utilisateurs satisfaits -->
+                <!-- Exemple : <img src="image/testimonials.jpg" alt="Témoignages utilisateurs" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.results.feedback.title">Retours Utilisateurs</h3>
+                <div class="quote-box">
+                    <p class="quote-text" data-i18n="agora.results.quote1">
+                        AgoraSquare a transformé notre façon de travailler. On gagne un temps fou et on fait beaucoup moins d'erreurs. 
+                        C'est exactement ce dont on avait besoin.
+                    </p>
+                    <p class="quote-author" data-i18n="agora.results.quote1.author">— Pierre, grossiste en fruits et légumes</p>
+                </div>
+
+                <div class="quote-box">
+                    <p class="quote-text" data-i18n="agora.results.quote2">
+                        La vérification de solvabilité intégrée nous a permis de réduire drastiquement les impayés. C'est un vrai 
+                        soulagement financier pour notre entreprise.
+                    </p>
+                    <p class="quote-author" data-i18n="agora.results.quote2.author">— Marie, gérante d'une entreprise de produits de la mer</p>
+                </div>
+
+                <h3 data-i18n="agora.results.longterm.title">Impact à Long Terme</h3>
+                <p data-i18n="agora.results.longterm.intro">
+                    Six mois après le déploiement initial, <strong>25 grossistes supplémentaires</strong> ont rejoint la plateforme, 
+                    attirés par les retours positifs des premiers utilisateurs. L'application est devenue un outil de référence sur 
+                    le marché de Rungis, contribuant à la modernisation progressive du secteur.
+                </p>
+
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.results.longterm1.label">Évolution continue</strong> 
+                        <span data-i18n="agora.results.longterm1.text">Nouvelles fonctionnalités ajoutées tous les trimestres selon les retours utilisateurs</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.results.longterm2.label">Extension géographique</strong> 
+                        <span data-i18n="agora.results.longterm2.text">Déploiement prévu sur d'autres marchés de gros en France</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.results.longterm3.label">Communauté active</strong> 
+                        <span data-i18n="agora.results.longterm3.text">Création d'un groupe d'entraide entre utilisateurs</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.results.longterm4.label">Formation</strong> 
+                        <span data-i18n="agora.results.longterm4.text">Programme d'accompagnement pour nouveaux utilisateurs</span>
+                    </li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici un dashboard ou des captures montrant l'usage réel -->
+                <!-- Exemple : <img src="image/real-usage.png" alt="Captures d'écran de l'usage réel" class="full-width-image"> -->
+            </section>
+
+            <!-- Section Apprentissages -->
+            <section class="content-section" id="apprentissages">
+                <div class="section-header">
+                    <div class="section-icon">🎓</div>
+                    <h2 data-i18n="agora.learnings.title">Apprentissages</h2>
+                </div>
+
+                <p data-i18n="agora.learnings.intro">
+                    Ce projet AgoraSquare a été riche en enseignements, tant sur le plan méthodologique que sur la compréhension 
+                    des enjeux du design dans un contexte B2B spécifique. Voici les principales leçons tirées de cette expérience.
+                </p>
+
+                <h3 data-i18n="agora.learnings.success.title">Ce qui a bien fonctionné</h3>
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.learnings.success1.label">Immersion terrain prolongée</strong>
+                        <span data-i18n="agora.learnings.success1.text">Les 3 semaines passées à Rungis ont été cruciales pour comprendre les vrais besoins et contraintes. Aucun entretien en bureau n'aurait pu révéler ces insights.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.success2.label">Approche itérative et tests fréquents</strong>
+                        <span data-i18n="agora.learnings.success2.text">Tester rapidement et souvent (tous les 15 jours) avec de vrais utilisateurs a évité de nombreuses erreurs coûteuses.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.success3.label">Co-création dès le début</strong>
+                        <span data-i18n="agora.learnings.success3.text">Impliquer les grossistes dès les phases initiales de conception a créé un sentiment d'appropriation et facilité l'adoption.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.success4.label">Simplicité radicale</strong>
+                        <span data-i18n="agora.learnings.success4.text">Résister à la tentation d'ajouter des fonctionnalités \"sympas mais pas essentielles\" a été payant. Les utilisateurs ont apprécié la simplicité.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.success5.label">Design system adaptatif</strong>
+                        <span data-i18n="agora.learnings.success5.text">Créer un design system dès le début a accéléré le développement et assuré la cohérence visuelle.</span>
+                    </li>
+                </ul>
+
+                <h3 data-i18n="agora.learnings.challenges.title">Défis Rencontrés & Solutions</h3>
+                <div class="info-card">
+                    <h4 data-i18n="agora.learnings.challenge1.title">Défi 1 : Résistance au changement</h4>
+                    <p data-i18n="agora.learnings.challenge1.text">
+                        Beaucoup de grossistes étaient réticents à abandonner leurs carnets papier. Solution : Programme d'accompagnement personnalisé, formation individuelle, et période de transition avec double saisie (papier + numérique) pendant 2 semaines.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4 data-i18n="agora.learnings.challenge2.title">Défi 2 : Contraintes techniques offline</h4>
+                    <p data-i18n="agora.learnings.challenge2.text">
+                        Le mode offline a été techniquement complexe à implémenter, surtout pour la synchronisation des données. Solution : Architecture technique pensée dès le début avec le CTO, prototypes fonctionnels pour valider la faisabilité.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4 data-i18n="agora.learnings.challenge3.title">Défi 3 : Diversité des cas d'usage</h4>
+                    <p data-i18n="agora.learnings.challenge3.text">
+                        Chaque grossiste avait des besoins spécifiques (fruits, viandes, produits laitiers). Solution : Modules flexibles et personnalisables plutôt qu'une solution unique rigide.
+                    </p>
+                </div>
+
+                <h3 data-i18n="agora.learnings.improve.title">Ce que je ferais différemment</h3>
+                <ul class="icon-list">
+                    <li>
+                        <strong data-i18n="agora.learnings.improve1.label">Impliquer les développeurs plus tôt</strong>
+                        <span data-i18n="agora.learnings.improve1.text">Certaines idées de design se sont révélées complexes à développer. Une collaboration plus étroite dès les wireframes aurait évité des aller-retours.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.improve2.label">Prévoir plus de temps pour le mode offline</strong>
+                        <span data-i18n="agora.learnings.improve2.text">La synchronisation offline a pris 30% de temps supplémentaire. Il aurait fallu doubler l'estimation initiale.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.improve3.label">Documenter davantage les décisions</strong>
+                        <span data-i18n="agora.learnings.improve3.text">Certaines décisions de design prises en phase de recherche ont été oubliées 6 mois plus tard. Une documentation continue aurait aidé.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.improve4.label">Anticiper l'évolution du produit</strong>
+                        <span data-i18n="agora.learnings.improve4.text">Certains choix d'architecture ont rendu difficile l'ajout de nouvelles fonctionnalités. Penser \"scalabilité\" dès le début est crucial.</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="agora.learnings.improve5.label">Prévoir un plan de formation dès le début</strong>
+                        <span data-i18n="agora.learnings.improve5.text">La formation des utilisateurs a été improvisée. Un programme structuré dès la phase de design aurait facilité l'adoption.</span>
+                    </li>
+                </ul>
+
+                <h3 data-i18n="agora.learnings.skills.title">Compétences Développées</h3>
+                <p data-i18n="agora.learnings.skills.intro">
+                    Ce projet m'a permis de développer ou renforcer plusieurs compétences clés :
+                </p>
+                <ul class="icon-list">
+                    <li data-i18n="agora.learnings.skill1">Conduite de recherche utilisateur en conditions réelles complexes</li>
+                    <li data-i18n="agora.learnings.skill2">Design pour des utilisateurs peu familiers avec le numérique</li>
+                    <li data-i18n="agora.learnings.skill3">Gestion de contraintes techniques fortes (offline, performance)</li>
+                    <li data-i18n="agora.learnings.skill4">Communication avec des parties prenantes variées (grossistes, développeurs, direction)</li>
+                    <li data-i18n="agora.learnings.skill5">Création de design systems complets et documentés</li>
+                    <li data-i18n="agora.learnings.skill6">Mesure d'impact et ROI des décisions de design</li>
+                </ul>
+
+                <!-- ESPACE MÉDIA : Insérer ici des photos du processus ou du travail d'équipe -->
+                <!-- Exemple : <img src="image/team-work.jpg" alt="Travail d'équipe sur le projet" class="full-width-image"> -->
+
+                <h3 data-i18n="agora.learnings.vision.title">Vision pour l'Avenir</h3>
+                <p data-i18n="agora.learnings.vision.intro">
+                    Fort de ces apprentissages, plusieurs pistes d'amélioration sont envisagées pour les prochaines versions :
+                </p>
+                <ul class="icon-list">
+                    <li data-i18n="agora.learnings.vision1">Intelligence artificielle pour prédire les commandes et optimiser les stocks</li>
+                    <li data-i18n="agora.learnings.vision2">Marketplace intégrée pour faciliter la mise en relation grossistes-restaurateurs</li>
+                    <li data-i18n="agora.learnings.vision3">Application mobile dédiée pour les livreurs avec optimisation de tournées</li>
+                    <li data-i18n="agora.learnings.vision4">Tableau de bord analytique avancé pour aide à la décision stratégique</li>
+                </ul>
+
+                <div class="quote-box">
+                    <p class="quote-text" data-i18n="agora.learnings.quote.text">
+                        Ce projet m'a appris qu'un bon design ne se mesure pas à sa beauté, mais à son impact réel sur le quotidien 
+                        des utilisateurs. Voir les grossistes gagner du temps et réduire leur stress au travail a été la meilleure 
+                        validation de notre approche.
+                    </p>
+                    <p class="quote-author" data-i18n="agora.learnings.quote.author">— Réflexion personnelle</p>
+                </div>
+            </section>
+
+            <!-- Section CTA finale -->
+            <section id="cta" class="content-section cta-section">
+                <h2 data-i18n="agora.cta.title">Prêt·e à moderniser vos services B2B&nbsp;?</h2>
+                <p data-i18n="agora.cta.subtitle">
+                    J'aide les organisations à concevoir des plateformes métiers fiables, accessibles et centrées sur l'usage terrain. Échangeons sur vos enjeux de digitalisation.
+                </p>
+                <div class="cta-actions">
+                    <a class="cta-button primary" href="mailto:hugoferrer.design@gmail.com" data-i18n="agora.cta.primary">
+                        Discuter de votre projet
+                    </a>
+                    <a class="cta-button secondary" href="index.html#projets" data-i18n="agora.cta.secondary">
+                        Explorer d'autres études de cas
+                    </a>
+                </div>
+                <span class="cta-disclaimer" data-i18n="agora.cta.disclaimer">
+                    Réponse sous 48h – Intervention possible en régie ou mission ponctuelle.
+                </span>
+            </section>
+
+        </div>
+
+        <!-- Sidebar - Table des matières -->
+        <aside class="sidebar">
+            <div class="toc">
+                <h3 data-i18n="agora.toc.navigation">Sommaire</h3>
+                <div class="toc-item" data-section="defi" data-i18n="agora.toc.defi">Le Défi</div>
+                <div class="toc-item" data-section="recherche" data-i18n="agora.toc.recherche">Phase de Recherche</div>
+                <div class="toc-item" data-section="ideation" data-i18n="agora.toc.ideation">Idéation & Wireframes</div>
+                <div class="toc-item" data-section="prototype" data-i18n="agora.toc.prototype">Prototypes & Design</div>
+                <div class="toc-item" data-section="resultats" data-i18n="agora.toc.resultats">Résultats & Impact</div>
+                <div class="toc-item" data-section="apprentissages" data-i18n="agora.toc.apprentissages">Apprentissages</div>
+                <div class="toc-item" data-section="cta" data-i18n="agora.toc.cta">Passer à l'action</div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Lightbox / Mode Cinéma -->
+    <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="agora.lightbox.aria" data-i18n-attr="aria-label">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" type="button" data-i18n="agora.lightbox.close" data-i18n-attr="aria-label">×</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Normalisation des listes icon-list pour aligner titres et descriptions
+        document.querySelectorAll('.icon-list li').forEach(li => {
+            const title = li.querySelector('strong');
+            if (!title) return;
+
+            const fragment = document.createDocumentFragment();
+            let node = title.nextSibling;
+            let hasContent = false;
+
+            while (node) {
+                const next = node.nextSibling;
+                fragment.appendChild(node);
+                hasContent = true;
+                node = next;
+            }
+
+            if (!hasContent) return;
+
+            const firstChild = fragment.firstChild;
+            if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
+                firstChild.textContent = firstChild.textContent.replace(/^\s+/, '');
+                if (firstChild.textContent.startsWith(':')) {
+                    firstChild.textContent = firstChild.textContent.replace(/^:\s*/, ': ');
+                }
+            }
+
+            const description = document.createElement('span');
+            description.className = 'icon-list__description';
+            description.appendChild(fragment);
+            li.appendChild(description);
+        });
+
+        // Progress bar au scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer pour les animations
+        const observerOptions = {
+            threshold: window.innerWidth < 768 ? 0.05 : 0.12,
+            rootMargin: '0px 0px 12% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            });
+        }, observerOptions);
+
+        const animatedElements = document.querySelectorAll('.content-section, .info-card, .stat-card, .quote-box, .icon-list li, .timeline-item, .chart-block, .chart-insights li, .poc-card, .poc-card__highlights li, .mockup-embed');
+
+        const revealVisibleElements = () => {
+            animatedElements.forEach(el => {
+                if (el.classList.contains('visible')) {
+                    return;
+                }
+
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.92) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        animatedElements.forEach(el => observer.observe(el));
+
+        window.addEventListener('load', () => {
+            revealVisibleElements();
+
+            setTimeout(() => {
+                revealVisibleElements();
+            }, 750);
+
+            initializeCharts();
+        });
+
+        document.addEventListener('i18n:updated', () => {
+            initializeCharts();
+        });
+
+        // Table des matières interactive
+        const tocItems = document.querySelectorAll('.toc-item');
+        const sections = document.querySelectorAll('.content-section');
+
+        tocItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                const section = document.getElementById(sectionId);
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Activer l'item de TOC selon la section visible
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Délais d'animation pour les list items
+        const clampDelay = (index, step, max) => Math.min(index * step, max).toFixed(2);
+
+        document.querySelectorAll('.icon-list li').forEach((li, index) => {
+            li.style.transitionDelay = `${clampDelay(index, 0.06, 0.4)}s`;
+        });
+
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.transitionDelay = `${clampDelay(index, 0.1, 0.6)}s`;
+        });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.transitionDelay = `${clampDelay(index, 0.12, 0.65)}s`;
+        });
+
+        document.querySelectorAll('.chart-insights li').forEach((item, index) => {
+            item.style.transitionDelay = `${clampDelay(index, 0.08, 0.45)}s`;
+        });
+
+        document.querySelectorAll('.poc-card__highlights li').forEach((item, index) => {
+            item.style.transitionDelay = `${clampDelay(index, 0.07, 0.35)}s`;
+        });
+
+        document.querySelectorAll('.mockup-embed').forEach((block, index) => {
+            block.style.transitionDelay = `${clampDelay(index, 0.1, 0.4)}s`;
+        });
+
+        const chartNoteTriggers = Array.from(document.querySelectorAll('.chart-note__trigger'));
+
+        const getChartNoteBubble = (trigger) => {
+            if (!trigger) {
+                return null;
+            }
+            const contentId = trigger.getAttribute('aria-controls');
+            if (!contentId) {
+                return null;
+            }
+            return document.getElementById(contentId);
+        };
+
+        const closeChartNote = (trigger) => {
+            const bubble = getChartNoteBubble(trigger);
+            if (!bubble) {
+                return;
+            }
+            trigger.setAttribute('aria-expanded', 'false');
+            bubble.classList.remove('is-visible');
+            bubble.setAttribute('aria-hidden', 'true');
+            if (!bubble.hasAttribute('hidden')) {
+                bubble.setAttribute('hidden', '');
+            }
+        };
+
+        const openChartNote = (trigger) => {
+            const bubble = getChartNoteBubble(trigger);
+            if (!bubble) {
+                return;
+            }
+            trigger.setAttribute('aria-expanded', 'true');
+            bubble.classList.add('is-visible');
+            bubble.setAttribute('aria-hidden', 'false');
+            bubble.removeAttribute('hidden');
+            if (typeof bubble.focus === 'function') {
+                bubble.focus({ preventScroll: true });
+            }
+        };
+
+        const closeAllChartNotes = () => {
+            chartNoteTriggers.forEach(closeChartNote);
+        };
+
+        chartNoteTriggers.forEach(trigger => {
+            trigger.addEventListener('click', event => {
+                event.stopPropagation();
+                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+                closeAllChartNotes();
+                if (!isExpanded) {
+                    openChartNote(trigger);
+                }
+            });
+        });
+
+        document.addEventListener('click', event => {
+            if (!event.target.closest('.chart-note')) {
+                closeAllChartNotes();
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeAllChartNotes();
+            }
+        });
+
+        const chartRegistry = {};
+
+        function initializeCharts() {
+            if (typeof Chart === 'undefined') {
+                console.warn("Chart.js n'est pas disponible.");
+                return;
+            }
+
+            const translate = (key, fallback) => {
+                if (window.__i18n && typeof window.__i18n.t === 'function') {
+                    const value = window.__i18n.t(key);
+                    if (value && value !== key) return value;
+                }
+                return fallback || key;
+            };
+
+            const getLocale = () => {
+                if (window.__i18n && typeof window.__i18n.getLang === 'function') {
+                    const lang = window.__i18n.getLang();
+                    if (lang === 'en') return 'en-US';
+                    if (lang === 'fr') return 'fr-FR';
+                }
+                return navigator.language || 'fr-FR';
+            };
+
+            const palette = {
+                primary: '#667eea',
+                secondary: '#764ba2',
+                tertiary: '#a78bfa',
+                quaternary: '#c7d2fe',
+                light: '#e0e7ff'
+            };
+
+            Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+            Chart.defaults.font.size = 13;
+            Chart.defaults.color = '#4b5563';
+
+            const createGradient = (ctx, start, end) => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height || 320);
+                gradient.addColorStop(0, start);
+                gradient.addColorStop(1, end);
+                return gradient;
+            };
+
+            const locale = getLocale();
+
+            const researchCanvas = document.getElementById('researchBreakdownChart');
+            if (researchCanvas) {
+                const ctx = researchCanvas.getContext('2d');
+                const researchUnits = [
+                    translate('agora.research.stat.observed', 'grossistes observés'),
+                    translate('agora.research.stat.interviews', 'entretiens réalisés'),
+                    translate('agora.research.stat.workflows', 'workflows cartographiés'),
+                    translate('agora.research.stat.workshops', 'ateliers co-création')
+                ];
+
+                if (chartRegistry.researchBreakdown) {
+                    chartRegistry.researchBreakdown.destroy();
+                }
+
+                chartRegistry.researchBreakdown = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            translate('agora.research.chart.observations', 'Observations terrain'),
+                            translate('agora.research.chart.interviews', 'Entretiens utilisateurs'),
+                            translate('agora.research.chart.workflows', 'Analyse des workflows'),
+                            translate('agora.research.chart.workshops', 'Ateliers de co-création')
+                        ],
+                        datasets: [{
+                            data: [15, 20, 8, 3],
+                            backgroundColor: [
+                                palette.primary,
+                                palette.secondary,
+                                palette.tertiary,
+                                palette.quaternary
+                            ],
+                            borderWidth: 0,
+                            hoverOffset: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        aspectRatio: 1,
+                        cutout: '58%',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: context => {
+                                        const unit = researchUnits[context.dataIndex] || '';
+                                        return `${context.label} : ${context.parsed} ${unit}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const userFlowsCanvas = document.getElementById('userFlowsChart');
+            if (userFlowsCanvas) {
+                const ctx = userFlowsCanvas.getContext('2d');
+
+                if (chartRegistry.userFlows) {
+                    chartRegistry.userFlows.destroy();
+                }
+
+                chartRegistry.userFlows = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            translate('agora.ideation.flow1.label', 'Prise de commande express'),
+                            translate('agora.ideation.flow2.label', 'Vérification de solvabilité'),
+                            translate('agora.ideation.flow3.label', 'Facturation électronique')
+                        ],
+                        datasets: [
+                            {
+                                label: translate('agora.chart.userflows.before', 'Avant refonte'),
+                                data: [5, 6, 15],
+                                backgroundColor: palette.quaternary,
+                                borderRadius: 14,
+                                borderSkipped: false,
+                                maxBarThickness: 56
+                            },
+                            {
+                                label: translate('agora.chart.userflows.after', 'Après livraison'),
+                                data: [1.5, 2, 3],
+                                backgroundColor: palette.primary,
+                                borderRadius: 14,
+                                borderSkipped: false,
+                                maxBarThickness: 56
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Minutes'
+                                },
+                                ticks: {
+                                    callback: value => `${value} min`
+                                },
+                                grid: {
+                                    color: 'rgba(102, 126, 234, 0.1)',
+                                    drawBorder: false
+                                }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: context => {
+                                        const value = context.parsed.y;
+                                        const formatted = value.toLocaleString(locale, {
+                                            minimumFractionDigits: value % 1 ? 1 : 0,
+                                            maximumFractionDigits: 1
+                                        });
+                                        return `${context.dataset.label} : ${formatted} min`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const orderTimeCanvas = document.getElementById('orderTimeChart');
+            if (orderTimeCanvas) {
+                const ctx = orderTimeCanvas.getContext('2d');
+                const gradient = createGradient(ctx, 'rgba(102, 126, 234, 0.35)', 'rgba(118, 75, 162, 0.1)');
+
+                if (chartRegistry.orderTime) {
+                    chartRegistry.orderTime.destroy();
+                }
+
+                chartRegistry.orderTime = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [
+                            translate('agora.chart.ordertime.paper', 'Méthode papier'),
+                            translate('agora.chart.ordertime.proto1', 'Prototype V1'),
+                            translate('agora.chart.ordertime.proto2', 'Prototype V2'),
+                            translate('agora.chart.ordertime.final', 'Version finale')
+                        ],
+                        datasets: [{
+                            label: translate('agora.chart.ordertime.legend', 'Durée moyenne (minutes)'),
+                            data: [5, 3.5, 2.2, 1.5],
+                            fill: true,
+                            tension: 0.4,
+                            backgroundColor: gradient,
+                            borderColor: palette.primary,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#ffffff',
+                            pointBorderColor: palette.primary,
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: translate('agora.chart.ordertime.axis', 'Minutes')
+                                },
+                                ticks: {
+                                    callback: value => `${value} min`
+                                },
+                                grid: {
+                                    color: 'rgba(102, 126, 234, 0.12)',
+                                    drawBorder: false
+                                }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: context => {
+                                        const value = context.parsed.y;
+                                        const formatted = value.toLocaleString(locale, {
+                                            minimumFractionDigits: value % 1 ? 1 : 0,
+                                            maximumFractionDigits: 1
+                                        });
+                                        return `${formatted} min`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const kpiCanvas = document.getElementById('kpiPerformanceChart');
+            if (kpiCanvas) {
+                const ctx = kpiCanvas.getContext('2d');
+
+                if (chartRegistry.kpiPerformance) {
+                    chartRegistry.kpiPerformance.destroy();
+                }
+
+                const kpiLabels = [
+                    translate('agora.kpi.adoption', "Taux d'adoption"),
+                    translate('agora.kpi.productivity', "Gain de productivité"),
+                    translate('agora.kpi.unpaid', "Réduction des impayés"),
+                    translate('agora.results.kpi.satisfaction', "Satisfaction client")
+                ];
+
+                chartRegistry.kpiPerformance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: kpiLabels,
+                        datasets: [{
+                            label: translate('agora.results.dataset.sixMonths', 'Résultats à 6 mois'),
+                            data: [92, 70, 30, 88],
+                            backgroundColor: [
+                                palette.primary,
+                                palette.secondary,
+                                palette.tertiary,
+                                palette.quaternary
+                            ],
+                            borderRadius: 14,
+                            borderSkipped: false,
+                            maxBarThickness: 42
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: value => `${value}%`
+                                },
+                                grid: {
+                                    color: 'rgba(102, 126, 234, 0.1)',
+                                    drawBorder: false
+                                }
+                            },
+                            y: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: context => {
+                                        const value = context.parsed.x;
+                                        const isReduction = context.dataIndex === 2;
+                                        const prefix = isReduction ? '-' : '';
+                                        return `${context.label} : ${prefix}${value}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const businessCanvas = document.getElementById('businessImpactChart');
+            if (businessCanvas) {
+                const ctx = businessCanvas.getContext('2d');
+                const businessUnits = ['h/jour', '%', 'jours'];
+
+                if (chartRegistry.businessImpact) {
+                    chartRegistry.businessImpact.destroy();
+                }
+
+                chartRegistry.businessImpact = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            translate('agora.results.metric.admin', 'Temps administratif'),
+                            translate('agora.results.metric.errors', 'Erreurs de facturation'),
+                            translate('agora.results.metric.delay', 'Délai moyen de paiement')
+                        ],
+                        datasets: [
+                            {
+                                label: translate('agora.chart.before', 'Avant AgoraSquare'),
+                                data: [3, 40, 45],
+                                backgroundColor: palette.quaternary,
+                                borderRadius: 14,
+                                borderSkipped: false,
+                                maxBarThickness: 48
+                            },
+                            {
+                                label: translate('agora.chart.after', 'Après déploiement'),
+                                data: [0.8, 6, 30],
+                                backgroundColor: palette.primary,
+                                borderRadius: 14,
+                                borderSkipped: false,
+                                maxBarThickness: 48
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(102, 126, 234, 0.1)',
+                                    drawBorder: false
+                                }
+                            },
+                            y: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: context => {
+                                        const unit = businessUnits[context.dataIndex] || '';
+                                        const value = context.parsed.x;
+                                        const needsDecimal = unit === 'h/jour' && value % 1 !== 0;
+                                        const formatted = value.toLocaleString(locale, {
+                                            minimumFractionDigits: needsDecimal ? 1 : 0,
+                                            maximumFractionDigits: needsDecimal ? 1 : 0
+                                        });
+                                        return `${context.dataset.label} : ${formatted} ${unit}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Lightbox controller
+        const lightboxController = (() => {
+            const overlay = document.getElementById('lightboxOverlay');
+            const image = document.getElementById('lightboxImage');
+            const closeBtn = document.getElementById('lightboxClose');
+            if (!overlay || !image || !closeBtn) return null;
+
+            let isOpen = false;
+
+            function open(src, alt = '') {
+                if (!src) return;
+                image.src = src;
+                image.alt = alt;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                isOpen = true;
+            }
+
+            function close() {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    image.src = '';
+                    image.alt = '';
+                }, 200);
+                document.body.style.overflow = '';
+                isOpen = false;
+            }
+
+            closeBtn.addEventListener('click', close);
+
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    close();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && isOpen) {
+                    close();
+                }
+            });
+
+            return { open, close };
+        })();
+
+        // Hero image zoom (single image)
+        (function () {
+            const hero = document.querySelector('.hero-image.data-hero');
+            if (!hero) return;
+
+            const heroImage = hero.querySelector('img');
+            const zoomBtn = hero.querySelector('.hero-zoom-button');
+
+            if (!heroImage || !lightboxController) return;
+
+            const openLightbox = () => {
+                const src = heroImage.currentSrc || heroImage.getAttribute('src');
+                if (!src) return;
+                const alt = heroImage.getAttribute('alt') || '';
+                lightboxController.open(src, alt);
+            };
+
+            if (zoomBtn) {
+                zoomBtn.addEventListener('click', openLightbox);
+            }
+
+            heroImage.addEventListener('dblclick', (event) => {
+                if (event.target.closest('.data-overlay')) return;
+                openLightbox();
+            });
+        })();
+
+        // Compteurs KPI (Data-Hero)
+        (function () {
+            const hero = document.querySelector('.hero-image.data-hero');
+            if (!hero) return;
+
+            const counters = hero.querySelectorAll('[data-count]');
+            if (!counters.length) return;
+
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduced) {
+                counters.forEach(el => {
+                    el.textContent =
+                        (el.dataset.prefix || '') +
+                        (el.dataset.count || '0') +
+                        (el.dataset.suffix || '');
+                    el.dataset.done = '1';
+                });
+                return;
+            }
+
+            function animate(el) {
+                el.dataset.done = '1';
+                const target = parseFloat(el.dataset.count || '0');
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1200;
+                const startTime = performance.now();
+                const ease = t => 1 - Math.pow(1 - t, 3);
+
+                function tick(now) {
+                    const progress = Math.min(1, (now - startTime) / duration);
+                    const value = Math.round(target * ease(progress));
+                    el.textContent = prefix + value + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            function run() {
+                counters.forEach(el => {
+                    if (!el.dataset.done) animate(el);
+                });
+            }
+
+            function isVisible(el) {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+            }
+
+            if (isVisible(hero)) run();
+
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        run();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            io.observe(hero);
+
+            let armed = true;
+            function onScroll() {
+                if (armed && isVisible(hero)) {
+                    armed = false;
+                    run();
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            window.addEventListener('load', () => {
+                if (isVisible(hero)) run();
+            });
+        })();
+    </script>
+    <script src="js/i18n.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="fr" class="i18n-ready">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoMind - Case Study | Hugo Ferrer</title>
+    <style>
+        :root:not(.i18n-ready) [data-i18n] {
+            visibility: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #10b981;
+            --accent-secondary: #059669;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --dark-gray: #1a1a2e;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header avec progress bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            gap: 0.8rem;
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 8rem 5% 3.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: clamp(2rem, 4vw, 4rem);
+            align-items: start;
+        }
+
+        .project-hero-inner.has-media {
+            grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.85fr);
+        }
+
+        .project-hero-text {
+            min-width: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .project-hero-media {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.14);
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(16, 185, 129, 0.18));
+            display: none;
+        }
+
+        .project-hero-media.has-image {
+            display: block;
+        }
+
+        .project-hero-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            opacity: 0;
+            animation: fadeInScale 0.5s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tag:nth-child(1) { animation-delay: 0.1s; }
+        .tag:nth-child(2) { animation-delay: 0.2s; }
+        .tag:nth-child(3) { animation-delay: 0.3s; }
+        .tag:nth-child(4) { animation-delay: 0.4s; }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.3s;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideInFromLeft 0.8s ease forwards 0.5s;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            opacity: 0;
+            animation: fadeInScale 0.6s ease forwards;
+        }
+
+        .meta-item:nth-child(1) { animation-delay: 0.6s; }
+        .meta-item:nth-child(2) { animation-delay: 0.7s; }
+        .meta-item:nth-child(3) { animation-delay: 0.8s; }
+        .meta-item:nth-child(4) { animation-delay: 0.9s; }
+
+        .meta-item h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Hero Image */
+        .hero-wrapper {
+            max-width: 1200px;
+            margin: 3rem auto 4rem;
+            padding: 0 5%;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: clamp(353px, 55.2vw, 507px);
+            border-radius: 24px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInScale 1s ease forwards 1s;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.25), transparent 55%),
+                        radial-gradient(ellipse at bottom, rgba(14, 116, 144, 0.2), transparent 60%),
+                        #0f172a;
+        }
+
+        .hero-image-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            border-radius: inherit;
+            opacity: 0.95;
+            pointer-events: none;
+        }
+
+        .hero-image-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.65) 100%);
+            mix-blend-mode: multiply;
+        }
+
+        .hero-image-background img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(38px) saturate(1.2);
+            transform: scale(1.18);
+        }
+
+        .hero-image picture {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 20px;
+        }
+
+        .hero-image picture::before {
+            content: '';
+            position: absolute;
+            inset: clamp(12px, 2.6vw, 24px);
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(59, 130, 246, 0.12));
+            filter: blur(24px);
+            opacity: 0.55;
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+            filter: brightness(0.98);
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+        }
+
+        .hero-zoom-button {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(15, 23, 42, 0.45);
+            color: #fff;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+            z-index: 4;
+        }
+
+        .hero-zoom-button:hover,
+        .hero-zoom-button:focus-visible {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.65);
+            border-color: rgba(255, 255, 255, 0.7);
+            outline: none;
+        }
+
+        .hero-zoom-button:active {
+            transform: scale(0.96);
+        }
+
+        .data-overlay {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            gap: 18px;
+            z-index: 3;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+            flex-wrap: wrap;
+        }
+
+        .data-overlay .kpi {
+            min-width: 130px;
+            border-radius: 12px;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+
+        .data-overlay .kpi b {
+            display: block;
+            font-size: 26px;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .data-overlay .kpi span {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 12, 24, 0.92);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem clamp(1rem, 4vw, 4rem);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .lightbox-overlay::before {
+            content: none;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-overlay.active::before {
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: min(1100px, 90vw);
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(9, 17, 34, 0.55);
+            animation: lightboxZoomIn 0.35s ease;
+        }
+
+        @keyframes lightboxZoomIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus-visible {
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: rotate(90deg);
+            outline: none;
+        }
+
+        .lightbox-close:active {
+            transform: scale(0.94);
+        }
+
+        /* Layout 2 colonnes */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            margin-bottom: 4rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        /* Sections */
+        .content-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .info-card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+            transform: translateX(5px);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Process Grid */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f3f7 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(99, 102, 241, 0.1);
+            line-height: 1;
+        }
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TOC Sidebar */
+        .toc {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .toc h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-item {
+            padding: 0.8rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .toc-item:hover {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            padding-left: 1.5rem;
+        }
+
+        .toc-item.active {
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Bar Chart */
+        .chart-container {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* grille = colonne label fixe + colonne piste identique */
+        .bar-item{
+            display:grid;
+            grid-template-columns: 220px 1fr;
+            align-items:center;
+            gap:1rem;
+        }
+
+        .bar-label{
+            font-size:0.9rem;
+            color:#666;
+            white-space:nowrap;      /* évite les retours à la ligne qui cassent l'alignement */
+        }
+
+
+        .bar-wrapper {
+            flex: 1;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bar-item.visible .bar-fill {
+            width: var(--width);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 16px;
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .quote-box.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            color: rgba(99, 102, 241, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+        }
+
+        .quote-author {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-color);
+            padding-left: 3rem;
+        }
+
+        /* Icon List */
+        .icon-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .icon-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .icon-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .icon-list li::before {
+            content: '✓';
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .icon-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .icon-list-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .icon-list-content strong {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .icon-list-content p {
+            margin: 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Section CTA finale */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 0, 145, 0.9), rgba(99, 102, 241, 0.85));
+            border-radius: 18px;
+            padding: 3.5rem 4rem;
+            margin-top: 5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+        }
+
+        .cta-section::before {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at center, rgba(245, 87, 108, 0.6), transparent 70%);
+            top: -140px;
+            right: -120px;
+        }
+
+        .cta-section::after {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
+            bottom: -120px;
+            left: -80px;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 720px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button.primary {
+            background: #fff;
+            color: var(--dark-gray);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 32px rgba(255, 255, 255, 0.25);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: translateY(-2px);
+        }
+
+        .cta-disclaimer {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Images - Comparateur Avant/Après */
+        .image-comparison-section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: var(--light-gray);
+            border-radius: 12px;
+        }
+
+        .image-comparison-section h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 14px 50px rgba(0,0,0,0.18);
+            height: clamp(320px, 58vw, 640px);
+            background: #0f172a;
+        }
+
+        .comparison-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .comparison-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            clip-path: inset(0 50% 0 0);
+            transition: clip-path 0.3s ease;
+        }
+
+        .comparison-after {
+            height: 100%;
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .comparison-slider::before{
+  content: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 48 48">\
+  <circle cx="24" cy="24" r="24" fill="%2310b981"/>\
+  <path d="M19 16l-6 8 6 8M29 16l6 8-6 8" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>\
+</svg>');
+  position:absolute; 
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+
+        .comparison-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .comparison-label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Section Images - Grille Mascotte */
+        .mascot-gallery-section {
+            margin: 4rem 0;
+        }
+
+        .mascot-gallery-section h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .mascot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mascot-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .mascot-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .mascot-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mascot-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shimmer 2s infinite;
+        }
+
+
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .mascot-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .mascot-caption h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .mascot-caption p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .placeholder-text {
+            position: absolute;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-wrapper {
+                margin: 2.5rem auto 3.5rem;
+            }
+
+            .project-hero-inner {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .project-hero-media {
+                order: -1;
+                max-width: 520px;
+                margin: 0 auto 2.5rem;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bar-item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .bar-label {
+                white-space: normal;
+                line-height: 1.3;
+                text-align: left;
+            }
+
+            .bar-wrapper {
+                width: 100%;
+            }
+
+            .bar-fill {
+                width: clamp(35%, var(--width), 95%);
+                font-size: clamp(0.82rem, 2vw, 0.95rem);
+                min-height: 34px;
+                padding-right: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 6rem 5% 2rem;
+            }
+
+            .chart-container {
+                padding: 1.5rem;
+            }
+
+            .hero-wrapper {
+                margin: 2.5rem auto 3rem;
+                padding: 0 5%;
+            }
+
+            .hero-image {
+                height: clamp(287px, 71.7vw, 375px);
+            }
+
+            .hero-zoom-button {
+                top: 14px;
+                right: 14px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .data-overlay {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                gap: 12px;
+                justify-content: center;
+                display: none;
+            }
+
+            .data-overlay .kpi {
+                min-width: 110px;
+                padding: 10px 12px;
+            }
+
+            .data-overlay .kpi b {
+                font-size: 24px;
+            }
+
+            .bar-item {
+                grid-template-columns: auto 1fr;
+                gap: 0.75rem;
+            }
+
+            .bar-chart .bar-item:nth-child(-n+2) .bar-fill {
+                width: 100% !important;
+            }
+
+            .comparison-slider::before {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .mascot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mascot-gallery-section .mascot-img {
+                max-width: none;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                height: auto;
+            }
+
+            .image-comparison-section,
+            .mascot-gallery-section {
+                padding: 2rem 1rem;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .bar-label {
+                min-width: 0;
+                font-size: 0.85rem;
+            }
+
+            .bar-wrapper {
+                height: 34px;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1.75rem;
+                margin-top: 3.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* === Ajuste UNIQUEMENT les 3 images de la galerie mascotte === */
+        .mascot-gallery-section .mascot-item {
+            padding: 12px;                 /* espace intérieur : l'image ne colle plus aux bords */
+        }
+
+        .mascot-gallery-section .mascot-img {
+            display: block;
+            width: 100%;
+            max-width: 520px;              /* limite la largeur pour éviter les images géantes */
+            height: clamp(160px, 28vw, 260px); /* hauteur responsive (min 160px, max 260px) */
+            object-fit: cover;             /* mets "contain" si tu ne veux rien couper */
+            margin: 0 auto;                /* centre l'image dans la carte */
+            border-radius: 10px;           /* angles doux à l'intérieur de la carte */
+        }
+
+        /* (Optionnel) Réduit la largeur globale de la grille sur desktop */
+        .mascot-gallery-section .mascot-grid {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+        }
+
+    </style>
+</head>
+<body data-page="gomind">
+
+    <!-- Header avec progress bar -->
+    <header>
+        <nav>
+            <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
+            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+            </div>
+        </nav>
+        <div class="progress-bar" id="progressBar"></div>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-hero-inner">
+            <div class="project-hero-text">
+                <div class="project-tags">
+                    <span class="tag" data-i18n="gomind.tag.product">Product Design</span>
+                    <span class="tag" data-i18n="gomind.tag.system">Design System</span>
+                    <span class="tag" data-i18n="gomind.tag.site">Site Vitrine</span>
+                    <span class="tag" data-i18n="gomind.tag.year">2024</span>
+                </div>
+
+                <h1 data-i18n="gomind.title">GoMind</h1>
+                <p class="project-subtitle" data-i18n="gomind.subtitle">
+                    Refonte complète du site vitrine d'une ESN spécialisée en GreenIT. Création d'une 
+                    identité visuelle moderne, d'un générateur de mascotte IA, et d'un design system pour 
+                    améliorer l'acquisition client B2B.
+                </p>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h3 data-i18n="case.role">Rôle</h3>
+                        <p data-i18n="gomind.role.value">Product Designer UX/UI</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3 data-i18n="case.duration">Durée</h3>
+                        <p data-i18n="gomind.duration.value">1 mois</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3 data-i18n="case.team">Équipe</h3>
+                        <p data-i18n="gomind.team.value">2 personnes</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3 data-i18n="case.year">Année</h3>
+                        <p data-i18n="gomind.year.value">2024</p>
+                    </div>
+                </div>
+            </div>
+            <figure class="project-hero-media" data-hero-media hidden>
+                <img src="" alt="" loading="lazy" data-hero-media-image>
+            </figure>
+        </div>
+    </section>
+
+    <div class="hero-wrapper">
+        <div class="hero-image data-hero">
+            <div class="hero-image-background" aria-hidden="true">
+                <img src="image/hero-go.png" alt="" loading="eager" decoding="async">
+            </div>
+            <picture>
+                <source srcset="image/hero-go.png" media="(max-width: 768px)">
+                <source srcset="image/hero-go.png" media="(max-width: 1200px)">
+                <img src="image/hero-go.png" data-zoom-src="image/hero-go.png" data-i18n="gomind.hero.img.alt" data-i18n-attr="alt" alt="Refonte du site GoMind avec générateur de mascotte IA" loading="lazy" onerror="this.style.display='none'">
+            </picture>
+            <button class="hero-zoom-button" type="button" data-zoom-src="image/hero-go.png" data-i18n="gomind.hero.zoom.aria" data-i18n-attr="aria-label" data-i18n-no-text>⤢</button>
+            <div class="data-overlay">
+                <div class="kpi">
+                    <b data-count="65" data-prefix="+ " data-suffix="%">0</b>
+                    <span data-i18n="gomind.kpi.conversions">Conversions B2B</span>
+                </div>
+                <div class="kpi">
+                    <b data-count="45" data-prefix="- " data-suffix="%">0</b>
+                    <span data-i18n="gomind.kpi.bounce">Taux de rebond</span>
+                </div>
+                <div class="kpi">
+                    <b data-count="3" data-suffix=" mascottes">0</b>
+                    <span data-i18n="gomind.kpi.mascots">Variations IA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 2 colonnes -->
+    <div class="two-column-layout">
+        
+        <!-- Contenu principal -->
+        <div class="main-content">
+            
+            <!-- Section Défi -->
+            <section class="content-section" id="defi">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <h2 data-i18n="case.challenge">Le Défi</h2>
+                </div>
+                
+                <p data-i18n="gomind.challenge.intro" data-i18n-mode="html">
+                    GoMind, ESN spécialisée en éco-conception et GreenIT, possédait un site vitrine 
+                    qui ne reflétait pas son expertise technique ni ses valeurs d'innovation. Le design 
+                    surchargé, l'absence de CTA clairs et un parcours utilisateur confus <strong>limitaient 
+                    l'acquisition de nouveaux clients</strong> B2B et ne donnaient pas envie aux candidats 
+                    de rejoindre l'aventure.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">58%</div>
+                        <div class="stat-label" data-i18n="gomind.challenge.stat1.label">Taux de rebond</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">-35%</div>
+                        <div class="stat-label" data-i18n="gomind.challenge.stat2.label">Conversions prospects</div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3 data-i18n="gomind.challenge.objective.title">Objectif Principal</h3>
+                    <p data-i18n="gomind.challenge.objective.text">
+                        Créer une identité visuelle moderne qui inspire confiance, faciliter l'acquisition 
+                        de clients B2B, attirer les talents tech, et doter l'équipe d'une mascotte personnalisable 
+                        via IA pour renforcer leur storytelling sur tous les canaux.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section Recherche -->
+            <section class="content-section" id="recherche">
+                <div class="section-header">
+                    <div class="section-icon">🔍</div>
+                    <h2>Phase de Recherche</h2>
+                </div>
+                
+                <p data-i18n="gomind.research.intro">
+                    J'ai démarré par 2 jours en présentiel pour comprendre les besoins identifiés par le 
+                    développeur no-code et les enjeux business. Analyse du site existant, sessions de 
+                    co-création, et utilisation de l'IA pour structurer les insights métier.
+                </p>
+
+                <div class="process-grid">
+                    <div class="step-card" data-number="1">
+                        <h4 data-i18n="gomind.research.step1.title">Audit UX Existant</h4>
+                        <p data-i18n="gomind.research.step1.text">Analyse critique du site actuel : friction, design surchargé, CTA invisibles</p>
+                    </div>
+                    <div class="step-card" data-number="2">
+                        <h4 data-i18n="gomind.research.step2.title">Workshops Internes</h4>
+                        <p data-i18n="gomind.research.step2.text">2 jours en présentiel avec le dev no-code pour cadrer besoins et contraintes</p>
+                    </div>
+                    <div class="step-card" data-number="3">
+                        <h4 data-i18n="gomind.research.step3.title">Analyse IA-Augmentée</h4>
+                        <p data-i18n="gomind.research.step3.text">Utilisation d'IA pour structurer insights métier et propositions initiales</p>
+                    </div>
+                    <div class="step-card" data-number="4">
+                        <h4 data-i18n="gomind.research.step4.title">Ateliers Co-création</h4>
+                        <p data-i18n="gomind.research.step4.text">Itérations collaboratives pour affiner design et vision produit</p>
+                    </div>
+                </div>
+
+                <h3 data-i18n="gomind.research.insights.title">Insights Clés Découverts</h3>
+                <ul class="icon-list">
+                    <li data-i18n="gomind.research.insight1">L'identité visuelle ne reflétait pas l'expertise tech et l'innovation</li>
+                    <li data-i18n="gomind.research.insight2">Les CTA étaient quasi invisibles, parfois de simples liens texte</li>
+                    <li data-i18n="gomind.research.insight3">Le parcours candidat/client était confus et mal différencié</li>
+                    <li data-i18n="gomind.research.insight4">Le design surchargé nuisait à la crédibilité et à la conversion</li>
+                    <li data-i18n="gomind.research.insight5">Besoin d'une mascotte flexible pour humaniser la communication</li>
+                </ul>
+
+                <div class="quote-box">
+                    <p class="quote-text" data-i18n="gomind.research.quote.text">
+                        On en avait marre de notre site. Il ne nous représentait plus et 
+                        on perdait des opportunités business à cause de ça.
+                    </p>
+                    <p class="quote-author" data-i18n="gomind.research.quote.author">— Antoine, CEO GoMind</p>
+                </div>
+            </section>
+
+            <!-- Section Idéation -->
+            <section class="content-section" id="ideation">
+                <div class="section-header">
+                    <div class="section-icon">💡</div>
+                    <h2>Idéation & Wireframes</h2>
+                </div>
+                
+                <p data-i18n="gomind.ideation.intro">
+                    Approche hybride combinant IA générative pour accélérer l'idéation et expertise 
+                    senior pour le cadrage stratégique. J'ai défini une architecture claire, évalué 
+                    précisément les délais, et livré 1 jour avant la deadline.
+                </p>
+
+                <h3 data-i18n="gomind.ideation.principles.title">Principes de Design Retenus</h3>
+                <ul class="icon-list">
+                    <li>
+                        <div class="icon-list-content">
+                            <strong data-i18n="gomind.ideation.principle1.label">Clarté avant tout</strong>
+                            <p data-i18n="gomind.ideation.principle1.text">Épurer le design, hiérarchie visuelle forte</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-list-content">
+                            <strong data-i18n="gomind.ideation.principle2.label">Conversion optimisée</strong>
+                            <p data-i18n="gomind.ideation.principle2.text">CTA fixes, parcours fluides, micro-interactions</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-list-content">
+                            <strong data-i18n="gomind.ideation.principle3.label">Modernité tech</strong>
+                            <p data-i18n="gomind.ideation.principle3.text">Identité reflétant l'expertise GreenIT et innovation</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-list-content">
+                            <strong data-i18n="gomind.ideation.principle4.label">Flexibilité</strong>
+                            <p data-i18n="gomind.ideation.principle4.text">Design system modulaire pour WordPress no-code</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-list-content">
+                            <strong data-i18n="gomind.ideation.principle5.label">IA-powered storytelling</strong>
+                            <p data-i18n="gomind.ideation.principle5.text">Générateur de mascotte automatisé</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="chart-container">
+                    <div class="chart-title" data-i18n="gomind.ideation.chart.title">Évolution satisfaction équipe</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.ideation.chart.before">Site existant</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 15%;">1/5</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.ideation.chart.iteration">Après premières itérations</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 70%;">3.5/5</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.ideation.chart.final">Version finale</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 96%;">4.8/5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Images - Comparateur Avant/Après -->
+            <section class="image-comparison-section">
+                <h3 data-i18n="gomind.comparison.title">🎨 Transformation du Site</h3>
+                <div class="comparison-container" id="comparisonContainer">
+                    <!-- Image Après -->
+                    <div class="comparison-after">
+                        <img src="apres.png" alt="Site après transformation" class="comparison-image zoomable" data-lightbox data-lightbox-src="apres.png" />
+                    </div>
+            
+                    <!-- Image Avant -->
+                    <div class="comparison-before" id="comparisonBefore">
+                        <img src="avant.png" alt="Site avant transformation" class="comparison-image zoomable" data-lightbox data-lightbox-src="avant.png" />
+                    </div>
+            
+                    <!-- Slider -->
+                    <div class="comparison-slider" id="comparisonSlider"></div>
+                </div>
+                <div class="comparison-labels">
+                    <span class="comparison-label" data-i18n="gomind.comparison.label.before">❌ Site Avant</span>
+                    <span class="comparison-label" data-i18n="gomind.comparison.label.after">✅ Site Après</span>
+                </div>
+            </section>
+
+            <!-- Section Prototype -->
+            <section class="content-section" id="prototype">
+                <div class="section-header">
+                    <div class="section-icon">🎨</div>
+                    <h2>Prototype & Design System</h2>
+                </div>
+                
+                <p data-i18n="gomind.prototype.intro">
+                    Création de maquettes adaptées aux contraintes WordPress no-code, avec composants 
+                    custom intégrables en embed. Développement d'un générateur de mascotte 3D piloté 
+                    par IA avec système de filtres pour automatiser la production visuelle.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 data-i18n="gomind.prototype.timeline1.title">Identité Visuelle</h4>
+                        <p data-i18n="gomind.prototype.timeline1.text">Refonte complète : palette moderne, typographie claire, mascotte 3D flexible</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="gomind.prototype.timeline2.title">Design System</h4>
+                        <p data-i18n="gomind.prototype.timeline2.text">Composants modulaires WordPress-ready, code embed pour formulaires et CTA</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="gomind.prototype.timeline3.title">Générateur Mascotte IA</h4>
+                        <p data-i18n="gomind.prototype.timeline3.text">One-page avec filtres générant prompts IA pour créer variantes mascotte</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 data-i18n="gomind.prototype.timeline4.title">Adaptation No-Code</h4>
+                        <p data-i18n="gomind.prototype.timeline4.text">Collaboration dev : composants simplifiés, code intégrable, contraintes WordPress</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3 data-i18n="gomind.prototype.tests.title">Tests A/B - Ajustements Clés</h3>
+                    <p data-i18n="gomind.prototype.tests.intro">Itérations basées sur workshops et feedback équipe :</p>
+                    <ul class="icon-list">
+                        <li data-i18n="gomind.prototype.test1">Simplification formulaires et amélioration UX des CTA fixes</li>
+                        <li data-i18n="gomind.prototype.test2">Réduction densité visuelle de 40% pour clarté accrue</li>
+                        <li data-i18n="gomind.prototype.test3">Ajout micro-interactions pour engagement (hover, scroll reveals)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section Images - Galerie Mascotte -->
+            <section class="mascot-gallery-section">
+                <h3 data-i18n="gomind.mascots.title">🎭 Mascotte & Générateur IA</h3>
+                <div class="mascot-grid">
+
+                    <div class="mascot-item">
+                        <img src="zig-basique.png" alt="Mascotte GoMind — version standard" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="zig-basique.png">
+                        <div class="mascot-caption">
+                            <h4 data-i18n="gomind.mascots.standard.title">Version Standard</h4>
+                            <p data-i18n="gomind.mascots.standard.text">Mascotte principale utilisée sur le site et réseaux sociaux</p>
+                        </div>
+                    </div>
+
+                    <div class="mascot-item">
+                        <img src="zig-work.png" alt="Mascotte GoMind — variation créative" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="zig-work.png">
+                        <div class="mascot-caption">
+                            <h4 data-i18n="gomind.mascots.creative.title">Version Créative</h4>
+                            <p data-i18n="gomind.mascots.creative.text">Générée par IA pour campagne marketing spécifique</p>
+                        </div>
+                    </div>
+
+                    <div class="mascot-item">
+                        <img src="zig-ecolo.png" alt="Mascotte GoMind — variation business" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="zig-ecolo.png">
+                        <div class="mascot-caption">
+                            <h4 data-i18n="gomind.mascots.business.title">Version Business</h4>
+                            <p data-i18n="gomind.mascots.business.text">Adaptée pour communications corporate B2B</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section Résultats -->
+            <section class="content-section" id="resultats">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <h2>Résultats & Impact</h2>
+                </div>
+                
+                <p data-i18n="gomind.results.intro">
+                    Le site est actuellement en développement. Les objectifs attendus se basent 
+                    sur les retours enthousiastes de l'équipe et les benchmarks du secteur ESN B2B.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="gomind.results.stat1.number">-45%</div>
+                        <div class="stat-label" data-i18n="gomind.results.stat1.label">Taux de rebond attendu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="gomind.results.stat2.number">+65%</div>
+                        <div class="stat-label" data-i18n="gomind.results.stat2.label">Conversions prospects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="gomind.results.stat3.number">+120%</div>
+                        <div class="stat-label" data-i18n="gomind.results.stat3.label">Engagement candidats</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="gomind.results.stat4.number">4.8/5</div>
+                        <div class="stat-label" data-i18n="gomind.results.stat4.label">Satisfaction équipe</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title" data-i18n="gomind.results.chart.title">Objectifs attendus post-lancement</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.results.chart.clarity">Clarté perçue</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 88%;">+88%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.results.chart.credibility">Crédibilité marque</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 75%;">+75%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label" data-i18n="gomind.results.chart.production">Production visuelle</div>
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="--width: 100%;">+200%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3 data-i18n="gomind.results.impact.title">Impact Business Attendu</h3>
+                    <p data-i18n="gomind.results.impact.text" data-i18n-mode="html">
+                        L'équipe GoMind est <strong>très satisfaite</strong> des maquettes et impatiente 
+                        du déploiement. Le générateur de mascotte IA devrait permettre de <strong>multiplier 
+                        par 3 la production</strong> de contenus visuels pour la communication.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section Apprentissages -->
+            <section class="content-section" id="apprentissages">
+                <div class="section-header">
+                    <div class="section-icon">🎓</div>
+                    <h2>Apprentissages</h2>
+                </div>
+
+                <h3 data-i18n="gomind.learnings.success.title">Ce qui a bien fonctionné</h3>
+                <ul class="icon-list">
+                    <li data-i18n="gomind.learnings.success1">L'IA comme accélérateur d'idéation (pas comme solution finale)</li>
+                    <li data-i18n="gomind.learnings.success2">Les workshops collaboratifs ont créé l'alignement nécessaire</li>
+                    <li data-i18n="gomind.learnings.success3">Livraison 1 jour avant deadline grâce à évaluation précise du scope</li>
+                </ul>
+
+                <h3 data-i18n="gomind.learnings.improve.title">Ce que je ferais différemment</h3>
+                <ul class="icon-list">
+                    <li data-i18n="gomind.learnings.improve1">Impliquer les développeurs encore plus tôt dans les décisions</li>
+                    <li data-i18n="gomind.learnings.improve2">Prévoir 2-3 jours de buffer pour les ajustements techniques</li>
+                    <li data-i18n="gomind.learnings.improve3">Documenter davantage le design system dès le départ</li>
+                </ul>
+            </section>
+
+            <!-- Section CTA finale -->
+            <section id="cta" class="content-section cta-section">
+                <h2 data-i18n="gomind.cta.title">Envie d'accélérer votre prochain produit digital&nbsp;?</h2>
+                <p data-i18n="gomind.cta.subtitle">
+                    J'accompagne les équipes produit et marketing pour transformer leurs expériences numériques en leviers de conversion durables. Discutons ensemble de vos ambitions.
+                </p>
+                <div class="cta-actions">
+                    <a class="cta-button primary" href="mailto:hugoferrer.design@gmail.com" data-i18n="gomind.cta.primary">
+                        Discuter de votre projet
+                    </a>
+                    <a class="cta-button secondary" href="index.html#projets" data-i18n="gomind.cta.secondary">
+                        Explorer d'autres études de cas
+                    </a>
+                </div>
+                <span class="cta-disclaimer" data-i18n="gomind.cta.disclaimer">
+                    Réponse sous 48h – Collaboration possible en régie ou sur mission ciblée.
+                </span>
+            </section>
+         </div>
+ 
+         <!-- Sidebar - Table des matières -->
+         <aside class="sidebar">
+             <div class="toc">
+                 <h3 data-i18n="gomind.toc.navigation">Navigation</h3>
+                 <div class="toc-item" data-section="defi" data-i18n="gomind.toc.defi">Le Défi</div>
+                 <div class="toc-item" data-section="recherche" data-i18n="gomind.toc.recherche">Recherche</div>
+                 <div class="toc-item" data-section="ideation" data-i18n="gomind.toc.ideation">Idéation</div>
+                 <div class="toc-item" data-section="prototype" data-i18n="gomind.toc.prototype">Prototype</div>
+                 <div class="toc-item" data-section="resultats" data-i18n="gomind.toc.resultats">Résultats</div>
+                 <div class="toc-item" data-section="apprentissages" data-i18n="gomind.toc.apprentissages">Apprentissages</div>
+                 <div class="toc-item" data-section="cta" data-i18n="gomind.toc.cta">Passer à l'action</div>
+             </div>
+         </aside>
+
+    </div>
+
+
+    <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="gomind.lightbox.aria" data-i18n-attr="aria-label">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" type="button" data-i18n="gomind.lightbox.close" data-i18n-attr="aria-label">×</button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
+
+    <script>
+        // Progress bar au scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer pour les animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments animés
+        document.querySelectorAll('.content-section, .info-card, .step-card, .stat-card, .quote-box, .icon-list li, .timeline-item, .bar-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Table des matières interactive
+        const tocItems = document.querySelectorAll('.toc-item');
+        const sections = document.querySelectorAll('.content-section');
+
+        tocItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.dataset.section;
+                const section = document.getElementById(sectionId);
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Activer l'item de TOC selon la section visible
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Délais d'animation pour les list items
+        document.querySelectorAll('.icon-list li').forEach((li, index) => {
+            li.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.step-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        // Hero media toggle
+        (function () {
+            const media = document.querySelector('[data-hero-media]');
+            if (!media) return;
+
+            const img = media.querySelector('[data-hero-media-image]');
+            if (!img) return;
+
+            const dataSrc = (img.dataset.src || '').trim();
+            const currentSrc = (img.getAttribute('src') || '').trim();
+
+            if (!currentSrc && dataSrc) {
+                img.src = dataSrc;
+            }
+
+            const finalSrc = (img.getAttribute('src') || '').trim();
+            if (!finalSrc) {
+                return;
+            }
+
+            media.removeAttribute('hidden');
+            media.classList.add('has-image');
+            const inner = media.closest('.project-hero-inner');
+            if (inner) {
+                inner.classList.add('has-media');
+            }
+
+            if (!(img.getAttribute('alt') || '').trim()) {
+                img.setAttribute('alt', 'Aperçu visuel du projet GoMind');
+            }
+        })();
+
+        // KPIs Hero counters
+        (function () {
+            const hero = document.querySelector('.hero-image.data-hero');
+            if (!hero) return;
+
+            const counters = hero.querySelectorAll('[data-count]');
+            if (!counters.length) return;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                counters.forEach(el => {
+                    el.textContent = `${el.dataset.prefix || ''}${el.dataset.count || '0'}${el.dataset.suffix || ''}`;
+                });
+                return;
+            }
+
+            const duration = 1400;
+            const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+            function animate(el) {
+                const raw = el.dataset.count || '0';
+                const target = parseFloat(raw);
+                const parts = raw.split('.');
+                const decimals = parts.length > 1 ? parts[1].length : 0;
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                let start = null;
+
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    const progress = Math.min(1, (timestamp - start) / duration);
+                    const eased = easeOutCubic(progress);
+                    const value = target * eased;
+                    const formatted = decimals ? value.toFixed(decimals) : Math.round(value);
+                    el.textContent = `${prefix}${formatted}${suffix}`;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(animate);
+                        obs.disconnect();
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(hero);
+        })();
+
+        // Hero lightbox interactions
+        (function () {
+            const overlay = document.getElementById('lightboxOverlay');
+            const image = document.getElementById('lightboxImage');
+            const closeBtn = document.getElementById('lightboxClose');
+            if (!overlay || !image || !closeBtn) return;
+
+            const open = (sourceImg, overrideSrc) => {
+                if (!sourceImg) return;
+                const src = overrideSrc
+                    || sourceImg.dataset.lightboxSrc
+                    || sourceImg.dataset.zoomSrc
+                    || sourceImg.currentSrc
+                    || sourceImg.src
+                    || sourceImg.getAttribute('src');
+                if (!src) return;
+                image.src = src;
+                image.alt = sourceImg.alt || '';
+                overlay.style.setProperty('--lightbox-image', `url("${src}")`);
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (typeof closeBtn.focus === 'function') {
+                    try {
+                        closeBtn.focus({ preventScroll: true });
+                    } catch {
+                        closeBtn.focus();
+                    }
+                }
+            };
+
+            const close = () => {
+                overlay.classList.remove('active');
+                image.src = '';
+                image.alt = '';
+                overlay.style.removeProperty('--lightbox-image');
+                document.body.style.overflow = '';
+            };
+
+            document.addEventListener('click', event => {
+                const zoomBtn = event.target.closest('.hero-zoom-button');
+                if (zoomBtn) {
+                    const hero = zoomBtn.closest('.hero-image');
+                    if (!hero) return;
+                    const heroImg = hero.querySelector('picture img') || hero.querySelector('img');
+                    open(heroImg, zoomBtn.dataset.zoomSrc);
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return;
+                }
+
+                const trigger = event.target.closest('[data-lightbox]');
+                if (!trigger || trigger.closest('#lightboxOverlay')) {
+                    return;
+                }
+
+                const explicitSrc = trigger.dataset.lightboxSrc
+                    || trigger.dataset.zoomSrc
+                    || trigger.currentSrc
+                    || trigger.src
+                    || trigger.getAttribute('src');
+                if (!explicitSrc) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+                open(trigger, explicitSrc);
+            });
+
+            document.addEventListener('dblclick', event => {
+                const hero = event.target.closest('.hero-image.data-hero');
+                if (!hero || event.target.closest('.data-overlay')) return;
+                const heroImg = hero.querySelector('picture img') || hero.querySelector('img');
+                open(heroImg);
+            });
+
+            closeBtn.addEventListener('click', close);
+
+            overlay.addEventListener('click', event => {
+                if (event.target === overlay) {
+                    close();
+                }
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape' && overlay.classList.contains('active')) {
+                    close();
+                }
+            });
+        })();
+
+        // Comparateur Avant/Après Interactif
+        const comparisonContainer = document.getElementById('comparisonContainer');
+        const comparisonSlider = document.getElementById('comparisonSlider');
+        const comparisonBefore = document.getElementById('comparisonBefore');
+
+        if (comparisonContainer && comparisonSlider && comparisonBefore) {
+            let isDragging = false;
+
+            function updateComparison(x) {
+                const rect = comparisonContainer.getBoundingClientRect();
+                const position = Math.max(0, Math.min(x - rect.left, rect.width));
+                const percentage = (position / rect.width) * 100;
+                
+                comparisonBefore.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                comparisonSlider.style.left = `${percentage}%`;
+            }
+
+            comparisonSlider.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    updateComparison(e.clientX);
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            // Support tactile
+            comparisonSlider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                e.preventDefault();
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    const touch = e.touches[0];
+                    updateComparison(touch.clientX);
+                }
+            });
+
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            // Clic direct sur le container
+            comparisonContainer.addEventListener('click', (e) => {
+                if (e.target !== comparisonSlider) {
+                    updateComparison(e.clientX);
+                }
+            });
+        }
+    </script>
+    <script src="js/i18n.js" defer></script>
+</body>
+</html>
