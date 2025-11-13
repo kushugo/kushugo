@@ -1,0 +1,27 @@
+# Robots.txt pour Portfolio Hugo F
+# https://portfolio-2026-hugof.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://portfolio-2026-hugof.vercel.app/sitemap.xml
+
+# Bloquer les fichiers système et de configuration
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vercel/
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Autoriser l'indexation des ressources
+Allow: /assets/
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg

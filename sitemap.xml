@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- PAGE D'ACCUEIL - Version Française -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portfolio-2026-hugof.vercel.app/index.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portfolio-2026-hugof.vercel.app/index.html?lang=en"/>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PAGE D'ACCUEIL - Version Anglaise -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/index.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portfolio-2026-hugof.vercel.app/index.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://portfolio-2026-hugof.vercel.app/index.html?lang=fr"/>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PROJET GOUVERNEMENT.FR -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PROJET AGORASQUARE -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/agorasquare-good.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PROJET GOMIND -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/gomind-good.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PROJET MASTER COACH (PAGE PRINCIPALE) -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/Master-coach.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PROJET MASTER COACH (CAS D'ÉTUDE) -->
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/mastercoach-good.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PAGE À PROPOS (si existe) -->
+  <!--
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/about.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  -->
+
+  <!-- PAGE CONTACT (si existe) -->
+  <!--
+  <url>
+    <loc>https://portfolio-2026-hugof.vercel.app/contact.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  -->
+
+</urlset>

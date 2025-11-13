@@ -104,6 +104,44 @@
     history.replaceState({}, "", `${url.pathname}${url.search ? `?${url.searchParams.toString()}` : ""}${url.hash}`);
   };
 
+  const updateSeoLinks = () => {
+    const head = document.head;
+    if (!head) return;
+
+    head.querySelectorAll('[data-i18n-generated="1"]').forEach((el) => el.remove());
+
+    const currentUrl = new URL(location.href);
+
+    const canonicalUrl = new URL(currentUrl);
+    canonicalUrl.searchParams.set("lang", state.lang);
+    const canonicalLink = document.createElement("link");
+    canonicalLink.setAttribute("rel", "canonical");
+    canonicalLink.setAttribute("href", canonicalUrl.toString());
+    canonicalLink.setAttribute("data-i18n-generated", "1");
+    head.appendChild(canonicalLink);
+
+    SUPPORTED.forEach((lang) => {
+      const altUrl = new URL(currentUrl);
+      altUrl.searchParams.set("lang", lang);
+
+      const link = document.createElement("link");
+      link.setAttribute("rel", "alternate");
+      link.setAttribute("hreflang", lang);
+      link.setAttribute("href", altUrl.toString());
+      link.setAttribute("data-i18n-generated", "1");
+      head.appendChild(link);
+    });
+
+    const defaultUrl = new URL(currentUrl);
+    defaultUrl.searchParams.set("lang", DEFAULT_LANG);
+    const defaultLink = document.createElement("link");
+    defaultLink.setAttribute("rel", "alternate");
+    defaultLink.setAttribute("hreflang", "x-default");
+    defaultLink.setAttribute("href", defaultUrl.toString());
+    defaultLink.setAttribute("data-i18n-generated", "1");
+    head.appendChild(defaultLink);
+  };
+
   const render = async (forceLang) => {
     if (forceLang) state.lang = forceLang;
 
@@ -111,6 +149,7 @@
     applyMeta(state.dict);
     applyText(state.dict);
     rewriteLinks();
+    updateSeoLinks();
     localStorage.setItem("lang", state.lang);
     document.documentElement.classList.add("i18n-ready");
     document.dispatchEvent(new CustomEvent("i18n:updated", { detail: { lang: state.lang } }));
