@@ -266,7 +266,7 @@
         .hero-subtitle {
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             color: #666;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-weight: 300;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.5s;
@@ -277,38 +277,112 @@
             line-height: 1.8;
             color: #555;
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 4rem auto 10vh;
+            padding-top: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.1s;
+        }
+
+        .hero-description strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Badges secteurs */
+        .sector-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.7s;
         }
 
-        /* Floating elements in hero */
-        .hero::before {
-            content: '✨';
-            position: absolute;
-            font-size: 3rem;
-            top: 20%;
-            left: 10%;
-            animation: float-element 4s ease-in-out infinite;
-            opacity: 0.3;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
         }
 
-        .hero::after {
-            content: '🚀';
-            position: absolute;
-            font-size: 3rem;
-            bottom: 30%;
-            right: 10%;
-            animation: float-element 5s ease-in-out infinite;
-            animation-delay: 1s;
-            opacity: 0.3;
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
         }
 
-        @keyframes float-element {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(10px, -20px) rotate(5deg); }
-            50% { transform: translate(-5px, -10px) rotate(-5deg); }
-            75% { transform: translate(15px, -15px) rotate(3deg); }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .badge:hover {
+            background: rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Stats animées */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color), #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Projects Section */
@@ -770,19 +844,34 @@
             bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce 2s infinite;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: scroll 2s ease infinite;
         }
 
-        .scroll-indicator::after {
-            content: '↓';
-            font-size: 1.5rem;
-            color: #999;
+        @keyframes scroll {
+            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         /* Clients Section */
@@ -1119,6 +1208,19 @@
                 gap: 1.5rem;
             }
 
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .sector-badges {
+                gap: 0.5rem;
+            }
+
+            .badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
             .project-card {
                 grid-template-columns: 1fr !important;
                 gap: 2rem;
@@ -1248,10 +1350,36 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1><span data-i18n="hero.title">UX/UI Designer</span><br><span data-i18n="hero.subtitle">basé à Paris</span></h1>
-            <p class="hero-subtitle" data-i18n="hero.tagline">Créer des expériences digitales mémorables</p>
-            <p class="hero-description" data-i18n="hero.description">Spécialisé dans la conception d'interfaces utilisateur intuitives et engageantes, je transforme des idées complexes en solutions digitales élégantes. Mon approche combine recherche utilisateur, design thinking et attention aux détails pour créer des produits qui résonnent avec leurs utilisateurs.</p>
+            <h1>UX/UI Designer<br>Plateformes à fort impact</h1>
+            
+            <p class="hero-subtitle">Transformer la complexité en expériences fluides</p>
+            
+            <div class="sector-badges">
+                <span class="badge">Secteur Public</span>
+                <span class="badge">SaaS B2B</span>
+                <span class="badge">Secteur Culturel</span>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="84">0</div>
+                    <div class="stat-label">% Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">M+ Utilisateurs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="23">0</div>
+                    <div class="stat-label">% Croissance</div>
+                </div>
+            </div>
+
+            <p class="hero-description">
+                Expert en <strong>design systems</strong> (DSFR), <strong>accessibilité</strong> (RGAA/WCAG) et transformation de parcours complexes. J'aide des organisations exigeantes à créer des expériences digitales qui génèrent des résultats business mesurables.
+            </p>
         </div>
+
         <div class="scroll-indicator"></div>
     </section>
 
@@ -1417,7 +1545,7 @@
         <div class="contact-content">
             <h2 data-i18n="section.worktogether">Travaillons ensemble</h2>
             <p data-i18n="contact.description">Vous avez un projet en tête ? Envie d'échanger sur une idée ? N'hésitez pas à me contacter, je serais ravi d'en discuter avec vous.</p>
-            <a href="https://calendly.com/ferrerhugo91300/reunion-freelance" class="contact-button magnetic" data-i18n="contact.button">Me contacter</a>
+            <a href="https://calendly.com/d/cw58-z27-9nf/reunion-ponctuelle" class="contact-button magnetic" data-i18n="contact.button">Me contacter</a>
             
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/hugo-ferrer-0038a517a/" target="_blank" data-i18n="social.linkedin">LinkedIn</a>
@@ -1599,6 +1727,38 @@
 
         // Initialize Three.js
         initThreeJS().catch(console.error);
+
+        // Animated counters
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Observer pour déclencher l'animation au scroll
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            counterObserver.observe(stat);
+        });
 
         // Smooth scroll reveal animations
         const observerOptions = {
