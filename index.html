@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="fr-FR">
-    <meta name="description" content="Hugo F, UX/UI Designer basé à Paris. Portfolio de projets incluant la refonte de Gouvernement.fr. Expert en design d'interface et expérience utilisateur.">
-    <meta name="keywords" content="UX Designer, UI Designer, Portfolio, Paris, Design Interface, Expérience Utilisateur">
+    <meta name="description" content="Portfolio de Hugo F, UX/UI Designer à Paris. Découvrez mes projets en design d'interface, accessibilité RGAA et systèmes de design pour le secteur public et privé.">
+    <meta name="keywords" content="UX Designer Paris, UI Designer, Design d'interface, Accessibilité RGAA, Design System, Portfolio Designer">
     <meta name="author" content="Hugo F">
     <meta name="publisher" content="Hugo F">
     <meta name="language" content="fr-FR">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
     <meta name="distribution" content="global">
@@ -29,15 +29,14 @@
     <link rel="alternate" hreflang="fr-FR" href="https://portfolio-2026-hugof.vercel.app/">
     <link rel="alternate" hreflang="x-default" href="https://portfolio-2026-hugof.vercel.app/">
     <link rel="icon" type="image/png" href="image/Flavicone.png">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Hugo F - UX/UI Designer Paris">
-    <meta property="og:description" content="Portfolio de projets UX/UI incluant la refonte de Gouvernement.fr">
-    <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/">
+    <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:site_name" content="Hugo Ferrer Portfolio">
+    <meta property="og:title" content="Hugo F - UX/UI Designer Paris">
+    <meta property="og:description" content="Portfolio de Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
     <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/og-image.jpg">
+    <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/">
+    <meta property="og:site_name" content="Hugo F - Portfolio">
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:image:secure_url" content="https://portfolio-2026-hugof.vercel.app/og-image.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
@@ -46,13 +45,12 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hugo F - UX/UI Designer Paris">
-    <meta name="twitter:description" content="Portfolio de projets UX/UI incluant la refonte de Gouvernement.fr">
-    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/og-image.jpg">
-    <meta name="twitter:image:alt" content="Aperçu du portfolio de Hugo Ferrer, UX/UI Designer basé à Paris">
-    <meta name="twitter:url" content="https://portfolio-2026-hugof.vercel.app/">
+    <meta name="twitter:description" content="Portfolio de Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
+    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/twitter-card.jpg">
+    <meta name="twitter:creator" content="@votrecompte">
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <title>Hugo Ferrer - UX/UI Designer | Paris</title>
+    <title>Hugo F - UX/UI Designer Paris | Portfolio & Projets</title>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1361,10 +1359,11 @@
     <div class="cursor"></div>
 
     <!-- Header -->
-    <header id="header">
-        <nav>
+    <header id="header" role="banner">
+        <nav role="navigation" aria-label="Navigation principale">
             <div class="logo">Hugo Ferrer</div>
             <ul class="nav-links">
+                <li><a href="/" data-i18n="nav.home">Accueil</a></li>
                 <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
                 <li><a href="#about" data-i18n="nav.about">À propos</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -1377,10 +1376,12 @@
         </nav>
     </header>
 
+    <!-- Main Content -->
+    <main role="main">
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
-            <h1>UX/UI Designer<br>Plateformes à fort impact</h1>
+            <h1 id="hero-title">UX/UI Designer<br>Plateformes à fort impact</h1>
             
             <p class="hero-subtitle">Transformer la complexité en expériences fluides</p>
             
@@ -1414,9 +1415,9 @@
     </section>
 
     <!-- Clients Section -->
-    <section class="clients-section">
+    <section class="clients-section" aria-labelledby="clients-title">
         <div class="section-container">
-            <h2 class="section-title" data-i18n="section.clients">A travaillé avec</h2>
+            <h2 id="clients-title" class="section-title" data-i18n="section.clients">A travaillé avec</h2>
             <div class="clients-grid">
                 <img src="image/info.gouv.png" alt="Gouvernement.fr" class="client-logo">
                 <img src="image/Logo TF1 Factory 1.png" alt="TF1" class="client-logo">
@@ -1429,8 +1430,8 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="projects-section" id="projets">
-        <h2 class="section-title-projects" data-i18n="section.recentProjects">Projets Récents</h2>
+    <section class="projects-section" id="projets" aria-labelledby="projects-title">
+        <h2 id="projects-title" class="section-title-projects" data-i18n="section.recentProjects">Projets Récents</h2>
         <div class="projects-grid">
             
             <!-- Project: Gouvernement -->
@@ -1502,13 +1503,13 @@
     </section>
 
     <!-- Awards/Recognition Section -->
-    <section class="awards-section" id="about">
+    <section class="awards-section" id="about" aria-labelledby="about-title">
         <div class="section-container">
-            <h2 class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
+            <h2 id="about-title" class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
             <div class="awards-grid">
                 <div class="award-item">
                     <div class="award-icon">🔍</div>
-                    <h4 data-i18n="skill.uxresearch.title">UX Research</h4>
+                    <h3 data-i18n="skill.uxresearch.title">UX Research</h3>
                     <p data-i18n="skill.uxresearch.description">Comprendre les utilisateurs pour créer des expériences qui répondent à leurs besoins réels</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.uxresearch.tag1">Personas</span>
@@ -1518,7 +1519,7 @@
                 </div>
                 <div class="award-item">
                     <div class="award-icon">🎨</div>
-                    <h4 data-i18n="skill.uidesign.title">UI Design</h4>
+                    <h3 data-i18n="skill.uidesign.title">UI Design</h3>
                     <p data-i18n="skill.uidesign.description">Créer des interfaces élégantes et intuitives qui enchantent les utilisateurs</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.uidesign.tag1">Figma</span>
@@ -1528,7 +1529,7 @@
                 </div>
                 <div class="award-item">
                     <div class="award-icon">💡</div>
-                    <h4 data-i18n="skill.designthinking.title">Design Thinking</h4>
+                    <h3 data-i18n="skill.designthinking.title">Design Thinking</h3>
                     <p data-i18n="skill.designthinking.description">Résoudre des problèmes complexes avec créativité et méthodologie</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.designthinking.tag1">Idéation</span>
@@ -1538,7 +1539,7 @@
                 </div>
                 <div class="award-item">
                     <div class="award-icon">⚡</div>
-                    <h4 data-i18n="skill.tools.title">Outils & Tech</h4>
+                    <h3 data-i18n="skill.tools.title">Outils & Tech</h3>
                     <p data-i18n="skill.tools.description">Maîtrise des outils modernes de design et compétences techniques</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.tools.tag1">Adobe Suite</span>
@@ -1548,7 +1549,7 @@
                 </div>
                 <div class="award-item">
                     <div class="award-icon">🎬</div>
-                    <h4 data-i18n="skill.video.title">Production Vidéo</h4>
+                    <h3 data-i18n="skill.video.title">Production Vidéo</h3>
                     <p data-i18n="skill.video.description">Création de contenu vidéo engageant du tournage au montage final</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.video.tag1">Premiere Pro</span>
@@ -1558,7 +1559,7 @@
                 </div>
                 <div class="award-item">
                     <div class="award-icon">💻</div>
-                    <h4 data-i18n="skill.frontend.title">Front-End</h4>
+                    <h3 data-i18n="skill.frontend.title">Front-End</h3>
                     <p data-i18n="skill.frontend.description">Développement web pour donner vie aux designs et prototypes</p>
                     <div class="skill-tags">
                         <span class="skill-tag" data-i18n="skill.frontend.tag1">HTML/CSS</span>
@@ -1571,9 +1572,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-content">
-            <h2 data-i18n="section.worktogether">Travaillons ensemble</h2>
+            <h2 id="contact-title" data-i18n="section.worktogether">Travaillons ensemble</h2>
             <p data-i18n="contact.description">Vous avez un projet en tête ? Envie d'échanger sur une idée ? N'hésitez pas à me contacter, je serais ravi d'en discuter avec vous.</p>
             <a href="https://calendly.com/ferrerhugo91300/reunion-freelance" class="contact-button magnetic" data-i18n="contact.button">Me contacter</a>
             
@@ -1582,9 +1583,10 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <p data-i18n="footer.copyright">© 2025 Hugo Ferrer. Tous droits réservés. • Designer UX/UI à Paris</p>
     </footer>
 
