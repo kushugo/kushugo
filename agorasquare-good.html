@@ -1743,6 +1743,36 @@
             background: rgba(102, 126, 234, 0.18);
             color: inherit;
         }
+
+        /* Language switch buttons */
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 45px;
+            min-height: 45px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .lang-switch button:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .lang-switch button:active {
+            background: rgba(0, 0, 0, 0.1);
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js" defer></script>
 </head>
@@ -1752,10 +1782,10 @@
     <header>
         <nav>
             <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
-            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
-                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+            <div class="lang-switch">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
                 <span aria-hidden="true">|</span>
-                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
             </div>
         </nav>
         <div class="progress-bar" id="progressBar"></div>
