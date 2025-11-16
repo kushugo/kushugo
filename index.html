@@ -1351,6 +1351,92 @@
                 transform: translateY(0);
             }
         }
+
+        /* Cookie banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 960px;
+            width: calc(100% - 2rem);
+            padding: 1.25rem 1.5rem;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+            display: none;
+            z-index: 1100;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .cookie-banner--visible {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .cookie-banner-text {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .cookie-banner-text strong {
+            color: #111827;
+        }
+
+        .cookie-banner-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            border-radius: 999px;
+            padding: 0.5rem 1.1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid rgba(15, 23, 42, 0.18);
+            background: #ffffff;
+            color: #111827;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+            white-space: nowrap;
+        }
+
+        .cookie-btn:hover {
+            background: #f3f4f6;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+        }
+
+        .cookie-btn-primary {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        .cookie-btn-primary:hover {
+            background: #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                bottom: 1rem;
+                padding: 1rem 1.1rem;
+            }
+
+            .cookie-banner--visible {
+                flex-direction: column;
+            }
+
+            .cookie-banner-actions {
+                width: 100%;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body data-page="home">
@@ -1381,32 +1467,36 @@
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
-            <h1 id="hero-title">UX/UI Designer<br>Plateformes à fort impact</h1>
+            <h1 id="hero-title" data-i18n="hero.heading" data-i18n-mode="html">
+                UX/UI Designer<br>Plateformes à fort impact
+            </h1>
             
-            <p class="hero-subtitle">Transformer la complexité en expériences fluides</p>
+            <p class="hero-subtitle" data-i18n="hero.subline">
+                Transformer la complexité en expériences fluides
+            </p>
             
             <div class="sector-badges">
-                <span class="badge">Secteur Public</span>
-                <span class="badge">SaaS B2B</span>
-                <span class="badge">Secteur Culturel</span>
+                <span class="badge" data-i18n="hero.badge.public">Secteur Public</span>
+                <span class="badge" data-i18n="hero.badge.b2b">SaaS B2B</span>
+                <span class="badge" data-i18n="hero.badge.culture">Secteur Culturel</span>
             </div>
 
             <div class="stats-container">
                 <div class="stat-item">
                     <div class="stat-number" data-target="84">0</div>
-                    <div class="stat-label">% Satisfaction</div>
+                    <div class="stat-label" data-i18n="hero.stat1.label">% Satisfaction</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="3">0</div>
-                    <div class="stat-label">M+ Utilisateurs</div>
+                    <div class="stat-label" data-i18n="hero.stat2.label">M+ Utilisateurs</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="23">0</div>
-                    <div class="stat-label">% Croissance</div>
+                    <div class="stat-label" data-i18n="hero.stat3.label">% Croissance</div>
                 </div>
             </div>
 
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.description" data-i18n-mode="html">
                 Expert en <strong>design systems</strong> (DSFR), <strong>accessibilité</strong> (RGAA/WCAG) et transformation de parcours complexes. J'aide des organisations exigeantes à créer des expériences digitales qui génèrent des résultats business mesurables.
             </p>
         </div>
@@ -1589,6 +1679,22 @@
     <footer role="contentinfo">
         <p data-i18n="footer.copyright">© 2025 Hugo Ferrer. Tous droits réservés. • Designer UX/UI à Paris</p>
     </footer>
+    
+    <!-- Cookie banner (respectueux et non intrusif) -->
+    <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Préférences de cookies" aria-describedby="cookie-message">
+        <p id="cookie-message" class="cookie-banner-text" data-i18n="cookie.message" data-i18n-mode="html">
+            Ce site utilise uniquement des cookies de <strong>mesure d’audience</strong> pour améliorer le contenu. 
+            Vous pouvez choisir de les activer ou de continuer sans accepter – le site fonctionnera dans tous les cas.
+        </p>
+        <div class="cookie-banner-actions">
+            <button type="button" class="cookie-btn" id="cookie-reject" data-i18n="cookie.reject">
+                Continuer sans accepter
+            </button>
+            <button type="button" class="cookie-btn cookie-btn-primary" id="cookie-accept" data-i18n="cookie.accept">
+                OK pour les cookies de mesure
+            </button>
+        </div>
+    </div>
 
     <script src="js/i18n.js" defer></script>
     <script type="importmap">
@@ -1939,7 +2045,76 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
     </script>
-    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
-    <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
+    <script>
+        // Gestion simple et transparente du consentement aux cookies de mesure d’audience
+        (function () {
+            const STORAGE_KEY = "cookie-consent";
+
+            const getConsent = () => {
+                try {
+                    return localStorage.getItem(STORAGE_KEY);
+                } catch {
+                    return null;
+                }
+            };
+
+            const setConsent = (value) => {
+                try {
+                    localStorage.setItem(STORAGE_KEY, value);
+                } catch {
+                    // stockage indisponible, on ne bloque pas l'utilisateur
+                }
+            };
+
+            const loadAnalytics = () => {
+                if (window.__analyticsLoaded) return;
+                window.__analyticsLoaded = true;
+
+                const scriptMain = document.createElement("script");
+                scriptMain.src = "https://va.vercel-scripts.com/v1/script.js";
+                scriptMain.defer = true;
+
+                const scriptSpeed = document.createElement("script");
+                scriptSpeed.src = "https://va.vercel-scripts.com/v1/speed-insights/script.js";
+                scriptSpeed.defer = true;
+
+                document.body.appendChild(scriptMain);
+                document.body.appendChild(scriptSpeed);
+            };
+
+            const banner = document.querySelector(".cookie-banner");
+            if (!banner) return;
+
+            const btnAccept = document.getElementById("cookie-accept");
+            const btnReject = document.getElementById("cookie-reject");
+
+            const existing = getConsent();
+            if (existing === "granted") {
+                loadAnalytics();
+                return;
+            }
+            if (existing === "denied") {
+                return;
+            }
+
+            // Pas encore de choix : on montre une bannière discrète
+            banner.classList.add("cookie-banner--visible");
+
+            if (btnAccept) {
+                btnAccept.addEventListener("click", () => {
+                    setConsent("granted");
+                    loadAnalytics();
+                    banner.classList.remove("cookie-banner--visible");
+                });
+            }
+
+            if (btnReject) {
+                btnReject.addEventListener("click", () => {
+                    setConsent("denied");
+                    banner.classList.remove("cookie-banner--visible");
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
