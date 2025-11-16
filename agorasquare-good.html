@@ -875,10 +875,13 @@
 
         .chart-container canvas {
             display: block;
+            /* Force le canvas à utiliser toute la largeur disponible de la box */
             width: 100% !important;
+            max-width: 100% !important;
             height: var(--chart-height) !important;
             max-height: 400px;
             margin-bottom: clamp(1.8rem, 1.4rem + 0.8vw, 2.6rem);
+            box-sizing: border-box;
         }
 
         .chart-container[data-chart="doughnut"] canvas {
@@ -3426,6 +3429,7 @@
             const userFlowsCanvas = document.getElementById('userFlowsChart');
             if (userFlowsCanvas) {
                 const ctx = userFlowsCanvas.getContext('2d');
+                const isMobile = window.matchMedia('(max-width: 640px)').matches;
 
                 if (chartRegistry.userFlows) {
                     chartRegistry.userFlows.destroy();
@@ -3446,7 +3450,9 @@
                                 backgroundColor: palette.quaternary,
                                 borderRadius: 14,
                                 borderSkipped: false,
-                                maxBarThickness: 56
+                                maxBarThickness: isMobile ? 40 : 80,
+                                categoryPercentage: 1,
+                                barPercentage: 0.9
                             },
                             {
                                 label: translate('agora.chart.userflows.after', 'Après livraison'),
@@ -3454,38 +3460,72 @@
                                 backgroundColor: palette.primary,
                                 borderRadius: 14,
                                 borderSkipped: false,
-                                maxBarThickness: 56
+                                maxBarThickness: isMobile ? 40 : 80,
+                                categoryPercentage: 1,
+                                barPercentage: 0.9
                             }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Minutes'
-                                },
-                                ticks: {
-                                    callback: value => `${value} min`
-                                },
-                                grid: {
-                                    color: 'rgba(102, 126, 234, 0.1)',
-                                    drawBorder: false
-                                }
-                            },
-                            x: {
-                                grid: { display: false }
+                        /* Réduit au maximum les marges internes pour utiliser toute la largeur utile */
+                        layout: {
+                            padding: {
+                                left: 0,
+                                right: 0
                             }
                         },
+                        /* Barres horizontales sur mobile, verticales sur desktop */
+                        indexAxis: isMobile ? 'y' : 'x',
+                        scales: isMobile
+                            ? {
+                                x: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Minutes'
+                                    },
+                                    ticks: {
+                                        callback: value => `${value} min`
+                                    },
+                                    grid: {
+                                        color: 'rgba(102, 126, 234, 0.1)',
+                                        drawBorder: false
+                                    }
+                                },
+                                y: {
+                                    grid: { display: false },
+                                    offset: true
+                                }
+                            }
+                            : {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Minutes'
+                                    },
+                                    ticks: {
+                                        callback: value => `${value} min`
+                                    },
+                                    grid: {
+                                        color: 'rgba(102, 126, 234, 0.1)',
+                                        drawBorder: false
+                                    }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    /* Supprime l'offset par défaut qui laisse de gros espaces sur les côtés */
+                                    offset: false
+                                }
+                            },
                         plugins: {
                             legend: { display: false },
                             tooltip: {
                                 callbacks: {
                                     label: context => {
-                                        const value = context.parsed.y;
+                                        const value = isMobile ? context.parsed.x : context.parsed.y;
                                         const formatted = value.toLocaleString(locale, {
                                             minimumFractionDigits: value % 1 ? 1 : 0,
                                             maximumFractionDigits: 1
