@@ -29,6 +29,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/png" href="image/Flavicone.png">
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://portfolio-2026-hugof.vercel.app/#person",
+                "name": "Hugo Ferrer",
+                "alternateName": "Hugo F",
+                "jobTitle": "UX/UI Designer",
+                "url": "https://portfolio-2026-hugof.vercel.app/",
+                "sameAs": [
+                    "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
+                ]
+            },
+            {
+                "@type": "Article",
+                "@id": "https://portfolio-2026-hugof.vercel.app/gomind-good.html#article",
+                "headline": "GoMind - Case Study | Application Mobile de Coaching Mental",
+                "description": "GoMind - Application mobile de coaching mental designée par Hugo F. Découvrez la stratégie produit, le parcours utilisateur et le design system complet.",
+                "url": "https://portfolio-2026-hugof.vercel.app/gomind-good.html",
+                "datePublished": "2024-03-10",
+                "dateModified": "2024-03-10",
+                "author": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "publisher": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://portfolio-2026-hugof.vercel.app/image/GoMind.png",
+                    "caption": "GoMind - Application mobile de coaching mental et bien-être"
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://portfolio-2026-hugof.vercel.app/gomind-good.html"
+                },
+                "articleSection": "Case Study",
+                "keywords": [
+                    "GoMind",
+                    "Application mobile",
+                    "Coaching mental",
+                    "Bien-être",
+                    "UX Design",
+                    "UI Design",
+                    "Mobile App",
+                    "Stratégie produit",
+                    "Design System"
+                ],
+                "about": {
+                    "@type": "SoftwareApplication",
+                    "name": "GoMind",
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "iOS, Android",
+                    "description": "Application mobile de coaching mental avec stratégie produit et design system durable"
+                },
+                "inLanguage": "fr-FR"
+            }
+        ]
+    }
+    </script>
     <style>
         :root:not(.i18n-ready) [data-i18n] {
             visibility: hidden;
@@ -1554,7 +1617,7 @@
                 </div>
             </div>
             <figure class="project-hero-media" data-hero-media hidden>
-                <img src="" alt="" loading="lazy" data-hero-media-image>
+                <img src="" alt="Image héro du projet GoMind" loading="lazy" data-hero-media-image>
             </figure>
         </div>
     </section>
@@ -1562,7 +1625,7 @@
     <div class="hero-wrapper">
         <div class="hero-image data-hero">
             <div class="hero-image-background" aria-hidden="true">
-                <img src="image/hero-go.png" alt="" loading="eager" decoding="async">
+                <img src="image/hero-go.png" alt="" loading="eager" decoding="async" role="presentation">
             </div>
             <picture>
                 <source srcset="image/hero-go.png" media="(max-width: 768px)">
@@ -1978,7 +2041,7 @@
     <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="gomind.lightbox.aria" data-i18n-attr="aria-label" data-i18n-no-text>
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose" type="button" data-i18n="gomind.lightbox.close" data-i18n-attr="aria-label">×</button>
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <img src="" alt="Image agrandie du projet GoMind" class="lightbox-image" id="lightboxImage">
         </div>
     </div>
 
