@@ -884,11 +884,20 @@
             box-sizing: border-box;
         }
 
+        .chart-container[data-chart="doughnut"] {
+            /* Carte un peu plus large, donut centré */
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .chart-container[data-chart="doughnut"] canvas {
             aspect-ratio: 1 / 1;
+            /* Donut beaucoup plus compact */
+            width: 100% !important;
+            max-width: 220px;
             height: auto !important;
             max-height: none;
-            max-width: min(360px, 100%);
             margin: 0 auto clamp(1.8rem, 1.4rem + 0.8vw, 2.6rem);
         }
 
