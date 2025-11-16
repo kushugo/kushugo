@@ -2,10 +2,93 @@
 <html lang="fr" class="i18n-ready">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta de base -->
+    <title>Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris</title>
+    <meta name="description" content="Case study de la refonte de Gouvernement.fr par Hugo F. Découvrez le processus de design d'interface, l'accessibilité RGAA et le système de design pour le secteur public.">
+    <meta name="keywords" content="UX Designer Paris, UI Designer, Design d'interface, Accessibilité RGAA, Design System, Gouvernement.fr, Portfolio Designer">
+    <meta name="author" content="Hugo F">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html">
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
+    <meta property="og:description" content="Case study de la refonte de Gouvernement.fr par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
+    <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/gouvcover.png">
+    <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html">
+    <meta property="og:site_name" content="Hugo F - Portfolio">
+    <meta property="og:locale" content="fr_FR">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
+    <meta name="twitter:description" content="Case study de la refonte de Gouvernement.fr par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
+    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/gouvcover.png">
+    <meta name="twitter:creator" content="@votrecompte">
+    <!-- Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/png" href="image/Flavicone.png">
-    <title>Gouvernement.fr - Case Study | Hugo Ferrer</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://portfolio-2026-hugof.vercel.app/#person",
+                "name": "Hugo Ferrer",
+                "alternateName": "Hugo F",
+                "jobTitle": "UX/UI Designer",
+                "url": "https://portfolio-2026-hugof.vercel.app/",
+                "sameAs": [
+                    "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
+                ]
+            },
+            {
+                "@type": "Article",
+                "@id": "https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html#article",
+                "headline": "Gouvernement.fr - Case Study | Refonte UX/UI et Accessibilité RGAA",
+                "description": "Case study de la refonte de Gouvernement.fr par Hugo F. Découvrez le processus de design d'interface, l'accessibilité RGAA et le système de design pour le secteur public.",
+                "url": "https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html",
+                "datePublished": "2024-01-15",
+                "dateModified": "2024-01-15",
+                "author": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "publisher": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://portfolio-2026-hugof.vercel.app/gouvcover.png",
+                    "caption": "Refonte UX/UI de Gouvernement.fr - Design System et Accessibilité RGAA"
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html"
+                },
+                "articleSection": "Case Study",
+                "keywords": [
+                    "Gouvernement.fr",
+                    "Design System",
+                    "Accessibilité RGAA",
+                    "UX Design",
+                    "UI Design",
+                    "Secteur Public",
+                    "Design d'interface",
+                    "DSFR"
+                ],
+                "about": {
+                    "@type": "Thing",
+                    "name": "Refonte de site web gouvernemental",
+                    "description": "Refonte complète de l'interface utilisateur de Gouvernement.fr avec focus sur l'accessibilité RGAA et le design system DSFR"
+                },
+                "inLanguage": "fr-FR"
+            }
+        ]
+    }
+    </script>
     <style>
         :root:not(.i18n-ready) [data-i18n] {
             visibility: hidden;
@@ -43,6 +126,19 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Screen reader only - accessible but visually hidden */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
 
         /* Header avec progress bar */
@@ -1231,6 +1327,36 @@
                 padding: 2.5rem 1.75rem;
             }
         }
+
+        /* Language switch buttons */
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 45px;
+            min-height: 45px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .lang-switch button:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .lang-switch button:active {
+            background: rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body data-page="gouvernement">
@@ -1239,10 +1365,10 @@
     <header>
         <nav>
             <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
-            <div class="lang-switch" style="display:flex;gap:.5rem;align-items:center;">
-                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')" style="background:none;border:none;cursor:pointer;font-weight:600;">FR</button>
+            <div class="lang-switch">
+                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
                 <span aria-hidden="true">|</span>
-                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')" style="background:none;border:none;cursor:pointer;font-weight:600;">EN</button>
+                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
             </div>
         </nav>
         <div class="progress-bar"></div>
@@ -1259,9 +1385,10 @@
 
         <h1 data-i18n="gouv.title">Gouvernement.fr</h1>
         <p class="project-subtitle" data-i18n="gouv.subtitle" data-i18n-mode="html">
-            En tant qu’UX/UI Designer au Service d’Information du Gouvernement (SIG), j’ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l’amélioration de la lisibilité, de l’accessibilité et de la cohérence visuelle des pages clés.
+            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés.
         </p>
 
+        <h2 class="sr-only">Informations du projet</h2>
         <div class="project-meta">
             <div class="meta-item">
                 <h3 data-i18n="case.role">Rôle</h3>
@@ -1284,7 +1411,7 @@
                 <picture>
                     <source srcset="bg-gouv.png" media="(max-width: 768px)">
                     <source srcset="bg-gouv.png" media="(max-width: 1200px)">
-                    <img src="bg-gouv.png" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr — héro et section Politiques prioritaires" loading="lazy">
+                    <img src="bg-gouv.png" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr — héro et section Politiques prioritaires" loading="lazy" width="1468" height="827">
                 </picture>
                 <div class="data-overlay" aria-label="Impact et résultats mesurés">
                     <div class="kpi">
@@ -1397,10 +1524,11 @@
                     Analyse comparative des meilleures pratiques UX sur les sites gouvernementaux européens et nord-américains pour identifier les patterns d'excellence et les opportunités d'innovation.
                 </p>
 
+                <h3 class="sr-only">Sites gouvernementaux analysés</h3>
                 <div class="media-showcase">
                     <div class="media-grid">
                         <div class="media-item">
-                            <img src="image/Bench-UX-1.png" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" loading="lazy">
+                            <img src="image/Bench-UX-1.png" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" loading="lazy" width="878" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.govuk.title">GOV.UK</h4>
                                 <p data-i18n="gouv.bench.govuk.desc">Excellence en navigation orientée tâche et messages orientés bénéfices utilisateur</p>
@@ -1408,7 +1536,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/Bench-UX-2.png" alt="Benchmark Canada.ca - Structure d'information optimisée" loading="lazy">
+                            <img src="image/Bench-UX-2.png" alt="Benchmark Canada.ca - Structure d'information optimisée" loading="lazy" width="882" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.canada.title">Canada.ca</h4>
                                 <p data-i18n="gouv.bench.canada.desc">Structure "How can we help you?" optimisant l'accès rapide aux services prioritaires</p>
@@ -1416,7 +1544,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/Bench-UX-3.png" alt="Benchmark EU - Design épuré et recherche prioritaire" loading="lazy">
+                            <img src="image/Bench-UX-3.png" alt="Benchmark EU - Design épuré et recherche prioritaire" loading="lazy" width="850" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.eu.title">European Union</h4>
                                 <p data-i18n="gouv.bench.eu.desc">Design épuré avec recherche prioritaire et architecture d'information claire</p>
@@ -1424,7 +1552,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/Bench-UX-4.png" alt="Benchmark Portal - Catégorisation par domaine métier" loading="lazy">
+                            <img src="image/Bench-UX-4.png" alt="Benchmark Portal - Catégorisation par domaine métier" loading="lazy" width="882" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.portal.title">Government Portal</h4>
                                 <p data-i18n="gouv.bench.portal.desc">Catégorisation par domaines métiers avec iconographie claire et CTA explicites</p>
@@ -1432,7 +1560,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/Bench-UX-5.png" alt="Benchmark France - Communication institutionnelle" loading="lazy">
+                            <img src="image/Bench-UX-5.png" alt="Benchmark France - Communication institutionnelle" loading="lazy" width="852" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.france.title">Gouvernement.fr (avant)</h4>
                                 <p data-i18n="gouv.bench.france.desc">Approche communication institutionnelle avec focus actualités politiques</p>
@@ -1440,7 +1568,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/Bench-UX-6.png" alt="Benchmark Allemagne - Structure fédérale" loading="lazy">
+                            <img src="image/Bench-UX-6.png" alt="Benchmark Allemagne - Structure fédérale" loading="lazy" width="884" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.germany.title">Bundesregierung.de</h4>
                                 <p data-i18n="gouv.bench.germany.desc">Gestion complexe de la structure fédérale avec personnalisation du contenu</p>
@@ -1461,9 +1589,10 @@
                     Workshops FigJam multi-parties prenantes pour aligner les objectifs métiers, les contraintes techniques et les attentes utilisateurs. Approche "Design Thinking" adaptée au contexte institutionnel.
                 </p>
 
+                <h3 class="sr-only">Détails des ateliers</h3>
                 <div class="media-showcase">
                     <div class="single-media"> 
-                        <img src="image/Wire-ppg.png" alt="Atelier FigJam - Refonte Politiques Prioritaires" loading="lazy">
+                        <img src="image/Wire-ppg.png" alt="Atelier FigJam - Refonte Politiques Prioritaires" loading="lazy" width="1536" height="1024">
                         <div class="media-caption">
                             <h4 data-i18n="gouv.workshops.figjam.title">Atelier FigJam - Refonte Politiques Prioritaires</h4>
                             <p data-i18n="gouv.workshops.figjam.desc">Session collaborative avec les équipes métiers, communication et technique pour identifier les irritants UX et co-construire les solutions. Méthode divergence → convergence avec priorisation RICE.</p>
@@ -1508,9 +1637,10 @@
                     Adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
                 </p>
 
+                <h3 class="sr-only">Composants du design system</h3>
                 <div class="media-showcase">
                     <div class="single-media">
-                        <img src="image/proto.png" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" loading="lazy">
+                        <img src="image/proto.png" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" loading="lazy" width="4099" height="4099">
                         <div class="media-caption">
                             <h4 data-i18n="gouv.prototype.ds.title">Design System - Adaptation DSFR</h4>
                             <p data-i18n="gouv.prototype.ds.desc">Création de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires. Documentation complète des tokens, variants et guidelines d'usage.</p>
@@ -1557,7 +1687,7 @@
                         <div class="before-section">
                             <h3 data-i18n="gouv.transform.before.title">Avant - Approche institutionnelle</h3>
                             <div class="media-item">
-                                <img src="image/avant-ppg.jpeg" alt="Interface avant refonte - Focus actualités gouvernementales" loading="lazy">
+                                <img src="image/avant-ppg.jpeg" alt="Interface avant refonte - Focus actualités gouvernementales" loading="lazy" width="2942" height="10060">
                                 <div class="issues-list">
                                     <h4 data-i18n="gouv.transform.before.issues">Problèmes identifiés :</h4>
                                     <ul class="icon-list">
@@ -1574,7 +1704,7 @@
                         <div class="after-section">
                             <h3 data-i18n="gouv.transform.after.title">Après - Approche orientée utilisateur</h3>
                             <div class="media-item">
-                                <img src="image/après-ppg.jpeg" alt="Interface après refonte - UX optimisée et accessibilité renforcée" loading="lazy">
+                                <img src="image/après-ppg.jpeg" alt="Interface après refonte - UX optimisée et accessibilité renforcée" loading="lazy" width="2942" height="11062">
                                 <div class="improvements-list">
                                     <h4 data-i18n="gouv.transform.after.improvements">Améliorations apportées :</h4>
                                     <ul class="icon-list">
@@ -1915,7 +2045,7 @@
     <div class="lightbox-overlay" id="lightboxOverlay">
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose">×</button>
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <img src="" alt="Image agrandie du projet Gouvernement.fr" class="lightbox-image" id="lightboxImage">
         </div>
     </div>
 
@@ -2293,5 +2423,7 @@
         document.addEventListener('i18n:updated', renderCharts);
     </script>
     <script src="js/i18n.js" defer></script>
+    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+    <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
 </body>
 </html>

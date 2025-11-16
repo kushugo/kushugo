@@ -1251,7 +1251,7 @@
         .mb-3 { margin-bottom: 3rem; }
         .mb-4 { margin-bottom: 4rem; }
 
-        /* Language switch buttons */
+        /* Language switch buttons (navigation) */
         .lang-switch {
             display: flex;
             gap: 0.5rem;
@@ -1263,14 +1263,16 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
-            min-width: 45px;
-            min-height: 45px;
-            padding: 0.5rem;
-            display: flex;
+            font-size: 0.85rem;
+            min-width: 36px;
+            min-height: 32px;
+            padding: 0.15rem 0.4rem;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             border-radius: 4px;
+            line-height: 1;
         }
 
         .lang-switch button:hover {
@@ -1280,18 +1282,261 @@
         .lang-switch button:active {
             background: rgba(0, 0, 0, 0.1);
         }
+
+        /* Navigation globale */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.4rem 5%;
+            z-index: 1000;
+            background: transparent;
+            backdrop-filter: none;
+            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            padding: 0.9rem 5%;
+            border-bottom: 1px solid transparent;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.4rem;
+            padding: 0.85rem 2.45rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .logo span {
+            display: inline-block;
+            padding: 0.18rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding-inline: 0.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            line-height: 1;
+        }
+
+        .nav-links a[aria-current="page"],
+        .nav-links a[aria-current="true"] {
+            color: #6366f1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            background: #ffffff;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+        }
+
+        .nav-toggle:hover {
+            background: #f9fafb;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .nav-toggle-icon {
+            position: relative;
+            width: 18px;
+            height: 14px;
+        }
+
+        .nav-toggle-bar {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: #020617;
+            transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
+        }
+
+        .nav-toggle-bar:nth-child(1) {
+            top: 0;
+        }
+
+        .nav-toggle-bar:nth-child(2) {
+            top: 6px;
+        }
+
+        .nav-toggle-bar:nth-child(3) {
+            bottom: 0;
+        }
+
+        body.is-nav-open .nav-toggle-bar:nth-child(1) {
+            top: 6px;
+            transform: rotate(45deg);
+        }
+
+        body.is-nav-open .nav-toggle-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        body.is-nav-open .nav-toggle-bar:nth-child(3) {
+            bottom: 6px;
+            transform: rotate(-45deg);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 0.75rem;
+            left: 50%;
+            transform: translate(-50%, -200%);
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            background: #020617;
+            color: #f9fafb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 1100;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+        }
+
+        .skip-link:focus-visible {
+            transform: translate(-50%, 0);
+            outline: 2px solid #e5e7eb;
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body data-page="mastercoachAlt">
+    <a href="#contexte" class="skip-link">Passer au contenu principal</a>
     <!-- Header fixe -->
-    <header>
-        <div class="progress-bar"></div>
-        <nav>
-            <a href="index.html" class="back-link" data-i18n="nav.back">Retour au portfolio</a>
-            <div class="lang-switch">
-                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
-                <span aria-hidden="true">|</span>
-                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
+    <header id="header" role="banner">
+        <nav role="navigation" aria-label="Navigation principale">
+            <div class="nav-inner">
+                <div class="logo">
+                    Hugo Ferrer
+                    <span>UX/UI</span>
+                </div>
+
+                <div class="nav-main">
+                    <ul class="nav-links" id="primary-navigation">
+                        <li>
+                            <a href="/" aria-current="page">
+                                <span>Accueil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#projets">
+                                <span>Projets</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about">
+                                <span>À propos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact">
+                                <span>Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="nav-meta">
+                        <div class="lang-switch">
+                            <button type="button" aria-label="Basculer en français">FR</button>
+                            <span aria-hidden="true">|</span>
+                            <button type="button" aria-label="Switch to English">EN</button>
+                        </div>
+                        <button
+                            type="button"
+                            class="nav-toggle"
+                            aria-label="Ouvrir le menu de navigation"
+                            aria-expanded="false"
+                            aria-controls="primary-navigation"
+                        >
+                            <span class="nav-toggle-icon" aria-hidden="true">
+                                <span class="nav-toggle-bar"></span>
+                                <span class="nav-toggle-bar"></span>
+                                <span class="nav-toggle-bar"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -1391,7 +1636,7 @@
                 <p>Synchronisation en temps réel, gestion de vidéos d'exercices, système de notifications 
                    intelligent et compatibilité avec les appareils de fitness connectés.</p>
             </div>
-        </div>
+    </div>
     </section>
 
     <!-- Section Problématique -->
@@ -2208,6 +2453,7 @@
         });
     </script>
     <script src="js/i18n.js" defer></script>
+    <script src="js/nav.js" defer></script>
     <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
     <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
 </body>
