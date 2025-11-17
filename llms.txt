@@ -1,0 +1,62 @@
+# Hugo Ferrer - UX/UI Designer Portfolio
+
+## About
+
+Hugo Ferrer is a Lead UX/UI Designer based in Paris, France.
+Specializes in: Government digital services, SaaS B2B platforms, 
+e-learning, accessibility (RGAA/WCAG), Design Systems (DSFR).
+
+## Key Projects
+
+- Gouvernement.fr: Complete redesign focusing on accessibility and DSFR design system implementation. Improved user experience for government information access.
+
+- AgoraSquare: B2B platform redesign for Rungis market wholesalers. Digital transformation combining order management, solvency checks, electronic invoicing, and accounting.
+
+- GoMind: Complete website redesign for a GreenIT-focused ESN. Created modern visual identity, AI mascot generator, and design system to improve B2B client acquisition.
+
+- Master Coach: Full artistic direction for an EdTech platform allowing coaches to sell training and digital products. Created showcase website and video content.
+
+## Expertise
+
+- UX Research & Strategy
+- UI Design & Prototyping
+- Design Systems (especially DSFR for French government)
+- Accessibility compliance (RGAA/WCAG standards)
+- Figma, Design Tokens, Component Libraries
+- Front-end Development (HTML/CSS/JavaScript/React)
+- Video Production (Premiere Pro, After Effects)
+
+## Contact
+
+Website: https://portfolio-2026-hugof.vercel.app
+Location: Paris, France
+LinkedIn: https://www.linkedin.com/in/hugo-ferrer-0038a517a/
+Available for: Freelance, Consulting, Full-time opportunities
+
+## Notable Achievements
+
+- 84% user satisfaction on government platforms
+- 3M+ social media subscribers on managed platforms
+- Successfully delivered 15+ major digital transformations
+- Expert in DSFR (Design System de l'État français)
+- RGAA/WCAG accessibility compliance specialist
+
+## Skills & Technologies
+
+- Design Tools: Figma, Adobe Creative Suite, Webflow, Notion
+- Front-end: HTML5, CSS3, JavaScript, React
+- Design Systems: DSFR, Component Libraries, Design Tokens
+- Accessibility: RGAA 4.1, WCAG 2.1 AA/AAA
+- Video: Premiere Pro, After Effects, Storytelling
+
+## Services
+
+- UX/UI Design for web and mobile applications
+- Design System creation and implementation
+- Accessibility audits and compliance (RGAA/WCAG)
+- Government digital services design (DSFR)
+- B2B SaaS platform design
+- EdTech and e-learning platform design
+- Front-end development
+- Video content production
+

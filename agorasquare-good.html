@@ -39,21 +39,48 @@
                 "@id": "https://portfolio-2026-hugof.vercel.app/#person",
                 "name": "Hugo Ferrer",
                 "alternateName": "Hugo F",
-                "jobTitle": "UX/UI Designer",
+                "jobTitle": "Lead UX/UI Designer",
                 "url": "https://portfolio-2026-hugof.vercel.app/",
+                "image": "https://portfolio-2026-hugof.vercel.app/og-image.jpg",
+                "description": "UX/UI Designer basé à Paris spécialisé dans la création d'expériences digitales accessibles et engageantes pour les organisations publiques et privées.",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Hugo Ferrer Studio"
+                },
                 "sameAs": [
                     "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
-                ]
+                ],
+                "knowsAbout": [
+                    "UX Research",
+                    "UI Design",
+                    "Design Thinking",
+                    "Design Systems",
+                    "DSFR",
+                    "Accessibilité RGAA",
+                    "WCAG",
+                    "Figma",
+                    "Front-end Development",
+                    "B2B Platform Design"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Paris",
+                    "addressCountry": "FR"
+                }
             },
             {
-                "@type": "Article",
+                "@type": "CreativeWork",
                 "@id": "https://portfolio-2026-hugof.vercel.app/agorasquare-good.html#article",
+                "name": "AgoraSquare - Case Study | Plateforme B2B pour Grossistes de Rungis",
                 "headline": "AgoraSquare - Case Study | Plateforme B2B pour Grossistes de Rungis",
                 "description": "AgoraSquare - Plateforme B2B repensée en UX/UI par Hugo F. Découvrez le design d'interface, la gestion des commandes, facturation et comptabilité pour les grossistes de Rungis.",
                 "url": "https://portfolio-2026-hugof.vercel.app/agorasquare-good.html",
                 "datePublished": "2024-02-20",
-                "dateModified": "2024-02-20",
+                "dateModified": "2025-01-17",
                 "author": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "creator": {
                     "@id": "https://portfolio-2026-hugof.vercel.app/#person"
                 },
                 "publisher": {
@@ -62,7 +89,9 @@
                 "image": {
                     "@type": "ImageObject",
                     "url": "https://portfolio-2026-hugof.vercel.app/image/agorasquare-hero.png",
-                    "caption": "AgoraSquare - Plateforme B2B de gestion pour grossistes"
+                    "caption": "AgoraSquare - Plateforme B2B de gestion pour grossistes",
+                    "width": 878,
+                    "height": 540
                 },
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -78,14 +107,79 @@
                     "Gestion de commandes",
                     "Facturation",
                     "Comptabilité",
-                    "Rungis"
+                    "Rungis",
+                    "Digitalisation",
+                    "Design System"
                 ],
                 "about": {
-                    "@type": "Thing",
-                    "name": "Plateforme B2B de gestion",
-                    "description": "Refonte UX/UI d'une plateforme B2B pour digitaliser les processus de commande, facturation et comptabilité des grossistes"
+                    "@type": "SoftwareApplication",
+                    "name": "AgoraSquare",
+                    "applicationCategory": "BusinessApplication",
+                    "description": "Refonte UX/UI d'une plateforme B2B pour digitaliser les processus de commande, facturation et comptabilité des grossistes du marché de Rungis"
                 },
                 "inLanguage": "fr-FR"
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://portfolio-2026-hugof.vercel.app/agorasquare-good.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Combien de temps a duré le projet AgoraSquare ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Le projet AgoraSquare a duré 8 mois, de février à octobre 2022. Cette durée incluait la phase de recherche terrain (3 semaines), la conception UX/UI, le développement, les tests utilisateurs et le déploiement progressif."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quels étaient les principaux défis de ce projet B2B ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Les principaux défis étaient : la résistance au changement des utilisateurs peu familiers avec le numérique, l'implémentation du mode offline pour pallier les problèmes de connexion, et la diversité des cas d'usage selon le type de produits (fruits, viandes, produits laitiers)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quels résultats ont été obtenus avec AgoraSquare ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Les résultats obtenus sont significatifs : 92% de taux d'adoption, 70% de gain de productivité, et 30% de réduction des impayés grâce à une meilleure visibilité sur la solvabilité des clients."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Qu'est-ce que le mode offline dans AgoraSquare ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Le mode offline permet aux grossistes de continuer à utiliser l'application même sans connexion internet, ce qui est crucial sur le marché de Rungis où la connexion peut être instable. Les données sont synchronisées automatiquement dès le retour de la connexion."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Comment la recherche utilisateur a-t-elle été menée ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "J'ai passé 3 semaines en immersion sur le marché de Rungis, observant 15 grossistes, menant 20 entretiens semi-directifs, et cartographiant 8 workflows critiques. Cette approche immersive était essentielle pour comprendre les contraintes réelles du terrain."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quelles technologies ont été utilisées pour AgoraSquare ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "AgoraSquare a été conçu avec Figma pour le design, et développé avec une architecture technique permettant le mode offline. L'application est compatible avec tablettes et ordinateurs, et s'intègre avec les systèmes comptables existants (EBP, Sage, Cegid)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Pourquoi avoir choisi une approche de design system pour AgoraSquare ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Un design system était nécessaire pour garantir la cohérence de l'interface sur l'ensemble des modules (commandes, facturation, comptabilité) et faciliter la maintenance et l'évolution future de la plateforme. Cela permet aussi une meilleure adoption par les utilisateurs grâce à une interface familière."
+                        }
+                    }
+                ]
             }
         ]
     }
@@ -2219,7 +2313,7 @@
     <div class="hero-image data-hero hero-wrapper">
         <picture>
             <source srcset="image/agorasquare-hero-2.png" media="(max-width: 768px)">
-            <img src="image/agorasquare-hero.png" width="878" height="540" data-i18n="img.hero" data-i18n-attr="alt" alt="AgoraSquare — interface de gestion pour grossistes" loading="eager" onerror="this.style.display='none'">
+            <img src="image/agorasquare-hero.png" width="878" height="540" data-i18n="img.hero" data-i18n-attr="alt" alt="AgoraSquare - Interface de gestion B2B pour grossistes du marché de Rungis, montrant le dashboard principal avec gestion des commandes, facturation et comptabilité" loading="eager" onerror="this.style.display='none'">
         </picture>
                         <button class="hero-zoom-button" type="button" data-i18n="agora.hero.zoom.aria" data-i18n-attr="aria-label" data-i18n-no-text aria-label="Afficher en mode cinéma">⤢</button>
         <div class="data-overlay">
@@ -3082,6 +3176,63 @@
                 </div>
             </section>
 
+            <!-- Section FAQ -->
+            <section class="content-section" id="faq" itemscope itemtype="https://schema.org/FAQPage">
+                <div class="section-header">
+                    <div class="section-icon">❓</div>
+                    <h2>Questions Fréquentes</h2>
+                </div>
+                
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Combien de temps a duré le projet AgoraSquare ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Le projet AgoraSquare a duré 8 mois, de février à octobre 2022. Cette durée incluait la phase de recherche terrain (3 semaines), la conception UX/UI, le développement, les tests utilisateurs et le déploiement progressif.</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Quels étaient les principaux défis de ce projet B2B ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Les principaux défis étaient : la résistance au changement des utilisateurs peu familiers avec le numérique, l'implémentation du mode offline pour pallier les problèmes de connexion, et la diversité des cas d'usage selon le type de produits (fruits, viandes, produits laitiers).</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Quels résultats ont été obtenus avec AgoraSquare ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Les résultats obtenus sont significatifs : 92% de taux d'adoption, 70% de gain de productivité, et 30% de réduction des impayés grâce à une meilleure visibilité sur la solvabilité des clients.</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Qu'est-ce que le mode offline dans AgoraSquare ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Le mode offline permet aux grossistes de continuer à utiliser l'application même sans connexion internet, ce qui est crucial sur le marché de Rungis où la connexion peut être instable. Les données sont synchronisées automatiquement dès le retour de la connexion.</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Comment la recherche utilisateur a-t-elle été menée ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">J'ai passé 3 semaines en immersion sur le marché de Rungis, observant 15 grossistes, menant 20 entretiens semi-directifs, et cartographiant 8 workflows critiques. Cette approche immersive était essentielle pour comprendre les contraintes réelles du terrain.</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Quelles technologies ont été utilisées pour AgoraSquare ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">AgoraSquare a été conçu avec Figma pour le design, et développé avec une architecture technique permettant le mode offline. L'application est compatible avec tablettes et ordinateurs, et s'intègre avec les systèmes comptables existants (EBP, Sage, Cegid).</p>
+                    </div>
+                </div>
+
+                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Pourquoi avoir choisi une approche de design system pour AgoraSquare ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Un design system était nécessaire pour garantir la cohérence de l'interface sur l'ensemble des modules (commandes, facturation, comptabilité) et faciliter la maintenance et l'évolution future de la plateforme. Cela permet aussi une meilleure adoption par les utilisateurs grâce à une interface familière.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Section CTA finale -->
             <section id="cta" class="content-section cta-section">
                 <h2 data-i18n="agora.cta.title">Prêt·e à moderniser vos services B2B&nbsp;?</h2>
@@ -3123,7 +3274,7 @@
     <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="agora.lightbox.aria" data-i18n-attr="aria-label">
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose" type="button" data-i18n="agora.lightbox.close" data-i18n-attr="aria-label">×</button>
-            <img class="lightbox-image" id="lightboxImage" src="" alt="Image agrandie du projet AgoraSquare">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Vue agrandie de l'interface AgoraSquare - Plateforme B2B de gestion pour grossistes">
         </div>
     </div>
 

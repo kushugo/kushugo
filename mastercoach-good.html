@@ -39,21 +39,48 @@
                 "@id": "https://portfolio-2026-hugof.vercel.app/#person",
                 "name": "Hugo Ferrer",
                 "alternateName": "Hugo F",
-                "jobTitle": "UX/UI Designer",
+                "jobTitle": "Lead UX/UI Designer",
                 "url": "https://portfolio-2026-hugof.vercel.app/",
+                "image": "https://portfolio-2026-hugof.vercel.app/og-image.jpg",
+                "description": "UX/UI Designer basé à Paris spécialisé dans la création d'expériences digitales accessibles et engageantes pour les organisations publiques et privées.",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Hugo Ferrer Studio"
+                },
                 "sameAs": [
                     "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
-                ]
+                ],
+                "knowsAbout": [
+                    "UX Research",
+                    "UI Design",
+                    "Design Thinking",
+                    "Design Systems",
+                    "Accessibilité RGAA",
+                    "WCAG",
+                    "Figma",
+                    "Front-end Development",
+                    "EdTech",
+                    "Video Production"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Paris",
+                    "addressCountry": "FR"
+                }
             },
             {
-                "@type": "Article",
+                "@type": "CreativeWork",
                 "@id": "https://portfolio-2026-hugof.vercel.app/mastercoach-good.html#article",
+                "name": "Master Coach - Case Study | Plateforme EdTech UX/UI",
                 "headline": "Master Coach - Case Study | Plateforme EdTech UX/UI",
-                "description": "Master Coach - Plateforme EdTech UX/UI par Hugo F à Paris. Découvrez le design d'interface, l'expérience d'accompagnement digital et les tests utilisateurs détaillés.",
+                "description": "Master Coach - Direction artistique complète pour une plateforme EdTech permettant aux coachs de vendre formations et produits numériques. Création du site vitrine et contenus vidéo par Hugo F.",
                 "url": "https://portfolio-2026-hugof.vercel.app/mastercoach-good.html",
                 "datePublished": "2024-04-05",
-                "dateModified": "2024-04-05",
+                "dateModified": "2025-01-17",
                 "author": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "creator": {
                     "@id": "https://portfolio-2026-hugof.vercel.app/#person"
                 },
                 "publisher": {
@@ -62,7 +89,9 @@
                 "image": {
                     "@type": "ImageObject",
                     "url": "https://portfolio-2026-hugof.vercel.app/mastercover.png",
-                    "caption": "Master Coach - Plateforme EdTech d'accompagnement digital"
+                    "caption": "Master Coach - Plateforme EdTech d'accompagnement digital",
+                    "width": 1200,
+                    "height": 630
                 },
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -77,14 +106,47 @@
                     "UI Design",
                     "Accompagnement digital",
                     "Tests utilisateurs",
-                    "Design d'interface"
+                    "Design d'interface",
+                    "Direction artistique",
+                    "Video Production"
                 ],
                 "about": {
-                    "@type": "Thing",
-                    "name": "Plateforme EdTech",
-                    "description": "Conception UX/UI d'une plateforme EdTech avec interface intuitive et parcours d'accompagnement digital optimisé"
+                    "@type": "SoftwareApplication",
+                    "name": "Master Coach",
+                    "applicationCategory": "EducationalApplication",
+                    "description": "Plateforme EdTech permettant aux coachs de vendre formations et produits numériques avec interface intuitive et parcours d'accompagnement digital optimisé"
                 },
                 "inLanguage": "fr-FR"
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://portfolio-2026-hugof.vercel.app/mastercoach-good.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Combien de temps a duré le projet Master Coach ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Le projet Master Coach a duré environ 5 mois, incluant la direction artistique complète, la création du site vitrine, le design d'interface de la plateforme EdTech, et la production de contenus vidéo."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Qu'est-ce qu'une plateforme EdTech et quels étaient les objectifs ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Une plateforme EdTech (Educational Technology) est une solution numérique pour l'éducation. Master Coach permet aux coachs de vendre leurs formations et produits numériques. Les objectifs étaient de créer une expérience d'accompagnement digital intuitive et engageante pour les coachs et leurs clients."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quels livrables ont été fournis pour Master Coach ?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Les livrables incluent : direction artistique complète, site vitrine, design d'interface de la plateforme, parcours utilisateur optimisé, contenus vidéo de présentation, et tests utilisateurs pour valider l'expérience."
+                        }
+                    }
+                ]
             }
         ]
     }
@@ -2236,6 +2298,35 @@
             </div>
         </aside>
     </div>
+
+    <!-- Section FAQ -->
+    <section class="content-section" id="faq" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Questions Fréquentes</h2>
+        </div>
+        
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Combien de temps a duré le projet Master Coach ?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Le projet Master Coach a duré environ 5 mois, incluant la direction artistique complète, la création du site vitrine, le design d'interface de la plateforme EdTech, et la production de contenus vidéo.</p>
+            </div>
+        </div>
+
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Qu'est-ce qu'une plateforme EdTech et quels étaient les objectifs ?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Une plateforme EdTech (Educational Technology) est une solution numérique pour l'éducation. Master Coach permet aux coachs de vendre leurs formations et produits numériques. Les objectifs étaient de créer une expérience d'accompagnement digital intuitive et engageante pour les coachs et leurs clients.</p>
+            </div>
+        </div>
+
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Quels livrables ont été fournis pour Master Coach ?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">Les livrables incluent : direction artistique complète, site vitrine, design d'interface de la plateforme, parcours utilisateur optimisé, contenus vidéo de présentation, et tests utilisateurs pour valider l'expérience.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
