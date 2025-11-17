@@ -1912,6 +1912,7 @@
         </nav>
     </header>
 
+    <main id="main-content" role="main">
     <!-- Project Hero -->
     <section class="project-hero">
         <div class="project-hero-inner">
@@ -2370,7 +2371,7 @@
          </aside>
 
     </div>
-
+    </main>
 
     <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="gomind.lightbox.aria" data-i18n-attr="aria-label" data-i18n-no-text>
         <div class="lightbox-content">
@@ -2531,6 +2532,67 @@
             }, { threshold: 0.2 });
 
             observer.observe(hero);
+        })();
+
+        // Manage focusable elements in hero-wrapper based on visibility
+        (function () {
+            const heroWrapper = document.querySelector('.hero-wrapper');
+            if (!heroWrapper) return;
+
+            const manageHeroFocusableElements = () => {
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                const zoomButton = heroWrapper.querySelector('.hero-zoom-button');
+                const dataOverlay = heroWrapper.querySelector('.data-overlay');
+                
+                // Check if elements are actually visible
+                const isElementVisible = (element) => {
+                    if (!element) return false;
+                    const style = window.getComputedStyle(element);
+                    return style.display !== 'none' && 
+                           style.visibility !== 'hidden' && 
+                           style.opacity !== '0' &&
+                           element.offsetWidth > 0 && 
+                           element.offsetHeight > 0;
+                };
+
+                // Manage zoom button tabindex
+                if (zoomButton) {
+                    if (isElementVisible(zoomButton)) {
+                        zoomButton.removeAttribute('tabindex');
+                    } else {
+                        zoomButton.setAttribute('tabindex', '-1');
+                    }
+                }
+
+                // Manage data overlay focusable elements (if any)
+                if (dataOverlay) {
+                    const focusableInOverlay = dataOverlay.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
+                    focusableInOverlay.forEach(el => {
+                        if (isElementVisible(dataOverlay) && isElementVisible(el)) {
+                            el.removeAttribute('tabindex');
+                        } else {
+                            el.setAttribute('tabindex', '-1');
+                        }
+                    });
+                }
+            };
+
+            // Initial check
+            manageHeroFocusableElements();
+
+            // Update on resize
+            window.addEventListener('resize', manageHeroFocusableElements, { passive: true });
+
+            // Use MutationObserver to watch for style changes
+            if (heroWrapper) {
+                const observer = new MutationObserver(manageHeroFocusableElements);
+                observer.observe(heroWrapper, {
+                    attributes: true,
+                    attributeFilter: ['style', 'class'],
+                    childList: false,
+                    subtree: true
+                });
+            }
         })();
 
         // Hero lightbox interactions

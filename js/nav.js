@@ -49,16 +49,53 @@
     });
   };
 
+  // Function to manage tabindex for hidden navigation links and toggle button
+  const manageNavLinksTabindex = () => {
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    const isNavOpen = document.body.classList.contains('is-nav-open');
+    
+    // Manage nav links tabindex
+    if (navLinks && navAnchors.length > 0) {
+      navAnchors.forEach(a => {
+        // On mobile, only allow focus when nav is open
+        if (isMobile && !isNavOpen) {
+          a.setAttribute('tabindex', '-1');
+        } else {
+          a.removeAttribute('tabindex');
+        }
+      });
+    }
+    
+    // Manage nav toggle button tabindex (hidden on desktop, visible on mobile)
+    if (navToggle) {
+      if (!isMobile) {
+        // On desktop, button is hidden via CSS display:none, but ensure it's not focusable
+        navToggle.setAttribute('tabindex', '-1');
+      } else {
+        // On mobile, button is visible and should be focusable
+        navToggle.removeAttribute('tabindex');
+      }
+    }
+  };
+
   if (navToggle && navLinks) {
+    // Initial state
+    manageNavLinksTabindex();
+    
+    // Update on resize
+    window.addEventListener('resize', manageNavLinksTabindex, { passive: true });
+    
     navToggle.addEventListener('click', () => {
       const isOpen = document.body.classList.toggle('is-nav-open');
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      manageNavLinksTabindex();
     });
 
     navAnchors.forEach(a => {
       a.addEventListener('click', () => {
         document.body.classList.remove('is-nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        manageNavLinksTabindex();
         const href = a.getAttribute('href');
         if (href) {
           setAriaCurrent(href);
