@@ -41,19 +41,46 @@
                 "alternateName": "Hugo F",
                 "jobTitle": "UX/UI Designer",
                 "url": "https://portfolio-2026-hugof.vercel.app/",
+                "image": "https://portfolio-2026-hugof.vercel.app/og-image.jpg",
+                "description": "UX/UI Designer basé à Paris spécialisé dans la création d'expériences digitales accessibles et engageantes pour les organisations publiques et privées.",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Hugo Ferrer Studio"
+                },
                 "sameAs": [
                     "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
-                ]
+                ],
+                "knowsAbout": [
+                    "UX Research",
+                    "UI Design",
+                    "Design Thinking",
+                    "Design Systems",
+                    "DSFR",
+                    "Accessibilité RGAA",
+                    "WCAG",
+                    "Figma",
+                    "Front-end Development",
+                    "Government Digital Services"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Paris",
+                    "addressCountry": "FR"
+                }
             },
             {
-                "@type": "Article",
+                "@type": "CreativeWork",
                 "@id": "https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html#article",
+                "name": "Gouvernement.fr - Case Study | Refonte UX/UI et Accessibilité RGAA",
                 "headline": "Gouvernement.fr - Case Study | Refonte UX/UI et Accessibilité RGAA",
                 "description": "Case study de la refonte de Gouvernement.fr par Hugo F. Découvrez le processus de design d'interface, l'accessibilité RGAA et le système de design pour le secteur public.",
                 "url": "https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html",
                 "datePublished": "2024-01-15",
-                "dateModified": "2024-01-15",
+                "dateModified": "2025-01-17",
                 "author": {
+                    "@id": "https://portfolio-2026-hugof.vercel.app/#person"
+                },
+                "creator": {
                     "@id": "https://portfolio-2026-hugof.vercel.app/#person"
                 },
                 "publisher": {
@@ -62,7 +89,9 @@
                 "image": {
                     "@type": "ImageObject",
                     "url": "https://portfolio-2026-hugof.vercel.app/gouvcover.png",
-                    "caption": "Refonte UX/UI de Gouvernement.fr - Design System et Accessibilité RGAA"
+                    "caption": "Refonte UX/UI de Gouvernement.fr - Design System et Accessibilité RGAA",
+                    "width": 878,
+                    "height": 540
                 },
                 "mainEntityOfPage": {
                     "@type": "WebPage",
@@ -77,11 +106,13 @@
                     "UI Design",
                     "Secteur Public",
                     "Design d'interface",
-                    "DSFR"
+                    "DSFR",
+                    "info.gouv.fr",
+                    "RGAA 4.1"
                 ],
                 "about": {
-                    "@type": "Thing",
-                    "name": "Refonte de site web gouvernemental",
+                    "@type": "WebSite",
+                    "name": "Gouvernement.fr",
                     "description": "Refonte complète de l'interface utilisateur de Gouvernement.fr avec focus sur l'accessibilité RGAA et le design system DSFR"
                 },
                 "inLanguage": "fr-FR"
@@ -1646,7 +1677,7 @@
 
         <h1 data-i18n="gouv.title">Gouvernement.fr</h1>
         <p class="project-subtitle" data-i18n="gouv.subtitle" data-i18n-mode="html">
-            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés.
+            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés, en collaboration avec l'équipe design du SIG.
         </p>
 
         <h2 class="sr-only">Informations du projet</h2>
@@ -1672,7 +1703,7 @@
                 <picture>
                     <source srcset="bg-gouv.png" media="(max-width: 768px)">
                     <source srcset="bg-gouv.png" media="(max-width: 1200px)">
-                    <img src="bg-gouv.png" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr — héro et section Politiques prioritaires" loading="lazy" width="1468" height="827">
+                    <img src="bg-gouv.png" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr - Héro et section Politiques prioritaires montrant la nouvelle interface accessible avec design system DSFR" loading="lazy" width="1468" height="827">
                 </picture>
                 <div class="data-overlay" aria-label="Impact et résultats mesurés">
                     <div class="kpi">
@@ -1768,13 +1799,6 @@
                         </p>
                     </div>
 
-                    <div class="method-card">
-                        <div class="method-icon">📊</div>
-                        <h3 class="method-title" data-i18n="gouv.method.measure.title">Mesure & Optimisation</h3>
-                        <p class="method-description" data-i18n="gouv.method.measure.desc">
-                            Plan de marquage GTM/GA4, définition des KPI UX (clic CTA, complétion démarche, scroll depth), check performance (lazy-load, poids médias).
-                        </p>
-                    </div>
                 </div>
             </section>
 
@@ -1895,7 +1919,7 @@
             <section id="prototypage" class="content-section">
                 <h2 data-i18n="gouv.prototype.title">Prototypage & Design System</h2>
                 <p data-i18n="gouv.prototype.intro">
-                    Adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
+                    Contribution à l'adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
                 </p>
 
                 <h3 class="sr-only">Composants du design system</h3>
@@ -1904,7 +1928,7 @@
                         <img src="image/proto.png" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" loading="lazy" width="4099" height="4099">
                         <div class="media-caption">
                             <h4 data-i18n="gouv.prototype.ds.title">Design System - Adaptation DSFR</h4>
-                            <p data-i18n="gouv.prototype.ds.desc">Création de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires. Documentation complète des tokens, variants et guidelines d'usage.</p>
+                            <p data-i18n="gouv.prototype.ds.desc">Contribution à la création et à l'adaptation de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires, basés sur les normes DSFR. Documentation complète des tokens, variants et guidelines d'usage.</p>
                         </div>
                     </div>
                 </div>
@@ -1932,7 +1956,7 @@
                 </div>
 
                 <div class="highlight-box">
-                    <p><strong data-i18n="gouv.prototype.innovation.label">Innovation DSFR :</strong> <span data-i18n="gouv.prototype.innovation.text">Création de composants inédits tout en respectant strictement les contraintes du design system gouvernemental. Cette approche a permis de maintenir la cohérence visuelle tout en répondant aux besoins spécifiques du projet.</span></p>
+                    <p><strong data-i18n="gouv.prototype.innovation.label">Innovation DSFR :</strong> <span data-i18n="gouv.prototype.innovation.text">Contribution à la création de composants inédits tout en respectant strictement les contraintes du design system gouvernemental. Cette approche a permis de maintenir la cohérence visuelle tout en répondant aux besoins spécifiques du projet.</span></p>
                 </div>
             </section>
 
@@ -1974,7 +1998,7 @@
                                         <li data-i18n="gouv.transform.after.imp3">Hiérarchie visuelle renforcée (hero + preuves + CTA)</li>
                                         <li data-i18n="gouv.transform.after.imp4">CTA clairement identifiables et accessibles</li>
                                         <li data-i18n="gouv.transform.after.imp5">Conformité RGAA AA+ garantie</li>
-                                        <li data-i18n="gouv.transform.after.imp6">Performance optimisée (lazy-loading, compression)</li>
+                                        <li data-i18n="gouv.transform.after.imp6">Performance optimisée</li>
                                     </ul>
                                 </div>
                             </div>
@@ -2045,7 +2069,7 @@
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step1.title">Audit & Diagnostic</h3>
                             <p class="timeline-description" data-i18n="gouv.process.step1.desc">
-                                Audit DSFR complet : identification des écarts de composants, tailles, interlignages, états focus/hover, ratios de contraste. Analyse des parcours GA4 pour identifier les points de friction.
+                                Audit DSFR complet : identification des écarts de composants, tailles, interlignages, états focus/hover, ratios de contraste. Participation à l'analyse des parcours GA4 pour identifier les points de friction.
                             </p>
                         </div>
                     </div>
@@ -2065,7 +2089,7 @@
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step3.title">Wireframing & Architecture</h3>
                             <p class="timeline-description" data-i18n="gouv.process.step3.desc">
-                                Création de wireframes mobile-first annotés avec hiérarchie d'information optimisée. Simplification du sitemap pour réduire la profondeur de navigation.
+                                J'ai produit des wireframes clairs et structurés, mobile-first annotés avec hiérarchie d'information optimisée, qui ont facilité le travail de l'équipe de développement. Simplification du sitemap pour réduire la profondeur de navigation.
                             </p>
                         </div>
                     </div>
@@ -2085,7 +2109,7 @@
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step5.title">Prototypage & Validation</h3>
                             <p class="timeline-description" data-i18n="gouv.process.step5.desc">
-                                Prototypes interactifs avec scénarios de test utilisateur. Variantes A/B des sections hero pour optimiser les messages et CTA. Tests d'accessibilité (NVDA, VoiceOver).
+                                J'ai prototypé les solutions retenues et collaboré avec les développeurs pour faciliter leur intégration. Variantes A/B des sections hero pour optimiser les messages et CTA. Tests d'accessibilité (NVDA, VoiceOver).
                             </p>
                         </div>
                     </div>
@@ -2095,7 +2119,7 @@
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step6.title">Déploiement & Mesure</h3>
                             <p class="timeline-description" data-i18n="gouv.process.step6.desc">
-                                Préparation du tracking (GTM, GA4, consent mode v2). Documentation développeur et design system. Suivi des KPI post-déploiement et optimisations continues.
+                                Documentation développeur et design system. Suivi des optimisations continues.
                             </p>
                         </div>
                     </div>
@@ -2135,7 +2159,7 @@
                         <div class="stat-value" data-i18n="gouv.results.engagement.value">+28%</div>
                         <div class="stat-label" data-i18n="gouv.results.engagement.label">Engagement utilisateur</div>
                         <div class="stat-description" data-i18n="gouv.results.engagement.desc">
-                            Augmentation du temps passé et du scroll depth sur les pages stratégiques.
+                            Augmentation du temps passé sur les pages stratégiques.
                         </div>
                     </div>
 
@@ -2151,7 +2175,7 @@
                         <div class="stat-value" data-i18n="gouv.results.debt.value">-60%</div>
                         <div class="stat-label" data-i18n="gouv.results.debt.label">Dette de design</div>
                         <div class="stat-description" data-i18n="gouv.results.debt.desc">
-                            Réduction drastique grâce à la normalisation DSFR et la librairie Figma unifiée.
+                            Réduction drastique grâce à la normalisation DSFR et à l'utilisation de la librairie Figma unifiée, à laquelle j'ai contribué.
                         </div>
                     </div>
                 </div>
@@ -2177,7 +2201,7 @@
                 <h2 data-i18n="gouv.deliverables.title">Livrables & Design System</h2>
                 
                 <p data-i18n="gouv.deliverables.intro">
-                    Au-delà des écrans, j'ai produit un ensemble complet de livrables pour garantir la pérennité et la scalabilité du projet :
+                    Au-delà des écrans, j'ai contribué à la production d'un ensemble de livrables pour garantir la pérennité et la scalabilité du projet :
                 </p>
 
                 <div class="methodology-grid">
@@ -2209,7 +2233,7 @@
                         <div class="method-icon">🔧</div>
                         <h3 class="method-title" data-i18n="gouv.deliverables.doc.title">Documentation développeur</h3>
                         <p class="method-description" data-i18n="gouv.deliverables.doc.desc">
-                            Documentation technique complète avec règles de responsive, nomenclature des composants, et exemples d'intégration.
+                            J'ai participé à la documentation technique avec règles de responsive, nomenclature des composants, et exemples d'intégration.
                         </p>
                     </div>
 
@@ -2221,17 +2245,10 @@
                         </p>
                     </div>
 
-                    <div class="method-card">
-                        <div class="method-icon">📊</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.tracking.title">Plan de marquage GA4</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.tracking.desc">
-                            Définition des événements à tracker (clic CTA, scroll depth, complétion démarche) et tableau de bord KPI UX.
-                        </p>
-                    </div>
                 </div>
 
                 <div class="highlight-box">
-                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Création d'une librairie Figma privée complète pour tableau complexe(atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation a permis de réduire le temps de design/intégration de 40% et d'améliorer l'homogénéité UI sur l'ensemble des projets.</span></p>
+                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Participation à la normalisation autour du DSFR via l'utilisation et l'enrichissement d'une bibliothèque Figma déjà en place (atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation a permis de réduire le temps de design/intégration de 40% et d'améliorer l'homogénéité UI sur l'ensemble des projets.</span></p>
                 </div>
             </section>
 
@@ -2250,10 +2267,7 @@
                         <strong data-i18n="gouv.learnings.item3.label">L'importance du cadrage multi-parties :</strong> <span data-i18n="gouv.learnings.item3.text">Les ateliers FigJam avec métiers, communication et tech ont permis d'aligner rapidement toutes les parties prenantes et d'éviter les allers-retours coûteux en fin de projet.</span>
                     </li>
                     <li>
-                        <strong data-i18n="gouv.learnings.item4.label">La mesure comme levier d'amélioration continue :</strong> <span data-i18n="gouv.learnings.item4.text">Le plan de marquage GA4 mis en place dès la conception a permis de suivre l'impact réel des décisions de design et d'itérer rapidement sur les zones à optimiser.</span>
-                    </li>
-                    <li>
-                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et la création d'une librairie Figma unifiée ont réduit la dette de design de 60% et accéléré significativement les futurs projets.</span>
+                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et l'enrichissement de la librairie Figma unifiée ont réduit la dette de design de 60% et accéléré significativement les futurs projets.</span>
                     </li>
                 </ul>
 
@@ -2261,6 +2275,7 @@
                     <p><strong data-i18n="gouv.learnings.reflection.label">Réflexion clé :</strong> <span data-i18n="gouv.learnings.reflection.text">Dans un contexte de service public, chaque décision de design a un impact direct sur l'accès aux droits et aux services pour des millions de citoyens. Cette responsabilité impose une rigueur méthodologique et une attention aux détails qui vont bien au-delà de l'esthétique.</span></p>
                 </div>
             </section>
+
 
             <!-- Section CTA finale -->
             <section id="cta" class="content-section cta-section">
@@ -2306,7 +2321,7 @@
     <div class="lightbox-overlay" id="lightboxOverlay">
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose">×</button>
-            <img src="" alt="Image agrandie du projet Gouvernement.fr" class="lightbox-image" id="lightboxImage">
+            <img src="" alt="Vue agrandie de l'interface Gouvernement.fr - Refonte UX/UI avec design system DSFR et accessibilité RGAA" class="lightbox-image" id="lightboxImage">
         </div>
     </div>
 
