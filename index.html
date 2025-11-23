@@ -2720,29 +2720,29 @@
     <script src="js/nav.js" defer></script>
     <script>
         // Force i18n update after DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.__i18n && window.__i18n.getLang) {
+        function forceI18nUpdate() {
+            if (window.__i18n && window.__i18n.getLang && window.__i18n.setLang) {
                 const currentLang = window.__i18n.getLang();
-                // Trigger a re-render to ensure all elements are translated
-                setTimeout(() => {
-                    if (window.__i18n && window.__i18n.setLang) {
-                        window.__i18n.setLang(currentLang);
-                    }
-                }, 100);
+                // Force re-render
+                window.__i18n.setLang(currentLang);
             }
+        }
+        
+        // Try multiple times to ensure translations are applied
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(forceI18nUpdate, 100);
+            setTimeout(forceI18nUpdate, 500);
+            setTimeout(forceI18nUpdate, 1000);
         });
         
         // Also listen for i18n:updated event to ensure translations are applied
         document.addEventListener('i18n:updated', () => {
-            // Force re-application of translations
-            if (window.__i18n && window.__i18n.getLang) {
-                const currentLang = window.__i18n.getLang();
-                setTimeout(() => {
-                    if (window.__i18n && window.__i18n.setLang) {
-                        window.__i18n.setLang(currentLang);
-                    }
-                }, 50);
-            }
+            setTimeout(forceI18nUpdate, 100);
+        });
+        
+        // Fallback: try when window is fully loaded
+        window.addEventListener('load', () => {
+            setTimeout(forceI18nUpdate, 200);
         });
     </script>
     <script type="importmap">

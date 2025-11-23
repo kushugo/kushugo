@@ -47,7 +47,9 @@
   };
 
   const applyText = (dict) => {
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
+    // Force query on all elements, including those that might be hidden or dynamically loaded
+    const allElements = document.querySelectorAll("[data-i18n]");
+    allElements.forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (!key) return;
 
@@ -62,6 +64,29 @@
         }
       }
     });
+    
+    // Also specifically target the contact section elements to ensure they're translated
+    const contactLabel = document.querySelector('.holo-label[data-i18n="contact.holo.label"]');
+    const contactTitle = document.querySelector('.holo-title[data-i18n="contact.holo.title"]');
+    const contactText = document.querySelector('.holo-text[data-i18n="contact.holo.text"]');
+    const contactBtn1 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.appointment"]');
+    const contactBtn2 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.linkedin"]');
+    
+    if (contactLabel && dict["contact.holo.label"]) {
+      contactLabel.textContent = dict["contact.holo.label"];
+    }
+    if (contactTitle && dict["contact.holo.title"]) {
+      contactTitle.innerHTML = dict["contact.holo.title"];
+    }
+    if (contactText && dict["contact.holo.text"]) {
+      contactText.innerHTML = dict["contact.holo.text"];
+    }
+    if (contactBtn1 && dict["contact.holo.button.appointment"]) {
+      contactBtn1.textContent = dict["contact.holo.button.appointment"];
+    }
+    if (contactBtn2 && dict["contact.holo.button.linkedin"]) {
+      contactBtn2.textContent = dict["contact.holo.button.linkedin"];
+    }
 
     document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
       const attrs = el.getAttribute("data-i18n-attr").split("|").map((attr) => attr.trim()).filter(Boolean);
