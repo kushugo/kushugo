@@ -408,6 +408,9 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+        .hero h1 {
+            will-change: background-position;
+        }
 
         .hero-subtitle {
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
@@ -1730,18 +1733,21 @@
             background: var(--accent-primary);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--accent-primary);
-            top: 30px;
-            left: 20px;
+            transform: translate(20px, 30px);
+            will-change: transform;
             animation: map-travel 4s linear infinite, point-pulse 2s ease-in-out infinite;
         }
 
         @keyframes map-travel {
-            0% { top: 30px; left: 20px; }
-            20% { top: 15px; left: 40px; }
-            40% { top: 30px; left: 60px; }
-            60% { top: 15px; left: 80px; }
-            80% { top: 45px; left: 80px; }
-            100% { top: 30px; left: 20px; }
+            0% { transform: translate(20px, 30px); }
+            20% { transform: translate(40px, 15px); }
+            40% { transform: translate(60px, 30px); }
+            60% { transform: translate(80px, 15px); }
+            80% { transform: translate(80px, 45px); }
+            100% { transform: translate(20px, 30px); }
+        }
+        .ux-moving-point {
+            will-change: transform;
         }
 
         @keyframes point-pulse {
@@ -1886,8 +1892,12 @@
         }
 
         @keyframes node-pulse {
-            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 10px var(--accent-glow); }
-            50% { transform: translateY(-50%) scale(1.3); box-shadow: 0 0 20px var(--accent-primary); }
+            0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-50%) scale(1.3); opacity: 1; }
+        }
+        .dt-node {
+            will-change: transform, opacity;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         /* 4. Tools & Tech: Circuit */
@@ -1913,8 +1923,11 @@
         .n3 { top: 20px; right: 0; animation-delay: 2s; }
 
         @keyframes node-flash {
-            0%, 100% { border-color: var(--border-highlight); box-shadow: none; background: rgba(255, 255, 255, 0.05); }
-            50% { border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); background: rgba(99, 102, 241, 0.1); }
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .tool-node {
+            will-change: transform, opacity;
         }
 
         .circuit-line {
@@ -1964,19 +1977,28 @@
         .keyframe {
             width: 10px;
             height: 10px;
-            background: var(--bg-card);
-            border: 1px solid var(--text-secondary);
+            --keyframe-bg: var(--bg-card);
+            --keyframe-border: var(--text-secondary);
+            --keyframe-shadow: none;
+            background: var(--keyframe-bg);
+            border: 1px solid var(--keyframe-border);
+            box-shadow: var(--keyframe-shadow);
             position: absolute;
             top: 50%;
             transform: translateY(-50%) rotate(45deg);
             transition: all 0.3s ease;
             opacity: 0.5;
-            animation: keyframe-pulse 2s infinite;
+            will-change: transform, opacity;
+            animation: keyframe-pulse 2s infinite, keyframe-pulse-colors 2s infinite;
         }
 
         @keyframes keyframe-pulse {
-            0%, 100% { opacity: 0.5; background: var(--bg-card); border-color: var(--text-secondary); box-shadow: none; }
-            50% { opacity: 1; background: var(--accent-primary); border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
+            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(45deg) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) rotate(45deg) scale(1.1); }
+        }
+        @keyframes keyframe-pulse-colors {
+            0%, 100% { --keyframe-bg: var(--bg-card); --keyframe-border: var(--text-secondary); --keyframe-shadow: none; }
+            50% { --keyframe-bg: var(--accent-primary); --keyframe-border: var(--accent-primary); --keyframe-shadow: 0 0 10px var(--accent-glow); }
         }
 
         .k1 { left: 20%; animation-delay: 0s; }
@@ -1991,13 +2013,14 @@
             width: 2px;
             height: 30px;
             background: var(--text-primary);
-            transform: translateY(-50%);
+            transform: translateY(-50%) translateX(0);
+            will-change: transform;
             animation: playhead-move 3s linear infinite;
         }
 
         @keyframes playhead-move {
-            0% { left: 0; }
-            100% { left: 100%; }
+            0% { transform: translateY(-50%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(calc(100vw - 2px)); }
         }
 
         /* 6. Front-End: Code -> UI */
@@ -2034,16 +2057,19 @@
         .fe-line {
             height: 2px;
             background: var(--text-secondary);
-            width: 0;
+            width: 100%;
             border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            will-change: transform;
             animation: type-line 2s ease-in-out infinite;
         }
 
         @keyframes type-line {
-            0% { width: 0; }
-            20% { width: 100%; }
-            90% { width: 100%; }
-            100% { width: 0; }
+            0% { transform: scaleX(0); }
+            20% { transform: scaleX(1); }
+            90% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
         }
 
         .l1 { animation-delay: 0s; }
@@ -2272,6 +2298,9 @@
         @keyframes border-rotate {
             0% { filter: hue-rotate(0deg); background-position: 0% 0%; }
             100% { filter: hue-rotate(360deg); background-position: 100% 100%; }
+        }
+        .holo-border {
+            will-change: filter, background-position;
         }
         /* Ambient Background Glow */
         .holo-bg-glow {
@@ -2692,7 +2721,7 @@
     <script type="importmap">
         {
             "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.min.js",
                 "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
             }
         }
