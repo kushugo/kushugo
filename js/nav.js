@@ -116,10 +116,34 @@
       return el ? { el, href } : null;
     }).filter(Boolean);
 
+    // Cache header height to avoid forced reflows during scroll
+    let cachedHeaderHeight = header ? header.offsetHeight : 80;
+    let headerHeightUpdateScheduled = false;
+
+    // Update header height cache only when needed (resize, class changes)
+    const updateHeaderHeightCache = () => {
+      if (header && !headerHeightUpdateScheduled) {
+        headerHeightUpdateScheduled = true;
+        requestAnimationFrame(() => {
+          cachedHeaderHeight = header.offsetHeight;
+          headerHeightUpdateScheduled = false;
+        });
+      }
+    };
+
+    // Update cache on resize
+    if (header) {
+      window.addEventListener('resize', updateHeaderHeightCache, { passive: true });
+      // Watch for class changes that might affect height
+      const observer = new MutationObserver(updateHeaderHeightCache);
+      observer.observe(header, { attributes: true, attributeFilter: ['class'] });
+    }
+
     const updateActiveSection = () => {
       const scrollY = window.scrollY || window.pageYOffset;
       const viewportHeight = window.innerHeight;
-      const headerOffset = header ? header.offsetHeight + 24 : 80;
+      // Use cached value to avoid forced reflow during scroll
+      const headerOffset = cachedHeaderHeight + 24;
       const centerY = scrollY + headerOffset + viewportHeight * 0.15;
 
       let currentHref = '/';
