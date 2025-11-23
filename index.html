@@ -2069,7 +2069,10 @@
 
         /* CSS Variables for redesigned expertise section */
         :root {
+            --space-32: 8rem;
             --space-24: 6rem;
+            --space-16: 4rem;
+            --space-12: 3rem;
             --space-8: 2rem;
             --space-6: 1.5rem;
             --bg-body: #1a1a2e;
@@ -2084,6 +2087,207 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-tertiary: rgba(255, 255, 255, 0.5);
+        }
+
+        /* =========================================
+           Contact Section: Holographic Light
+           ========================================= */
+        .contact-section-holo {
+            padding: var(--space-32) var(--space-6);
+            background: #F0F2F5; /* Light Grey Background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+            perspective: 2000px; /* Essential for 3D effect */
+        }
+        .holo-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            transform-style: preserve-3d;
+        }
+        /* The Glass Card */
+        .holo-card {
+            background: rgba(255, 255, 255, 0.65); /* White Frosted Glass */
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 32px;
+            padding: var(--space-24) var(--space-12);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        /* 3D Tilt on Hover (Desktop) */
+        .holo-container:hover .holo-card {
+            transform: rotateX(5deg) rotateY(5deg) scale(1.02);
+        }
+        .holo-content {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(40px); /* Text floats above card */
+        }
+        /* Typography */
+        .holo-label {
+            font-family: 'Inter', sans-serif;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: var(--space-8);
+        }
+        .holo-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+            margin-bottom: var(--space-8);
+        }
+        .holo-text {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-16);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+        /* Button */
+        .holo-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 3rem;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 100px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 1rem;
+            min-width: 280px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid transparent;
+        }
+        .holo-btn-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0.8;
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+            filter: blur(20px);
+        }
+        .holo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .holo-btn:hover .holo-btn-glow {
+            width: 200px;
+            height: 200px;
+        }
+        /* LinkedIn Button Variant */
+        .holo-btn-linkedin {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            margin-top: var(--space-8);
+        }
+        .holo-btn-linkedin .holo-btn-glow {
+            background: rgba(99, 102, 241, 0.3);
+        }
+        .holo-btn-linkedin:hover {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+        /* Iridescent Border */
+        .holo-border {
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            padding: 2px;
+            background: linear-gradient(
+                45deg, 
+                transparent 20%, 
+                rgba(99, 102, 241, 0.3) 40%, 
+                rgba(168, 85, 247, 0.3) 60%, 
+                transparent 80%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: border-rotate 6s linear infinite;
+        }
+        @keyframes border-rotate {
+            0% { filter: hue-rotate(0deg); background-position: 0% 0%; }
+            100% { filter: hue-rotate(360deg); background-position: 100% 100%; }
+        }
+        /* Ambient Background Glow */
+        .holo-bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.05), transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.05), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .contact-section-holo {
+                padding: var(--space-16) var(--space-6);
+                min-height: auto;
+            }
+            .holo-card {
+                padding: var(--space-12) var(--space-6);
+                transform: none !important; /* Disable 3D tilt on mobile */
+            }
+            .holo-title {
+                font-size: 3rem;
+            }
+            .holo-content {
+                transform: none;
+                width: 100%;
+            }
+            .holo-btn {
+                min-width: auto;
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -2412,16 +2616,29 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="contact-content">
-            <h2 id="contact-title" data-i18n="section.worktogether">Travaillons ensemble</h2>
-            <p data-i18n="contact.description">Vous avez un projet en tête ? Envie d'échanger sur une idée ? N'hésitez pas à me contacter, je serais ravi d'en discuter avec vous.</p>
-            <a href="https://calendly.com/ferrerhugo91300/reunion-freelance" class="contact-button magnetic" data-i18n="contact.button">Me contacter</a>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/hugo-ferrer-0038a517a/" target="_blank" data-i18n="social.linkedin">LinkedIn</a>
+
+    <!-- Contact Section: Holographic Light -->
+    <section class="contact-section-holo" aria-labelledby="contact-holo-title">
+        <div class="holo-container">
+            <div class="holo-card">
+                <div class="holo-content">
+                    <span class="holo-label">Travaillons ensemble</span>
+                    <h2 id="contact-holo-title" class="holo-title">Future<br>Ready.</h2>
+                    <p class="holo-text">Vous avez un projet en tête ? Envie d'échanger sur une idée ? N'hésitez pas à me contacter, je serais ravi d'en discuter avec vous.</p>
+                    <a href="mailto:hello@hugof.com" class="holo-btn">
+                        <span class="holo-btn-text">Prendre rendez-vous</span>
+                        <div class="holo-btn-glow"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/hugo-ferrer-0038a517a/" target="_blank" class="holo-btn holo-btn-linkedin">
+                        <span class="holo-btn-text">LinkedIn</span>
+                        <div class="holo-btn-glow"></div>
+                    </a>
+                </div>
+                <!-- Iridescent Border -->
+                <div class="holo-border"></div>
             </div>
+            <!-- Background Ambient Glow -->
+            <div class="holo-bg-glow"></div>
         </div>
     </section>
     </main>
