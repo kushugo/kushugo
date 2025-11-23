@@ -2718,6 +2718,33 @@
 
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
+    <script>
+        // Force i18n update after DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.__i18n && window.__i18n.getLang) {
+                const currentLang = window.__i18n.getLang();
+                // Trigger a re-render to ensure all elements are translated
+                setTimeout(() => {
+                    if (window.__i18n && window.__i18n.setLang) {
+                        window.__i18n.setLang(currentLang);
+                    }
+                }, 100);
+            }
+        });
+        
+        // Also listen for i18n:updated event to ensure translations are applied
+        document.addEventListener('i18n:updated', () => {
+            // Force re-application of translations
+            if (window.__i18n && window.__i18n.getLang) {
+                const currentLang = window.__i18n.getLang();
+                setTimeout(() => {
+                    if (window.__i18n && window.__i18n.setLang) {
+                        window.__i18n.setLang(currentLang);
+                    }
+                }, 50);
+            }
+        });
+    </script>
     <script type="importmap">
         {
             "imports": {

@@ -153,6 +153,13 @@
     localStorage.setItem("lang", state.lang);
     document.documentElement.classList.add("i18n-ready");
     document.dispatchEvent(new CustomEvent("i18n:updated", { detail: { lang: state.lang } }));
+    
+    // Force re-application after a short delay to catch any dynamically loaded elements
+    setTimeout(() => {
+      if (state.dict) {
+        applyText(state.dict);
+      }
+    }, 200);
   };
 
   window.__i18n = {
