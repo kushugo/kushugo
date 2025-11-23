@@ -1752,6 +1752,12 @@
             height: 60px;
             position: relative;
             overflow: hidden;
+            color: #6366f1 !important;
+        }
+
+        .visual-ui-design svg,
+        .visual-ui-design .ui-wave {
+            color: #6366f1 !important;
         }
 
         .ui-wave {
@@ -1761,10 +1767,24 @@
             left: 0;
             top: 0;
             animation: wave-scroll 4s linear infinite;
+            color: #6366f1 !important;
         }
 
+        .ui-wave path,
         .wave-path {
+            stroke: #6366f1 !important;
+            fill: none !important;
             filter: drop-shadow(0 0 4px var(--accent-glow));
+        }
+        
+        .visual-ui-design .ui-wave .wave-path,
+        .visual-ui-design .ui-wave path {
+            stroke: #6366f1 !important;
+            fill: none !important;
+        }
+        
+        .visual-ui-design svg path {
+            stroke: #6366f1 !important;
         }
 
         @keyframes wave-scroll {
@@ -2513,9 +2533,9 @@
                 </div>
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-ui-design">
-                            <svg class="ui-wave" viewBox="0 0 200 60" preserveAspectRatio="none" style="color: var(--text-secondary);">
-                                <path class="wave-path" d="M0,30 Q50,10 100,30 T200,30" stroke="currentColor" stroke-width="2" fill="none" opacity="0.6"/>
+                        <div class="visual-ui-design" style="color: #6366f1;">
+                            <svg class="ui-wave" viewBox="0 0 200 60" preserveAspectRatio="none" style="color: #6366f1 !important; stroke: #6366f1 !important;">
+                                <path class="wave-path" d="M0,30 Q50,10 100,30 T200,30" stroke="#6366f1" stroke-width="2.5" fill="none" opacity="1" style="stroke: #6366f1 !important; fill: none !important;"/>
                             </svg>
                             <div class="ui-dot"></div>
                         </div>
