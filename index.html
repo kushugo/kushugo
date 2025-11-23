@@ -2961,6 +2961,44 @@
             });
 
             animate();
+            
+            // Trigger i18n translation after Three.js animation is initialized
+            // This ensures the holographic contact section is translated after animation loads
+            setTimeout(() => {
+                if (window.__i18n && window.__i18n.setLang && window.__i18n.t) {
+                    const currentLang = window.__i18n.getLang();
+                    // Force re-render of translations
+                    window.__i18n.setLang(currentLang);
+                    
+                    // Specifically target contact section elements
+                    const contactLabel = document.querySelector('.holo-label[data-i18n="contact.holo.label"]');
+                    const contactTitle = document.querySelector('.holo-title[data-i18n="contact.holo.title"]');
+                    const contactText = document.querySelector('.holo-text[data-i18n="contact.holo.text"]');
+                    const contactBtn1 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.appointment"]');
+                    const contactBtn2 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.linkedin"]');
+                    
+                    if (contactLabel) {
+                        const text = window.__i18n.t('contact.holo.label', 'Future ready');
+                        if (text) contactLabel.textContent = text;
+                    }
+                    if (contactTitle) {
+                        const text = window.__i18n.t('contact.holo.title', 'Travaillons<br>ensemble');
+                        if (text) contactTitle.innerHTML = text;
+                    }
+                    if (contactText) {
+                        const text = window.__i18n.t('contact.holo.text', 'Vous avez un projet en tête ?<br>Envie d\'échanger sur une idée ? N\'hésitez pas à me contacter, je serais ravi d\'en discuter avec vous.');
+                        if (text) contactText.innerHTML = text;
+                    }
+                    if (contactBtn1) {
+                        const text = window.__i18n.t('contact.holo.button.appointment', 'Prendre rendez-vous');
+                        if (text) contactBtn1.textContent = text;
+                    }
+                    if (contactBtn2) {
+                        const text = window.__i18n.t('contact.holo.button.linkedin', 'LinkedIn');
+                        if (text) contactBtn2.textContent = text;
+                    }
+                }
+            }, 500);
             })();
             return threeJSInitPromise;
         }
