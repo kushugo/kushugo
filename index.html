@@ -989,6 +989,16 @@
             border-top: 1px solid #eee;
         }
 
+        footer .footer-link {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        footer .footer-link:hover {
+            opacity: 0.8;
+        }
+
         /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
@@ -2698,7 +2708,7 @@
 
     <!-- Footer -->
     <footer role="contentinfo">
-        <p data-i18n="footer.copyright">© 2025 Hugo Ferrer. Tous droits réservés. • Designer UX/UI à Paris</p>
+        <p><a href="devis.html" class="footer-link" data-i18n="footer.copyright">© 2025 Hugo Ferrer. Tous droits réservés. • Designer UX/UI à Paris</a></p>
     </footer>
     
     <!-- Cookie banner (respectueux et non intrusif) -->
