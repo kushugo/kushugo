@@ -166,6 +166,81 @@
             scroll-behavior: smooth;
         }
 
+        /* Screen reader only - accessible but visually hidden */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Page loader */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            display: grid;
+            place-items: center;
+            z-index: 2000;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .page-loaded .page-loader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 3px solid rgba(15, 23, 42, 0.15);
+            border-top-color: rgba(15, 23, 42, 0.7);
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Image skeletons */
+        img[data-skeleton] {
+            background: linear-gradient(90deg, #f2f2f2 0%, #e8e8e8 45%, #f2f2f2 90%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.2s ease-in-out infinite;
+        }
+
+        img[data-skeleton].is-loaded {
+            animation: none;
+            background: none;
+        }
+
+        @keyframes skeleton-shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .loader-spinner {
+                animation: none;
+            }
+            img[data-skeleton] {
+                animation: none;
+            }
+        }
+
         /* Header / Navigation */
         header {
             position: fixed;
@@ -2383,6 +2458,10 @@
     </style>
 </head>
 <body data-page="home">
+    <div class="page-loader" role="status" aria-live="polite">
+        <span class="sr-only">Chargement en cours…</span>
+        <div class="loader-spinner" aria-hidden="true"></div>
+    </div>
 
     <!-- Custom cursor -->
     <div class="cursor"></div>
@@ -2492,13 +2571,13 @@
         <div class="section-container">
             <h2 id="clients-title" class="section-title" data-i18n="section.clients">A travaillé avec</h2>
             <div class="clients-grid">
-                <img src="image/images_webp/info.gouv.webp" alt="Logo Gouvernement.fr - Service d'Information du Gouvernement" class="client-logo" width="83" height="78" loading="lazy" decoding="async">
-                <img src="image/images_webp/Logo TF1 Factory 1.webp" alt="Logo TF1 Factory - Studio de production audiovisuelle" class="client-logo" width="189" height="69" loading="lazy" decoding="async">
-                <img src="image/images_webp/Agora.webp" alt="Logo Agorize - Plateforme d'innovation et d'open innovation" class="client-logo" width="201" height="53" loading="lazy" decoding="async">
-                <img src="image/images_webp/Master Coach.webp" alt="Logo Master Coach - Plateforme EdTech de coaching et formations" class="client-logo" width="209" height="44" loading="lazy" decoding="async">
-                <img src="image/images_webp/GoMind.webp" alt="Logo GoMind - ESN spécialisée en GreenIT" class="client-logo" width="245" height="48" loading="lazy" decoding="async">
-                <img src="image/images_webp/Wisely.webp" alt="Logo Wisely - Solution de management pour jeunes managers" class="client-logo" width="150" height="51" loading="lazy" decoding="async">
-                <img src="image/images_webp/Logo Artcurial.webp" alt="Logo Artcurial - Maison de ventes aux enchères" class="client-logo client-logo--large" width="180" height="60" loading="lazy" decoding="async">
+                <img src="image/images_webp/info.gouv.webp" alt="Logo Gouvernement.fr - Service d'Information du Gouvernement" class="client-logo" width="83" height="78" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Logo TF1 Factory 1.webp" alt="Logo TF1 Factory - Studio de production audiovisuelle" class="client-logo" width="189" height="69" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Agora.webp" alt="Logo Agorize - Plateforme d'innovation et d'open innovation" class="client-logo" width="201" height="53" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Master Coach.webp" alt="Logo Master Coach - Plateforme EdTech de coaching et formations" class="client-logo" width="209" height="44" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/GoMind.webp" alt="Logo GoMind - ESN spécialisée en GreenIT" class="client-logo" width="245" height="48" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Wisely.webp" alt="Logo Wisely - Solution de management pour jeunes managers" class="client-logo" width="150" height="51" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Logo Artcurial.webp" alt="Logo Artcurial - Maison de ventes aux enchères" class="client-logo client-logo--large" width="180" height="60" loading="lazy" decoding="async" data-skeleton>
             </div>
         </div>
     </section>
@@ -2513,7 +2592,7 @@
                 <a href="gouvernement-detail.html" class="project-image-link">
                     <div class="project-image" data-number="01" style="--project-image: url('image/images_webp/gouvcover.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
-                        <img src="image/images_webp/gouvcover.webp" alt="Aperçu du projet Gouvernement.fr" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low">
+                        <img src="image/images_webp/gouvcover.webp" alt="Aperçu du projet Gouvernement.fr" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low" data-skeleton>
                     </div>
                 </a>
                 <div class="project-info">
@@ -2529,7 +2608,7 @@
                 <a href="agorasquare-good.html" class="project-image-link">
                     <div class="project-image" data-number="02" style="--project-image: url('image/images_webp/agorasquare-hero.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
-                        <img src="image/images_webp/agorasquare-hero.webp" alt="Aperçu du projet AgoraSquare" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low">
+                        <img src="image/images_webp/agorasquare-hero.webp" alt="Aperçu du projet AgoraSquare" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low" data-skeleton>
                     </div>
                 </a>
                 <div class="project-info">
@@ -2545,7 +2624,7 @@
                 <a href="gomind-good.html" class="project-image-link">
                     <div class="project-image" data-number="03" style="--project-image: url('image/images_webp/après 1.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
-                        <img src="image/images_webp/après 1.webp" alt="Aperçu du projet GoMind" loading="lazy" decoding="async" width="896" height="540" fetchpriority="low">
+                        <img src="image/images_webp/après 1.webp" alt="Aperçu du projet GoMind" loading="lazy" decoding="async" width="896" height="540" fetchpriority="low" data-skeleton>
                     </div>
                 </a>
                 <div class="project-info">
@@ -2561,7 +2640,7 @@
                 <a href="mastercoach-good.html" class="project-image-link">
                     <div class="project-image" data-number="04" style="--project-image: url('image/images_webp/mastercover.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
-                        <img src="image/images_webp/mastercover.webp" alt="Aperçu du projet Master Coach" loading="lazy" decoding="async" width="2640" height="1698" fetchpriority="low">
+                        <img src="image/images_webp/mastercover.webp" alt="Aperçu du projet Master Coach" loading="lazy" decoding="async" width="2640" height="1698" fetchpriority="low" data-skeleton>
                     </div>
                 </a>
                 <div class="project-info">
@@ -3347,6 +3426,24 @@
                 });
             }
         })();
+    </script>
+    <script>
+        window.addEventListener('load', () => {
+            document.body.classList.add('page-loaded');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const skeletonImages = document.querySelectorAll('img[data-skeleton]');
+            skeletonImages.forEach((img) => {
+                const markLoaded = () => img.classList.add('is-loaded');
+                if (img.complete) {
+                    markLoaded();
+                } else {
+                    img.addEventListener('load', markLoaded, { once: true });
+                    img.addEventListener('error', markLoaded, { once: true });
+                }
+            });
+        });
     </script>
 </body>
 </html>
