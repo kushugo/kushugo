@@ -1764,24 +1764,47 @@
             }
         }
 
-        /* Awards/Expertise Section (Redesigned) */
+        /* ============================================
+           Awards / Expertise Section — CSS complet
+           ============================================ */
+        :root {
+            --space-32: 8rem;
+            --space-24: 6rem;
+            --space-16: 4rem;
+            --space-12: 3rem;
+            --space-8: 2rem;
+            --space-6: 1.5rem;
+            --bg-body: #1a1a2e;
+            --bg-surface: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-highlight: rgba(99, 102, 241, 0.5);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.5);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-tertiary: rgba(255, 255, 255, 0.5);
+        }
+
         .awards-section {
             padding: var(--space-24) var(--space-6);
             background: linear-gradient(180deg, var(--bg-body) 0%, var(--bg-surface) 100%);
             position: relative;
             overflow: visible;
             color: var(--text-primary);
-            --bg: #0d0f1a;
-            --card: #181b2a;
-            --card-border: #21243a;
-            --inner: #10121e;
-            --accent: #7c6fee;
-            --accent-hi: #a599f7;
-            --text: #ecedf5;
-            --muted: #636882;
-            --green: #4ade80;
-            --yellow: #fbbf24;
-            --cyan: #67e8f9;
+            --bg:           #0d0f1a;
+            --card:         #181b2a;
+            --card-border:  #21243a;
+            --inner:        #10121e;
+            --accent:       #7c6fee;
+            --accent-hi:    #a599f7;
+            --text:         #ecedf5;
+            --muted:        #636882;
+            --green:        #4ade80;
+            --yellow:       #fbbf24;
+            --cyan:         #67e8f9;
         }
 
         .expertise-grid {
@@ -1811,7 +1834,20 @@
             background: rgba(255, 255, 255, 0.03);
         }
 
-        /* Card Visual Area */
+        .expertise-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .expertise-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
         .card-visual {
             height: 120px;
             width: 100%;
@@ -1823,32 +1859,6 @@
             position: relative;
             overflow: visible;
         }
-
-        /* CSS Variables for redesigned expertise section */
-        :root {
-            --space-32: 8rem;
-            --space-24: 6rem;
-            --space-16: 4rem;
-            --space-12: 3rem;
-            --space-8: 2rem;
-            --space-6: 1.5rem;
-            --bg-body: #1a1a2e;
-            --bg-surface: #16213e;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --border-subtle: rgba(255, 255, 255, 0.1);
-            --border-highlight: rgba(99, 102, 241, 0.5);
-            --radius-lg: 20px;
-            --radius-md: 12px;
-            --accent-primary: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.5);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-tertiary: rgba(255, 255, 255, 0.5);
-        }
-
-        /* ============================
-           Micro-interactions cards
-           ============================ */
 
         .awards-section .card-visual {
             min-height: 190px;
@@ -1871,7 +1881,6 @@
             flex-shrink: 0;
         }
 
-        /* Card 1 - User Testing (heatmap cursor) */
         .ut-scene {
             width: 100%;
             height: 100%;
@@ -1899,11 +1908,7 @@
             padding: 0 8px;
             gap: 5px;
         }
-        .d {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
+        .d { width: 6px; height: 6px; border-radius: 50%; }
         .d-r { background: #ff5f57; }
         .d-y { background: #febc2e; }
         .d-g { background: #28c840; }
@@ -1913,450 +1918,206 @@
             flex-direction: column;
             gap: 5px;
         }
-        .ut-nav {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 2px;
-        }
-        .ut-nav-tab {
-            height: 7px;
-            width: 26px;
-            background: #2a2e4c;
-            border-radius: 2px;
-        }
-        .ut-line {
-            height: 5px;
-            background: #252840;
-            border-radius: 3px;
-        }
-        .ut-cta {
-            height: 14px;
-            width: 44px;
-            background: rgba(124, 111, 238, 0.2);
-            border: 1px solid var(--accent);
-            border-radius: 3px;
-            margin-top: 4px;
-        }
+        .ut-nav { display: flex; gap: 5px; margin-bottom: 2px; }
+        .ut-nav-tab { height: 7px; width: 26px; background: #2a2e4c; border-radius: 2px; }
+        .ut-line { height: 5px; background: #252840; border-radius: 3px; }
+        .ut-cta { height: 14px; width: 44px; background: rgba(124, 111, 238, .2); border: 1px solid var(--accent); border-radius: 3px; margin-top: 4px; }
         .heat-spot {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
             transform: translate(-50%, -50%) scale(0);
-            transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: opacity .35s ease, transform .5s cubic-bezier(.34, 1.56, .64, 1);
         }
         .ut-cursor {
             position: absolute;
             pointer-events: none;
             z-index: 20;
             opacity: 0;
-            transition:
-                left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                transform 0.12s ease;
+            transition: left .5s cubic-bezier(.4, 0, .2, 1), top .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease, transform .12s ease;
         }
 
-        /* Card 2 - Control level slider (UI Design) */
-        .control-slider-wrap {
-            background: #1e1f30;
-            border-radius: 13px;
-        }
+        .control-slider-wrap { background: #1e1f30; border-radius: 13px; }
         .control-slider-scene {
-            width: 100%;
-            height: 100%;
-            min-height: 190px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 16px 16px;
-            gap: 12px;
-            position: relative;
+            width: 100%; height: 100%; min-height: 190px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 14px 16px 16px; gap: 12px; position: relative;
         }
-        .control-value-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
+        .control-value-block { display: flex; flex-direction: column; align-items: center; gap: 2px; }
         .control-value-num {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1;
-            color: #fff;
+            font-size: 52px; font-weight: 700; line-height: 1; color: #fff;
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
         }
-        .control-value-num.bump {
-            transform: scale(1.2);
-            color: #8f7bff;
-        }
-        .control-value-label {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .control-slider-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
+        .control-value-num.bump { transform: scale(1.2); color: #8f7bff; }
+        .control-value-label { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
+        .control-slider-block { display: flex; flex-direction: column; align-items: center; gap: 6px; }
         .control-track {
-            width: 260px;
-            height: 8px;
-            background: #3e3f55;
-            border-radius: 4px;
-            position: relative;
-            cursor: grab;
-            touch-action: none;
-            user-select: none;
+            width: 260px; height: 8px; background: #3e3f55; border-radius: 4px; position: relative;
+            cursor: grab; touch-action: none; user-select: none;
         }
-        .control-track:active,
-        .control-track.dragging {
-            cursor: grabbing;
-        }
+        .control-track:active, .control-track.dragging { cursor: grabbing; }
         .control-progress {
-            height: 100%;
-            border-radius: 4px;
-            background: #8f7bff;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0%;
-            transition: width 0.2s ease-out, box-shadow 0.2s ease;
-            overflow: hidden;
+            height: 100%; border-radius: 4px; background: #8f7bff; position: absolute; left: 0; top: 0; width: 0%;
+            transition: width 0.2s ease-out, box-shadow 0.2s ease; overflow: hidden;
         }
-        .control-track.dragging .control-progress {
-            box-shadow: 0 0 15px 2px rgba(143, 123, 255, 0.5);
-        }
+        .control-track.dragging .control-progress { box-shadow: 0 0 15px 2px rgba(143, 123, 255, 0.5); }
         .control-progress-shimmer {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
             animation: control-shimmer 2s ease-in-out infinite;
         }
-        @keyframes control-shimmer {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(400px); }
-        }
+        @keyframes control-shimmer { 0% { transform: translateX(0); } 100% { transform: translateX(400px); } }
         .control-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #fff;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-            position: absolute;
-            left: calc(0% - 10px);
-            top: 50%;
-            transform: translate(-50%, -50%);
+            width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            position: absolute; left: calc(0% - 10px); top: 50%; transform: translate(-50%, -50%);
             transition: left 0.2s ease-out, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            pointer-events: none; display: flex; align-items: center; justify-content: center;
         }
-        .control-track.dragging .control-thumb {
-            transform: translate(-50%, -50%) scale(1.3);
-        }
-        .control-thumb-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #8f7bff;
-        }
+        .control-track.dragging .control-thumb { transform: translate(-50%, -50%) scale(1.3); }
+        .control-thumb-dot { width: 8px; height: 8px; border-radius: 50%; background: #8f7bff; }
         .control-thumb-ring {
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid rgba(143, 123, 255, 0.6);
-            opacity: 0;
-            pointer-events: none;
+            position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(143, 123, 255, 0.6);
+            opacity: 0; pointer-events: none;
         }
-        .control-track.dragging .control-thumb-ring {
-            animation: control-thumb-pulse 0.6s ease-out infinite;
-        }
-        @keyframes control-thumb-pulse {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
+        .control-track.dragging .control-thumb-ring { animation: control-thumb-pulse 0.6s ease-out infinite; }
+        @keyframes control-thumb-pulse { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; } }
         .control-graduations {
-            width: 260px;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 2px;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.45);
+            width: 260px; display: flex; justify-content: space-between; padding: 0 2px;
+            font-size: 10px; color: rgba(255, 255, 255, 0.45);
         }
-        .control-graduations::before,
-        .control-graduations::after { content: none; }
-        .control-badge-wrap {
-            margin-top: 2px;
-        }
+        .control-badge-wrap { margin-top: 2px; }
         .control-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #fff;
+            display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; color: #fff;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         .control-badge.badge-faible { background-color: #6b7280; }
-        .control-badge.badge-moyen { background-color: #8f7bff; }
+        .control-badge.badge-moyen  { background-color: #8f7bff; }
         .control-badge.badge-eleve { background-color: #22c55e; }
 
-        /* Card 3 - Design Systems (blinking rects) */
-        .ds-scene {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ds-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .ds-rect {
-            width: 72px;
-            height: 48px;
-            border-radius: 8px;
-        }
+        .ds-scene { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ds-rect { width: 72px; height: 48px; border-radius: 8px; }
         .ds-r1 { background: #7c6fee; }
         .ds-r2 { background: #9b8ff5; }
         .ds-r3 { background: #5b4fcf; }
         .ds-r4 { background: #3d3490; }
 
-        /* Card 4 - Figma (click + handles) */
-        .figma-scene {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .figma-scene { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
         .figma-bg {
-            width: 176px;
-            height: 130px;
-            background: #13152a;
-            border-radius: 6px;
-            position: relative;
+            width: 176px; height: 130px; background: #13152a; border-radius: 6px; position: relative;
         }
         .figma-outer {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 144px;
-            height: 96px;
-            border: 1.5px dashed #2c3058;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 144px; height: 96px; border: 1.5px dashed #2c3058; border-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
         }
         .figma-inner {
-            width: 60px;
-            height: 38px;
-            background: rgba(124, 111, 238, 0.12);
-            border: 1.5px solid var(--accent);
-            border-radius: 2px;
+            width: 60px; height: 38px; background: rgba(124, 111, 238, .12); border: 1.5px solid var(--accent); border-radius: 2px;
             position: relative;
-            transition:
-                width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-                height 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: width .55s cubic-bezier(.34, 1.56, .64, 1), height .55s cubic-bezier(.34, 1.56, .64, 1);
         }
         .f-handle {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #fff;
-            border: 1.5px solid var(--accent);
-            border-radius: 1.5px;
-            opacity: 0;
-            transition: opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            position: absolute; width: 7px; height: 7px; background: #fff; border: 1.5px solid var(--accent);
+            border-radius: 1.5px; opacity: 0; transition: opacity .3s ease, box-shadow .3s ease, background .3s ease;
         }
         .f-handle.tl { top: -4px; left: -4px; }
         .f-handle.tr { top: -4px; right: -4px; }
         .f-handle.bl { bottom: -4px; left: -4px; }
         .f-handle.br { bottom: -4px; right: -4px; }
         .figma-cursor {
-            position: absolute;
-            pointer-events: none;
-            z-index: 10;
-            opacity: 0;
-            transition:
-                left 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                transform 0.12s ease;
+            position: absolute; pointer-events: none; z-index: 10; opacity: 0;
+            transition: left .6s cubic-bezier(.4, 0, .2, 1), top .6s cubic-bezier(.4, 0, .2, 1), opacity .3s ease, transform .12s ease;
         }
 
-        /* Card 5 - Design Challenge (terminal typewriter) */
         .terminal {
-            width: 100%;
-            max-width: 280px;
-            height: 130px;
-            background: #090b14;
-            border-radius: 10px;
-            border: 1px solid #191c30;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            width: 100%; max-width: 280px; height: 130px; background: #090b14; border-radius: 10px;
+            border: 1px solid #191c30; display: flex; flex-direction: column; overflow: hidden;
         }
         .term-bar {
-            background: #111427;
-            border-bottom: 1px solid #191c30;
-            padding: 7px 11px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            background: #111427; border-bottom: 1px solid #191c30; padding: 7px 11px;
+            display: flex; align-items: center; gap: 5px;
         }
-        .term-bar span {
-            font-size: 9.5px;
-            color: #383d5c;
-            font-family: 'JetBrains Mono', monospace;
-            margin-left: auto;
-        }
+        .term-bar span { font-size: 9.5px; color: #383d5c; font-family: 'JetBrains Mono', monospace; margin-left: auto; }
         .term-body {
-            padding: 8px 11px;
-            flex: 1;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            line-height: 1.75;
+            padding: 8px 11px; flex: 1; overflow: hidden; display: flex; flex-direction: column;
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.75;
         }
         .t-line {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.08s, opacity 0.15s;
-            white-space: nowrap;
+            display: flex; align-items: center; gap: 4px; opacity: 0; max-height: 0; overflow: hidden;
+            transition: max-height .08s, opacity .15s; white-space: nowrap;
         }
-        .t-line.show {
-            opacity: 1;
-            max-height: 22px;
-        }
+        .t-line.show { opacity: 1; max-height: 22px; }
         .t-prompt { color: var(--accent); }
-        .t-cmd { color: #d8daf0; }
-        .t-out { color: var(--green); }
-        .t-warn { color: var(--yellow); }
-        .t-info { color: var(--cyan); }
+        .t-cmd    { color: #d8daf0; }
+        .t-out    { color: var(--green); }
+        .t-warn   { color: var(--yellow); }
+        .t-info   { color: var(--cyan); }
         .t-cursor {
-            display: inline-block;
-            width: 6px;
-            height: 11px;
-            background: var(--accent);
-            vertical-align: text-bottom;
-            animation: tcur 0.75s step-end infinite;
+            display: inline-block; width: 6px; height: 11px; background: var(--accent);
+            vertical-align: text-bottom; animation: tcur .75s step-end infinite;
         }
-        @keyframes tcur {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+        @keyframes tcur { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Card 6 - Micro-interactions (toggle + ripple) */
         .micro-scene {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            width: 100%; height: 100%; position: relative; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 10px;
         }
-        .toggle-wrap {
-            position: relative;
-            z-index: 3;
-        }
+        .toggle-wrap { position: relative; z-index: 3; }
         .toggle {
-            width: 54px;
-            height: 28px;
-            background: #242740;
-            border-radius: 14px;
-            border: 2px solid #333658;
-            position: relative;
-            transition: background 0.4s ease, border-color 0.4s ease;
+            width: 54px; height: 28px; background: #242740; border-radius: 14px; border: 2px solid #333658;
+            position: relative; transition: background .4s ease, border-color .4s ease;
         }
-        .toggle.on {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
+        .toggle.on { background: var(--accent); border-color: var(--accent); }
         .toggle-thumb {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 18px;
-            height: 18px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            transition: left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: #fff;
+            border-radius: 50%; box-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+            transition: left .45s cubic-bezier(.34, 1.56, .64, 1);
         }
-        .toggle.on .toggle-thumb {
-            left: 29px;
-        }
-        .state-row {
-            display: flex;
-            gap: 6px;
-            margin-top: 4px;
-            justify-content: center;
-        }
+        .toggle.on .toggle-thumb { left: 29px; }
+        .state-row { display: flex; gap: 6px; margin-top: 4px; justify-content: center; }
         .state-pill {
-            min-width: 40px;
-            padding: 3px 8px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.4);
-            font-size: 10px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: rgba(148, 163, 184, 0.9);
-            background: rgba(15, 23, 42, 0.8);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+            min-width: 40px; padding: 3px 8px; border-radius: 999px; border: 1px solid rgba(148, 163, 184, 0.4);
+            font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
+            color: rgba(148, 163, 184, 0.9); background: rgba(15, 23, 42, 0.8);
+            display: inline-flex; align-items: center; justify-content: center;
+            opacity: 0; transform: translateY(6px);
+            transition: opacity .3s ease, transform .3s ease, border-color .3s ease, color .3s ease, background .3s ease;
         }
-        .state-pill--off.state-pill--active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .state-pill--hover.state-pill--active {
-            opacity: 1;
-            transform: translateY(0);
-            border-color: rgba(148, 163, 184, 0.8);
-        }
+        .state-pill--off.state-pill--active { opacity: 1; transform: translateY(0); }
+        .state-pill--hover.state-pill--active { opacity: 1; transform: translateY(0); border-color: rgba(148, 163, 184, 0.8); }
         .state-pill--on.state-pill--active {
-            opacity: 1;
-            transform: translateY(0);
-            border-color: var(--accent-primary);
-            color: #e5e7eb;
-            background: rgba(79, 70, 229, 0.25);
+            opacity: 1; transform: translateY(0); border-color: var(--accent-primary);
+            color: #e5e7eb; background: rgba(79, 70, 229, 0.25);
         }
         .micro-cursor {
-            position: absolute;
-            pointer-events: none;
-            z-index: 10;
-            opacity: 0;
-            transition:
-                left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                transform 0.12s ease;
+            position: absolute; pointer-events: none; z-index: 10; opacity: 0;
+            transition: left .5s cubic-bezier(.4, 0, .2, 1), top .5s cubic-bezier(.4, 0, .2, 1), opacity .3s ease, transform .12s ease;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .skill-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        .expertise-card:hover .skill-tag {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.5);
+            color: white;
         }
 
         /* =========================================
@@ -2595,8 +2356,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#expertise" data-i18n="nav.expertise">
-                                <span>Expertise</span>
+                            <a href="#about" data-i18n="nav.about">
+                                <span>À propos</span>
                             </a>
                         </li>
                         <li>
@@ -2762,10 +2523,10 @@
         </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section class="awards-section" id="expertise" aria-labelledby="expertise-title">
+    <!-- Expertise Section (Redesigned) -->
+    <section class="awards-section" id="about" aria-labelledby="about-title">
         <div class="section-container">
-            <h2 id="expertise-title" class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
+            <h2 id="about-title" class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
             <div class="expertise-grid">
                 <div class="expertise-card">
                     <div class="card-visual">
@@ -2810,7 +2571,7 @@
                             <div class="control-slider-scene" id="control-slider-scene">
                                 <div class="control-value-block">
                                     <span class="control-value-num" id="control-value-num" aria-live="polite">0</span>
-                                    <span class="control-value-label" data-i18n="skill.uidesign.control.label">Niveau de contrôle</span>
+                                    <span class="control-value-label">Niveau de contrôle</span>
                                 </div>
                                 <div class="control-slider-block">
                                     <div class="control-track" id="control-track">
@@ -2827,7 +2588,7 @@
                                     </div>
                                 </div>
                                 <div class="control-badge-wrap">
-                                    <span class="control-badge badge-faible" id="control-badge" data-i18n="skill.uidesign.control.badge.low">Faible</span>
+                                    <span class="control-badge badge-faible" id="control-badge">Faible</span>
                                 </div>
                             </div>
                         </div>
@@ -2853,12 +2614,12 @@
                             </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.designsystem.title">Design System</h3>
-                    <p data-i18n="skill.designsystem.description">Construire des systèmes de composants scalables, cohérents et accessibles</p>
+                    <h3 data-i18n="skill.designthinking.title">Design System</h3>
+                    <p data-i18n="skill.designthinking.description">Construire des systèmes de composants scalables, cohérents et accessibles</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.designsystem.tag1">Tokens</span>
-                        <span class="skill-tag" data-i18n="skill.designsystem.tag2">Documentation</span>
-                        <span class="skill-tag" data-i18n="skill.designsystem.tag3">Gouvernance</span>
+                        <span class="skill-tag" data-i18n="skill.designthinking.tag1">Tokens</span>
+                        <span class="skill-tag" data-i18n="skill.designthinking.tag2">Documentation</span>
+                        <span class="skill-tag" data-i18n="skill.designthinking.tag3">Gouvernance</span>
                     </div>
                 </div>
                 <div class="expertise-card">
@@ -2883,12 +2644,12 @@
                             </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.designthinking.title">Design Thinking</h3>
-                    <p data-i18n="skill.designthinking.description">Résoudre des problèmes complexes avec créativité et méthodologie</p>
+                    <h3 data-i18n="skill.tools.title">Design Thinking</h3>
+                    <p data-i18n="skill.tools.description">Résoudre des problèmes complexes avec créativité et méthodologie</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.designthinking.tag1">Idéation</span>
-                        <span class="skill-tag" data-i18n="skill.designthinking.tag2">Workshops</span>
-                        <span class="skill-tag" data-i18n="skill.designthinking.tag3">Validation</span>
+                        <span class="skill-tag" data-i18n="skill.tools.tag1">Idéation</span>
+                        <span class="skill-tag" data-i18n="skill.tools.tag2">Workshops</span>
+                        <span class="skill-tag" data-i18n="skill.tools.tag3">Validation</span>
                     </div>
                 </div>
                 <div class="expertise-card">
@@ -2899,18 +2660,18 @@
                                     <div class="d d-r" style="width:8px;height:8px"></div>
                                     <div class="d d-y" style="width:8px;height:8px"></div>
                                     <div class="d d-g" style="width:8px;height:8px"></div>
-                                    <span data-i18n="skill.designchallenge.terminal">bash - ~/my-app</span>
+                                    <span>bash — ~/my-app</span>
                                 </div>
                                 <div class="term-body" id="term-body"></div>
                             </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.designchallenge.title">Défi de conception</h3>
-                    <p data-i18n="skill.designchallenge.description">Création de contenu attrayant du concept au produit final</p>
+                    <h3 data-i18n="skill.video.title">Défi de conception</h3>
+                    <p data-i18n="skill.video.description">Création de contenu attrayant du concept au produit final</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.designchallenge.tag1">Complexité</span>
-                        <span class="skill-tag" data-i18n="skill.designchallenge.tag2">Adaptabilité</span>
-                        <span class="skill-tag" data-i18n="skill.designchallenge.tag3">Précision</span>
+                        <span class="skill-tag" data-i18n="skill.video.tag1">Complexité</span>
+                        <span class="skill-tag" data-i18n="skill.video.tag2">Adaptabilité</span>
+                        <span class="skill-tag" data-i18n="skill.video.tag3">Précision</span>
                     </div>
                 </div>
                 <div class="expertise-card">
@@ -2923,9 +2684,9 @@
                                     </div>
                                 </div>
                                 <div class="state-row" id="state-row">
-                                    <div class="state-pill state-pill--off" data-i18n="skill.microinteractions.state.off">Off</div>
-                                    <div class="state-pill state-pill--hover" data-i18n="skill.microinteractions.state.hover">Hover</div>
-                                    <div class="state-pill state-pill--on" data-i18n="skill.microinteractions.state.on">On</div>
+                                    <div class="state-pill state-pill--off">Off</div>
+                                    <div class="state-pill state-pill--hover">Hover</div>
+                                    <div class="state-pill state-pill--on">On</div>
                                 </div>
                                 <svg class="micro-cursor" id="micro-cursor"
                                      width="17" height="21" viewBox="0 0 17 21">
@@ -2935,12 +2696,12 @@
                             </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.microinteractions.title">Micro-Interactions</h3>
-                    <p data-i18n="skill.microinteractions.description">Animation des états d'interface : hovers, transitions et retours visuels qui enchantent l'utilisateur.</p>
+                    <h3 data-i18n="skill.frontend.title">Micro-Interactions</h3>
+                    <p data-i18n="skill.frontend.description">Animation des états d'interface : hovers, transitions et retours visuels qui enchantent l'utilisateur.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.microinteractions.tag1">Rive/Lottie</span>
-                        <span class="skill-tag" data-i18n="skill.microinteractions.tag2">JavaScript</span>
-                        <span class="skill-tag" data-i18n="skill.microinteractions.tag3">Optimisation</span>
+                        <span class="skill-tag" data-i18n="skill.frontend.tag1">Rive/Lottie</span>
+                        <span class="skill-tag" data-i18n="skill.frontend.tag2">JavaScript</span>
+                        <span class="skill-tag" data-i18n="skill.frontend.tag3">Optimisation</span>
                     </div>
                 </div>
             </div>
