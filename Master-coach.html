@@ -1358,6 +1358,11 @@
             line-height: 1;
         }
 
+        a.logo {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .nav-main {
             display: flex;
             align-items: center;
@@ -1499,10 +1504,10 @@
     <header id="header" role="banner">
         <nav role="navigation" aria-label="Navigation principale">
             <div class="nav-inner">
-                <div class="logo">
+                <a href="index.html" class="logo" aria-label="Retour à l'accueil">
                     Hugo Ferrer
                     <span>UX/UI</span>
-                </div>
+                </a>
 
                 <div class="nav-main">
                     <ul class="nav-links" id="primary-navigation">
