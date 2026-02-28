@@ -247,10 +247,11 @@
             }
         }
 
-        /* Main content - prevent horizontal overflow */
+        /* Main content - prevent horizontal overflow only, no vertical scroll container */
         main {
             max-width: 100%;
             overflow-x: hidden;
+            overflow-y: visible;
         }
 
         /* Header / Navigation */
@@ -460,7 +461,7 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2144,7 +2145,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh;
+            min-height: auto;
             position: relative;
             overflow: hidden;
             perspective: 2000px; /* Essential for 3D effect */
@@ -2307,7 +2308,7 @@
             transform: translate(-50%, -50%);
             width: 100%;
             max-width: 100vw;
-            height: 100vh;
+            height: 100%;
             min-height: 100%;
             background: 
                 radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.05), transparent 60%),
