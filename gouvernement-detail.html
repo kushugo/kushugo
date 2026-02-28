@@ -10,6 +10,8 @@
     <meta name="author" content="Hugo F">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/gouvernement-detail.html">
+    <link rel="preload" href="/critical.css" as="style">
+    <link rel="stylesheet" href="/critical.css">
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
@@ -23,12 +25,12 @@
     <meta name="twitter:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
     <meta name="twitter:description" content="Case study de la refonte de Gouvernement.fr par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
     <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/gouvcover.webp">
-    <meta name="twitter:creator" content="@votrecompte">
+    <meta name="twitter:creator" content="@hugoferrer">
     <!-- Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <script src="js/gouvernement.js" defer></script>
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -2325,7 +2327,7 @@
         </div>
     </div>
 
-    <script>
+    <script type="application/json" data-inline-disabled>
         // Intersection Observer pour animations
         const sections = document.querySelectorAll('.content-section');
         const observerOptions = {
@@ -2692,7 +2694,6 @@
     </script>
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
-    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
-    <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
+    <script src="js/analytics-idle.js" defer></script>
 </body>
 </html>

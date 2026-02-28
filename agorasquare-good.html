@@ -11,6 +11,8 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/agorasquare-good.html">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="preload" href="/critical.css" as="style">
+    <link rel="stylesheet" href="/critical.css">
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="AgoraSquare - Case Study | Hugo F - UX/UI Designer Paris">
@@ -24,7 +26,7 @@
     <meta name="twitter:title" content="AgoraSquare - Case Study | Hugo F - UX/UI Designer Paris">
     <meta name="twitter:description" content="Étude de cas AgoraSquare : plateforme B2B repensée pour digitaliser commandes, facturation et comptabilité des grossistes de Rungis par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
     <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/agorasquare-hero.webp">
-    <meta name="twitter:creator" content="@votrecompte">
+    <meta name="twitter:creator" content="@hugoferrer">
     <!-- Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
@@ -2227,7 +2229,7 @@
             }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js" defer></script>
+    <script src="js/agorasquare.js" defer></script>
 </head>
 <body data-page="agorasquare">
 
@@ -2872,7 +2874,7 @@
                         </div>
                         <a href="https://www.figma.com/proto/BfmmuypUtFqOUIrKSEKxvd/Brand-gora?page-id=0%3A1&node-id=1-9740&viewport=-2429%2C-423%2C0.11&t=1R6VuvzXD8plXBe3-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A9734&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer">Ouvrir dans Figma</a>
                     </header>
-                    <iframe
+                    <iframe loading="lazy"
                         title="Prototype interactif AgoraSquare"
                         loading="lazy"
                         allowfullscreen
@@ -3278,210 +3280,7 @@
         </div>
     </div>
 
-    <script>
-        // Normalisation des listes icon-list pour aligner titres et descriptions
-        document.querySelectorAll('.icon-list li').forEach(li => {
-            const title = li.querySelector('strong');
-            if (!title) return;
-
-            const fragment = document.createDocumentFragment();
-            let node = title.nextSibling;
-            let hasContent = false;
-
-            while (node) {
-                const next = node.nextSibling;
-                fragment.appendChild(node);
-                hasContent = true;
-                node = next;
-            }
-
-            if (!hasContent) return;
-
-            const firstChild = fragment.firstChild;
-            if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
-                firstChild.textContent = firstChild.textContent.replace(/^\s+/, '');
-                if (firstChild.textContent.startsWith(':')) {
-                    firstChild.textContent = firstChild.textContent.replace(/^:\s*/, ': ');
-                }
-            }
-
-            const description = document.createElement('span');
-            description.className = 'icon-list__description';
-            description.appendChild(fragment);
-            li.appendChild(description);
-        });
-
-        // Intersection Observer pour les animations
-        const observerOptions = {
-            threshold: window.innerWidth < 768 ? 0.05 : 0.12,
-            rootMargin: '0px 0px 12% 0px'
-        };
-
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-                entry.target.classList.add('visible');
-                obs.unobserve(entry.target);
-            });
-        }, observerOptions);
-
-        const animatedElements = document.querySelectorAll('.content-section, .info-card, .stat-card, .quote-box, .icon-list li, .timeline-item, .chart-block, .chart-insights li, .poc-card, .poc-card__highlights li, .mockup-embed');
-
-        const revealVisibleElements = () => {
-            animatedElements.forEach(el => {
-                if (el.classList.contains('visible')) {
-                    return;
-                }
-
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.92) {
-                    el.classList.add('visible');
-                }
-            });
-        };
-
-        animatedElements.forEach(el => observer.observe(el));
-
-        window.addEventListener('load', () => {
-            revealVisibleElements();
-
-            setTimeout(() => {
-                revealVisibleElements();
-            }, 750);
-
-            initializeCharts();
-        });
-
-        document.addEventListener('i18n:updated', () => {
-            initializeCharts();
-        });
-
-        // Table des matières interactive
-        const tocItems = document.querySelectorAll('.toc-item');
-        const sections = document.querySelectorAll('.content-section');
-
-        tocItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const sectionId = item.dataset.section;
-                const section = document.getElementById(sectionId);
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Activer l'item de TOC selon la section visible
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            tocItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.section === current) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Délais d'animation pour les list items
-        const clampDelay = (index, step, max) => Math.min(index * step, max).toFixed(2);
-
-        document.querySelectorAll('.icon-list li').forEach((li, index) => {
-            li.style.transitionDelay = `${clampDelay(index, 0.06, 0.4)}s`;
-        });
-
-        document.querySelectorAll('.stat-card').forEach((card, index) => {
-            card.style.transitionDelay = `${clampDelay(index, 0.1, 0.6)}s`;
-        });
-
-        document.querySelectorAll('.timeline-item').forEach((item, index) => {
-            item.style.transitionDelay = `${clampDelay(index, 0.12, 0.65)}s`;
-        });
-
-        document.querySelectorAll('.chart-insights li').forEach((item, index) => {
-            item.style.transitionDelay = `${clampDelay(index, 0.08, 0.45)}s`;
-        });
-
-        document.querySelectorAll('.poc-card__highlights li').forEach((item, index) => {
-            item.style.transitionDelay = `${clampDelay(index, 0.07, 0.35)}s`;
-        });
-
-        document.querySelectorAll('.mockup-embed').forEach((block, index) => {
-            block.style.transitionDelay = `${clampDelay(index, 0.1, 0.4)}s`;
-        });
-
-        const chartNoteTriggers = Array.from(document.querySelectorAll('.chart-note__trigger'));
-
-        const getChartNoteBubble = (trigger) => {
-            if (!trigger) {
-                return null;
-            }
-            const contentId = trigger.getAttribute('aria-controls');
-            if (!contentId) {
-                return null;
-            }
-            return document.getElementById(contentId);
-        };
-
-        const closeChartNote = (trigger) => {
-            const bubble = getChartNoteBubble(trigger);
-            if (!bubble) {
-                return;
-            }
-            trigger.setAttribute('aria-expanded', 'false');
-            bubble.classList.remove('is-visible');
-            bubble.setAttribute('aria-hidden', 'true');
-            if (!bubble.hasAttribute('hidden')) {
-                bubble.setAttribute('hidden', '');
-            }
-        };
-
-        const openChartNote = (trigger) => {
-            const bubble = getChartNoteBubble(trigger);
-            if (!bubble) {
-                return;
-            }
-            trigger.setAttribute('aria-expanded', 'true');
-            bubble.classList.add('is-visible');
-            bubble.setAttribute('aria-hidden', 'false');
-            bubble.removeAttribute('hidden');
-            if (typeof bubble.focus === 'function') {
-                bubble.focus({ preventScroll: true });
-            }
-        };
-
-        const closeAllChartNotes = () => {
-            chartNoteTriggers.forEach(closeChartNote);
-        };
-
-        chartNoteTriggers.forEach(trigger => {
-            trigger.addEventListener('click', event => {
-                event.stopPropagation();
-                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-                closeAllChartNotes();
-                if (!isExpanded) {
-                    openChartNote(trigger);
-                }
-            });
-        });
-
-        document.addEventListener('click', event => {
-            if (!event.target.closest('.chart-note')) {
-                closeAllChartNotes();
-            }
-        });
-
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape') {
-                closeAllChartNotes();
-            }
-        });
+    <script type="application/json" data-inline-disabled>
 
         const chartRegistry = {};
 
@@ -4067,7 +3866,6 @@
     </script>
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
-    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
-    <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
+    <script src="js/analytics-idle.js" defer></script>
 </body>
 </html>

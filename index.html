@@ -29,6 +29,8 @@
     <!-- Preconnect to external domains for faster resource loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="/critical.css" as="style">
+    <link rel="stylesheet" href="/critical.css">
     <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/">
     <link rel="alternate" hreflang="fr-FR" href="https://portfolio-2026-hugof.vercel.app/">
     <link rel="alternate" hreflang="x-default" href="https://portfolio-2026-hugof.vercel.app/">
@@ -51,7 +53,7 @@
     <meta name="twitter:title" content="Hugo F - UX/UI Designer Paris">
     <meta name="twitter:description" content="Portfolio de Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
     <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/twitter-card.webp">
-    <meta name="twitter:creator" content="@votrecompte">
+    <meta name="twitter:creator" content="@hugoferrer">
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/image/images_webp/Flavicone.webp">
     <title>Hugo F - UX/UI Designer Paris | Portfolio & Projets</title>
@@ -1766,6 +1768,20 @@
         .awards-section {
             padding: var(--space-24) var(--space-6);
             background: linear-gradient(180deg, var(--bg-body) 0%, var(--bg-surface) 100%);
+            position: relative;
+            overflow: visible;
+            color: var(--text-primary);
+            --bg: #0d0f1a;
+            --card: #181b2a;
+            --card-border: #21243a;
+            --inner: #10121e;
+            --accent: #7c6fee;
+            --accent-hi: #a599f7;
+            --text: #ecedf5;
+            --muted: #636882;
+            --green: #4ade80;
+            --yellow: #fbbf24;
+            --cyan: #67e8f9;
         }
 
         .expertise-grid {
@@ -1786,7 +1802,7 @@
             flex-direction: column;
             gap: var(--space-6);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .expertise-card:hover {
@@ -1805,430 +1821,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* 1. UX Research: Mapping Insights */
-        .visual-ux-research {
-            position: relative;
-            width: 100px;
-            height: 60px;
-        }
-
-        .ux-connections {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.4;
-        }
-
-        .ux-point {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--text-secondary);
-            border-radius: 50%;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-        }
-
-        .p1 { top: 30px; left: 20px; }
-        .p2 { top: 15px; left: 40px; }
-        .p3 { top: 45px; left: 40px; }
-        .p4 { top: 30px; left: 60px; }
-        .p5 { top: 15px; left: 80px; }
-        .p6 { top: 45px; left: 80px; }
-
-        .ux-moving-point {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-primary);
-            transform: translate(20px, 30px);
-            will-change: transform;
-            animation: map-travel 4s linear infinite, point-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes map-travel {
-            0% { transform: translate(20px, 30px); }
-            20% { transform: translate(40px, 15px); }
-            40% { transform: translate(60px, 30px); }
-            60% { transform: translate(80px, 15px); }
-            80% { transform: translate(80px, 45px); }
-            100% { transform: translate(20px, 30px); }
-        }
-        .ux-moving-point {
-            will-change: transform;
-        }
-
-        @keyframes point-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-        }
-
-        /* 2. UI Design: Flowing Wave */
-        .visual-ui-design {
-            width: 100%;
-            height: 60px;
-            position: relative;
-            overflow: hidden;
-            color: #6366f1 !important;
-        }
-
-        .visual-ui-design svg,
-        .visual-ui-design .ui-wave {
-            color: #6366f1 !important;
-        }
-
-        .ui-wave {
-            width: 200%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            animation: wave-scroll 4s linear infinite;
-            color: #6366f1 !important;
-        }
-
-        .ui-wave path,
-        .wave-path {
-            stroke: #6366f1 !important;
-            fill: none !important;
-            filter: drop-shadow(0 0 4px var(--accent-glow));
-        }
-        
-        .visual-ui-design .ui-wave .wave-path,
-        .visual-ui-design .ui-wave path {
-            stroke: #6366f1 !important;
-            fill: none !important;
-        }
-        
-        .visual-ui-design svg path {
-            stroke: #6366f1 !important;
-        }
-
-        @keyframes wave-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .ui-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--text-primary);
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            top: 30px;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            animation: dot-ride 4s linear infinite;
-        }
-
-        @keyframes dot-ride {
-            0% { transform: translate(-50%, -50%) translateY(0); }
-            25% { transform: translate(-50%, -50%) translateY(-20px); }
-            50% { transform: translate(-50%, -50%) translateY(0); }
-            75% { transform: translate(-50%, -50%) translateY(20px); }
-            100% { transform: translate(-50%, -50%) translateY(0); }
-        }
-
-        /* 3. Design Thinking: Divergence -> Convergence */
-        .visual-design-thinking {
-            position: relative;
-            width: 100px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dt-paths {
-            width: 100%;
-            height: 100%;
             overflow: visible;
         }
-
-        .dt-path {
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .dt-path.p1 {
-            opacity: 0;
-            animation: path-fade-p1 4s ease-in-out infinite;
-        }
-
-        .dt-path.p2 {
-            opacity: 0.6;
-            animation: path-fade-p2 4s ease-in-out infinite;
-        }
-
-        .dt-path.p3 {
-            opacity: 0;
-            animation: path-fade-p3 4s ease-in-out infinite;
-        }
-
-        @keyframes path-fade-p1 {
-            0%, 100% { opacity: 0; }
-            25% { opacity: 0.6; }
-            50% { opacity: 0; }
-        }
-
-        @keyframes path-fade-p2 {
-            0%, 100% { opacity: 0.6; }
-            25% { opacity: 0; }
-            50% { opacity: 0; }
-            75% { opacity: 0; }
-        }
-
-        @keyframes path-fade-p3 {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 0.6; }
-            75% { opacity: 0; }
-        }
-
-        .dt-node {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-glow);
-            animation: node-pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes node-pulse {
-            0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateY(-50%) scale(1.3); opacity: 1; }
-        }
-        .dt-node {
-            will-change: transform, opacity;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        /* 4. Tools & Tech: Circuit */
-        .visual-tools {
-            position: relative;
-            width: 100px;
-            height: 60px;
-        }
-
-        .tool-node {
-            position: absolute;
-            width: 24px;
-            height: 16px;
-            border: 1px solid var(--border-highlight);
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-            animation: node-flash 3s ease-in-out infinite;
-        }
-
-        .n1 { top: 0; left: 0; }
-        .n2 { bottom: 0; left: 20px; }
-        .n3 { top: 20px; right: 0; animation-delay: 2s; }
-
-        @keyframes node-flash {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-        .tool-node {
-            will-change: transform, opacity;
-        }
-
-        .circuit-line {
-            position: absolute;
-            background: var(--border-highlight);
-            opacity: 0.5;
-        }
-
-        .c1 { width: 40px; height: 1px; top: 8px; left: 24px; transform: rotate(25deg); transform-origin: left; }
-        .c2 { width: 40px; height: 1px; bottom: 8px; left: 44px; transform: rotate(-25deg); transform-origin: left; }
-
-        .circuit-pulse {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            top: 8px;
-            left: 24px;
-            opacity: 0;
-            animation: pulse-travel 2s linear infinite;
-        }
-
-        @keyframes pulse-travel {
-            0% { opacity: 1; transform: translate(0, 0); }
-            50% { transform: translate(35px, 15px); }
-            100% { opacity: 0; transform: translate(35px, 15px); }
-        }
-
-        /* 5. Video Production: Timeline Uplift */
-        .visual-video {
-            width: 100%;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 0 10px;
-        }
-
-        .timeline-track {
-            width: 100%;
-            height: 2px;
-            background: var(--border-highlight);
-            position: relative;
-        }
-
-        .keyframe {
-            width: 10px;
-            height: 10px;
-            --keyframe-bg: var(--bg-card);
-            --keyframe-border: var(--text-secondary);
-            --keyframe-shadow: none;
-            background: var(--keyframe-bg);
-            border: 1px solid var(--keyframe-border);
-            box-shadow: var(--keyframe-shadow);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) rotate(45deg);
-            transition: all 0.3s ease;
-            opacity: 0.5;
-            will-change: transform, opacity;
-            animation: keyframe-pulse 2s infinite, keyframe-pulse-colors 2s infinite;
-        }
-
-        @keyframes keyframe-pulse {
-            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(45deg) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) rotate(45deg) scale(1.1); }
-        }
-        @keyframes keyframe-pulse-colors {
-            0%, 100% { --keyframe-bg: var(--bg-card); --keyframe-border: var(--text-secondary); --keyframe-shadow: none; }
-            50% { --keyframe-bg: var(--accent-primary); --keyframe-border: var(--accent-primary); --keyframe-shadow: 0 0 10px var(--accent-glow); }
-        }
-
-        .k1 { left: 20%; animation-delay: 0s; }
-        .k2 { left: 40%; animation-delay: 0.5s; }
-        .k3 { left: 60%; animation-delay: 1s; }
-        .k4 { left: 80%; animation-delay: 1.5s; }
-
-        .playhead {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 2px;
-            height: 30px;
-            background: var(--text-primary);
-            transform: translateY(-50%) translateX(0);
-            will-change: transform;
-            animation: playhead-move 3s linear infinite;
-        }
-
-        @keyframes playhead-move {
-            0% { transform: translateY(-50%) translateX(0); }
-            100% { transform: translateY(-50%) translateX(calc(100vw - 2px)); }
-        }
-
-        /* 6. Front-End: Code -> UI */
-        .visual-frontend {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .fe-layer {
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .code-layer {
-            width: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            opacity: 0.7;
-        }
-
-        .fe-chevron {
-            font-family: monospace;
-            font-size: 10px;
-            color: var(--text-tertiary);
-            margin-bottom: 2px;
-        }
-
-        .fe-line {
-            height: 2px;
-            background: var(--text-secondary);
-            width: 100%;
-            border-radius: 2px;
-            transform: scaleX(0);
-            transform-origin: left;
-            will-change: transform;
-            animation: type-line 2s ease-in-out infinite;
-        }
-
-        @keyframes type-line {
-            0% { transform: scaleX(0); }
-            20% { transform: scaleX(1); }
-            90% { transform: scaleX(1); }
-            100% { transform: scaleX(0); }
-        }
-
-        .l1 { animation-delay: 0s; }
-        .l2 { animation-delay: 0.2s; }
-        .l3 { animation-delay: 0.4s; }
-        .l4 { animation-delay: 0.6s; }
-
-        .ui-layer {
-            width: 40px;
-            height: 50px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-highlight);
-            padding: 4px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            opacity: 0;
-            transform: translateX(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: ui-fade 2s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        @keyframes ui-fade {
-            0% { opacity: 0; transform: translateX(10px); }
-            30% { opacity: 1; transform: translateX(0); }
-            80% { opacity: 1; transform: translateX(0); }
-            100% { opacity: 0; transform: translateX(10px); }
-        }
-
-        .ui-block {
-            width: 100%;
-            height: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-        }
-
-        .ui-bar {
-            height: 2px;
-            background: var(--text-tertiary);
-            border-radius: 1px;
-        }
-
-        .b1 { width: 80%; }
-        .b2 { width: 50%; }
 
         /* CSS Variables for redesigned expertise section */
         :root {
@@ -2250,6 +1844,519 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-tertiary: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ============================
+           Micro-interactions cards
+           ============================ */
+
+        .awards-section .card-visual {
+            min-height: 190px;
+            height: 190px;
+            background: var(--inner);
+            border-radius: 13px;
+            padding: 0;
+            overflow: visible;
+        }
+
+        .awards-section .card-visual .anim-zone {
+            background: transparent;
+            border-radius: inherit;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Card 1 - User Testing (heatmap cursor) */
+        .ut-scene {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ut-mockup {
+            width: 138px;
+            height: 108px;
+            background: #181b2e;
+            border: 1.5px solid #2a2e4c;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .ut-topbar {
+            height: 20px;
+            background: #1e2240;
+            border-bottom: 1px solid #2a2e4c;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            gap: 5px;
+        }
+        .d {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .d-r { background: #ff5f57; }
+        .d-y { background: #febc2e; }
+        .d-g { background: #28c840; }
+        .ut-body {
+            padding: 9px 9px 7px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .ut-nav {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 2px;
+        }
+        .ut-nav-tab {
+            height: 7px;
+            width: 26px;
+            background: #2a2e4c;
+            border-radius: 2px;
+        }
+        .ut-line {
+            height: 5px;
+            background: #252840;
+            border-radius: 3px;
+        }
+        .ut-cta {
+            height: 14px;
+            width: 44px;
+            background: rgba(124, 111, 238, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+            margin-top: 4px;
+        }
+        .heat-spot {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .ut-cursor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0;
+            transition:
+                left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                transform 0.12s ease;
+        }
+
+        /* Card 2 - Control level slider (UI Design) */
+        .control-slider-wrap {
+            background: #1e1f30;
+            border-radius: 13px;
+        }
+        .control-slider-scene {
+            width: 100%;
+            height: 100%;
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 16px 16px;
+            gap: 12px;
+            position: relative;
+        }
+        .control-value-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .control-value-num {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+        }
+        .control-value-num.bump {
+            transform: scale(1.2);
+            color: #8f7bff;
+        }
+        .control-value-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .control-slider-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .control-track {
+            width: 260px;
+            height: 8px;
+            background: #3e3f55;
+            border-radius: 4px;
+            position: relative;
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+        }
+        .control-track:active,
+        .control-track.dragging {
+            cursor: grabbing;
+        }
+        .control-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: #8f7bff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0%;
+            transition: width 0.2s ease-out, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+        .control-track.dragging .control-progress {
+            box-shadow: 0 0 15px 2px rgba(143, 123, 255, 0.5);
+        }
+        .control-progress-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            animation: control-shimmer 2s ease-in-out infinite;
+        }
+        @keyframes control-shimmer {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(400px); }
+        }
+        .control-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+            position: absolute;
+            left: calc(0% - 10px);
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.2s ease-out, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .control-track.dragging .control-thumb {
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+        .control-thumb-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #8f7bff;
+        }
+        .control-thumb-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(143, 123, 255, 0.6);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .control-track.dragging .control-thumb-ring {
+            animation: control-thumb-pulse 0.6s ease-out infinite;
+        }
+        @keyframes control-thumb-pulse {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .control-graduations {
+            width: 260px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+        .control-graduations::before,
+        .control-graduations::after { content: none; }
+        .control-badge-wrap {
+            margin-top: 2px;
+        }
+        .control-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .control-badge.badge-faible { background-color: #6b7280; }
+        .control-badge.badge-moyen { background-color: #8f7bff; }
+        .control-badge.badge-eleve { background-color: #22c55e; }
+
+        /* Card 3 - Design Systems (blinking rects) */
+        .ds-scene {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .ds-rect {
+            width: 72px;
+            height: 48px;
+            border-radius: 8px;
+        }
+        .ds-r1 { background: #7c6fee; }
+        .ds-r2 { background: #9b8ff5; }
+        .ds-r3 { background: #5b4fcf; }
+        .ds-r4 { background: #3d3490; }
+
+        /* Card 4 - Figma (click + handles) */
+        .figma-scene {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .figma-bg {
+            width: 176px;
+            height: 130px;
+            background: #13152a;
+            border-radius: 6px;
+            position: relative;
+        }
+        .figma-outer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 144px;
+            height: 96px;
+            border: 1.5px dashed #2c3058;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .figma-inner {
+            width: 60px;
+            height: 38px;
+            background: rgba(124, 111, 238, 0.12);
+            border: 1.5px solid var(--accent);
+            border-radius: 2px;
+            position: relative;
+            transition:
+                width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                height 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .f-handle {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border: 1.5px solid var(--accent);
+            border-radius: 1.5px;
+            opacity: 0;
+            transition: opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+        .f-handle.tl { top: -4px; left: -4px; }
+        .f-handle.tr { top: -4px; right: -4px; }
+        .f-handle.bl { bottom: -4px; left: -4px; }
+        .f-handle.br { bottom: -4px; right: -4px; }
+        .figma-cursor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition:
+                left 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                transform 0.12s ease;
+        }
+
+        /* Card 5 - Design Challenge (terminal typewriter) */
+        .terminal {
+            width: 100%;
+            max-width: 280px;
+            height: 130px;
+            background: #090b14;
+            border-radius: 10px;
+            border: 1px solid #191c30;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .term-bar {
+            background: #111427;
+            border-bottom: 1px solid #191c30;
+            padding: 7px 11px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .term-bar span {
+            font-size: 9.5px;
+            color: #383d5c;
+            font-family: 'JetBrains Mono', monospace;
+            margin-left: auto;
+        }
+        .term-body {
+            padding: 8px 11px;
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            line-height: 1.75;
+        }
+        .t-line {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.08s, opacity 0.15s;
+            white-space: nowrap;
+        }
+        .t-line.show {
+            opacity: 1;
+            max-height: 22px;
+        }
+        .t-prompt { color: var(--accent); }
+        .t-cmd { color: #d8daf0; }
+        .t-out { color: var(--green); }
+        .t-warn { color: var(--yellow); }
+        .t-info { color: var(--cyan); }
+        .t-cursor {
+            display: inline-block;
+            width: 6px;
+            height: 11px;
+            background: var(--accent);
+            vertical-align: text-bottom;
+            animation: tcur 0.75s step-end infinite;
+        }
+        @keyframes tcur {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Card 6 - Micro-interactions (toggle + ripple) */
+        .micro-scene {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .toggle-wrap {
+            position: relative;
+            z-index: 3;
+        }
+        .toggle {
+            width: 54px;
+            height: 28px;
+            background: #242740;
+            border-radius: 14px;
+            border: 2px solid #333658;
+            position: relative;
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+        .toggle.on {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .toggle.on .toggle-thumb {
+            left: 29px;
+        }
+        .state-row {
+            display: flex;
+            gap: 6px;
+            margin-top: 4px;
+            justify-content: center;
+        }
+        .state-pill {
+            min-width: 40px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: rgba(148, 163, 184, 0.9);
+            background: rgba(15, 23, 42, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+        .state-pill--off.state-pill--active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .state-pill--hover.state-pill--active {
+            opacity: 1;
+            transform: translateY(0);
+            border-color: rgba(148, 163, 184, 0.8);
+        }
+        .state-pill--on.state-pill--active {
+            opacity: 1;
+            transform: translateY(0);
+            border-color: var(--accent-primary);
+            color: #e5e7eb;
+            background: rgba(79, 70, 229, 0.25);
+        }
+        .micro-cursor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition:
+                left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                transform 0.12s ease;
         }
 
         /* =========================================
@@ -2488,8 +2595,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#about" data-i18n="nav.about">
-                                <span>À propos</span>
+                            <a href="#expertise" data-i18n="nav.expertise">
+                                <span>Expertise</span>
                             </a>
                         </li>
                         <li>
@@ -2655,23 +2762,38 @@
         </div>
     </section>
 
-    <!-- Expertise Section (Redesigned) -->
-    <section class="awards-section" id="about" aria-labelledby="about-title">
+    <!-- Expertise Section -->
+    <section class="awards-section" id="expertise" aria-labelledby="expertise-title">
         <div class="section-container">
-            <h2 id="about-title" class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
+            <h2 id="expertise-title" class="section-title" data-i18n="section.skills">Expertise & Compétences</h2>
             <div class="expertise-grid">
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-ux-research">
-                            <div class="ux-connections">
-                                <div class="ux-point p1"></div>
-                                <div class="ux-point p2"></div>
-                                <div class="ux-point p3"></div>
-                                <div class="ux-point p4"></div>
-                                <div class="ux-point p5"></div>
-                                <div class="ux-point p6"></div>
+                        <div class="anim-zone">
+                            <div class="ut-scene" id="ut-scene">
+                                <div class="ut-mockup" id="ut-mockup">
+                                    <div class="ut-topbar">
+                                        <div class="d d-r"></div>
+                                        <div class="d d-y"></div>
+                                        <div class="d d-g"></div>
+                                    </div>
+                                    <div class="ut-body">
+                                        <div class="ut-nav">
+                                            <div class="ut-nav-tab"></div>
+                                            <div class="ut-nav-tab"></div>
+                                            <div class="ut-nav-tab"></div>
+                                        </div>
+                                        <div class="ut-line" style="width:88%"></div>
+                                        <div class="ut-line" style="width:72%"></div>
+                                        <div class="ut-line" style="width:84%"></div>
+                                        <div class="ut-cta"></div>
+                                    </div>
+                                </div>
+                                <svg class="ut-cursor" id="ut-cursor" width="17" height="21" viewBox="0 0 17 21">
+                                    <path d="M1 1L1 15.5L4.8 12L7.2 18L9.1 17.1L6.7 11H12.5L1 1Z"
+                                          fill="white" stroke="rgba(0,0,0,.45)" stroke-width="1.2" stroke-linejoin="round"/>
+                                </svg>
                             </div>
-                            <div class="ux-moving-point"></div>
                         </div>
                     </div>
                     <h3 data-i18n="skill.uxresearch.title">UX Research</h3>
@@ -2684,11 +2806,30 @@
                 </div>
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-ui-design" style="color: #6366f1;">
-                            <svg class="ui-wave" viewBox="0 0 200 60" preserveAspectRatio="none" style="color: #6366f1 !important; stroke: #6366f1 !important;">
-                                <path class="wave-path" d="M0,30 Q50,10 100,30 T200,30" stroke="#6366f1" stroke-width="2.5" fill="none" opacity="1" style="stroke: #6366f1 !important; fill: none !important;"/>
-                            </svg>
-                            <div class="ui-dot"></div>
+                        <div class="anim-zone control-slider-wrap">
+                            <div class="control-slider-scene" id="control-slider-scene">
+                                <div class="control-value-block">
+                                    <span class="control-value-num" id="control-value-num" aria-live="polite">0</span>
+                                    <span class="control-value-label" data-i18n="skill.uidesign.control.label">Niveau de contrôle</span>
+                                </div>
+                                <div class="control-slider-block">
+                                    <div class="control-track" id="control-track">
+                                        <div class="control-progress" id="control-progress">
+                                            <div class="control-progress-shimmer"></div>
+                                        </div>
+                                        <div class="control-thumb" id="control-thumb">
+                                            <span class="control-thumb-dot"></span>
+                                            <span class="control-thumb-ring" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="control-graduations">
+                                        <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+                                    </div>
+                                </div>
+                                <div class="control-badge-wrap">
+                                    <span class="control-badge badge-faible" id="control-badge" data-i18n="skill.uidesign.control.badge.low">Faible</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <h3 data-i18n="skill.uidesign.title">UI Design</h3>
@@ -2701,13 +2842,45 @@
                 </div>
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-design-thinking">
-                            <svg class="dt-paths" viewBox="0 0 100 60" style="color: var(--text-secondary);">
-                                <path class="dt-path p1" d="M10,30 C30,30 30,10 50,10 C70,10 70,30 90,30" stroke="currentColor" stroke-width="2" fill="none"/>
-                                <path class="dt-path p2" d="M10,30 C30,30 30,30 50,30 C70,30 70,30 90,30" stroke="currentColor" stroke-width="2" fill="none"/>
-                                <path class="dt-path p3" d="M10,30 C30,30 30,50 50,50 C70,50 70,30 90,30" stroke="currentColor" stroke-width="2" fill="none"/>
-                            </svg>
-                            <div class="dt-node"></div>
+                        <div class="anim-zone">
+                            <div class="ds-scene">
+                                <div class="ds-grid">
+                                    <div class="ds-rect ds-r1" id="ds1"></div>
+                                    <div class="ds-rect ds-r2" id="ds2"></div>
+                                    <div class="ds-rect ds-r3" id="ds3"></div>
+                                    <div class="ds-rect ds-r4" id="ds4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 data-i18n="skill.designsystem.title">Design System</h3>
+                    <p data-i18n="skill.designsystem.description">Construire des systèmes de composants scalables, cohérents et accessibles</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-i18n="skill.designsystem.tag1">Tokens</span>
+                        <span class="skill-tag" data-i18n="skill.designsystem.tag2">Documentation</span>
+                        <span class="skill-tag" data-i18n="skill.designsystem.tag3">Gouvernance</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="card-visual">
+                        <div class="anim-zone">
+                            <div class="figma-scene">
+                                <div class="figma-bg" id="figma-bg">
+                                    <div class="figma-outer">
+                                        <div class="figma-inner" id="figma-inner">
+                                            <div class="f-handle tl" id="fh-tl"></div>
+                                            <div class="f-handle tr" id="fh-tr"></div>
+                                            <div class="f-handle bl" id="fh-bl"></div>
+                                            <div class="f-handle br" id="fh-br"></div>
+                                        </div>
+                                    </div>
+                                    <svg class="figma-cursor" id="figma-cursor"
+                                         width="15" height="19" viewBox="0 0 15 19" style="left:8px;top:8px;">
+                                        <path d="M1 1L1 14L4.2 11L6.4 16.5L8.1 15.7L5.9 10.4H11L1 1Z"
+                                              fill="white" stroke="rgba(0,0,0,.4)" stroke-width="1" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <h3 data-i18n="skill.designthinking.title">Design Thinking</h3>
@@ -2720,67 +2893,54 @@
                 </div>
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-tools">
-                            <div class="tool-node n1"></div>
-                            <div class="tool-node n2"></div>
-                            <div class="tool-node n3"></div>
-                            <div class="circuit-line c1"></div>
-                            <div class="circuit-line c2"></div>
-                            <div class="circuit-pulse"></div>
+                        <div class="anim-zone">
+                            <div class="terminal">
+                                <div class="term-bar">
+                                    <div class="d d-r" style="width:8px;height:8px"></div>
+                                    <div class="d d-y" style="width:8px;height:8px"></div>
+                                    <div class="d d-g" style="width:8px;height:8px"></div>
+                                    <span data-i18n="skill.designchallenge.terminal">bash - ~/my-app</span>
+                                </div>
+                                <div class="term-body" id="term-body"></div>
+                            </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.tools.title">Outils & Tech</h3>
-                    <p data-i18n="skill.tools.description">Maîtrise des outils modernes de design et compétences techniques</p>
+                    <h3 data-i18n="skill.designchallenge.title">Défi de conception</h3>
+                    <p data-i18n="skill.designchallenge.description">Création de contenu attrayant du concept au produit final</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.tools.tag1">Adobe Suite</span>
-                        <span class="skill-tag" data-i18n="skill.tools.tag2">Webflow</span>
-                        <span class="skill-tag" data-i18n="skill.tools.tag3">Notion</span>
+                        <span class="skill-tag" data-i18n="skill.designchallenge.tag1">Complexité</span>
+                        <span class="skill-tag" data-i18n="skill.designchallenge.tag2">Adaptabilité</span>
+                        <span class="skill-tag" data-i18n="skill.designchallenge.tag3">Précision</span>
                     </div>
                 </div>
                 <div class="expertise-card">
                     <div class="card-visual">
-                        <div class="visual-video">
-                            <div class="timeline-track">
-                                <div class="keyframe k1"></div>
-                                <div class="keyframe k2"></div>
-                                <div class="keyframe k3"></div>
-                                <div class="keyframe k4"></div>
-                                <div class="playhead"></div>
+                        <div class="anim-zone" id="micro-zone">
+                            <div class="micro-scene" id="micro-scene">
+                                <div class="toggle-wrap">
+                                    <div class="toggle" id="toggle">
+                                        <div class="toggle-thumb"></div>
+                                    </div>
+                                </div>
+                                <div class="state-row" id="state-row">
+                                    <div class="state-pill state-pill--off" data-i18n="skill.microinteractions.state.off">Off</div>
+                                    <div class="state-pill state-pill--hover" data-i18n="skill.microinteractions.state.hover">Hover</div>
+                                    <div class="state-pill state-pill--on" data-i18n="skill.microinteractions.state.on">On</div>
+                                </div>
+                                <svg class="micro-cursor" id="micro-cursor"
+                                     width="17" height="21" viewBox="0 0 17 21">
+                                    <path d="M1 1L1 15.5L4.8 12L7.2 18L9.1 17.1L6.7 11H12.5L1 1Z"
+                                          fill="white" stroke="rgba(0,0,0,.45)" stroke-width="1.2" stroke-linejoin="round"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
-                    <h3 data-i18n="skill.video.title">Production Vidéo</h3>
-                    <p data-i18n="skill.video.description">Création de contenu vidéo engageant du tournage au montage final</p>
+                    <h3 data-i18n="skill.microinteractions.title">Micro-Interactions</h3>
+                    <p data-i18n="skill.microinteractions.description">Animation des états d'interface : hovers, transitions et retours visuels qui enchantent l'utilisateur.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.video.tag1">Premiere Pro</span>
-                        <span class="skill-tag" data-i18n="skill.video.tag2">After Effects</span>
-                        <span class="skill-tag" data-i18n="skill.video.tag3">Storytelling</span>
-                    </div>
-                </div>
-                <div class="expertise-card">
-                    <div class="card-visual">
-                        <div class="visual-frontend">
-                            <div class="code-layer fe-layer">
-                                <div class="fe-chevron">&gt;</div>
-                                <div class="fe-line l1"></div>
-                                <div class="fe-line l2"></div>
-                                <div class="fe-line l3"></div>
-                                <div class="fe-line l4"></div>
-                            </div>
-                            <div class="ui-layer fe-layer">
-                                <div class="ui-block"></div>
-                                <div class="ui-bar b1"></div>
-                                <div class="ui-bar b2"></div>
-                                <div class="ui-block"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <h3 data-i18n="skill.frontend.title">Front-End</h3>
-                    <p data-i18n="skill.frontend.description">Développement web pour donner vie aux designs et prototypes</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-i18n="skill.frontend.tag1">HTML/CSS</span>
-                        <span class="skill-tag" data-i18n="skill.frontend.tag2">JavaScript</span>
-                        <span class="skill-tag" data-i18n="skill.frontend.tag3">React</span>
+                        <span class="skill-tag" data-i18n="skill.microinteractions.tag1">Rive/Lottie</span>
+                        <span class="skill-tag" data-i18n="skill.microinteractions.tag2">JavaScript</span>
+                        <span class="skill-tag" data-i18n="skill.microinteractions.tag3">Optimisation</span>
                     </div>
                 </div>
             </div>
@@ -2837,75 +2997,6 @@
 
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
-    <script>
-        // Force i18n update and specifically handle contact section
-        function forceI18nUpdate() {
-            if (window.__i18n && window.__i18n.getLang && window.__i18n.setLang) {
-                const currentLang = window.__i18n.getLang();
-                // Force re-render
-                window.__i18n.setLang(currentLang);
-                
-                // Additional check: manually translate contact section if needed
-                setTimeout(() => {
-                    if (window.__i18n && window.__i18n.t) {
-                        const contactLabel = document.querySelector('.holo-label[data-i18n="contact.holo.label"]');
-                        const contactTitle = document.querySelector('.holo-title[data-i18n="contact.holo.title"]');
-                        const contactText = document.querySelector('.holo-text[data-i18n="contact.holo.text"]');
-                        const contactBtn1 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.appointment"]');
-                        const contactBtn2 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.linkedin"]');
-                        
-                        if (contactLabel) {
-                            const text = window.__i18n.t('contact.holo.label', 'Future ready');
-                            if (text && contactLabel.textContent !== text) {
-                                contactLabel.textContent = text;
-                            }
-                        }
-                        if (contactTitle) {
-                            const text = window.__i18n.t('contact.holo.title', 'Travaillons<br>ensemble');
-                            if (text && contactTitle.innerHTML !== text) {
-                                contactTitle.innerHTML = text;
-                            }
-                        }
-                        if (contactText) {
-                            const text = window.__i18n.t('contact.holo.text', 'Vous avez un projet en tête ?<br>Envie d\'échanger sur une idée ? N\'hésitez pas à me contacter, je serais ravi d\'en discuter avec vous.');
-                            if (text && contactText.innerHTML !== text) {
-                                contactText.innerHTML = text;
-                            }
-                        }
-                        if (contactBtn1) {
-                            const text = window.__i18n.t('contact.holo.button.appointment', 'Prendre rendez-vous');
-                            if (text && contactBtn1.textContent !== text) {
-                                contactBtn1.textContent = text;
-                            }
-                        }
-                        if (contactBtn2) {
-                            const text = window.__i18n.t('contact.holo.button.linkedin', 'LinkedIn');
-                            if (text && contactBtn2.textContent !== text) {
-                                contactBtn2.textContent = text;
-                            }
-                        }
-                    }
-                }, 300);
-            }
-        }
-        
-        // Try multiple times to ensure translations are applied
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(forceI18nUpdate, 100);
-            setTimeout(forceI18nUpdate, 500);
-            setTimeout(forceI18nUpdate, 1000);
-        });
-        
-        // Also listen for i18n:updated event to ensure translations are applied
-        document.addEventListener('i18n:updated', () => {
-            setTimeout(forceI18nUpdate, 100);
-        });
-        
-        // Fallback: try when window is fully loaded
-        window.addEventListener('load', () => {
-            setTimeout(forceI18nUpdate, 200);
-        });
-    </script>
     <script type="importmap">
         {
             "imports": {
@@ -2914,536 +3005,6 @@
             }
         }
     </script>
-
-    <script>
-        // Three.js particle animation for projects section - lazy loaded
-        let threeJSLoaded = false;
-        let threeJSInitPromise = null;
-        
-        async function initThreeJS() {
-            // Prevent multiple initializations
-            if (threeJSInitPromise) return threeJSInitPromise;
-            
-            threeJSInitPromise = (async () => {
-                if (threeJSLoaded) return;
-                threeJSLoaded = true;
-            const { Scene, PerspectiveCamera, WebGLRenderer, BufferGeometry, Float32BufferAttribute, ShaderMaterial, Points, Clock } = await import('three');
-            
-            const projectsSection = document.querySelector('.projects-section');
-            if (!projectsSection) return;
-
-            const canvas = document.createElement('canvas');
-            canvas.className = 'threejs-canvas';
-            canvas.style.position = 'absolute';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '0';
-            canvas.style.opacity = '0';
-            projectsSection.style.position = 'relative';
-            projectsSection.appendChild(canvas);
-
-            // Scene setup
-            const scene = new Scene();
-            const camera = new PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-            camera.position.z = 5;
-            
-            const renderer = new WebGLRenderer({ 
-                canvas: canvas, 
-                alpha: true,
-                antialias: true 
-            });
-            renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            // Create particles
-            const particleCount = 100;
-            const geometry = new BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const sizes = new Float32Array(particleCount);
-
-            for (let i = 0; i < particleCount; i++) {
-                const i3 = i * 3;
-                positions[i3] = (Math.random() - 0.5) * 10;
-                positions[i3 + 1] = (Math.random() - 0.5) * 10;
-                positions[i3 + 2] = (Math.random() - 0.5) * 5;
-                sizes[i] = Math.random() * 0.5 + 0.1;
-            }
-
-            geometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
-            geometry.setAttribute('size', new Float32BufferAttribute(sizes, 1));
-
-            const material = new ShaderMaterial({
-                uniforms: {
-                    time: { value: 0 },
-                    color1: { value: { r: 0.39, g: 0.4, b: 0.94 } },
-                    color2: { value: { r: 0.12, g: 0.13, b: 0.24 } }
-                },
-                vertexShader: `
-                    attribute float size;
-                    uniform float time;
-                    varying vec3 vPosition;
-                    varying float vSize;
-                    
-                    void main() {
-                        vPosition = position;
-                        vSize = size;
-                        
-                        vec3 newPosition = position;
-                        newPosition.y += sin(time * 0.5 + position.x) * 0.5;
-                        newPosition.x += cos(time * 0.3 + position.y) * 0.5;
-                        
-                        vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
-                        gl_PointSize = size * (300.0 / -mvPosition.z);
-                        gl_Position = projectionMatrix * mvPosition;
-                    }
-                `,
-                fragmentShader: `
-                    uniform vec3 color1;
-                    uniform vec3 color2;
-                    varying vec3 vPosition;
-                    varying float vSize;
-                    
-                    void main() {
-                        vec2 center = gl_PointCoord - vec2(0.5);
-                        float dist = length(center);
-                        float alpha = 1.0 - smoothstep(0.0, 0.5, dist);
-                        
-                        vec3 color = mix(color1, color2, vPosition.y * 0.5 + 0.5);
-                        gl_FragColor = vec4(color, alpha * 0.8);
-                    }
-                `,
-                transparent: true,
-                blending: 2
-            });
-
-            const points = new Points(geometry, material);
-            scene.add(points);
-
-            const clock = new Clock();
-            let scrollProgress = 0;
-
-            // Check if section is visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        canvas.style.transition = 'opacity 1s ease';
-                        canvas.style.opacity = '1';
-                    } else {
-                        canvas.style.opacity = '0';
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            observer.observe(projectsSection);
-
-            // Update scroll progress
-            function updateScrollProgress() {
-                const rect = projectsSection.getBoundingClientRect();
-                const scrollPosition = window.scrollY + window.innerHeight;
-                const sectionTop = projectsSection.offsetTop;
-                const sectionHeight = projectsSection.offsetHeight;
-                
-                scrollProgress = Math.max(0, Math.min(1, 
-                    (scrollPosition - sectionTop) / sectionHeight
-                ));
-            }
-
-            // Animation loop
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                const elapsedTime = clock.getElapsedTime();
-                updateScrollProgress();
-                
-                material.uniforms.time.value = elapsedTime + scrollProgress * 10;
-                
-                // Rotate camera based on scroll
-                camera.position.x = scrollProgress * 2 - 1;
-                camera.position.y = Math.sin(elapsedTime * 0.5) * 0.5;
-                camera.lookAt(0, 0, 0);
-                
-                renderer.render(scene, camera);
-            }
-
-            // Handle resize
-            window.addEventListener('resize', () => {
-                const width = canvas.offsetWidth;
-                const height = canvas.offsetHeight;
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(width, height);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            });
-
-            animate();
-            
-            // Trigger i18n translation after Three.js animation is initialized
-            // This ensures the holographic contact section is translated after animation loads
-            setTimeout(() => {
-                if (window.__i18n && window.__i18n.setLang && window.__i18n.t) {
-                    const currentLang = window.__i18n.getLang();
-                    // Force re-render of translations
-                    window.__i18n.setLang(currentLang);
-                    
-                    // Specifically target contact section elements
-                    const contactLabel = document.querySelector('.holo-label[data-i18n="contact.holo.label"]');
-                    const contactTitle = document.querySelector('.holo-title[data-i18n="contact.holo.title"]');
-                    const contactText = document.querySelector('.holo-text[data-i18n="contact.holo.text"]');
-                    const contactBtn1 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.appointment"]');
-                    const contactBtn2 = document.querySelector('.holo-btn-text[data-i18n="contact.holo.button.linkedin"]');
-                    
-                    if (contactLabel) {
-                        const text = window.__i18n.t('contact.holo.label', 'Future ready');
-                        if (text) contactLabel.textContent = text;
-                    }
-                    if (contactTitle) {
-                        const text = window.__i18n.t('contact.holo.title', 'Travaillons<br>ensemble');
-                        if (text) contactTitle.innerHTML = text;
-                    }
-                    if (contactText) {
-                        const text = window.__i18n.t('contact.holo.text', 'Vous avez un projet en tête ?<br>Envie d\'échanger sur une idée ? N\'hésitez pas à me contacter, je serais ravi d\'en discuter avec vous.');
-                        if (text) contactText.innerHTML = text;
-                    }
-                    if (contactBtn1) {
-                        const text = window.__i18n.t('contact.holo.button.appointment', 'Prendre rendez-vous');
-                        if (text) contactBtn1.textContent = text;
-                    }
-                    if (contactBtn2) {
-                        const text = window.__i18n.t('contact.holo.button.linkedin', 'LinkedIn');
-                        if (text) contactBtn2.textContent = text;
-                    }
-                }
-            }, 500);
-            })();
-            return threeJSInitPromise;
-        }
-
-        // Lazy load Three.js only when projects section is near viewport or after idle
-        function loadThreeJSWhenNeeded() {
-            const projectsSection = document.querySelector('.projects-section');
-            if (!projectsSection) return;
-
-            // Strategy: Load after page is idle OR when section is approaching viewport
-            let loaded = false;
-            
-            // Option 1: Load after browser is idle (reduces critical path)
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => {
-                    if (!loaded) {
-                        initThreeJS().catch(console.error);
-                        loaded = true;
-                    }
-                }, { timeout: 2000 });
-            } else {
-                // Fallback: Load after a short delay
-                setTimeout(() => {
-                    if (!loaded) {
-                        initThreeJS().catch(console.error);
-                        loaded = true;
-                    }
-                }, 1500);
-            }
-
-            // Option 2: Load when section is approaching viewport (earlier trigger)
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !loaded) {
-                        initThreeJS().catch(console.error);
-                        loaded = true;
-                        observer.disconnect();
-                    }
-                });
-            }, { 
-                rootMargin: '200px' // Start loading 200px before section enters viewport
-            });
-            
-            observer.observe(projectsSection);
-        }
-
-        // Initialize lazy loading
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadThreeJSWhenNeeded);
-        } else {
-            loadThreeJSWhenNeeded();
-        }
-
-        // Lazy load background images for project cards to reduce initial load
-        function lazyLoadProjectBackgrounds() {
-            const projectImages = document.querySelectorAll('.project-image[style*="--project-image"]');
-            if (projectImages.length === 0) return;
-
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const projectImage = entry.target;
-                        // Extract URL from CSS variable
-                        const style = projectImage.getAttribute('style');
-                        const urlMatch = style.match(/url\(['"]?([^'"]+)['"]?\)/);
-                        if (urlMatch && urlMatch[1]) {
-                            // Image will be loaded by browser when CSS variable is set
-                            // This observer just ensures we're watching for visibility
-                            imageObserver.unobserve(projectImage);
-                        }
-                    }
-                });
-            }, { 
-                rootMargin: '100px' // Start loading 100px before card enters viewport
-            });
-
-            projectImages.forEach(img => imageObserver.observe(img));
-        }
-
-        // Initialize background image lazy loading
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', lazyLoadProjectBackgrounds);
-        } else {
-            lazyLoadProjectBackgrounds();
-        }
-
-        // Animated counters
-        function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        }
-
-        // Observer pour déclencher l'animation au scroll
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    animateCounter(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.stat-number').forEach(stat => {
-            counterObserver.observe(stat);
-        });
-
-        // Smooth scroll reveal animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all project cards, clients and awards
-        document.querySelectorAll('.project-card, .clients-grid, .award-item').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Custom cursor (desktop only)
-        const cursor = document.querySelector('.cursor');
-        
-        if (window.innerWidth >= 1024) {
-            let mouseX = 0;
-            let mouseY = 0;
-            let cursorX = 0;
-            let cursorY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function animateCursor() {
-                const distX = mouseX - cursorX;
-                const distY = mouseY - cursorY;
-                
-                cursorX += distX * 0.1;
-                cursorY += distY * 0.1;
-                
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-                
-                requestAnimationFrame(animateCursor);
-            }
-            
-            animateCursor();
-
-            // Cursor interactions
-            const interactiveElements = document.querySelectorAll('a, button, .project-image, .client-logo');
-            
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.classList.add('expand');
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('expand');
-                });
-            });
-        }
-
-        // Parallax effect on hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent && scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                heroContent.style.opacity = 1 - (scrolled / 600);
-            }
-        });
-
-        // Magnetic effect for buttons
-        const magneticElements = document.querySelectorAll('.magnetic');
-        magneticElements.forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = 'translate(0, 0)';
-            });
-        });
-
-        // Add stagger animation delay to award items
-        document.querySelectorAll('.award-item').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Add stagger animation delay to project cards
-        document.querySelectorAll('.project-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.2}s`;
-            
-            // Add parallax effect to project images on scroll
-            window.addEventListener('scroll', () => {
-                const rect = card.getBoundingClientRect();
-                const image = card.querySelector('.project-image');
-                if (image && rect.top < window.innerHeight && rect.bottom > 0) {
-                    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-                    const parallaxY = (progress - 0.5) * 30;
-                    image.style.transform = `translateY(${parallaxY}px)`;
-                }
-            });
-        });
-
-        // Reveal animation on scroll
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-    </script>
-    <script>
-        // Gestion simple et transparente du consentement aux cookies de mesure d’audience
-        (function () {
-            const STORAGE_KEY = "cookie-consent";
-
-            const getConsent = () => {
-                try {
-                    return localStorage.getItem(STORAGE_KEY);
-                } catch {
-                    return null;
-                }
-            };
-
-            const setConsent = (value) => {
-                try {
-                    localStorage.setItem(STORAGE_KEY, value);
-                } catch {
-                    // stockage indisponible, on ne bloque pas l'utilisateur
-                }
-            };
-
-            const loadAnalytics = () => {
-                if (window.__analyticsLoaded) return;
-                window.__analyticsLoaded = true;
-
-                const scriptMain = document.createElement("script");
-                scriptMain.src = "https://va.vercel-scripts.com/v1/script.js";
-                scriptMain.defer = true;
-
-                const scriptSpeed = document.createElement("script");
-                scriptSpeed.src = "https://va.vercel-scripts.com/v1/speed-insights/script.js";
-                scriptSpeed.defer = true;
-
-                document.body.appendChild(scriptMain);
-                document.body.appendChild(scriptSpeed);
-            };
-
-            const banner = document.querySelector(".cookie-banner");
-            if (!banner) return;
-
-            const btnAccept = document.getElementById("cookie-accept");
-            const btnReject = document.getElementById("cookie-reject");
-
-            const existing = getConsent();
-            if (existing === "granted") {
-                loadAnalytics();
-                return;
-            }
-            if (existing === "denied") {
-                return;
-            }
-
-            // Pas encore de choix : on montre une bannière discrète
-            banner.classList.add("cookie-banner--visible");
-
-            if (btnAccept) {
-                btnAccept.addEventListener("click", () => {
-                    setConsent("granted");
-                    loadAnalytics();
-                    banner.classList.remove("cookie-banner--visible");
-                });
-            }
-
-            if (btnReject) {
-                btnReject.addEventListener("click", () => {
-                    setConsent("denied");
-                    banner.classList.remove("cookie-banner--visible");
-                });
-            }
-        })();
-    </script>
-    <script>
-        window.addEventListener('load', () => {
-            document.body.classList.add('page-loaded');
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const skeletonImages = document.querySelectorAll('img[data-skeleton]');
-            skeletonImages.forEach((img) => {
-                const markLoaded = () => img.classList.add('is-loaded');
-                if (img.complete) {
-                    markLoaded();
-                } else {
-                    img.addEventListener('load', markLoaded, { once: true });
-                    img.addEventListener('error', markLoaded, { once: true });
-                }
-            });
-        });
-    </script>
+    <script src="js/index.js" defer></script>
 </body>
 </html>
