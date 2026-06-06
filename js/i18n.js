@@ -19,11 +19,31 @@
 
   const state = { lang: pickLang(), dict: null };
 
+  const getDictBase = () => {
+    const script = document.querySelector('script[src*="i18n.js"]');
+    if (script && script.src) return new URL("../i18n/", script.src);
+    return new URL("./i18n/", window.location.href);
+  };
+
   const loadDict = async (lang) => {
-    const dictUrl = new URL(`./i18n/${lang}.json`, window.location.href);
-    const res = await fetch(dictUrl.toString(), { cache: "no-store" });
+    const base = getDictBase();
+    const mainUrl = new URL(`${lang}.json`, base);
+    const res = await fetch(mainUrl.toString(), { cache: "no-store" });
     if (!res.ok) throw new Error(`i18n load failed: ${lang}`);
-    return res.json();
+    const main = await res.json();
+
+    const page = document.body && document.body.getAttribute("data-page");
+    if (!page) return main;
+
+    try {
+      const pageUrl = new URL(`${page}.${lang}.json`, base);
+      const pageRes = await fetch(pageUrl.toString(), { cache: "no-store" });
+      if (pageRes.ok) return { ...main, ...(await pageRes.json()) };
+    } catch (err) {
+      console.warn(`i18n page overlay skipped: ${page}.${lang}.json`, err);
+    }
+
+    return main;
   };
 
   const applyMeta = (dict) => {
@@ -177,5 +197,12 @@
     },
   };
 
-  render().catch(console.error);
+  const revealContent = () => {
+    document.documentElement.classList.add("i18n-ready");
+  };
+
+  render().catch((err) => {
+    console.error(err);
+    revealContent();
+  });
 })();
