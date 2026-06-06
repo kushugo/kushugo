@@ -986,6 +986,34 @@
             transition: var(--transition);
         }
 
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.25rem;
+        }
+
+        .project-link--immersive {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border: 1.5px solid rgba(99, 102, 241, 0.35);
+            border-radius: 999px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: var(--transition);
+            background: rgba(99, 102, 241, 0.06);
+        }
+
+        .project-link--immersive:hover {
+            background: rgba(99, 102, 241, 0.12);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
         /* Contact Section */
         .contact-section {
             padding: 8rem 5%;
@@ -1229,6 +1257,16 @@
             animation-delay: 1.2s; 
             animation-fill-mode: both;
             grid-column: 8 / span 3;
+        }
+        .client-logo:nth-child(8) {
+            animation-delay: 1.4s;
+            animation-fill-mode: both;
+            grid-column: 3 / span 3;
+        }
+        .client-logo:nth-child(9) {
+            animation-delay: 1.6s;
+            animation-fill-mode: both;
+            grid-column: 7 / span 3;
         }
 
         @keyframes slideInFromRight {
@@ -1688,7 +1726,9 @@
 
             .client-logo:nth-child(5),
             .client-logo:nth-child(6),
-            .client-logo:nth-child(7) {
+            .client-logo:nth-child(7),
+            .client-logo:nth-child(8),
+            .client-logo:nth-child(9) {
                 grid-column: auto;
             }
 
@@ -2500,6 +2540,8 @@
                 <img src="image/images_webp/GoMind.webp" alt="Logo GoMind - ESN spécialisée en GreenIT" class="client-logo" width="245" height="48" loading="lazy" decoding="async" data-skeleton>
                 <img src="image/images_webp/Wisely.webp" alt="Logo Wisely - Solution de management pour jeunes managers" class="client-logo" width="150" height="51" loading="lazy" decoding="async" data-skeleton>
                 <img src="image/images_webp/Logo Artcurial.webp" alt="Logo Artcurial - Maison de ventes aux enchères" class="client-logo client-logo--large" width="180" height="60" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/Logo%20Action%20Logement%20(1).webp" alt="Logo Action Logement - Groupe de protection sociale et logement" class="client-logo" width="220" height="60" loading="lazy" decoding="async" data-skeleton>
+                <img src="image/images_webp/delicorner-logo.jpg" alt="Logo Délicorner - Foodtech B2B" class="client-logo" width="220" height="93" loading="lazy" decoding="async" data-skeleton>
             </div>
         </div>
     </section>
@@ -2509,10 +2551,29 @@
         <h2 id="projects-title" class="section-title-projects" data-i18n="section.recentProjects">Projets Récents</h2>
         <div class="projects-grid">
             
+            <!-- Project: Délicorner -->
+            <article class="project-card">
+                <a href="delico%20projet/delicorner-preview.html" class="project-image-link">
+                    <div class="project-image" data-number="01" style="--project-image: url('delico%20projet/delicorner-cover.jpg');">
+                        <div class="project-image-blur" aria-hidden="true"></div>
+                        <img src="delico%20projet/delicorner-cover.jpg" alt="Aperçu du projet Délicorner — portail B2B sur laptop, tablette et mobile" loading="lazy" decoding="async" width="930" height="572" fetchpriority="low" data-skeleton>
+                    </div>
+                </a>
+                <div class="project-info">
+                    <span style="font-size: 0.9rem; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; display: block;" data-i18n="project.deli.category">Foodtech B2B</span>
+                    <h3><a href="delico%20projet/delicorner-preview.html" data-i18n="project.deli">Délicorner</a></h3>
+                    <p data-i18n="project.deli.description">Conception complète du portail B2B Délicorner Digital, des prototypes fonctionnels haute-fidélité jusqu'au design system sur-mesure. Un projet end-to-end mené en solo, de la structure produit aux outils IA internes côté expérience client.</p>
+                    <div class="project-actions">
+                        <a href="delico%20projet/delicorner-preview.html" class="project-link" data-i18n="project.link">Voir le projet</a>
+                        <a href="delico%20projet/delicorner-preview.html?immersive=1" class="project-link--immersive" data-i18n="project.deli.immersive">Version immersive</a>
+                    </div>
+                </div>
+            </article>
+
             <!-- Project: Gouvernement -->
             <article class="project-card">
                 <a href="gouvernement-detail.html" class="project-image-link">
-                    <div class="project-image" data-number="01" style="--project-image: url('image/images_webp/gouvcover.webp');">
+                    <div class="project-image" data-number="02" style="--project-image: url('image/images_webp/gouvcover.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
                         <img src="image/images_webp/gouvcover.webp" alt="Aperçu du projet Gouvernement.fr" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low" data-skeleton>
                     </div>
@@ -2528,7 +2589,7 @@
             <!-- Project: AgoraSquare -->
             <article class="project-card">
                 <a href="agorasquare-good.html" class="project-image-link">
-                    <div class="project-image" data-number="02" style="--project-image: url('image/images_webp/agorasquare-hero.webp');">
+                    <div class="project-image" data-number="03" style="--project-image: url('image/images_webp/agorasquare-hero.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
                         <img src="image/images_webp/agorasquare-hero.webp" alt="Aperçu du projet AgoraSquare" loading="lazy" decoding="async" width="878" height="540" fetchpriority="low" data-skeleton>
                     </div>
@@ -2544,7 +2605,7 @@
             <!-- Project: GoMind -->
             <article class="project-card">
                 <a href="gomind-good.html" class="project-image-link">
-                    <div class="project-image" data-number="03" style="--project-image: url('image/images_webp/après 1.webp');">
+                    <div class="project-image" data-number="04" style="--project-image: url('image/images_webp/après 1.webp');">
                         <div class="project-image-blur" aria-hidden="true"></div>
                         <img src="image/images_webp/après 1.webp" alt="Aperçu du projet GoMind" loading="lazy" decoding="async" width="896" height="540" fetchpriority="low" data-skeleton>
                     </div>

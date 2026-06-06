@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr" class="i18n-ready">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Délicorner — Case Study | Hugo Ferrer · Product Designer Paris</title>
+    <meta name="description" content="Mission freelance chez Délicorner (foodtech B2B) : portail client Corner Digital + design system from scratch livré en 2 semaines, et CX Copilot, un bot Slack IA anti-churn. Par Hugo Ferrer.">
+    <meta name="keywords" content="Product Designer Paris, Design System, DTCG, DaisyUI, Storybook Figma, IA, CX Copilot, Slack bot, Claude, foodtech B2B, Délicorner">
+    <meta name="author" content="Hugo Ferrer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/delicorner-detail.html">
+    <link rel="preload" href="/critical.css" as="style">
+    <link rel="stylesheet" href="/critical.css">
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Délicorner — Portail B2B, Design System & CX Copilot IA | Hugo Ferrer">
+    <meta property="og:description" content="Design system from scratch livré en 2 semaines + un bot Slack IA qui fait passer le délai de réponse client de 5-6 h à ~20 s.">
+    <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/delicorner/deli-hero.webp">
+    <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/delicorner-detail.html">
+    <meta property="og:site_name" content="Hugo Ferrer - Portfolio">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Délicorner — Portail B2B, Design System & CX Copilot IA">
+    <meta name="twitter:description" content="Portail client + DS en 2 semaines, et un bot Slack IA anti-churn. Case study par Hugo Ferrer.">
+    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/delicorner/deli-hero.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0D2818">
+    <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
+
+    <!-- Fonts : serif display caractérielle (echo DA Délicorner) + body système -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+
+    <script src="js/delicorner.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://portfolio-2026-hugof.vercel.app/#person",
+                "name": "Hugo Ferrer",
+                "jobTitle": "Product Designer",
+                "url": "https://portfolio-2026-hugof.vercel.app/",
+                "sameAs": ["https://www.linkedin.com/in/hugo-ferrer-0038a517a/"],
+                "knowsAbout": ["Design Systems","DTCG","Accessibilité","IA appliquée","UX Design","B2B"],
+                "address": {"@type": "PostalAddress","addressLocality": "Paris","addressCountry": "FR"}
+            },
+            {
+                "@type": "CreativeWork",
+                "@id": "https://portfolio-2026-hugof.vercel.app/delicorner-detail.html#article",
+                "name": "Délicorner — Portail B2B, Design System & CX Copilot IA",
+                "headline": "Délicorner : portail client B2B, design system en 2 semaines et CX Copilot IA",
+                "description": "Mission freelance Product Designer chez Délicorner : Corner Digital (portail + DS) et CX Copilot (bot Slack IA anti-churn).",
+                "url": "https://portfolio-2026-hugof.vercel.app/delicorner-detail.html",
+                "datePublished": "2026-06-03",
+                "author": {"@id": "https://portfolio-2026-hugof.vercel.app/#person"},
+                "inLanguage": "fr-FR",
+                "articleSection": "Case Study",
+                "keywords": ["Design System","DTCG","DaisyUI","CX Copilot","Slack","Claude","foodtech B2B"]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* Marque Délicorner */
+            --brand:       #0D2818;
+            --brand-700:   #14331f;
+            --brand-600:   #1d4329;
+            --accent:      #E3C84A;   /* jaune feuille */
+            --accent-ink:  #0D2818;
+            --success:     #5FA45A;   /* vert portail */
+            --success-700: #3f7d3c;
+            --success-soft:#E8F0E0;
+            --cream:       #FBF6EE;
+            --paper:       #ffffff;
+            --ink:         #1c2a22;
+            --muted:       #5d6b62;
+            --hairline:    #e7e3d8;
+
+            /* Sous-thème CX Copilot (editorial) */
+            --cxc-cream:   #FBF3EC;
+            --cxc-rust:    #C0492B;
+            --cxc-ink:     #20160f;
+            --cxc-pink:    #F6DBD3;
+            --cxc-pink-bd: #ecc3b9;
+            --slack:       #1a1d21;
+            --slack-2:     #222529;
+
+            --radius:      16px;
+            --radius-sm:   12px;
+            --display:     "Fraunces", Georgia, "Times New Roman", serif;
+            --body:        -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            --transition:  all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: var(--body);
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(13, 40, 24, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 40, 24, 0.025) 1px, transparent 1px);
+            background-size: 22px 22px;
+            background-position: -1px -1px;
+        }
+        html { scroll-behavior: smooth; }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+        }
+
+        /* ============ NAV (autoporté, reskin Délicorner) ============ */
+        .lang-switch { display: flex; gap: 0.5rem; align-items: center; }
+        .lang-switch button {
+            background: none; border: none; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            min-width: 36px; min-height: 32px; padding: 0.15rem 0.4rem; display: inline-flex;
+            align-items: center; justify-content: center; transition: var(--transition);
+            border-radius: 4px; line-height: 1; color: var(--ink);
+        }
+        .lang-switch button:hover { background: rgba(13, 40, 24, 0.06); }
+        .nav-lang-item { display: none; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; padding: 1.4rem 5%; z-index: 1000; background: transparent; transition: var(--transition); }
+        header.scrolled { padding: 0.9rem 5%; }
+        nav { display: flex; justify-content: center; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between; gap: 2.4rem;
+            padding: 0.85rem 2.45rem; border-radius: 999px;
+            background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(13, 40, 24, 0.08);
+            box-shadow: 0 10px 30px rgba(13, 40, 24, 0.08);
+        }
+        .logo { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; white-space: nowrap; line-height: 1; }
+        .logo span {
+            display: inline-block; padding: 0.18rem 0.7rem; border-radius: 999px;
+            background: rgba(95, 164, 90, 0.12); border: 1px solid rgba(95, 164, 90, 0.4);
+            font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; color: var(--success-700);
+        }
+        a.logo { text-decoration: none; color: var(--brand); }
+        .nav-main { display: flex; align-items: center; gap: 2.2rem; }
+        .nav-links { display: flex; gap: 2.1rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--ink); font-weight: 500; font-size: 0.95rem; position: relative; transition: var(--transition); display: inline-flex; align-items: center; line-height: 1; }
+        .nav-links a[aria-current="page"] { color: var(--success-700); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--success); transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-meta { display: flex; align-items: center; gap: 0.75rem; }
+        .nav-toggle { display: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(13,40,24,0.12); background: #fff; padding: 0; align-items: center; justify-content: center; cursor: pointer; transition: background-color .2s ease, box-shadow .2s ease, transform .1s ease; }
+        .nav-toggle:hover { background: #f9fafb; box-shadow: 0 8px 20px rgba(13,40,24,.18); transform: translateY(-1px); }
+        .nav-toggle-icon { position: relative; width: 18px; height: 14px; }
+        .nav-toggle-bar { position: absolute; left: 0; right: 0; height: 2px; border-radius: 999px; background: var(--brand); transition: transform .2s ease, opacity .2s ease, top .2s ease, bottom .2s ease; }
+        .nav-toggle-bar:nth-child(1) { top: 0; } .nav-toggle-bar:nth-child(2) { top: 6px; } .nav-toggle-bar:nth-child(3) { bottom: 0; }
+        body.is-nav-open .nav-toggle-bar:nth-child(1) { top: 6px; transform: rotate(45deg); }
+        body.is-nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+        body.is-nav-open .nav-toggle-bar:nth-child(3) { bottom: 6px; transform: rotate(-45deg); }
+
+        /* ============ HERO ============ */
+        .project-hero { padding: 8rem 5% 3rem; max-width: 1400px; margin: 0 auto; }
+        .project-tags { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tag {
+            padding: 0.5rem 1rem; background: rgba(13,40,24,0.05); border: 1px solid var(--hairline);
+            border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--brand-600);
+            opacity: 0; animation: fadeInScale 0.5s ease forwards;
+        }
+        .tag.is-accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .tag:nth-child(1){animation-delay:.1s}.tag:nth-child(2){animation-delay:.2s}.tag:nth-child(3){animation-delay:.3s}.tag:nth-child(4){animation-delay:.4s}.tag:nth-child(5){animation-delay:.5s}
+
+        .project-hero h1 {
+            font-family: var(--display); font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 600;
+            letter-spacing: -1.5px; margin-bottom: 1rem; line-height: 1.02; color: var(--brand);
+            opacity: 0; animation: slideInFromLeft 0.8s ease forwards 0.3s;
+        }
+        .project-hero h1 em { font-style: italic; color: var(--success-700); }
+        @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        .project-subtitle {
+            font-size: 1.18rem; color: var(--muted); margin-bottom: 2rem; max-width: 70ch; line-height: 1.65;
+            opacity: 0; animation: slideInFromLeft 0.8s ease forwards 0.5s;
+        }
+        .project-subtitle strong { color: var(--ink); }
+
+        .project-meta {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;
+            padding: 1.5rem 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); margin-bottom: 3rem;
+        }
+        .meta-item { opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .meta-item:nth-child(1){animation-delay:.6s}.meta-item:nth-child(2){animation-delay:.7s}.meta-item:nth-child(3){animation-delay:.8s}.meta-item:nth-child(4){animation-delay:.9s}
+        .meta-item h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; color: #9aa69d; margin-bottom: 0.3rem; }
+        .meta-item p { font-size: 1rem; font-weight: 600; color: var(--ink); }
+
+        .hero-wrapper { max-width: 1400px; margin: 3rem auto 0; padding: 0 5%; position: relative; }
+        .hero-image {
+            width: 100%; border-radius: var(--radius); position: relative; overflow: hidden;
+            background: var(--brand); opacity: 0; animation: fadeInScale 1s ease forwards 1s;
+        }
+        .hero-image img { display: block; width: 100%; height: auto; }
+        .hero-zoom-button {
+            position: absolute; top: 1rem; right: 1rem; background: rgba(13,40,24,0.85);
+            border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 0.5rem 1rem;
+            color: #fff; cursor: pointer; font-size: 0.85rem; font-weight: 600; z-index: 3;
+            box-shadow: 0 10px 25px rgba(13,40,24,0.35); transition: transform .3s ease, background .3s ease;
+        }
+        .hero-zoom-button:hover { background: var(--brand); transform: translateY(-1px); }
+        .data-overlay {
+            position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; gap: 14px; z-index: 2;
+            color: #fff; flex-wrap: wrap;
+        }
+        .data-overlay .kpi {
+            backdrop-filter: blur(6px); background: rgba(13,40,24,0.55);
+            border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 10px 14px; min-width: 110px;
+        }
+        .data-overlay .kpi b { display: block; font-family: var(--display); font-size: 26px; line-height: 1; font-weight: 600; }
+        .data-overlay .kpi span { font-size: 12px; opacity: 0.92; font-weight: 600; }
+
+        /* ============ LAYOUT 2 COLONNES ============ */
+        .two-column-layout {
+            display: grid; grid-template-columns: minmax(0, 3fr) minmax(230px, 0.85fr); gap: 4rem;
+            max-width: 1400px; margin: 4rem auto 0; padding: 0 5%;
+        }
+        .main-content { min-width: 0; }
+        .sidebar { position: sticky; top: 110px; height: fit-content; }
+        .table-of-contents { background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--radius-sm); padding: 1.4rem; box-shadow: 0 2px 14px rgba(13,40,24,0.04); }
+        .toc-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.9rem; color: var(--muted); }
+        .toc-group { font-family: var(--display); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--success-700); margin: 1rem 0 0.3rem; }
+        .toc-group.cxc { color: var(--cxc-rust); }
+        .toc-item { padding: 0.45rem 0 0.45rem 1rem; cursor: pointer; color: var(--muted); font-size: 0.9rem; transition: color .3s ease, padding-left .3s ease; border-left: 3px solid transparent; }
+        .toc-item:hover { color: var(--brand); padding-left: 1.3rem; }
+        .toc-item.active { color: var(--brand); border-left-color: var(--success); font-weight: 600; }
+
+        /* ============ SECTIONS ============ */
+        .content-section {
+            margin-bottom: 4rem; opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s var(--reveal-ease), transform 0.8s var(--reveal-ease);
+            scroll-margin-top: 120px;
+        }
+        .content-section.visible { opacity: 1; transform: translateY(0); }
+        .content-section h2 { font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 600; margin-bottom: 1.3rem; color: var(--brand); letter-spacing: -0.5px; }
+        .content-section h3 { font-size: 1.15rem; font-weight: 700; margin: 1.4rem 0 0.6rem; color: var(--ink); }
+        .content-section p { font-size: 1.05rem; line-height: 1.8; color: #455249; margin-bottom: 1.2rem; }
+        .content-section p strong { color: var(--ink); }
+        .eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--success-700); margin-bottom: 0.4rem; }
+
+        /* Bandeau séparateur de cas */
+        .case-divider { margin: 5rem 0 1rem; padding-top: 2rem; border-top: 2px solid var(--hairline); }
+        .case-kicker { display: flex; align-items: center; gap: 0.8rem; font-family: var(--display); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--success-700); font-weight: 700; }
+        .case-kicker .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: var(--accent); font-family: var(--body); font-weight: 800; font-size: 0.85rem; }
+        .case-divider.cxc .case-kicker, .content-section.cxc h2 { color: var(--cxc-rust); }
+        .case-divider.cxc .case-kicker .num { background: var(--cxc-rust); color: #fff; }
+        .case-title { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; color: var(--brand); margin: 0.5rem 0 0.3rem; letter-spacing: -1px; }
+        .case-divider.cxc .case-title { color: var(--cxc-ink); }
+        .case-sub { font-size: 1.1rem; color: var(--muted); }
+
+        /* icon-list */
+        .icon-list { list-style: none; margin: 1.2rem 0; }
+        .icon-list li { position: relative; padding-left: 2rem; margin-bottom: 0.7rem; color: #455249; line-height: 1.65; }
+        .icon-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--success-700); font-weight: 800; }
+        .icon-list.cxc li::before { color: var(--cxc-rust); }
+
+        /* highlight box */
+        .highlight-box { background: var(--success-soft); border-left: 4px solid var(--success); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 1.3rem 1.6rem; margin: 1.6rem 0; }
+        .highlight-box p { margin: 0; color: #36433a; }
+        .highlight-box strong { color: var(--brand); }
+        .highlight-box.cxc { background: var(--cxc-pink); border-left-color: var(--cxc-rust); }
+        .highlight-box.cxc strong { color: var(--cxc-rust); }
+
+        /* stats grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 1.8rem 0; }
+        .stat-card { background: var(--paper); padding: 1.6rem; border-radius: var(--radius-sm); border: 1px solid var(--hairline); border-left: 4px solid var(--success); transition: transform .3s ease, box-shadow .3s ease; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(13,40,24,0.08); }
+        .stat-card.cxc { border-left-color: var(--cxc-rust); }
+        .stat-value { font-family: var(--display); font-size: 2.3rem; font-weight: 600; color: var(--brand); line-height: 1; margin-bottom: 0.4rem; }
+        .stat-card.cxc .stat-value { color: var(--cxc-rust); }
+        .stat-label { font-size: 0.98rem; color: var(--ink); font-weight: 600; }
+        .stat-description { font-size: 0.88rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.5; }
+
+        /* methodology / approach cards */
+        .methodology-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin: 1.8rem 0; }
+        .method-card { background: var(--paper); padding: 1.6rem; border-radius: var(--radius-sm); border: 1px solid var(--hairline); transition: transform .3s ease, box-shadow .3s ease; }
+        .method-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(13,40,24,0.08); }
+        .method-step { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--accent); font-weight: 800; margin-bottom: 0.8rem; }
+        .method-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--ink); }
+        .method-description { font-size: 0.93rem; line-height: 1.6; color: var(--muted); }
+
+        /* spec list (le système) */
+        .spec-list { display: grid; gap: 0.6rem; margin: 1.4rem 0; }
+        .spec-row { display: grid; grid-template-columns: 160px 1fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px dashed var(--hairline); }
+        .spec-row dt { font-weight: 700; color: var(--brand); font-size: 0.95rem; }
+        .spec-row dd { color: #455249; font-size: 0.97rem; }
+        @media (max-width: 560px){ .spec-row { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+        /* galerie */
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin: 1.8rem 0; }
+        .gallery.single { grid-template-columns: 1fr; }
+        figure.shot { margin: 0; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--hairline); background: var(--paper); box-shadow: 0 2px 16px rgba(13,40,24,0.05); transition: transform .35s var(--reveal-ease), box-shadow .35s ease; }
+        figure.shot:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,40,24,0.12); }
+        figure.shot img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+        figure.shot.tall img { max-height: 560px; width: auto; margin: 0 auto; }
+        figure.shot figcaption { font-size: 0.85rem; color: var(--muted); padding: 0.7rem 1rem; border-top: 1px solid var(--hairline); }
+        @media (max-width: 720px){ .gallery { grid-template-columns: 1fr; } }
+
+        /* chart */
+        .chart-container { background: var(--paper); padding: 1.6rem; border-radius: var(--radius-sm); border: 1px solid var(--hairline); box-shadow: 0 2px 18px rgba(13,40,24,0.05); margin: 1.8rem 0; }
+        .chart-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--ink); }
+        .chart-wrapper { position: relative; height: 320px; width: 100%; }
+
+        /* ============ SCÈNE A — TOKEN → COMPOSANT ============ */
+        .scene {
+            position: relative; background: linear-gradient(160deg, #0d2818 0%, #143a23 100%);
+            border-radius: var(--radius); padding: 2rem; margin: 1.8rem 0; overflow: hidden; color: #eaf2ea;
+        }
+        .scene-label { position: absolute; top: 14px; left: 18px; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(234,242,234,0.55); font-weight: 700; }
+        .token-scene { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; min-height: 220px; margin-top: 1rem; }
+        .token-col { display: grid; gap: 0.5rem; }
+        .token-chip {
+            display: flex; align-items: center; gap: 0.55rem; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 0.7rem; font-size: 0.82rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: #d7e4d7; opacity: 0.55;
+            animation: tokenPulse 5s infinite;
+        }
+        .token-chip .sw { width: 14px; height: 14px; border-radius: 4px; flex: 0 0 auto; }
+        .token-chip:nth-child(1){animation-delay:0s}.token-chip:nth-child(2){animation-delay:.25s}.token-chip:nth-child(3){animation-delay:.5s}.token-chip:nth-child(4){animation-delay:.75s}
+        @keyframes tokenPulse { 0%,40%,100%{opacity:.5;transform:translateX(0)} 12%{opacity:1;transform:translateX(3px);border-color:var(--accent)} }
+
+        .token-wire { position: relative; width: 90px; height: 120px; }
+        .token-wire svg { width: 100%; height: 100%; overflow: visible; }
+        .wire-path { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 2; }
+        .wire-pulse { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 22 240; animation: wireFlow 5s linear infinite; }
+        @keyframes wireFlow { 0%{stroke-dashoffset:262} 100%{stroke-dashoffset:0} }
+
+        .token-out { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+        .comp-preview {
+            background: #fff; border-radius: 12px; padding: 1rem; width: 100%; max-width: 230px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.35); transform: scale(0.92); opacity: 0.4;
+            animation: compIn 5s infinite;
+        }
+        @keyframes compIn { 0%,18%{opacity:.4;transform:scale(.92)} 34%,90%{opacity:1;transform:scale(1)} 100%{opacity:.4;transform:scale(.92)} }
+        .comp-preview .cp-badges { display: flex; gap: 6px; margin-bottom: 0.7rem; }
+        .cp-badge { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+        .cp-badge.must { background: #2563d6; color: #fff; }
+        .cp-badge.pref { background: #eef1f5; color: #5b6472; border: 1px solid #d7dce3; }
+        .cp-badge.exclu { background: #eef1f5; color: #5b6472; border: 1px solid #d7dce3; }
+        .comp-preview .cp-line { height: 9px; border-radius: 5px; background: #e9ece9; margin-bottom: 7px; }
+        .comp-preview .cp-line.s { width: 60%; }
+        .comp-preview .cp-btn { margin-top: 0.6rem; background: var(--brand); color: #fff; text-align: center; font-size: 0.82rem; font-weight: 700; padding: 0.55rem; border-radius: 8px; }
+        .scene-stamp {
+            font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--accent);
+            animation: stampPop 5s infinite; opacity: 0;
+        }
+        @keyframes stampPop { 0%,30%{opacity:0;transform:translateY(4px)} 40%,88%{opacity:1;transform:translateY(0)} 100%{opacity:0} }
+
+        /* ============ SCÈNE B — SLACK → CLAUDE → TICKET (signature CX Copilot) ============ */
+        .slack-scene {
+            background: var(--slack); border: 1px solid #303338; border-radius: var(--radius); padding: 1.4rem 1.5rem 1.6rem;
+            margin: 1.8rem 0; color: #e6e7e9; position: relative; overflow: hidden;
+        }
+        .slack-scene .sl-head { display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.9rem; border-bottom: 1px solid #303338; margin-bottom: 1rem; }
+        .sl-bot { width: 26px; height: 26px; border-radius: 6px; background: linear-gradient(135deg,#6d59f0,#9d7bff); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .sl-bot-name { font-weight: 700; font-size: 0.95rem; }
+        .sl-row { opacity: 0; }
+        .sl-msg { background: var(--slack-2); border-radius: 10px; padding: 0.8rem 1rem; font-size: 0.9rem; line-height: 1.5; border-left: 3px solid #4a4f57; }
+        .sl-msg .who { color: #9aa0a8; font-size: 0.78rem; margin-bottom: 0.2rem; }
+        .sl-analyse { display: flex; align-items: center; gap: 0.5rem; margin: 0.9rem 0 0.3rem; font-size: 0.88rem; color: #c9b8ff; font-weight: 600; }
+        .sl-shimmer { flex: 1; height: 6px; border-radius: 4px; background: linear-gradient(90deg, #2a2d33 0%, #4b3f7a 50%, #2a2d33 100%); background-size: 200% 100%; }
+        .sl-flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.6rem; }
+        .sl-flag { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: #e7c46b; background: rgba(231,196,107,0.1); border: 1px solid rgba(231,196,107,0.3); border-radius: 6px; padding: 2px 7px; opacity: 0; }
+        .sl-prio { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #ff8a7a; margin-top: 0.7rem; opacity: 0; }
+        .sl-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+        .sl-act { font-size: 0.82rem; font-weight: 700; padding: 0.5rem 0.85rem; border-radius: 8px; opacity: 0; transform: translateY(8px); }
+        .sl-act.hub { background: #1f7a4d; color: #fff; }
+        .sl-act.esc { background: #2b2f36; color: #e6e7e9; border: 1px solid #3a3f47; }
+        .sl-act.rep { background: #2b2f36; color: #e6e7e9; border: 1px solid #3a3f47; }
+        .sl-timer { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #303338; }
+        .sl-old { font-size: 1.05rem; color: #8a9098; text-decoration: line-through; opacity: 0; }
+        .sl-arrow { color: #6d6f76; opacity: 0; }
+        .sl-new { font-family: var(--display); font-size: 1.5rem; font-weight: 600; color: #58d28a; opacity: 0; }
+
+        /* keyframes signature (boucle 8s, phases en %) */
+        .slack-scene[data-anim="on"] .sl-row.m1 { animation: slIn .5s ease forwards .2s; }
+        .slack-scene[data-anim="on"] .sl-shimmerbar { animation: shimmer 1.1s linear 1s 1; }
+        .slack-scene[data-anim="on"] .sl-flag { animation: slPop .4s ease forwards; }
+        .slack-scene[data-anim="on"] .sl-flag:nth-child(1){animation-delay:1.9s}
+        .slack-scene[data-anim="on"] .sl-flag:nth-child(2){animation-delay:2.05s}
+        .slack-scene[data-anim="on"] .sl-flag:nth-child(3){animation-delay:2.2s}
+        .slack-scene[data-anim="on"] .sl-flag:nth-child(4){animation-delay:2.35s}
+        .slack-scene[data-anim="on"] .sl-prio { animation: slPop .4s ease forwards 1.7s; }
+        .slack-scene[data-anim="on"] .sl-act { animation: slUp .45s var(--reveal-ease) forwards; }
+        .slack-scene[data-anim="on"] .sl-act.hub { animation-delay: 2.7s; }
+        .slack-scene[data-anim="on"] .sl-act.esc { animation-delay: 2.85s; }
+        .slack-scene[data-anim="on"] .sl-act.rep { animation-delay: 3s; }
+        .slack-scene[data-anim="on"] .sl-old { animation: slFade .5s ease forwards 3.5s; }
+        .slack-scene[data-anim="on"] .sl-arrow { animation: slFade .5s ease forwards 3.8s; }
+        .slack-scene[data-anim="on"] .sl-new { animation: slNew .6s var(--reveal-ease) forwards 4.1s; }
+        @keyframes slIn { to { opacity: 1; } }
+        @keyframes slPop { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:scale(1)} }
+        @keyframes slUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes slFade { to { opacity: 1; } }
+        @keyframes slNew { from{opacity:0;transform:scale(.8)} to{opacity:1;transform:scale(1)} }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        .scene-caption { font-size: 0.85rem; color: var(--muted); margin-top: 0.7rem; text-align: center; font-style: italic; }
+
+        /* testimonial */
+        .testimonial { background: var(--brand); color: #eaf2ea; border-radius: var(--radius); padding: 2.4rem; position: relative; }
+        .testimonial::before { content: '“'; font-family: var(--display); font-size: 6rem; line-height: 1; color: var(--accent); position: absolute; top: 0.6rem; left: 1.4rem; opacity: 0.5; }
+        .testimonial blockquote { font-family: var(--display); font-size: 1.25rem; font-style: italic; line-height: 1.55; margin: 1rem 0 1.2rem; padding-left: 1rem; }
+        .testimonial .who { font-weight: 700; color: var(--accent); }
+
+        /* CTA */
+        .cta-section { background: linear-gradient(160deg, #0d2818, #1d4329); color: #fff; border-radius: var(--radius); padding: 3rem 2.5rem; text-align: center; }
+        .cta-section h2 { color: #fff; }
+        .cta-section p { color: rgba(255,255,255,0.85); max-width: 60ch; margin: 0 auto 1.6rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .cta-button { display: inline-flex; align-items: center; padding: 0.9rem 1.7rem; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+        .cta-button.primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 12px 30px rgba(227,200,74,0.3); }
+        .cta-button.primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(227,200,74,0.42); }
+        .cta-button.secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+        .cta-button.secondary:hover { background: rgba(255,255,255,0.16); }
+        .cta-disclaimer { display: block; margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+        /* lightbox */
+        .lightbox-overlay { position: fixed; inset: 0; background: rgba(13,40,24,0.92); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease; z-index: 2000; padding: 4vh 4vw; }
+        .lightbox-overlay.active { opacity: 1; visibility: visible; }
+        .lightbox-content { position: relative; max-width: 100%; max-height: 100%; }
+        .lightbox-image { max-width: 100%; max-height: 92vh; border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: -14px; right: -14px; width: 42px; height: 42px; border-radius: 50%; border: none; background: #fff; color: var(--brand); font-size: 1.5rem; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+        /* footer */
+        footer.case-footer { max-width: 1400px; margin: 4rem auto 0; padding: 2rem 5%; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        footer.case-footer a { color: var(--success-700); text-decoration: none; }
+
+        @media (max-width: 900px) { .two-column-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+        @media (max-width: 640px) {
+            header { padding: 0.85rem 5%; }
+            .nav-inner { padding: 0.9rem 1.6rem; gap: 1rem; }
+            .nav-links { position: fixed; inset: 4.5rem 1rem auto 1rem; flex-direction: column; align-items: flex-start; padding: 1.1rem 1.3rem; border-radius: 1rem; background: rgba(255,255,255,0.98); box-shadow: 0 24px 55px rgba(13,40,24,0.28); border: 1px solid rgba(13,40,24,0.07); gap: 0.6rem; transform: translateY(-0.5rem); opacity: 0; visibility: hidden; pointer-events: none; }
+            body.is-nav-open .nav-links { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+            .nav-meta .lang-switch { display: none; }
+            .nav-lang-item { display: list-item; width: 100%; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(13,40,24,0.08); }
+            .nav-toggle { display: inline-flex; }
+            .token-scene { grid-template-columns: 1fr; justify-items: center; }
+            .token-wire { transform: rotate(90deg); height: 70px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .content-section { opacity: 1; transform: none; }
+            .tag, .meta-item, .hero-image, .project-hero h1, .project-subtitle { opacity: 1; }
+            .comp-preview, .token-chip, .scene-stamp,
+            .sl-row, .sl-flag, .sl-prio, .sl-act, .sl-old, .sl-arrow, .sl-new { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body data-page="delicorner">
+
+    <!-- Header / nav globale -->
+    <header id="header" role="banner">
+        <nav role="navigation" aria-label="Navigation principale">
+            <div class="nav-inner">
+                <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+                    Hugo Ferrer <span>Product</span>
+                </a>
+                <div class="nav-main">
+                    <ul class="nav-links" id="primary-navigation">
+                        <li><a href="index.html" data-i18n="nav.home"><span>Accueil</span></a></li>
+                        <li><a href="delicorner-detail.html" aria-current="page"><span>Délicorner</span></a></li>
+                        <li><a href="gouvernement-detail.html"><span>Gouvernement.fr</span></a></li>
+                        <li><a href="gomind-good.html"><span>GoMind</span></a></li>
+                        <li class="nav-lang-item">
+                            <div class="lang-switch lang-switch--mobile">
+                                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
+                                <span aria-hidden="true">|</span>
+                                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="nav-meta">
+                        <div class="lang-switch">
+                            <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
+                            <span aria-hidden="true">|</span>
+                            <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
+                        </div>
+                        <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-navigation">
+                            <span class="nav-toggle-icon" aria-hidden="true">
+                                <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="project-hero">
+        <div class="project-tags">
+            <span class="tag is-accent" data-i18n="deli.tag.role">Product Design</span>
+            <span class="tag" data-i18n="deli.tag.ds">Design System</span>
+            <span class="tag" data-i18n="deli.tag.ai">IA appliquée</span>
+            <span class="tag" data-i18n="deli.tag.b2b">Foodtech B2B</span>
+            <span class="tag" data-i18n="deli.tag.year">2026</span>
+        </div>
+
+        <h1 data-i18n="deli.title" data-i18n-mode="html">Délicorner — un portail B2B,<br>un design system, <em>et un copilote IA</em></h1>
+        <p class="project-subtitle" data-i18n="deli.subtitle" data-i18n-mode="html">
+            Mission freelance Product Designer chez <strong>Délicorner</strong> (foodtech B2B, ~30 personnes). Deux livrables phares menés en parallèle : <strong>Corner Digital</strong>, le portail client et son design system construit de zéro, et <strong>CX Copilot</strong>, un bot Slack IA qui désengorge le support et combat le churn.
+        </p>
+
+        <h2 class="sr-only">Informations du projet</h2>
+        <div class="project-meta">
+            <div class="meta-item"><h3 data-i18n="case.role">Rôle</h3><p data-i18n="deli.role.value">Product Designer freelance — DS, UX, IA</p></div>
+            <div class="meta-item"><h3 data-i18n="deli.meta.context">Contexte</h3><p data-i18n="deli.context.value">Foodtech B2B · ~30 personnes</p></div>
+            <div class="meta-item"><h3 data-i18n="deli.meta.stack">Stack</h3><p data-i18n="deli.stack.value">DTCG · Angular/Tailwind/DaisyUI · Vercel + Claude</p></div>
+            <div class="meta-item"><h3 data-i18n="case.duration">Période</h3><p data-i18n="deli.duration.value">Mars 2026 →</p></div>
+        </div>
+
+        <div class="hero-wrapper">
+            <div class="hero-image data-hero">
+                <button class="hero-zoom-button" data-i18n="deli.hero.zoom" data-i18n-attr="aria-label" aria-label="Agrandir l'image">🔍 Voir en grand</button>
+                <img src="image/delicorner/deli-hero.webp" data-no-lightbox alt="Délicorner Digital — vision du portail de commande B2B premium : desktop, mobile et logistique multi-points" loading="eager" width="1568" height="672">
+                <div class="data-overlay" aria-label="Impact mesuré">
+                    <div class="kpi"><b data-count="106" data-prefix="+">0</b><span data-i18n="deli.kpi.components">Composants DS</span></div>
+                    <div class="kpi"><b data-count="2" data-suffix=" sem.">0</b><span data-i18n="deli.kpi.delivery">DS livré</span></div>
+                    <div class="kpi"><b data-count="20" data-suffix=" s">0</b><span data-i18n="deli.kpi.response">Réponse CX (vs 5-6 h)</span></div>
+                    <div class="kpi"><b data-count="5" data-prefix="&lt; " data-suffix=" €">0</b><span data-i18n="deli.kpi.cost">Coût/mois CX Copilot</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAYOUT 2 COLONNES -->
+    <div class="two-column-layout">
+        <main class="main-content">
+
+            <!-- MISSION -->
+            <section id="mission" class="content-section">
+                <span class="eyebrow" data-i18n="deli.mission.eyebrow">La mission</span>
+                <h2 data-i18n="deli.mission.title">Deux chantiers, une même exigence</h2>
+                <p data-i18n="deli.mission.p1">
+                    Délicorner livre des produits alimentaires premium en B2B et pilotait un MVP de portail client avec une PM freelance, sans fondation design. J'ai pris deux sujets de front : structurer le produit et son design system pour le rendre testable et industrialisable, puis attaquer un point de douleur opérationnel — la surcharge des équipes CX — avec un copilote IA.
+                </p>
+                <p data-i18n="deli.mission.p2">
+                    Les deux cas suivent volontairement la même trame — <strong>Problème → Approche → Système → Résultat</strong> — parce qu'ils répondent à la même conviction : un bon design réduit la friction, qu'elle soit côté interface ou côté process.
+                </p>
+            </section>
+
+            <!-- ====================== CAS 1 ====================== -->
+            <div class="case-divider">
+                <div class="case-kicker"><span class="num">1</span><span data-i18n="deli.case1.kicker">Corner Digital</span></div>
+                <h2 class="case-title" data-i18n="deli.case1.title">Portail client B2B & design system, de zéro à livré en 2 semaines</h2>
+                <p class="case-sub" data-i18n="deli.case1.sub">Une chaîne design-to-code pensée pour la vitesse sans sacrifier la rigueur.</p>
+            </div>
+
+            <section id="c1-probleme" class="content-section">
+                <h2 data-i18n="deli.c1.problem.title">Le problème</h2>
+                <p data-i18n="deli.c1.problem.p1">
+                    Délicorner devait lancer Corner Digital sans design system : une charte graphique d'entreprise existait, mais aucune fondation systématisée côté produit. Il manquait la couche design qui permette à la fois de <strong>tester vite auprès d'utilisateurs réels</strong> et de livrer aux développeurs quelque chose de <strong>réutilisable, cohérent et industrialisable</strong>.
+                </p>
+                <div class="highlight-box">
+                    <p><strong data-i18n="deli.c1.problem.challenge.label">Le défi :</strong> <span data-i18n="deli.c1.problem.challenge.text">passer d'une charte statique à un système vivant, accessible et exploitable par la tech avec l'IA — dans un délai très court.</span></p>
+                </div>
+            </section>
+
+            <section id="c1-approche" class="content-section">
+                <h2 data-i18n="deli.c1.approach.title">L'approche</h2>
+                <p data-i18n="deli.c1.approach.intro">Six étapes, du token jusqu'au design system exploitable par l'IA :</p>
+                <div class="methodology-grid">
+                    <div class="method-card"><div class="method-step">1</div><div class="method-title" data-i18n="deli.c1.s1.t">Fondations en tokens DTCG</div><p class="method-description" data-i18n="deli.c1.s1.d">Fichier de tokens au standard DTCG dérivé de la charte. Une source de vérité unique, déclinable.</p></div>
+                    <div class="method-card"><div class="method-step">2</div><div class="method-title" data-i18n="deli.c1.s2.t">Plugin Storybook → Figma maison</div><p class="method-description" data-i18n="deli.c1.s2.d">Récupération des composants depuis Storybook vers Figma, reliés aux mêmes tokens, en 1 clic. Alternative gratuite à story.to.design.</p></div>
+                    <div class="method-card"><div class="method-step">3</div><div class="method-title" data-i18n="deli.c1.s3.t">Prototype hi-fi fonctionnel</div><p class="method-description" data-i18n="deli.c1.s3.d">Un proto haute-fidélité réellement fonctionnel pour des tests, construit à partir du MVP de la PM.</p></div>
+                    <div class="method-card"><div class="method-step">4</div><div class="method-title" data-i18n="deli.c1.s4.t">Tests utilisateurs internes & externes</div><p class="method-description" data-i18n="deli.c1.s4.d">Sessions avec 3 clients (Hellowork, NVIDIA, Databricks) pour déceler la friction avant industrialisation.</p></div>
+                    <div class="method-card"><div class="method-step">5</div><div class="method-title" data-i18n="deli.c1.s5.t">DS complet en 2 semaines</div><p class="method-description" data-i18n="deli.c1.s5.d">Variables, tokens, styles, composants — avec Claude Code, alignés sur la stack tech : Angular, Tailwind, DaisyUI (naming compris).</p></div>
+                    <div class="method-card"><div class="method-step">6</div><div class="method-title" data-i18n="deli.c1.s6.t">Optimisation pour l'IA</div><p class="method-description" data-i18n="deli.c1.s6.d">DS structuré pour la génération assistée (Figma Make, Claude Code, Codex) : la boucle design → dev → IA est fermée.</p></div>
+                </div>
+            </section>
+
+            <section id="c1-systeme" class="content-section">
+                <h2 data-i18n="deli.c1.system.title">Le système</h2>
+                <p data-i18n="deli.c1.system.p1">Le cœur : un token unique se propage à N composants, synchronisés en un clic entre Storybook, le code et Figma.</p>
+
+                <div class="scene" aria-hidden="true">
+                    <span class="scene-label" data-i18n="deli.c1.scene.label">Token → Composant · synchro 1 clic</span>
+                    <div class="token-scene">
+                        <div class="token-col">
+                            <div class="token-chip"><span class="sw" style="background:#0D2818"></span>color/brand</div>
+                            <div class="token-chip"><span class="sw" style="background:#E3C84A"></span>color/accent</div>
+                            <div class="token-chip"><span class="sw" style="background:#5FA45A"></span>color/success</div>
+                            <div class="token-chip"><span class="sw" style="background:#7242FF"></span>radius/md · space/16</div>
+                        </div>
+                        <div class="token-wire">
+                            <svg viewBox="0 0 90 120" preserveAspectRatio="none" aria-hidden="true">
+                                <path class="wire-path" d="M0,60 C40,60 50,20 90,20 M0,60 C40,60 50,60 90,60 M0,60 C40,60 50,100 90,100"></path>
+                                <path class="wire-pulse" d="M0,60 C40,60 50,60 90,60"></path>
+                            </svg>
+                        </div>
+                        <div class="token-out">
+                            <div class="comp-preview">
+                                <div class="cp-badges"><span class="cp-badge must">Must.</span><span class="cp-badge pref">Pref.</span><span class="cp-badge exclu">Exclu.</span></div>
+                                <div class="cp-line"></div><div class="cp-line s"></div>
+                                <div class="cp-btn">+ Ajouter</div>
+                            </div>
+                            <span class="scene-stamp" data-i18n="deli.c1.scene.stamp">1 token → 106 composants</span>
+                        </div>
+                    </div>
+                </div>
+
+                <dl class="spec-list">
+                    <div class="spec-row"><dt data-i18n="deli.c1.spec.tokens.t">Tokens</dt><dd data-i18n="deli.c1.spec.tokens.d">Fichier DTCG dérivé de la charte, source de vérité unique.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c1.spec.comp.t">Composants</dt><dd data-i18n="deli.c1.spec.comp.d">Générés et synchronisés via le plugin Storybook→Figma, fidèles 1:1 aux tokens et variables.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c1.spec.stack.t">Stack cible</dt><dd data-i18n="deli.c1.spec.stack.d">Angular + Tailwind + DaisyUI, naming aligné sur le code existant.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c1.spec.custom.t">Organisms & charts maison</dt><dd data-i18n="deli.c1.spec.custom.d">side-panel, calendar, catalog-picker, donut/line/grouped-bar charts — documentés (anatomy, slots, do/don't).</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c1.spec.ai.t">Exploitabilité IA</dt><dd data-i18n="deli.c1.spec.ai.d">Structuré pour la génération assistée (Figma Make / Claude Code / Codex).</dd></div>
+                </dl>
+
+                <h3 data-i18n="deli.c1.system.dsh">La preuve dans Figma</h3>
+                <div class="gallery">
+                    <figure class="shot"><img src="image/delicorner/ds-cover.webp" alt="Design System Délicorner Digital — page de garde Figma : foundations (breakpoints, colors, radius, spacing, typography) et composants DaisyUI" loading="lazy"><figcaption data-i18n="deli.c1.fig.dscover">DS v2 — foundations + composants DaisyUI</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/ds-variables.webp" alt="Variables sémantiques Délicorner dans Figma — collections Primitives et Semantic, modes Light et Dark" loading="lazy"><figcaption data-i18n="deli.c1.fig.variables">Variables sémantiques — modes Light & Dark</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/ds-organisms.webp" alt="Organisms custom et charts maison du DS Délicorner — side-panel documenté (anatomy, slots, do/don't)" loading="lazy"><figcaption data-i18n="deli.c1.fig.organisms">Organisms custom + charts maison, documentés</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/plugin-storybook.webp" alt="Plugin maison Storybook vers Figma — import du rendu réel des composants en 1 clic" loading="lazy"><figcaption data-i18n="deli.c1.fig.plugin">Plugin maison Storybook → Figma (1 clic)</figcaption></figure>
+                </div>
+            </section>
+
+            <section id="c1-galerie" class="content-section">
+                <h2 data-i18n="deli.c1.gallery.title">Le portail en images</h2>
+                <p data-i18n="deli.c1.gallery.intro">Le prototype hi-fi fonctionnel : commande récurrente, catalogue filtrable, suivi budgétaire et logistique multi-points — du desktop au mobile.</p>
+                <div class="gallery">
+                    <figure class="shot"><img src="image/delicorner/mes-commandes-drawer.webp" alt="Mes Commandes — calendrier de livraison et panneau latéral d'édition de la commande récurrente" loading="lazy"><figcaption data-i18n="deli.c1.fig.commandes">Mes Commandes — calendrier + side-panel d'édition</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/selection-produit.webp" alt="Sélection du catalogue — filtres par régime alimentaire et allergènes, cartes produit composées" loading="lazy"><figcaption data-i18n="deli.c1.fig.selection">Sélection — filtres régimes & cartes produit</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/suivi-kpi.webp" alt="Suivi KPI — dashboard budget, coût par pays et par catégorie, commandé vs livré" loading="lazy"><figcaption data-i18n="deli.c1.fig.kpi">Suivi KPI — budget, coût par pays & catégorie</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/distribution.webp" alt="Distribution — préparation et suivi des livraisons multi-points avec minimum de commande" loading="lazy"><figcaption data-i18n="deli.c1.fig.distribution">Distribution — livraisons multi-points</figcaption></figure>
+                </div>
+                <div class="gallery">
+                    <figure class="shot tall"><img src="image/delicorner/suivi-kpi-mobile.webp" alt="Suivi KPI en version mobile responsive — budget, donut charts et historique" loading="lazy"><figcaption data-i18n="deli.c1.fig.mobile">Responsive — Suivi KPI sur mobile</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/calendrier-cmd.webp" alt="Calendrier de commande Délicorner — vue mensuelle des livraisons et budget par point" loading="lazy"><figcaption data-i18n="deli.c1.fig.calendrier">Calendrier de commande — vue mensuelle</figcaption></figure>
+                </div>
+            </section>
+
+            <section id="c1-resultats" class="content-section">
+                <h2 data-i18n="deli.c1.result.title">Le résultat</h2>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-value"><span data-count="2" data-suffix=" sem.">0</span></div><div class="stat-label" data-i18n="deli.c1.r1.l">Design system complet</div><div class="stat-description" data-i18n="deli.c1.r1.d">Variables, tokens, styles, composants — depuis les maquettes hi-fi.</div></div>
+                    <div class="stat-card"><div class="stat-value"><span data-count="106" data-prefix="+">0</span></div><div class="stat-label" data-i18n="deli.c1.r2.l">Composants reliés aux tokens</div><div class="stat-description" data-i18n="deli.c1.r2.d">Plus ~102 variables, tous connectés à la source de vérité.</div></div>
+                    <div class="stat-card"><div class="stat-value"><span data-count="3">0</span></div><div class="stat-label" data-i18n="deli.c1.r3.l">Clients en test</div><div class="stat-description" data-i18n="deli.c1.r3.d">Hellowork, NVIDIA, Databricks — friction corrigée tôt.</div></div>
+                    <div class="stat-card"><div class="stat-value"><span data-count="1">0</span><span style="font-family:var(--display)"> clic</span></div><div class="stat-label" data-i18n="deli.c1.r4.l">Import composants</div><div class="stat-description" data-i18n="deli.c1.r4.d">Plugin maison Storybook→Figma, sans outil payant tiers.</div></div>
+                </div>
+                <ul class="icon-list">
+                    <li data-i18n="deli.c1.r.li1">DS réutilisable par la tech avec l'IA — adoption design → dev fluidifiée.</li>
+                    <li data-i18n="deli.c1.r.li2">Friction produit identifiée avant industrialisation grâce aux tests.</li>
+                    <li data-i18n="deli.c1.r.li3">Une chaîne design-to-code rejouable sur les prochains chantiers.</li>
+                </ul>
+            </section>
+
+            <!-- ====================== CAS 2 ====================== -->
+            <div class="case-divider cxc">
+                <div class="case-kicker"><span class="num">2</span><span data-i18n="deli.case2.kicker">CX Copilot</span></div>
+                <h2 class="case-title" data-i18n="deli.case2.title">Un bot Slack IA pour combattre le churn et libérer les équipes CX</h2>
+                <p class="case-sub" data-i18n="deli.case2.sub">Branché là où les équipes travaillent déjà : centraliser, prioriser, accélérer.</p>
+            </div>
+
+            <section id="c2-probleme" class="content-section cxc">
+                <h2 data-i18n="deli.c2.problem.title">Le problème</h2>
+                <p data-i18n="deli.c2.problem.p1">
+                    Les équipes CX traitaient <strong>plus de 100 demandes par personne et par jour</strong>, dispersées sur plusieurs canaux (Slack, Front, HubSpot). Résultat : temps de réponse long, frustration client, risque de churn, et des CX mobilisés sur des tâches à faible valeur plutôt que sur ce qui compte.
+                </p>
+                <div class="highlight-box cxc">
+                    <p><strong data-i18n="deli.c2.problem.challenge.label">Le défi :</strong> <span data-i18n="deli.c2.problem.challenge.text">répondre vite et juste sans alourdir l'outillage — en restant dans Slack, là où les CX sont déjà.</span></p>
+                </div>
+            </section>
+
+            <section id="c2-approche" class="content-section cxc">
+                <h2 data-i18n="deli.c2.approach.title">L'approche</h2>
+                <p data-i18n="deli.c2.approach.p1">Un copilote conversationnel qui analyse chaque demande client, propose des résolutions chiffrées et déclenche les bonnes actions — le tout en quelques secondes.</p>
+
+                <div class="slack-scene" data-anim="off" aria-hidden="true">
+                    <div class="sl-head"><span class="sl-bot">🤖</span><span class="sl-bot-name">CX Copilot Délicorner</span></div>
+                    <div class="sl-row m1">
+                        <div class="sl-msg">
+                            <div class="who">Message client — B2B · grand compte</div>
+                            <span data-i18n="deli.c2.scene.msg">« Machine à café en panne depuis plusieurs jours, SLA critique manqué, aucune communication pendant l'incident. Solution attendue d'ici vendredi. »</span>
+                        </div>
+                        <div class="sl-analyse"><span>✨</span><span data-i18n="deli.c2.scene.analyse">Analyse Claude</span><span class="sl-shimmer sl-shimmerbar"></span></div>
+                        <div class="sl-prio">🔴 <span data-i18n="deli.c2.scene.prio">Priorité : Urgent</span></div>
+                        <div class="sl-flags">
+                            <span class="sl-flag">escalade_recommandee</span>
+                            <span class="sl-flag">sla_critique_manque</span>
+                            <span class="sl-flag">client_grand_compte</span>
+                            <span class="sl-flag">impact_client_critique</span>
+                        </div>
+                        <div class="sl-actions">
+                            <span class="sl-act hub" data-i18n="deli.c2.scene.act1">📋 Créer ticket HubSpot</span>
+                            <span class="sl-act esc" data-i18n="deli.c2.scene.act2">⏫ Escalader équipe</span>
+                            <span class="sl-act rep" data-i18n="deli.c2.scene.act3">💬 Répondre au client</span>
+                        </div>
+                        <div class="sl-timer">
+                            <span class="sl-old">5–6 h</span>
+                            <span class="sl-arrow">→</span>
+                            <span class="sl-new">~20 s</span>
+                        </div>
+                    </div>
+                    <p class="scene-caption" data-i18n="deli.c2.scene.caption">Reconstitution animée du flux réel : message → analyse → priorisation → quick actions.</p>
+                </div>
+
+                <ul class="icon-list cxc">
+                    <li data-i18n="deli.c2.app.li1">Réponse rapide et personnalisée pour limiter frustration et churn.</li>
+                    <li data-i18n="deli.c2.app.li2">Réponses pragmatiques, directement exploitables par le CX.</li>
+                    <li data-i18n="deli.c2.app.li3">Ouverture de ticket HubSpot en un geste, depuis Slack.</li>
+                    <li data-i18n="deli.c2.app.li4">Dashboard multicanal : toutes les demandes, priorisées, avec quick actions.</li>
+                </ul>
+            </section>
+
+            <section id="c2-systeme" class="content-section cxc">
+                <h2 data-i18n="deli.c2.system.title">Le système</h2>
+                <dl class="spec-list">
+                    <div class="spec-row"><dt data-i18n="deli.c2.spec.if.t">Interface</dt><dd data-i18n="deli.c2.spec.if.d">Bot branché à Slack, là où les CX travaillent déjà.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c2.spec.ac.t">Actions</dt><dd data-i18n="deli.c2.spec.ac.d">Création de ticket HubSpot en un geste, quick actions depuis le dashboard.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c2.spec.pi.t">Pilotage</dt><dd data-i18n="deli.c2.spec.pi.d">Dashboard centralisant les canaux, demandes priorisées automatiquement.</dd></div>
+                    <div class="spec-row"><dt data-i18n="deli.c2.spec.st.t">Stack</dt><dd data-i18n="deli.c2.spec.st.d">Vercel + Claude Haiku, agrégation Slack / Front / HubSpot.</dd></div>
+                </dl>
+                <div class="gallery">
+                    <figure class="shot"><img src="image/delicorner/cxc-slack-analyse.webp" alt="CX Copilot dans Slack — analyse Claude d'une plainte produit : résumé, flags, priorité et 3 propositions de résolution chiffrées" loading="lazy"><figcaption data-i18n="deli.c2.fig.analyse">Dans Slack — analyse, flags & propositions chiffrées</figcaption></figure>
+                    <figure class="shot"><img src="image/delicorner/cxc-dashboard.webp" alt="Tableau de bord CX Copilot — cas analysés, compteurs urgent / plaintes, filtres et recherche, style éditorial" loading="lazy"><figcaption data-i18n="deli.c2.fig.dashboard">Dashboard — cas analysés & priorisation</figcaption></figure>
+                </div>
+                <figure class="shot single" style="margin-top:1.1rem"><img src="image/delicorner/cxc-slack-reponse.webp" alt="Réponse validée envoyée au client depuis Slack, avec identifiant de cas traité" loading="lazy"><figcaption data-i18n="deli.c2.fig.reponse">Réponse validée envoyée au client en un clic</figcaption></figure>
+            </section>
+
+            <section id="c2-resultats" class="content-section cxc">
+                <h2 data-i18n="deli.c2.result.title">Le résultat</h2>
+                <div class="chart-container">
+                    <h3 class="chart-title" data-i18n="deli.c2.chart.title">Délai de réponse client — avant / après</h3>
+                    <div class="chart-wrapper"><canvas id="responseChart"></canvas></div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card cxc"><div class="stat-value"><span data-count="20" data-suffix=" s">0</span></div><div class="stat-label" data-i18n="deli.c2.r1.l">Réponse auto personnalisée</div><div class="stat-description" data-i18n="deli.c2.r1.d">Contre 5-6 h auparavant (et plus avant un week-end).</div></div>
+                    <div class="stat-card cxc"><div class="stat-value"><span data-count="3" data-prefix="+">0</span> h</div><div class="stat-label" data-i18n="deli.c2.r2.l">Gagnées par CX / jour</div><div class="stat-description" data-i18n="deli.c2.r2.d">+2 à 3 h réallouées sur des tâches à valeur ajoutée.</div></div>
+                    <div class="stat-card cxc"><div class="stat-value"><span data-count="100" data-prefix="+">0</span></div><div class="stat-label" data-i18n="deli.c2.r3.l">Demandes/CX/jour centralisées</div><div class="stat-description" data-i18n="deli.c2.r3.d">Volume multicanal priorisé automatiquement.</div></div>
+                    <div class="stat-card cxc"><div class="stat-value"><span data-prefix="&lt; " data-count="5" data-suffix=" €">0</span></div><div class="stat-label" data-i18n="deli.c2.r4.l">Coût d'exploitation / mois</div><div class="stat-description" data-i18n="deli.c2.r4.d">Stack légère (Vercel + Claude Haiku), ROI immédiat.</div></div>
+                </div>
+                <ul class="icon-list cxc">
+                    <li data-i18n="deli.c2.r.li1">Temps de réponse réduit → moins de frustration, levier anti-churn direct.</li>
+                    <li data-i18n="deli.c2.r.li2">Centralisation multicanal avec priorisation automatique et quick actions.</li>
+                    <li data-i18n="deli.c2.r.li3">Ticket HubSpot ouvert en un clic depuis Slack.</li>
+                </ul>
+            </section>
+
+            <!-- TÉMOIGNAGE -->
+            <section id="temoignage" class="content-section">
+                <div class="testimonial">
+                    <blockquote data-i18n="deli.testimonial.quote">Hugo a su gérer les délais et livrer des travaux de qualité dans un contexte d'incertitude et de changements fréquents. Il est également très compétent sur les sujets liés à l'IA et saura vous apporter beaucoup, aussi bien sur les aspects stratégiques qu'opérationnels.</blockquote>
+                    <div class="who" data-i18n="deli.testimonial.who">— Head of Product, Délicorner</div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section id="cta" class="content-section cta-section">
+                <h2 data-i18n="deli.cta.title">Un produit B2B complexe, un design system à poser, l'IA à embarquer ?</h2>
+                <p data-i18n="deli.cta.subtitle">J'accompagne les équipes produit sur les interfaces à forte logique métier, les design systems industrialisables et l'IA appliquée aux workflows. Parlons de votre prochain chantier.</p>
+                <div class="cta-actions">
+                    <a class="cta-button primary" href="https://calendly.com/ferrerhugo91300/reunion-freelance" target="_blank" rel="noopener" data-i18n="deli.cta.primary">Discuter de votre projet</a>
+                    <a class="cta-button secondary" href="index.html#projets" data-i18n="deli.cta.secondary">Explorer d'autres études de cas</a>
+                </div>
+                <span class="cta-disclaimer" data-i18n="deli.cta.disclaimer">Réponse sous 48h — disponible en CDI, régie ou mission ciblée.</span>
+            </section>
+        </main>
+
+        <!-- SIDEBAR TOC -->
+        <aside class="sidebar">
+            <div class="table-of-contents">
+                <h3 class="toc-title" data-i18n="deli.toc.title">Sommaire</h3>
+                <div class="toc-item" data-section="mission" data-i18n="deli.toc.mission">La mission</div>
+                <div class="toc-group" data-i18n="deli.toc.g1">Cas 1 · Corner Digital</div>
+                <div class="toc-item" data-section="c1-probleme" data-i18n="deli.toc.c1p">Le problème</div>
+                <div class="toc-item" data-section="c1-approche" data-i18n="deli.toc.c1a">L'approche</div>
+                <div class="toc-item" data-section="c1-systeme" data-i18n="deli.toc.c1s">Le système</div>
+                <div class="toc-item" data-section="c1-galerie" data-i18n="deli.toc.c1g">Le portail</div>
+                <div class="toc-item" data-section="c1-resultats" data-i18n="deli.toc.c1r">Résultats</div>
+                <div class="toc-group cxc" data-i18n="deli.toc.g2">Cas 2 · CX Copilot</div>
+                <div class="toc-item" data-section="c2-probleme" data-i18n="deli.toc.c2p">Le problème</div>
+                <div class="toc-item" data-section="c2-approche" data-i18n="deli.toc.c2a">L'approche</div>
+                <div class="toc-item" data-section="c2-systeme" data-i18n="deli.toc.c2s">Le système</div>
+                <div class="toc-item" data-section="c2-resultats" data-i18n="deli.toc.c2r">Résultats</div>
+                <div class="toc-item" data-section="temoignage" data-i18n="deli.toc.temoignage">Témoignage</div>
+                <div class="toc-item" data-section="cta" data-i18n="deli.toc.cta">Passer à l'action</div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="case-footer">
+        <span>© <span id="year">2026</span> Hugo Ferrer — Product Designer, Paris</span>
+        <span><a href="index.html#projets" data-i18n="deli.footer.back">← Toutes les études de cas</a></span>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">×</button>
+            <img src="" alt="Vue agrandie" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
+
+    <!-- Scripts globaux (présents sur le site) -->
+    <script src="js/i18n.js" defer></script>
+    <script src="js/nav.js" defer></script>
+</body>
+</html>

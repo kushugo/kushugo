@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Délicorner: Static Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8753"],
+      "cwd": "${workspaceFolder}/delico projet",
+      "console": "integratedTerminal"
+    }
+  ]
+}
