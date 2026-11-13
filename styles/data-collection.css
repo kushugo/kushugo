@@ -216,7 +216,9 @@ body.is-nav-open .dc-site .nav-toggle-bar:nth-child(3) { bottom: 6px; transform:
 .dc-time-axis .a2 { --p: .3875; }
 .dc-time-axis .a3 { --p: .6125; }
 .dc-time-axis .a4 { --p: .806; }
-.dc-time-axis .a5 { --p: .96; }
+/* dernière graduation : la fin de l'échelle (4 mois), calée à droite pour ne pas déborder */
+.dc-time-axis .a5 { --p: 1; translate: -100% 0; }
+.dc-time-axis .a5::before { left: auto; right: 0; }
 .dc-time figcaption { margin-top: 14px; max-width: 46em; font-size: .78rem; color: var(--ink-3); }
 
 /* 02 · le panel et le corpus */
@@ -626,7 +628,7 @@ html:not(.js) .dc-path-nav .dc-arrow { display: none; }
     .dc-time-rows li { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
     .dc-time .track { grid-column: 1 / -1; grid-row: 2; }
     .dc-time-axis { margin: 0; }
-    .dc-time-axis .a3 { display: none; }
+    .dc-time-axis .a4 { display: none; }
     /* le chemin : les couloirs se lisent sans leurs noms, déjà portés par chaque étape */
     .dc-path-map { grid-template-columns: minmax(0, 1fr); padding: 10px; }
     .dc-lane { display: none; }
