@@ -595,6 +595,8 @@ html:not(.js) .dc-path-nav .dc-arrow { display: none; }
     .dc-time { --c1: 13rem; --c3: 8rem; }
 }
 @media (max-width: 920px) {
+    /* axe des durées : sous 921 px, « 1 mois » toucherait « 4 mois » (mesuré en anglais) */
+    .dc-time-axis .a4 { display: none; }
     .dc-site { padding: 12px var(--gut); }
     .dc-site .nav-inner { padding: .7rem 1.1rem .7rem 1.4rem; }
     .dc-site .nav-links { position: fixed; inset: 4.6rem var(--gut) auto var(--gut); flex-direction: column; align-items: flex-start; gap: .6rem; padding: 1.1rem 1.3rem 1.4rem; border-radius: 1rem; background: rgba(255, 255, 255, .98); border: 1px solid rgba(28, 26, 54, .07); box-shadow: 0 24px 55px rgba(28, 26, 54, .28); transform: translateY(-.5rem); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s, transform .35s var(--ease), visibility 0s .25s; }
@@ -628,7 +630,6 @@ html:not(.js) .dc-path-nav .dc-arrow { display: none; }
     .dc-time-rows li { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
     .dc-time .track { grid-column: 1 / -1; grid-row: 2; }
     .dc-time-axis { margin: 0; }
-    .dc-time-axis .a4 { display: none; }
     /* le chemin : les couloirs se lisent sans leurs noms, déjà portés par chaque étape */
     .dc-path-map { grid-template-columns: minmax(0, 1fr); padding: 10px; }
     .dc-lane { display: none; }

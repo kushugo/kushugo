@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Collection - Étude de cas UX B2B | Hugo Ferrer</title>
-    <meta name="description" content="Étude de cas UX, SaaS B2B : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, une synthèse IA vérifiée à la main.">
+    <meta name="description" content="Étude de cas UX, SaaS B2B : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, synthèse IA vérifiée à la main.">
     <meta name="author" content="Hugo Ferrer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio-2026-hugof.vercel.app/data-collection.html">
@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/data-collection/partage.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Extrait de maquette : suivi d'une collecte de documents, avec la liste de ce qui manque encore.">
+    <meta property="og:image:alt" content="Extrait de maquette (données fictives) : suivi d'une collecte de documents, avec la liste de ce qui manque encore.">
     <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/data-collection.html">
     <meta property="og:site_name" content="Hugo F - Portfolio">
     <meta property="og:locale" content="fr_FR">
@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Data Collection : réunir les documents d'un client, de 0 à 100 %">
     <meta name="twitter:description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance.">
     <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/data-collection/partage.jpg">
-    <meta name="twitter:image:alt" content="Extrait de maquette : suivi d'une collecte de documents, avec la liste de ce qui manque encore.">
+    <meta name="twitter:image:alt" content="Extrait de maquette (données fictives) : suivi d'une collecte de documents, avec la liste de ce qui manque encore.">
 
     <!-- données structurées : la personne, l'étude de cas, le fil d'Ariane (aucun nom d'entreprise) -->
     <script type="application/ld+json">
@@ -47,7 +47,7 @@
           "@id": "https://portfolio-2026-hugof.vercel.app/data-collection.html#article",
           "name": "Data Collection : réunir les documents d'un client, de 0 à 100 %",
           "headline": "Data Collection : réunir les documents d'un client, de 0 à 100 %",
-          "description": "Étude de cas UX, SaaS B2B : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, une synthèse IA vérifiée à la main.",
+          "description": "Étude de cas UX, SaaS B2B : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, synthèse IA vérifiée à la main.",
           "url": "https://portfolio-2026-hugof.vercel.app/data-collection.html",
           "datePublished": "2026-11-13",
           "dateModified": "2026-11-13",
@@ -63,7 +63,7 @@
           "image": {
             "@type": "ImageObject",
             "url": "https://portfolio-2026-hugof.vercel.app/image/data-collection/partage.jpg",
-            "caption": "Extrait de maquette : suivi d'une collecte de documents, avec la liste de ce qui manque encore.",
+            "caption": "Extrait de maquette (données fictives) : suivi d'une collecte de documents, avec la liste de ce qui manque encore.",
             "width": 1200,
             "height": 630
           },
@@ -71,10 +71,7 @@
             "@type": "WebPage",
             "@id": "https://portfolio-2026-hugof.vercel.app/data-collection.html"
           },
-          "isPartOf": {
-            "@id": "https://portfolio-2026-hugof.vercel.app/#website"
-          },
-          "articleSection": "Étude de cas",
+          "genre": "Étude de cas",
           "keywords": [
             "Étude de cas UX",
             "Product design",
@@ -126,7 +123,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400-italic.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.1.0/index.css">
-    <link rel="stylesheet" href="styles/data-collection.css?v=12">
+    <link rel="stylesheet" href="styles/data-collection.css?v=13">
     <!-- chargé en tête : il marque la page « js » et évite l'affichage du français avant l'anglais -->
     <script src="js/data-collection.js?v=7"></script>
 </head>
@@ -348,7 +345,7 @@
                         <li class="a4" data-i18n="dc.cost.a4">1&nbsp;mois</li>
                         <li class="a5" data-i18n="dc.cost.a5">4&nbsp;mois</li>
                     </ol>
-                    <figcaption id="dc-time-cap" data-i18n="dc.cost.caption">Pour tenir sur la même échelle, une journée vaut huit heures et un mois vingt jours. Les trois premières lignes sont du temps passé, par dossier pour la validation et le retraitement&nbsp;; les deux dernières sont des délais.</figcaption>
+                    <figcaption id="dc-time-cap" data-i18n="dc.cost.caption">Pour tenir sur la même échelle, une journée vaut huit heures et un mois vingt jours. Les trois premières lignes comptent du temps passé (par dossier pour la validation et le retraitement), les deux dernières des durées calendaires.</figcaption>
                 </figure>
             </div>
 
@@ -362,7 +359,7 @@
             <header class="dc-head">
                 <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg>02 · <span data-i18n="dc.map.2.t">Écouter</span></p>
                 <h2 id="dc-h-enquete" data-i18n="dc.s2.title" data-i18n-mode="html">L'enquête&nbsp;: <em>huit entretiens,</em> quatre pôles</h2>
-                <p class="dc-intro" data-i18n="dc.s2.intro">En juillet 2026, j'ai interrogé celles et ceux qui vivent la collecte&nbsp;: des consultants, un expert paie, des managers, une responsable opérationnelle, une ingénieure d'affaires. Chaque entretien a été enregistré, puis complété par l'observation de dossiers réels à l'écran. Le cabinet est organisé en pôles, un par métier&nbsp;: le plus avancé sur le sujet a servi de pilote.</p>
+                <p class="dc-intro" data-i18n="dc.s2.intro">En juillet 2026, j'ai interrogé celles et ceux qui vivent la collecte&nbsp;: des consultants, un expert paie, des managers, une responsable opérationnelle, une ingénieure d'affaires. Chaque entretien a été enregistré, puis complété par l'observation de dossiers réels à l'écran. Le cabinet travaille en pôles d'expertise&nbsp;: le plus avancé sur le sujet a servi de pilote.</p>
             </header>
 
             <div class="dc-field">
@@ -448,7 +445,7 @@
                     <span class="dc-pipe-ic"><svg class="dc-ic" aria-hidden="true"><use href="#i-wand"/></svg></span>
                     <h3 data-i18n="dc.s3.p4.t">Prototyper</h3>
                     <p class="ai"><b data-i18n="dc.s3.ai">L'IA</b><span data-i18n="dc.s3.p4.ai">Elle produit les écrans et le prototype de recette.</span></p>
-                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p4.me">Je fixe les parcours, les textes et les cas limites, puis j'audite la cohérence.</span></p>
+                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p4.me">Je fixe le parcours, les textes et les cas limites, puis j'audite la cohérence.</span></p>
                 </li>
             </ol>
 
@@ -730,7 +727,7 @@
                         <header class="dc-st-head">
                             <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-briefcase"/></svg><span data-i18n="dc.s5.lane.1">Commercial</span></span><span data-i18n="dc.s5.step1.k">Étape 1 sur 11</span></p>
                             <h3 data-i18n="dc.s5.st1.t">Le client vient du CRM</h3>
-                            <p data-i18n="dc.s5.st1.d">Le commercial trouve un client et l'inscrit dans le CRM. Il passe l'appel, valide l'échange, puis crée le client sur la plateforme&nbsp;: il tape son nom, et la raison sociale, le numéro SIREN de l'entreprise et ses établissements arrivent du CRM.</p>
+                            <p data-i18n="dc.s5.st1.d">Le commercial trouve un client et l'inscrit dans le CRM. Il passe l'appel, valide l'échange, puis crée le client sur la plateforme&nbsp;: il tape le nom du client, et la raison sociale, le numéro SIREN de l'entreprise et ses établissements arrivent du CRM.</p>
                             <p class="dc-st-meter"><b>0</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
                         </header>
                         <figure class="dc-shot">
@@ -839,7 +836,7 @@
                         <header class="dc-st-head">
                             <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.4">Consultant</span></span><span data-i18n="dc.s5.step7.k">Étape 7 sur 11</span></p>
                             <h3 data-i18n="dc.s5.st7.t">Le consultant prend le dossier</h3>
-                            <p data-i18n="dc.s5.st7.d">Les cinq premières pièces arrivées, le consultant désigné prend le dossier d'audit et le reste de la liste est demandé. L'écran montre la collecte plus avancée, à 23 types complets sur 26&nbsp;: il voit ce que voit le client, dépose pour lui ou relance.</p>
+                            <p data-i18n="dc.s5.st7.d">Les cinq premières pièces arrivées, le consultant désigné prend le dossier d'audit et le reste de la liste est demandé. L'écran montre la collecte plus avancée, à 23 types complets sur 26. Le consultant voit ce que voit le client, dépose pour lui ou relance.</p>
                             <p class="dc-st-meter"><b>23</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
                         </header>
                         <figure class="dc-shot">
@@ -984,7 +981,7 @@
                 </div>
                 <div>
                     <h3 data-i18n="dc.s6.aud.title">Un audit avant la recette</h3>
-                    <p data-i18n="dc.s6.aud.d">J'ai relu le parcours des quatre rôles comme un seul récit et j'ai relevé les incohérences&nbsp;: textes qui ne correspondent pas à l'état affiché, chiffres de référence qui diffèrent d'un écran à l'autre, doublons de nommage, trous dans le parcours.</p>
+                    <p data-i18n="dc.s6.aud.d">J'ai relu le parcours d'un rôle à l'autre, d'un seul tenant, et j'ai relevé les incohérences&nbsp;: textes qui ne correspondent pas à l'état affiché, chiffres de référence qui diffèrent d'un écran à l'autre, doublons de nommage, trous dans le parcours.</p>
                     <p class="dc-chips-t" data-i18n="dc.s6.aud.cases">Huit situations à rejouer dans le prototype</p>
                     <ul class="dc-chips">
                         <li data-i18n="dc.s6.c1">SIREN invalide</li>
