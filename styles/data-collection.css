@@ -495,6 +495,9 @@ html:not(.js) .dc-path-nav .dc-arrow { display: none; }
 .dc-chips li { padding: 7px 11px; border-radius: 8px; background: var(--card); box-shadow: 0 0 0 1px var(--line); font-size: .84rem; font-weight: 500; }
 .dc-quick { margin-top: 22px; display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 14px; background: var(--violet-soft); font-size: .94rem; line-height: 1.45; }
 .dc-quick .dc-ic { position: relative; top: .15em; color: var(--violet); }
+/* le même encadré sert à l'exemple d'erreur de l'IA, en section 3 */
+.dc-proof { margin-top: clamp(20px, 3vw, 32px); max-width: 54em; }
+.dc-proof b { font-weight: 600; }
 
 .dc-cards { margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(16px, 2.4vw, 28px); }
 .dc-card { padding: clamp(22px, 3vw, 34px); border-radius: 22px; background: var(--card); box-shadow: 0 0 0 1px var(--line), 0 24px 48px -36px rgba(40, 28, 120, .35); }
