@@ -238,12 +238,12 @@
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(redrawFlow);
     }
 
-    /* ---------- Le chemin : huit écrans, un à la fois ---------- */
+    /* ---------- Le chemin : onze étapes, une à la fois ---------- */
     let namePath = () => {};
     const path = $('[data-path]');
     if (path) {
       const tabs = $$('[role="tab"]', path), panels = $$('.dc-st', path), segs = $$('[data-seg]', path);
-      const prev = $('[data-prev]', path), next = $('[data-next]', path);
+      const prev = $('[data-prev]', path), next = $('[data-next]', path), map = $('.dc-path-map', path);
       const n = panels.length;
       let cur = -1;
       /* nom lisible de chaque pastille : « 3 · Cinq fichiers à redéposer » */
@@ -257,6 +257,8 @@
         if (!first && !reduce) { panels[k].classList.add('enter'); if (back) panels[k].classList.add('back'); }
         tabs.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); t.tabIndex = i === k ? 0 : -1; t.classList.toggle('seen', i < k); });
         segs.forEach((s, i) => s.classList.toggle('done', i < k));
+        const lane = /\bl(\d)\b/.exec(tabs[k].className);   /* le couloir de l'étape affichée */
+        if (map && lane) map.dataset.lane = lane[1];
         if (prev) prev.disabled = k === 0;
         if (next) next.disabled = k === n - 1;
         const ahead = panels[k + 1] && $('img', panels[k + 1]);   /* l'écran suivant se charge d'avance */
