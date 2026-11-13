@@ -14,7 +14,7 @@ e-learning, accessibility (RGAA/WCAG), Design Systems (DSFR).
 
 - GoMind: Complete website redesign for a GreenIT-focused ESN. Created modern visual identity, AI mascot generator, and design system to improve B2B client acquisition.
 
-- Master Coach: Full artistic direction for an EdTech platform allowing coaches to sell training and digital products. Created showcase website and video content.
+- Data Collection (B2B SaaS, client name withheld): discovery and design of document collection for an HR and finance consulting firm: eight user interviews, then four user journeys (sales, client, manager, consultant) to request, upload, check and follow up on payroll and HR documents.
 
 ## Expertise
 

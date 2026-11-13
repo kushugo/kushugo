@@ -2191,7 +2191,41 @@
             }
         }
 
-        @media (max-width: 640px) {
+        /* cinq liens de projet : le menu de bureau tient sur une ligne */
+        @media (min-width: 921px) {
+            .nav-links a {
+                white-space: nowrap;
+            }
+        }
+
+        @media (min-width: 921px) and (max-width: 1180px) {
+            .nav-inner {
+                gap: 1.4rem;
+                padding-inline: 1.6rem;
+            }
+
+            .nav-main,
+            .nav-links {
+                gap: 1.4rem;
+            }
+        }
+
+        @media (min-width: 921px) and (max-width: 1000px) {
+            .nav-inner {
+                gap: 1rem;
+                padding-inline: 1.25rem;
+            }
+
+            .nav-main {
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.05rem;
+            }
+        }
+
+        @media (max-width: 920px) {
             header {
                 padding: 0.85rem 5%;
             }
@@ -2272,7 +2306,7 @@
     </style>
     <script src="js/agorasquare.js" defer></script>
 </head>
-<body data-page="agorasquare">
+<body data-page="agorasquare" data-nav-bp="920">
 
     <!-- Header avec nav globale -->
     <header id="header" role="banner">
@@ -2298,6 +2332,9 @@
                         </li>
                         <li>
                             <a href="agorasquare-good.html" aria-current="page"><span>AgoraSquare</span></a>
+                        </li>
+                        <li>
+                            <a href="data-collection.html"><span>Data Collection</span></a>
                         </li>
                         <li class="nav-lang-item">
                             <div class="lang-switch lang-switch--mobile">

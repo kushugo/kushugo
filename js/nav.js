@@ -51,7 +51,9 @@
 
   // Function to manage tabindex for hidden navigation links and toggle button
   const manageNavLinksTabindex = () => {
-    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    // seuil du menu mobile : 640 px par défaut, ou la valeur de <body data-nav-bp> (pages à cinq liens : 920)
+    const navBp = parseInt(document.body.getAttribute('data-nav-bp'), 10) || 640;
+    const isMobile = window.matchMedia('(max-width: ' + navBp + 'px)').matches;
     const isNavOpen = document.body.classList.contains('is-nav-open');
     
     // Manage nav links tabindex

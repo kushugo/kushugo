@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection : réunir les documents d'un client, de 0 à 100 % | Étude de cas Hugo Ferrer</title>
+    <meta name="description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, quatre parcours, et un principe : voir ce qui manque dès la réception.">
+    <meta name="author" content="Hugo Ferrer">
+    <meta name="theme-color" content="#f8f7fc">
+    <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
+    <link rel="apple-touch-icon" href="/image/images_webp/Flavicone.webp">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Data Collection : réunir les documents d'un client, de 0 à 100 %">
+    <meta property="og:description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, quatre parcours, six décisions.">
+    <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/accueil/collecte.webp">
+    <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/data-collection.html">
+    <meta property="og:site_name" content="Hugo F - Portfolio">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Data Collection : réunir les documents d'un client, de 0 à 100 %">
+    <meta name="twitter:description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance.">
+    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/accueil/collecte.webp">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.1.0/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400-italic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.1.0/index.css">
+    <link rel="stylesheet" href="styles/data-collection.css?v=5">
+    <!-- chargé en tête : il marque la page « js » et évite l'affichage du français avant l'anglais -->
+    <script src="js/data-collection.js?v=4"></script>
+</head>
+<body data-page="data-collection">
+<a class="dc-skip" href="#contenu" data-i18n="dc.skip">Aller au contenu</a>
+
+<header class="dc-bar">
+    <div class="dc-bar-in">
+        <a class="dc-brand" href="index.html" aria-label="Hugo Ferrer, retour à l'accueil" data-i18n="dc.bar.home" data-i18n-attr="aria-label" data-i18n-no-text>
+            <i class="dc-mark" aria-hidden="true"><img src="image/accueil/logo-hf@2x.webp" srcset="image/accueil/logo-hf@2x.webp 2x, image/accueil/logo-hf@3x.webp 3x" alt="" width="8" height="25"></i>
+            <span>Hugo Ferrer</span>
+        </a>
+        <nav class="dc-toc" data-toc aria-label="Sommaire" data-i18n="dc.toc.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+            <a href="#probleme" data-i18n="dc.toc.1">Problème</a>
+            <a href="#approche" data-i18n="dc.toc.2">Approche</a>
+            <a href="#systeme" data-i18n="dc.toc.3">Système</a>
+            <a href="#resultat" data-i18n="dc.toc.4">Résultat</a>
+        </nav>
+        <p class="dc-read" aria-hidden="true"><span data-i18n="dc.bar.read">Lecture</span> <b data-read>0</b>&nbsp;%</p>
+        <div class="dc-lang" role="group" aria-label="Langue" data-i18n="dc.lang.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+            <button type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
+            <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="dc-cta" href="index.html#contact" data-i18n="dc.bar.contact">Me contacter</a>
+    </div>
+    <div class="dc-progress" aria-hidden="true"><i data-progress></i></div>
+</header>
+
+<main id="contenu">
+
+    <!-- ───────── Premier écran ───────── -->
+    <section class="dc-hero" aria-labelledby="dc-h1">
+        <div class="dc-wrap dc-hero-grid">
+            <div class="dc-hero-txt">
+                <p class="dc-kicker"><span data-i18n="dc.hero.k1">Étude de cas</span><span data-i18n="dc.hero.k2">SaaS B2B</span><span>2026</span><span data-i18n="dc.hero.k4">4 min de lecture</span></p>
+                <h1 id="dc-h1" data-i18n="dc.hero.title" data-i18n-mode="html">Réunir les documents d'un client, <em>de 0 à 100&nbsp;%.</em></h1>
+                <p class="dc-lede" data-i18n="dc.hero.lede">Discovery puis conception de la collecte de documents d'un cabinet de conseil RH et finance&nbsp;: huit entretiens, quatre parcours, et un principe, voir ce qui manque dès la réception.</p>
+                <dl class="dc-meta">
+                    <div><dt data-i18n="dc.meta.role.t">Rôle</dt><dd data-i18n="dc.meta.role.d">Product Designer B2B</dd></div>
+                    <div><dt data-i18n="dc.meta.context.t">Contexte</dt><dd><span data-i18n="dc.meta.context.d">Cabinet de conseil RH et finance</span> <small data-i18n="dc.meta.context.note">nom confidentiel</small></dd></div>
+                    <div><dt data-i18n="dc.meta.method.t">Méthode</dt><dd data-i18n="dc.meta.method.d">8 entretiens · 4 parcours</dd></div>
+                    <div><dt data-i18n="dc.meta.duration.t">Durée</dt><dd data-i18n="dc.meta.duration.d">Depuis juillet 2026</dd></div>
+                </dl>
+            </div>
+
+            <!-- illustration codée du principe : une collecte qui se complète -->
+            <figure class="dc-demo" data-demo>
+                <div class="dc-demo-top">
+                    <p class="dc-demo-title"><span class="dc-dot" aria-hidden="true"></span><span data-i18n="dc.demo.title">DSN mensuelles</span> <small data-i18n="dc.demo.sub">6 établissements × 12 mois</small></p>
+                    <button class="dc-replay" type="button" data-replay data-i18n="dc.demo.replay">Rejouer</button>
+                </div>
+                <p class="dc-demo-pct"><b data-pct>0</b><span>&nbsp;%</span> <small data-state>Demande envoyée</small></p>
+                <ul hidden data-states>
+                    <li data-at="0" data-i18n="dc.demo.s0">Demande envoyée</li>
+                    <li data-at="1" data-i18n="dc.demo.s1">Premiers dépôts</li>
+                    <li data-at="45" data-i18n="dc.demo.s2">Collecte partielle</li>
+                    <li data-at="88" data-i18n="dc.demo.s3">Fichiers à redéposer</li>
+                    <li data-at="100" data-i18n="dc.demo.s4">Collecte complète</li>
+                </ul>
+                <div class="dc-demo-bar" aria-hidden="true"><i data-bar></i></div>
+                <div class="dc-grid" data-grid role="img" aria-label="Grille établissements par mois : chaque case passe de manquante à validée au fil des dépôts" data-i18n="dc.demo.grid" data-i18n-attr="aria-label" data-i18n-no-text><span class="r" data-row-first data-i18n="dc.demo.r1">Siège</span></div>
+                <ul class="dc-legend" aria-hidden="true">
+                    <li><i class="ok"></i><span data-i18n="dc.demo.l1">Validée</span></li>
+                    <li><i class="ko"></i><span data-i18n="dc.demo.l2">Non conforme</span></li>
+                    <li><i></i><span data-i18n="dc.demo.l3">Manquante</span></li>
+                </ul>
+                <ul class="dc-missing" data-missing aria-label="Ce qui manque encore" data-i18n="dc.demo.missing" data-i18n-attr="aria-label" data-i18n-no-text>
+                    <li data-at="38"><span data-i18n="dc.demo.m1.t">DSN mensuelles</span><em data-i18n="dc.demo.m1.d">4 établissements incomplets</em></li>
+                    <li data-at="74"><span data-i18n="dc.demo.m2.t">Bulletins de paie</span><em data-i18n="dc.demo.m2.d">6 mois</em></li>
+                    <li data-at="100"><span data-i18n="dc.demo.m3.t">États de cotisations</span><em data-i18n="dc.demo.m3.d">exercice 2025</em></li>
+                </ul>
+                <figcaption data-i18n="dc.demo.caption">Illustration du principe, données fictives.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ───────── La phrase qui résume le problème ───────── -->
+    <section class="dc-hook" aria-label="Verbatim d'entretien" data-i18n="dc.hook.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+        <div class="dc-wrap">
+            <blockquote>
+                <p data-i18n="dc.hook.quote">«&nbsp;Tu fais 12 échanges pour que le client ne te renvoie jamais le bon mois.&nbsp;»</p>
+                <footer data-i18n="dc.hook.cite">Une manager, en entretien</footer>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ───────── 01 · Le problème ───────── -->
+    <section class="dc-sec" id="probleme" aria-labelledby="dc-h-probleme">
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num">01</p>
+                <h2 id="dc-h-probleme" data-i18n="dc.s1.title" data-i18n-mode="html">Le problème&nbsp;: <em>quatre nœuds,</em> toujours les mêmes</h2>
+                <p class="dc-intro" data-i18n="dc.s1.intro">Chaque mission du cabinet commence par la même étape&nbsp;: obtenir du client ses documents, parfois sur trois ans et pour des centaines d'établissements. Cette collecte reposait sur des e-mails, un espace de partage de fichiers et des tableurs.</p>
+            </header>
+
+            <ol class="dc-knots">
+                <li>
+                    <h3 data-i18n="dc.s1.k1.t">Obtenir</h3>
+                    <p data-i18n="dc.s1.k1.d">Des allers-retours sans fin avec le client, et aucun signal quand un fichier est déposé.</p>
+                    <blockquote><p data-i18n="dc.s1.k1.q">«&nbsp;On passe quelques jours entre le moment où il a déposé les docs et le moment où on s'en rend compte.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
+                </li>
+                <li>
+                    <h3 data-i18n="dc.s1.k2.t">Vérifier</h3>
+                    <p data-i18n="dc.s1.k2.d">Impossible de savoir si un dossier est complet sans ouvrir les fichiers un par un.</p>
+                    <blockquote><p data-i18n="dc.s1.k2.q">«&nbsp;Des fois, le truc s'appelle 2025, tu ouvres, c'est 2024.&nbsp;»</p><footer data-i18n="dc.s1.k2.c">Un expert paie</footer></blockquote>
+                </li>
+                <li>
+                    <h3 data-i18n="dc.s1.k3.t">Retraiter</h3>
+                    <p data-i18n="dc.s1.k3.d">Convertir, nettoyer et normaliser les données de paie peut prendre plusieurs jours par dossier.</p>
+                    <blockquote><p data-i18n="dc.s1.k3.q">«&nbsp;Ça peut arriver où on actualise et on attend trois heures.&nbsp;»</p><footer data-i18n="dc.s1.k3.c">Une consultante senior</footer></blockquote>
+                </li>
+                <li>
+                    <h3 data-i18n="dc.s1.k4.t">Refaire chaque année</h3>
+                    <p data-i18n="dc.s1.k4.d">Chaque début d'année, la même collecte recommence pour les dossiers en cours et mobilise les équipes pendant des mois.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ───────── 02 · L'approche ───────── -->
+    <section class="dc-sec dc-sec--tint" id="approche" aria-labelledby="dc-h-approche">
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num">02</p>
+                <h2 id="dc-h-approche" data-i18n="dc.s2.title" data-i18n-mode="html">L'approche&nbsp;: <em>écouter d'abord,</em> dessiner ensuite</h2>
+                <p class="dc-intro" data-i18n="dc.s2.intro">Huit entretiens dans quatre pôles d'expertise, avec des consultants, des experts paie, des managers, une responsable opérationnelle et une ingénieure d'affaires. Chaque entretien a été enregistré et transcrit, puis complété par l'observation de dossiers réels à l'écran. Le pôle le plus avancé sur le sujet a servi de pilote.</p>
+            </header>
+
+            <ol class="dc-steps">
+                <li><h3 data-i18n="dc.s2.st1.t">Entretiens et observation</h3><p data-i18n="dc.s2.st1.d">Huit entretiens enregistrés, et des dossiers réels ouverts à l'écran.</p></li>
+                <li><h3 data-i18n="dc.s2.st2.t">Parcours et chemin critique</h3><p data-i18n="dc.s2.st2.d">Chaque étape de la collecte, de la signature au rapport.</p></li>
+                <li><h3 data-i18n="dc.s2.st3.t">Persona et empathy map</h3><p data-i18n="dc.s2.st3.d">Un persona principal&nbsp;: la consultante qui mène la collecte.</p></li>
+                <li><h3 data-i18n="dc.s2.st4.t">Douleurs et pistes</h3><p data-i18n="dc.s2.st4.d">Chaque difficulté reliée à une piste de solution.</p></li>
+            </ol>
+
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s2.f.title">Ce que les entretiens ont établi</h3>
+                    <p data-i18n="dc.s2.f.legend">Fréquence relevée dans les cinq entretiens du pôle pilote.</p>
+                </div>
+                <ol class="dc-finds">
+                    <li>
+                        <p data-i18n="dc.s2.f1">La collecte est un ping-pong, sans signal quand un fichier arrive.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s2.n55">5 sur 5</b></span>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s2.f2">Le retraitement des données est le plus gros poste de temps&nbsp;: chaque logiciel de paie a sa propre mise en page.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s2.n55">5 sur 5</b></span>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s2.f3">Un dossier incomplet ne se voit pas à la réception&nbsp;: on le découvre en cours d'analyse.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><b data-i18n="dc.s2.n45">4 sur 5</b></span>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s2.f4">La DSN est la seule donnée normée, celle qui fait foi.</p>
+                        <span class="dc-tag" data-i18n="dc.s2.f4.tag">Repère</span>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s2.f5">L'outil doit alerter, jamais décider à la place du consultant.</p>
+                        <span class="dc-tag" data-i18n="dc.s2.f5.tag">Principe</span>
+                    </li>
+                </ol>
+            </div>
+
+            <blockquote class="dc-pull">
+                <p data-i18n="dc.s2.quote">«&nbsp;On ne cherche plus, on perd la compétence.&nbsp;»</p>
+                <footer data-i18n="dc.s2.cite">Une consultante senior, à propos d'un audit entièrement automatisé</footer>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ───────── 03 · Le système ───────── -->
+    <section class="dc-sec" id="systeme" aria-labelledby="dc-h-systeme">
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num">03</p>
+                <h2 id="dc-h-systeme" data-i18n="dc.s3.title" data-i18n-mode="html">Le système&nbsp;: <em>six décisions</em> tirées des entretiens</h2>
+                <p class="dc-intro" data-i18n="dc.s3.intro">Chaque décision répond à un constat, et dit le plus souvent ce qu'elle écarte. Les écrans sont montrés par extraits, avec des données fictives.</p>
+            </header>
+
+            <!-- quatre parcours, une seule boucle -->
+            <div class="dc-sub dc-sub--first">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s3.loop.title">Quatre parcours, une seule boucle</h3>
+                    <p data-i18n="dc.s3.loop.legend">Un même dossier passe de main en main&nbsp;: chaque rôle a son parcours.</p>
+                </div>
+                <ol class="dc-loop">
+                    <li><b data-i18n="dc.s3.loop1.t">Commercial</b><span data-i18n="dc.s3.loop1.d">Créer le client, préparer et envoyer la demande initiale.</span></li>
+                    <li><b data-i18n="dc.s3.loop2.t">Client</b><span data-i18n="dc.s3.loop2.d">Recevoir la demande, déposer, corriger ou classer les fichiers.</span></li>
+                    <li><b data-i18n="dc.s3.loop3.t">Manager</b><span data-i18n="dc.s3.loop3.d">Retrouver le client à assigner, appliquer puis enregistrer.</span></li>
+                    <li><b data-i18n="dc.s3.loop4.t">Consultant</b><span data-i18n="dc.s3.loop4.d">Consulter les fichiers, déposer pour le client et préparer une relance.</span></li>
+                    <li><b data-i18n="dc.s3.loop5.t">Retour client</b><span data-i18n="dc.s3.loop5.d">Recevoir une relance et des documents complémentaires.</span></li>
+                </ol>
+            </div>
+
+            <!-- décision 01 : un extrait d'écran annoté -->
+            <article class="dc-dec" aria-labelledby="dc-dec-1">
+                <div class="dc-dec-txt">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 01 <span class="of" data-i18n="dc.dec.of">sur 06</span></p>
+                    <h3 id="dc-dec-1" data-i18n="dc.d1.t">Voir ce qui manque dès la réception</h3>
+                    <p data-i18n="dc.d1.d">Chaque dépôt est contrôlé à l'arrivée&nbsp;: bon format, bonne période, mois manquants. Une vue par établissement et par mois montre les trous d'un coup d'œil.</p>
+                </div>
+                <div class="dc-dec-side">
+                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d1.out">Ouvrir les fichiers un par un pour vérifier.</span></p>
+                    <blockquote><p data-i18n="dc.d1.q">«&nbsp;En vert j'ai la DSN, en rouge je ne l'ai pas.&nbsp;»</p><footer data-i18n="dc.d1.c">Un expert paie</footer></blockquote>
+                </div>
+                <figure class="dc-shot">
+                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                        <div class="dc-shot-canvas">
+                            <img src="image/data-collection/collecte-manques.webp" alt="Extrait de maquette : la carte « Ce qui manque encore » liste trois types de documents à compléter, à côté de la zone de dépôt." width="2000" height="612" loading="lazy" decoding="async" data-i18n="dc.d1.alt" data-i18n-attr="alt" data-i18n-no-text>
+                            <i class="dc-pin p1" aria-hidden="true">1</i>
+                            <i class="dc-pin p2" aria-hidden="true">2</i>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <ol class="dc-notes">
+                            <li><b aria-hidden="true">1</b><span data-i18n="dc.d1.n1">La liste de ce qui manque, à jour à chaque dépôt.</span></li>
+                            <li><b aria-hidden="true">2</b><span data-i18n="dc.d1.n2">Le fichier est contrôlé à l'arrivée&nbsp;: format, période, établissement.</span></li>
+                        </ol>
+                        <p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <!-- décisions 02 à 04 : sans écran, le principe suffit -->
+            <div class="dc-trio">
+                <article class="dc-mini" aria-labelledby="dc-dec-2">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 02</p>
+                    <h3 id="dc-dec-2" data-i18n="dc.d2.t">Zéro saisie ajoutée</h3>
+                    <p data-i18n="dc.d2.d">Aucun statut à remplir à la main&nbsp;: chaque état du dossier découle d'une action réelle.</p>
+                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d2.out">Un outil de suivi à renseigner. Le précédent avait été abandonné, trop long à remplir.</span></p>
+                </article>
+                <article class="dc-mini" aria-labelledby="dc-dec-3">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 03</p>
+                    <h3 id="dc-dec-3" data-i18n="dc.d3.t">Demander le minimum utile</h3>
+                    <p data-i18n="dc.d3.d">Un socle de documents sans lequel aucun dossier ne démarre, et un pack de collecte standard.</p>
+                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d3.out">Le questionnaire exhaustif envoyé au client.</span></p>
+                </article>
+                <article class="dc-mini" aria-labelledby="dc-dec-4">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 04</p>
+                    <h3 id="dc-dec-4" data-i18n="dc.d4.t">Côté client&nbsp;: une liste et un dépôt guidé</h3>
+                    <p data-i18n="dc.d4.d">Le client a besoin d'une consigne claire, pas d'un outil de gestion de projet. Le fichier dit lui-même où il va&nbsp;: l'établissement et le mois sont lus à chaque dépôt.</p>
+                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d4.out">Le portail complet avec tableau de bord.</span></p>
+                </article>
+            </div>
+
+            <!-- décision 05 : les rejets -->
+            <article class="dc-dec" aria-labelledby="dc-dec-5">
+                <div class="dc-dec-txt">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 05</p>
+                    <h3 id="dc-dec-5" data-i18n="dc.d5.t">L'outil alerte, le consultant décide</h3>
+                    <p data-i18n="dc.d5.d">Un fichier refusé affiche son motif en clair et l'action attendue. L'analyse, elle, reste entre les mains des experts.</p>
+                </div>
+                <div class="dc-dec-side">
+                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d5.out">L'audit entièrement automatique, une boîte noire qui gommerait les anomalies qu'eux seuls savent repérer.</span></p>
+                </div>
+                <figure class="dc-shot">
+                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                        <div class="dc-shot-canvas">
+                            <img src="image/data-collection/collecte-rejets.webp" alt="Extrait de maquette : zone de dépôt des DSN, puis cinq fichiers rejetés, chacun avec son motif et un bouton pour le redéposer." width="2000" height="1022" loading="lazy" decoding="async" data-i18n="dc.d5.alt" data-i18n-attr="alt" data-i18n-no-text>
+                            <i class="dc-pin p3" aria-hidden="true">1</i>
+                            <i class="dc-pin p4" aria-hidden="true">2</i>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <ol class="dc-notes">
+                            <li><b aria-hidden="true">1</b><span data-i18n="dc.d5.n1">Rien à renseigner&nbsp;: le SIRET et le mois sont lus dans chaque fichier.</span></li>
+                            <li><b aria-hidden="true">2</b><span data-i18n="dc.d5.n2">Chaque rejet donne son motif et l'action attendue.</span></li>
+                        </ol>
+                        <p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <!-- décision 06 : la relance -->
+            <article class="dc-dec dc-dec--split" aria-labelledby="dc-dec-6">
+                <div class="dc-dec-txt">
+                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 06</p>
+                    <h3 id="dc-dec-6" data-i18n="dc.d6.t">Ne relancer que le manquant</h3>
+                    <p data-i18n="dc.d6.d">La relance ne porte que sur les documents encore attendus&nbsp;: les pièces complètes ne sont pas redemandées. Les rappels automatiques s'arrêtent pour chaque jeu complet et validé.</p>
+                </div>
+                <figure class="dc-card-shot">
+                    <img src="image/data-collection/collecte-relance-liste.webp" alt="Extrait de la fenêtre de relance : seuls les trois documents restant à fournir sont cochés." width="600" height="272" loading="lazy" decoding="async" data-i18n="dc.d6.alt" data-i18n-attr="alt" data-i18n-no-text>
+                    <figcaption data-i18n="dc.d6.caption">La fenêtre de relance&nbsp;: seuls les documents restant à fournir sont cochés.</figcaption>
+                </figure>
+            </article>
+
+            <!-- un vocabulaire commun -->
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s3.voc.title">Un vocabulaire commun</h3>
+                    <p data-i18n="dc.s3.voc.legend">Quatre pôles, quatre façons de nommer le suivi des documents. La conception fixe quelques termes.</p>
+                </div>
+                <dl class="dc-vocab">
+                    <div><dt data-i18n="dc.s3.voc1.t">Pack de collecte</dt><dd data-i18n="dc.s3.voc1.d">La liste des documents demandés, avec statuts et échéances.</dd></div>
+                    <div><dt data-i18n="dc.s3.voc2.t">Socle minimal</dt><dd data-i18n="dc.s3.voc2.d">Ce sans quoi un dossier ne démarre pas.</dd></div>
+                    <div><dt data-i18n="dc.s3.voc3.t">Vue périmètre</dt><dd data-i18n="dc.s3.voc3.d">La grille des établissements, mois par mois.</dd></div>
+                    <div><dt data-i18n="dc.s3.voc4.t">Déposant guidé</dt><dd data-i18n="dc.s3.voc4.d">Le client&nbsp;: il dépose, il ne pilote pas un projet.</dd></div>
+                </dl>
+            </div>
+
+            <!-- de 0 à 100 % : la même liste, deux états -->
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s3.cmp.title">De 0 à 100&nbsp;%</h3>
+                    <p data-i18n="dc.s3.cmp.legend">La même liste de suivi, du jour de la demande au dossier complet.</p>
+                </div>
+                <figure class="dc-compare" data-compare>
+                    <div class="dc-seg" role="group" aria-label="État de la collecte" data-i18n="dc.s3.cmp.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                        <button type="button" data-state-btn="0" aria-pressed="true"><b>0&nbsp;%</b><span data-i18n="dc.s3.cmp.a">Demande envoyée</span></button>
+                        <button type="button" data-state-btn="100" aria-pressed="false"><b>100&nbsp;%</b><span data-i18n="dc.s3.cmp.b">Collecte complète</span></button>
+                    </div>
+                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                        <div class="dc-shot-canvas dc-compare-canvas">
+                            <img class="a" src="image/data-collection/collecte-0.webp" alt="Liste de suivi le jour de la demande : aucun type de document complet, chaque ligne est « À déposer »." width="1190" height="425" loading="lazy" decoding="async" data-i18n="dc.s3.cmp.alt0" data-i18n-attr="alt" data-i18n-no-text>
+                            <img class="b" src="image/data-collection/collecte-100.webp" alt="La même liste à la fin de la collecte : 26 types de documents complets." width="1190" height="425" loading="lazy" decoding="async" data-i18n="dc.s3.cmp.alt100" data-i18n-attr="alt" data-i18n-no-text>
+                        </div>
+                    </div>
+                    <figcaption><p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p></figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───────── 04 · Le résultat ───────── -->
+    <section class="dc-sec dc-sec--tint" id="resultat" aria-labelledby="dc-h-resultat">
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num">04</p>
+                <h2 id="dc-h-resultat" data-i18n="dc.s4.title" data-i18n-mode="html">Le résultat&nbsp;: <em>ce qui a été livré,</em> sans chiffres inventés</h2>
+                <p class="dc-intro" data-i18n="dc.s4.intro">La fonction est en cours de conception. Voici ce que la mission a produit à ce jour.</p>
+            </header>
+
+            <ul class="dc-stats">
+                <li><b>8</b><span data-i18n="dc.s4.st1">entretiens, dans quatre pôles d'expertise</span></li>
+                <li><b>4</b><span data-i18n="dc.s4.st2">parcours&nbsp;: commercial, client, manager, consultant</span></li>
+                <li><b>26</b><span data-i18n="dc.s4.st3">types de documents suivis</span></li>
+                <li><b>8</b><span data-i18n="dc.s4.st4">cas limites vérifiables en recette</span></li>
+            </ul>
+
+            <div class="dc-two">
+                <div>
+                    <h3 data-i18n="dc.s4.del.title">Les livrables</h3>
+                    <ul class="dc-check">
+                        <li data-i18n="dc.s4.del1">Dossier de cadrage&nbsp;: problème, contexte, périmètre.</li>
+                        <li data-i18n="dc.s4.del2">Persona principal et empathy map.</li>
+                        <li data-i18n="dc.s4.del3">Parcours de bout en bout et chemin critique.</li>
+                        <li data-i18n="dc.s4.del4">Socle minimal de documents pour le pôle pilote.</li>
+                        <li data-i18n="dc.s4.del5">Cartographie des croisements de données entre les pôles.</li>
+                        <li data-i18n="dc.s4.del6">Prototype des quatre parcours, avec sa planche de recette.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-i18n="dc.s4.aud.title">Un audit avant la recette</h3>
+                    <p data-i18n="dc.s4.aud.d">J'ai relu les quatre parcours comme un seul récit et relevé les incohérences&nbsp;: textes qui ne correspondent pas à l'état affiché, chiffres de référence qui diffèrent d'un écran à l'autre, doublons de nommage, trous dans le parcours.</p>
+                    <p class="dc-chips-t" data-i18n="dc.s4.aud.cases">Huit cas limites à rejouer dans le prototype</p>
+                    <ul class="dc-chips">
+                        <li data-i18n="dc.s4.c1">SIREN invalide</li>
+                        <li data-i18n="dc.s4.c2">Client déjà présent</li>
+                        <li data-i18n="dc.s4.c3">Source indisponible</li>
+                        <li data-i18n="dc.s4.c4">E-mail non livré</li>
+                        <li data-i18n="dc.s4.c5">Invitation expirée</li>
+                        <li data-i18n="dc.s4.c6">Transfert interrompu</li>
+                        <li data-i18n="dc.s4.c7">Aucun document à relancer</li>
+                        <li data-i18n="dc.s4.c8">Compte non autorisé</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dc-cards">
+                <article class="dc-card">
+                    <h3 data-i18n="dc.s4.num.title">Et les chiffres&nbsp;?</h3>
+                    <p data-i18n="dc.s4.num.d">Il n'y a pas encore de chiffres après mise en service, et je n'en invente pas. La discovery a montré que le temps de collecte n'était mesuré nulle part&nbsp;: la conception prévoit donc d'horodater chaque étape, demande, dépôt, dossier complet, pour disposer d'une base de comparaison.</p>
+                </article>
+                <article class="dc-card dc-card--say">
+                    <h3 data-i18n="dc.s4.hand.title">Le handoff</h3>
+                    <p data-i18n="dc.s4.hand.d">Les parcours ont été salués par l'équipe de développement pour leur précision et leur clarté technique.</p>
+                </article>
+            </div>
+
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s4.learn.title">Ce que j'en retiens</h3>
+                </div>
+                <ol class="dc-learn">
+                    <li data-i18n="dc.s4.l1">Un bulletin de paie ne se lit pas comme un document générique&nbsp;: chaque logiciel de paie a sa mise en page, il faut un gabarit par logiciel.</li>
+                    <li data-i18n="dc.s4.l2">Un outil de suivi qui demande de saisir des statuts à la main finit abandonné.</li>
+                    <li data-i18n="dc.s4.l3">Le client ne veut pas suivre un projet en ligne&nbsp;: il veut une consigne de dépôt claire.</li>
+                    <li data-i18n="dc.s4.l4">L'automatisation doit faire remonter des alertes et laisser l'enquête aux experts.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───────── Contact ───────── -->
+    <section class="dc-end" aria-labelledby="dc-h-end">
+        <div class="dc-wrap">
+            <div class="dc-end-in">
+                <p class="dc-num" data-i18n="dc.end.kicker">Travaillons ensemble</p>
+                <h2 id="dc-h-end" data-i18n="dc.end.title" data-i18n-mode="html">Un outil métier <em>à rendre lisible&nbsp;?</em></h2>
+                <p class="dc-end-sub" data-i18n="dc.end.sub">Parlons de votre produit&nbsp;: 30&nbsp;minutes pour comprendre votre contexte.</p>
+                <div class="dc-end-actions">
+                    <a class="dc-btn" href="https://calendly.com/ferrerhugo91300/freelance" target="_blank" rel="noopener" data-rdv data-i18n="contact.holo.button.appointment">Prendre rendez-vous</a>
+                    <a class="dc-btn dc-btn--ghost" href="index.html#projets" data-i18n="dc.end.secondary">Voir les autres projets</a>
+                </div>
+                <p class="dc-end-note" data-i18n="dc.end.note">Réponse sous 48&nbsp;h. Collaboration possible en régie ou sur mission ciblée.</p>
+            </div>
+
+            <nav class="dc-more" aria-label="Autres études de cas" data-i18n="dc.more.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                <a href="delico%20projet/delicorner-preview.html">
+                    <small data-i18n="dc.more.k">Étude de cas</small>
+                    <b>Délicorner</b>
+                    <span data-i18n="dc.more.deli">Portail B2B, de bout en bout</span>
+                </a>
+                <a href="gouvernement-detail.html">
+                    <small data-i18n="dc.more.k">Étude de cas</small>
+                    <b>Gouvernement.fr</b>
+                    <span data-i18n="dc.more.gouv">Refonte de la page des politiques prioritaires</span>
+                </a>
+            </nav>
+
+            <p class="dc-legal" data-i18n="dc.legal">Les extraits d'écran sont mes maquettes, avec des données fictives. Les citations viennent des entretiens et sont attribuées à un rôle, pas à une personne. Le nom du cabinet reste confidentiel.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="dc-foot">
+    <p data-i18n="home.footer.copyright">© 2026 Hugo Ferrer. Tous droits réservés. · Product Designer à Paris</p>
+</footer>
+
+<!-- Prise de rendez-vous : carte ouverte dans la page ; l'agenda Calendly n'est chargé qu'à l'ouverture -->
+<dialog class="dc-rdv" id="rdv" aria-labelledby="rdv-title">
+    <div class="dc-rdv-card">
+        <div class="dc-rdv-head">
+            <div>
+                <h2 id="rdv-title" data-i18n="contact.holo.button.appointment">Prendre rendez-vous</h2>
+                <p class="dc-rdv-sub" data-i18n="v3.rdv.sub">Choisissez un créneau : la confirmation arrive par e-mail.</p>
+                <p class="dc-rdv-sub dc-rdv-ok" data-i18n="v3.rdv.done" role="status">C'est réservé. À très vite !</p>
+            </div>
+            <button type="button" class="dc-rdv-x" data-rdv-close aria-label="Fermer" data-i18n="v3.rdv.close" data-i18n-attr="aria-label" data-i18n-no-text><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <div class="dc-rdv-body">
+            <div class="dc-rdv-load" aria-hidden="true"><i></i><span data-i18n="v3.rdv.loading">Chargement de l'agenda…</span></div>
+            <iframe title="Calendly" data-src="https://calendly.com/ferrerhugo91300/freelance" loading="lazy" allow="payment"></iframe>
+        </div>
+        <div class="dc-rdv-foot">
+            <span data-i18n="v3.rdv.note">Agenda fourni par Calendly, chargé uniquement à l'ouverture de cette carte.</span>
+            <a href="https://calendly.com/ferrerhugo91300/freelance" target="_blank" rel="noopener"><span data-i18n="v3.rdv.open">Ouvrir dans Calendly</span> ↗</a>
+        </div>
+    </div>
+</dialog>
+
+<script src="js/i18n.js" defer></script>
+<script>
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
