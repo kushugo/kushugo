@@ -393,7 +393,7 @@ body.is-nav-open .dc-site .nav-toggle-bar:nth-child(3) { bottom: 6px; transform:
 .dc-role--b { background: rgba(22, 163, 74, .1); color: #15803d; }
 .dc-st-head h3 { grid-column: 1; margin-top: 12px; font: 400 clamp(1.8rem, 3vw, 2.5rem)/1.05 var(--serif); letter-spacing: -.012em; text-wrap: balance; }
 .dc-st-head h3 + p { grid-column: 1; margin-top: 10px; max-width: 38em; color: var(--ink-2); text-wrap: pretty; }
-/* une piste pour la suite, dite sous le texte de l'étape (même étiquette que « Répond à ») */
+/* une note sous le texte de l'étape : piste pour la suite ou décision discutée (même étiquette que « Répond à ») */
 .dc-st-next { grid-column: 1; max-width: 38em; }
 .dc-st-meter { grid-area: 2 / 2 / 4 / 3; align-self: end; display: grid; justify-items: end; gap: 2px; text-align: right; }
 .dc-st-meter b { font: 400 clamp(2.6rem, 5vw, 3.8rem)/.9 var(--serif); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
