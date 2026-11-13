@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Collection : réunir les documents d'un client, de 0 à 100 % | Étude de cas Hugo Ferrer</title>
-    <meta name="description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, quatre parcours, et un principe : voir ce qui manque dès la réception.">
+    <meta name="description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, une synthèse menée avec l'IA et vérifiée à la main, huit arbitrages, un parcours de 0 à 100 %.">
     <meta name="author" content="Hugo Ferrer">
     <meta name="theme-color" content="#f8f7fc">
     <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
@@ -12,7 +12,7 @@
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="Data Collection : réunir les documents d'un client, de 0 à 100 %">
-    <meta property="og:description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, quatre parcours, six décisions.">
+    <meta property="og:description" content="Étude de cas : discovery et conception de la collecte de documents d'un cabinet de conseil RH et finance. Huit entretiens, l'IA sous contrôle, huit arbitrages.">
     <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/accueil/collecte.webp">
     <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/data-collection.html">
     <meta property="og:site_name" content="Hugo F - Portfolio">
@@ -27,34 +27,98 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400-italic.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.1.0/index.css">
-    <link rel="stylesheet" href="styles/data-collection.css?v=5">
+    <link rel="stylesheet" href="styles/data-collection.css?v=9">
     <!-- chargé en tête : il marque la page « js » et évite l'affichage du français avant l'anglais -->
-    <script src="js/data-collection.js?v=4"></script>
+    <script src="js/data-collection.js?v=6"></script>
 </head>
 <body data-page="data-collection">
-<a class="dc-skip" href="#contenu" data-i18n="dc.skip">Aller au contenu</a>
 
-<header class="dc-bar">
-    <div class="dc-bar-in">
-        <a class="dc-brand" href="index.html" aria-label="Hugo Ferrer, retour à l'accueil" data-i18n="dc.bar.home" data-i18n-attr="aria-label" data-i18n-no-text>
-            <i class="dc-mark" aria-hidden="true"><img src="image/accueil/logo-hf@2x.webp" srcset="image/accueil/logo-hf@2x.webp 2x, image/accueil/logo-hf@3x.webp 3x" alt="" width="8" height="25"></i>
-            <span>Hugo Ferrer</span>
-        </a>
-        <nav class="dc-toc" data-toc aria-label="Sommaire" data-i18n="dc.toc.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-            <a href="#probleme" data-i18n="dc.toc.1">Problème</a>
-            <a href="#approche" data-i18n="dc.toc.2">Approche</a>
-            <a href="#systeme" data-i18n="dc.toc.3">Système</a>
-            <a href="#resultat" data-i18n="dc.toc.4">Résultat</a>
-        </nav>
-        <p class="dc-read" aria-hidden="true"><span data-i18n="dc.bar.read">Lecture</span> <b data-read>0</b>&nbsp;%</p>
-        <div class="dc-lang" role="group" aria-label="Langue" data-i18n="dc.lang.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-            <button type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
-            <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+<!-- jeu d'icônes de la page (traits de 1,6 px, grille de 24) -->
+<svg class="dc-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13l2.5-7.5A2 2 0 0 1 8.4 4h7.2a2 2 0 0 1 1.9 1.5L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 13h4.5l1.5 2.5h4l1.5-2.5H20"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 4.5v15"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 3.5l3 3-3 3"/><path d="M4 11.5v-1a4 4 0 0 1 4-4h12"/><path d="M7 20.5l-3-3 3-3"/><path d="M20 12.5v1a4 4 0 0 1-4 4H4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11 3.5l1.8 4.7 4.7 1.8-4.7 1.8L11 16.5l-1.8-4.7L4.5 10l4.7-1.8z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></symbol>
+    <symbol id="i-split" viewBox="0 0 24 24"><path d="M3.5 12H8c3.5 0 3.500-6 7-6h5"/><path d="M8 12c3.5 0 3.500 6 7 6h5"/><path d="M17.500 3.500L20 6l-2.500 2.500M17.500 15.500L20 18l-2.500 2.500"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h5.800"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.500 3.500L10 14"/><path d="M20.500 3.500l-6.500 17-4-6.500-6.500-4z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="3.400"/><path d="M5 20c.8-3.600 3.600-5.500 7-5.500s6.200 1.900 7 5.500"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.500" r="3.200"/><path d="M3 19.500c.6-3.200 3-5 6-5s5.400 1.800 6 5"/><path d="M16 5.600a3.200 3.200 0 0 1 0 5.800M18 14.900c1.600.7 2.600 2.200 3 4.600"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.500" y="7.500" width="17" height="12" rx="2"/><path d="M9 7.500V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.500M3.500 13h17"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3.500" width="14" height="17" rx="1.500"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10.500 20.500v-4h3v4"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3.500h7l4.500 4.500v11a1.500 1.500 0 0 1-1.500 1.500H7A1.500 1.500 0 0 1 5.500 19V5A1.500 1.500 0 0 1 7 3.500z"/><path d="M14 3.500V8h4.500"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.500 7A1.500 1.500 0 0 1 5 5.500h4l2 2.500h8a1.500 1.500 0 0 1 1.500 1.500v8A1.500 1.500 0 0 1 19 19H5a1.500 1.500 0 0 1-1.500-1.500z"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M6 17v-4.500C6 9.500 7.500 7.500 10 7M14 17v-4.500c0-3 1.500-5 4-5.500"/><path d="M6 17h3.500v-4H6M14 17h3.500v-4H14"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M4.500 12h15M13.500 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M19.500 12h-15M10.500 6l-6 6 6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.500 6.500l11 11M17.500 6.500l-11 11"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.500 16.500V11a5.500 5.500 0 0 1 11 0v5.500l1.500 2h-14z"/><path d="M10 20.500a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15.500V4.500M7.500 9L12 4.500 16.500 9"/><path d="M4.500 15.500v3A1.500 1.500 0 0 0 6 20h12a1.500 1.500 0 0 0 1.500-1.500v-3"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.500h10.500M9 12h10.500M9 17.500h10.500M4.800 6.500h.01M4.800 12h.01M4.800 17.500h.01"/></symbol>
+    <symbol id="i-nopen" viewBox="0 0 24 24"><path d="M15.500 5L19 8.500 8.500 19H5v-3.500z"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><circle cx="12" cy="12" r="4.700"/><circle cx="12" cy="12" r="1.200"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="4.500" height="4.500" rx="1"/><rect x="9.750" y="4" width="4.500" height="4.500" rx="1"/><rect x="15.500" y="4" width="4.500" height="4.500" rx="1"/><rect x="4" y="9.750" width="4.500" height="4.500" rx="1"/><rect x="9.750" y="9.750" width="4.500" height="4.500" rx="1"/><rect x="15.500" y="9.750" width="4.500" height="4.500" rx="1"/><rect x="4" y="15.500" width="4.500" height="4.500" rx="1"/><rect x="9.750" y="15.500" width="4.500" height="4.500" rx="1"/><rect x="15.500" y="15.500" width="4.500" height="4.500" rx="1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.500l7 2.500v5.500c0 4.300-2.900 7.600-7 9-4.100-1.400-7-4.700-7-9V6z"/><path d="M9 12l2.200 2.200L15 10.200"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4.500 19.500h15M7.500 16v-5M12 16V6.500M16.500 16V9"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.500 6A1.500 1.500 0 0 1 6 4.500h12A1.500 1.500 0 0 1 19.500 6v8.500A1.500 1.500 0 0 1 18 16h-6.500L7 19.500V16H6a1.500 1.500 0 0 1-1.500-1.500z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3.500l7.500 4.200v8.600L12 20.500l-7.500-4.200V7.700z"/><path d="M4.500 7.700L12 12l7.500-4.300M12 12v8.500"/></symbol>
+    <symbol id="i-wand" viewBox="0 0 24 24"><path d="M5 19L16 8M14.500 6.500l3 3"/><path d="M18.500 3.500v3M17 5h3M6 5.500v2M5 6.500h2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l8.500 4.500L12 13 3.500 8.500z"/><path d="M3.500 12.500L12 17l8.500-4.500M3.500 16L12 20.500 20.500 16"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 20.500v-16M6 5h10.500l-2 4 2 4H6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.500A1.500 1.500 0 0 1 6.500 4H19v13.500H6.500A1.500 1.500 0 0 0 5 19z"/><path d="M5 19a1.500 1.500 0 0 0 1.500 1.500H19M9 8h6M9 11.500h4"/></symbol>
+</svg>
+
+<a class="dc-skip" href="#contenu" data-i18n="dc.skip">Aller au contenu</a>
+<div class="dc-progress" aria-hidden="true"><i data-progress></i></div>
+
+<!-- barre de navigation du site : la même que sur les autres pages projet, calée sur la largeur du contenu -->
+<header class="dc-site" id="header">
+    <nav aria-label="Navigation principale" data-i18n="dc.nav.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+        <div class="nav-inner">
+            <a href="index.html" class="logo" aria-label="Retour à l'accueil" data-i18n="dc.nav.back" data-i18n-attr="aria-label" data-i18n-no-text>Hugo Ferrer <span>UX/UI</span></a>
+            <div class="nav-main">
+                <ul class="nav-links" id="primary-navigation">
+                    <li><a href="index.html"><span data-i18n="dc.nav.home">Accueil</span></a></li>
+                    <li><a href="gomind-good.html"><span>GoMind</span></a></li>
+                    <li><a href="gouvernement-detail.html"><span>Gouvernement.fr</span></a></li>
+                    <li><a href="agorasquare-good.html"><span>AgoraSquare</span></a></li>
+                    <li><a href="data-collection.html" aria-current="page"><span>Data Collection</span></a></li>
+                    <li class="nav-lang-item">
+                        <div class="lang-switch lang-switch--mobile">
+                            <button type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
+                            <span aria-hidden="true">|</span>
+                            <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-meta">
+                    <div class="lang-switch">
+                        <button type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
+                        <span aria-hidden="true">|</span>
+                        <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+                    </div>
+                    <button type="button" class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation" data-i18n="dc.nav.menu" data-i18n-attr="aria-label" data-i18n-no-text>
+                        <span class="nav-toggle-icon" aria-hidden="true"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <a class="dc-cta" href="index.html#contact" data-i18n="dc.bar.contact">Me contacter</a>
-    </div>
-    <div class="dc-progress" aria-hidden="true"><i data-progress></i></div>
+    </nav>
 </header>
+
+<!-- repère de lecture sur les grands écrans : six cases, une par temps de la mission -->
+<nav class="dc-rail" data-rail aria-label="Les six temps de la mission" data-i18n="dc.map.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+    <a href="#probleme"><i aria-hidden="true"></i><span data-i18n="dc.map.1.t">Comprendre</span></a>
+    <a href="#enquete"><i aria-hidden="true"></i><span data-i18n="dc.map.2.t">Écouter</span></a>
+    <a href="#ia"><i aria-hidden="true"></i><span data-i18n="dc.map.3.t">Recouper</span></a>
+    <a href="#arbitrages"><i aria-hidden="true"></i><span data-i18n="dc.map.4.t">Trancher</span></a>
+    <a href="#parcours"><i aria-hidden="true"></i><span data-i18n="dc.map.5.t">Concevoir</span></a>
+    <a href="#resultat"><i aria-hidden="true"></i><span data-i18n="dc.map.6.t">Livrer</span></a>
+</nav>
 
 <main id="contenu">
 
@@ -62,13 +126,13 @@
     <section class="dc-hero" aria-labelledby="dc-h1">
         <div class="dc-wrap dc-hero-grid">
             <div class="dc-hero-txt">
-                <p class="dc-kicker"><span data-i18n="dc.hero.k1">Étude de cas</span><span data-i18n="dc.hero.k2">SaaS B2B</span><span>2026</span><span data-i18n="dc.hero.k4">4 min de lecture</span></p>
+                <p class="dc-kicker"><span data-i18n="dc.hero.k1">Étude de cas</span><span data-i18n="dc.hero.k2">SaaS B2B</span><span>2026</span><span data-i18n="dc.hero.k4">8 min de lecture</span></p>
                 <h1 id="dc-h1" data-i18n="dc.hero.title" data-i18n-mode="html">Réunir les documents d'un client, <em>de 0 à 100&nbsp;%.</em></h1>
-                <p class="dc-lede" data-i18n="dc.hero.lede">Discovery puis conception de la collecte de documents d'un cabinet de conseil RH et finance&nbsp;: huit entretiens, quatre parcours, et un principe, voir ce qui manque dès la réception.</p>
+                <p class="dc-lede" data-i18n="dc.hero.lede">Discovery puis conception de la collecte de documents d'un cabinet de conseil RH et finance&nbsp;: huit entretiens, une synthèse menée avec l'IA et vérifiée à la main, et un principe, voir ce qui manque dès la réception.</p>
                 <dl class="dc-meta">
                     <div><dt data-i18n="dc.meta.role.t">Rôle</dt><dd data-i18n="dc.meta.role.d">Product Designer B2B</dd></div>
                     <div><dt data-i18n="dc.meta.context.t">Contexte</dt><dd><span data-i18n="dc.meta.context.d">Cabinet de conseil RH et finance</span> <small data-i18n="dc.meta.context.note">nom confidentiel</small></dd></div>
-                    <div><dt data-i18n="dc.meta.method.t">Méthode</dt><dd data-i18n="dc.meta.method.d">8 entretiens · 4 parcours</dd></div>
+                    <div><dt data-i18n="dc.meta.method.t">Méthode</dt><dd data-i18n="dc.meta.method.d">8 entretiens · IA sous contrôle</dd></div>
                     <div><dt data-i18n="dc.meta.duration.t">Durée</dt><dd data-i18n="dc.meta.duration.d">Depuis juillet 2026</dd></div>
                 </dl>
             </div>
@@ -114,309 +178,685 @@
         </div>
     </section>
 
-    <!-- ───────── 01 · Le problème ───────── -->
-    <section class="dc-sec" id="probleme" aria-labelledby="dc-h-probleme">
+    <!-- ───────── La mission en six temps ───────── -->
+    <section class="dc-map" aria-labelledby="dc-h-map">
+        <div class="dc-wrap">
+            <h2 id="dc-h-map" class="dc-map-t" data-i18n="dc.map.title">La mission, en six temps</h2>
+            <ol class="dc-map-list">
+                <li><a href="#probleme"><svg class="dc-ic" aria-hidden="true"><use href="#i-compass"/></svg><b data-i18n="dc.map.1.t">Comprendre</b><span data-i18n="dc.map.1.d">Quatre nœuds, et ce qu'ils coûtent.</span></a></li>
+                <li><a href="#enquete"><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg><b data-i18n="dc.map.2.t">Écouter</b><span data-i18n="dc.map.2.d">Huit entretiens, quatre pôles.</span></a></li>
+                <li><a href="#ia"><svg class="dc-ic" aria-hidden="true"><use href="#i-sparkle"/></svg><b data-i18n="dc.map.3.t">Recouper</b><span data-i18n="dc.map.3.d">L'IA rassemble, je vérifie.</span></a></li>
+                <li><a href="#arbitrages"><svg class="dc-ic" aria-hidden="true"><use href="#i-split"/></svg><b data-i18n="dc.map.4.t">Trancher</b><span data-i18n="dc.map.4.d">Huit arbitrages, et ce qu'ils écartent.</span></a></li>
+                <li><a href="#parcours"><svg class="dc-ic" aria-hidden="true"><use href="#i-route"/></svg><b data-i18n="dc.map.5.t">Concevoir</b><span data-i18n="dc.map.5.d">Un parcours, de 0 à 100&nbsp;%.</span></a></li>
+                <li><a href="#resultat"><svg class="dc-ic" aria-hidden="true"><use href="#i-box"/></svg><b data-i18n="dc.map.6.t">Livrer</b><span data-i18n="dc.map.6.d">Ce qui part aux développeurs.</span></a></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ───────── 01 · Comprendre ───────── -->
+    <section class="dc-sec" id="probleme" aria-labelledby="dc-h-probleme" data-chapter>
         <div class="dc-wrap">
             <header class="dc-head">
-                <p class="dc-num">01</p>
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-compass"/></svg>01 · <span data-i18n="dc.map.1.t">Comprendre</span></p>
                 <h2 id="dc-h-probleme" data-i18n="dc.s1.title" data-i18n-mode="html">Le problème&nbsp;: <em>quatre nœuds,</em> toujours les mêmes</h2>
                 <p class="dc-intro" data-i18n="dc.s1.intro">Chaque mission du cabinet commence par la même étape&nbsp;: obtenir du client ses documents, parfois sur trois ans et pour des centaines d'établissements. Cette collecte reposait sur des e-mails, un espace de partage de fichiers et des tableurs.</p>
             </header>
 
             <ol class="dc-knots">
                 <li>
+                    <svg class="dc-ic" aria-hidden="true"><use href="#i-inbox"/></svg>
                     <h3 data-i18n="dc.s1.k1.t">Obtenir</h3>
                     <p data-i18n="dc.s1.k1.d">Des allers-retours sans fin avec le client, et aucun signal quand un fichier est déposé.</p>
                     <blockquote><p data-i18n="dc.s1.k1.q">«&nbsp;On passe quelques jours entre le moment où il a déposé les docs et le moment où on s'en rend compte.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
                 </li>
                 <li>
+                    <svg class="dc-ic" aria-hidden="true"><use href="#i-search"/></svg>
                     <h3 data-i18n="dc.s1.k2.t">Vérifier</h3>
                     <p data-i18n="dc.s1.k2.d">Impossible de savoir si un dossier est complet sans ouvrir les fichiers un par un.</p>
                     <blockquote><p data-i18n="dc.s1.k2.q">«&nbsp;Des fois, le truc s'appelle 2025, tu ouvres, c'est 2024.&nbsp;»</p><footer data-i18n="dc.s1.k2.c">Un expert paie</footer></blockquote>
                 </li>
                 <li>
+                    <svg class="dc-ic" aria-hidden="true"><use href="#i-table"/></svg>
                     <h3 data-i18n="dc.s1.k3.t">Retraiter</h3>
-                    <p data-i18n="dc.s1.k3.d">Convertir, nettoyer et normaliser les données de paie peut prendre plusieurs jours par dossier.</p>
+                    <p data-i18n="dc.s1.k3.d">Convertir, nettoyer et normaliser les données de paie, jusqu'à mille rubriques à classer à la main pour un seul dossier.</p>
                     <blockquote><p data-i18n="dc.s1.k3.q">«&nbsp;Ça peut arriver où on actualise et on attend trois heures.&nbsp;»</p><footer data-i18n="dc.s1.k3.c">Une consultante senior</footer></blockquote>
                 </li>
                 <li>
+                    <svg class="dc-ic" aria-hidden="true"><use href="#i-repeat"/></svg>
                     <h3 data-i18n="dc.s1.k4.t">Refaire chaque année</h3>
                     <p data-i18n="dc.s1.k4.d">Chaque début d'année, la même collecte recommence pour les dossiers en cours et mobilise les équipes pendant des mois.</p>
                 </li>
             </ol>
+
+            <!-- ce que coûtent les nœuds : durées citées en entretien -->
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.cost.title">Ce que ça coûte</h3>
+                    <p data-i18n="dc.cost.legend">Ordres de grandeur cités en entretien, placés sur une échelle logarithmique.</p>
+                </div>
+                <figure class="dc-time" aria-labelledby="dc-time-cap">
+                    <ul class="dc-time-rows">
+                        <li class="t1"><span class="what"><svg class="dc-ic" aria-hidden="true"><use href="#i-table"/></svg><span data-i18n="dc.cost.1">Attendre qu'un tableur s'actualise</span></span><span class="track" aria-hidden="true"><i></i></span><b data-i18n="dc.cost.1.v">jusqu'à 3&nbsp;h</b></li>
+                        <li class="t2"><span class="what"><svg class="dc-ic" aria-hidden="true"><use href="#i-search"/></svg><span data-i18n="dc.cost.2">Valider un dossier, côté manager</span></span><span class="track" aria-hidden="true"><i></i></span><b data-i18n="dc.cost.2.v">0,5 à 2&nbsp;jours</b></li>
+                        <li class="t3"><span class="what"><svg class="dc-ic" aria-hidden="true"><use href="#i-table"/></svg><span data-i18n="dc.cost.3">Retraiter les données d'un dossier</span></span><span class="track" aria-hidden="true"><i></i></span><b data-i18n="dc.cost.3.v">30&nbsp;min à 4&nbsp;jours</b></li>
+                        <li class="t4"><span class="what"><svg class="dc-ic" aria-hidden="true"><use href="#i-inbox"/></svg><span data-i18n="dc.cost.4">Recevoir les documents d'un client</span></span><span class="track" aria-hidden="true"><i></i></span><b data-i18n="dc.cost.4.v">2 à 3&nbsp;mois</b></li>
+                        <li class="t5"><span class="what"><svg class="dc-ic" aria-hidden="true"><use href="#i-repeat"/></svg><span data-i18n="dc.cost.5">Refaire la collecte, chaque début d'année</span></span><span class="track" aria-hidden="true"><i></i></span><b data-i18n="dc.cost.5.v">3 à 4&nbsp;mois</b></li>
+                    </ul>
+                    <ol class="dc-time-axis" aria-hidden="true">
+                        <li class="a1" data-i18n="dc.cost.a1">1&nbsp;h</li>
+                        <li class="a2" data-i18n="dc.cost.a2">1&nbsp;jour</li>
+                        <li class="a3" data-i18n="dc.cost.a3">1&nbsp;semaine</li>
+                        <li class="a4" data-i18n="dc.cost.a4">1&nbsp;mois</li>
+                        <li class="a5" data-i18n="dc.cost.a5">3&nbsp;mois</li>
+                    </ol>
+                    <figcaption id="dc-time-cap" data-i18n="dc.cost.caption">Durées en temps de travail (une journée de huit heures, un mois de vingt jours). Le retraitement et la validation se comptent par dossier.</figcaption>
+                </figure>
+            </div>
+
+            <p class="dc-take"><svg class="dc-ic" aria-hidden="true"><use href="#i-flag"/></svg><span data-i18n="dc.s1.take">Avant de dessiner quoi que ce soit&nbsp;: nommer les nœuds, et mesurer ce qu'ils coûtent.</span></p>
         </div>
     </section>
 
-    <!-- ───────── 02 · L'approche ───────── -->
-    <section class="dc-sec dc-sec--tint" id="approche" aria-labelledby="dc-h-approche">
+    <!-- ───────── 02 · Écouter ───────── -->
+    <section class="dc-sec dc-sec--tint" id="enquete" aria-labelledby="dc-h-enquete" data-chapter>
         <div class="dc-wrap">
             <header class="dc-head">
-                <p class="dc-num">02</p>
-                <h2 id="dc-h-approche" data-i18n="dc.s2.title" data-i18n-mode="html">L'approche&nbsp;: <em>écouter d'abord,</em> dessiner ensuite</h2>
-                <p class="dc-intro" data-i18n="dc.s2.intro">Huit entretiens dans quatre pôles d'expertise, avec des consultants, des experts paie, des managers, une responsable opérationnelle et une ingénieure d'affaires. Chaque entretien a été enregistré et transcrit, puis complété par l'observation de dossiers réels à l'écran. Le pôle le plus avancé sur le sujet a servi de pilote.</p>
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg>02 · <span data-i18n="dc.map.2.t">Écouter</span></p>
+                <h2 id="dc-h-enquete" data-i18n="dc.s2.title" data-i18n-mode="html">L'enquête&nbsp;: <em>huit entretiens,</em> quatre pôles</h2>
+                <p class="dc-intro" data-i18n="dc.s2.intro">En juillet 2026, j'ai interrogé celles et ceux qui vivent la collecte&nbsp;: consultants, experts paie, managers, une responsable opérationnelle, une ingénieure d'affaires. Chaque entretien a été enregistré, puis complété par l'observation de dossiers réels à l'écran. Le pôle le plus avancé sur le sujet a servi de pilote.</p>
             </header>
 
+            <div class="dc-field">
+                <!-- le panel : une case par personne interrogée -->
+                <figure class="dc-panel" aria-labelledby="dc-panel-cap">
+                    <div class="dc-pole dc-pole--main">
+                        <p class="dc-pole-t"><b data-i18n="dc.s2.pole1">Pôle pilote</b><span data-i18n="dc.s2.pole1.n">5 entretiens</span></p>
+                        <ul>
+                            <li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.manager">Manager</span></li>
+                            <li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.manager">Manager</span></li>
+                            <li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.senior">Consultante senior</span></li>
+                            <li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.expert">Consultant expert technique</span></li>
+                            <li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.paie">Expert paie</span></li>
+                        </ul>
+                    </div>
+                    <div class="dc-pole">
+                        <p class="dc-pole-t"><b data-i18n="dc.s2.pole2">Pôle 2</b><span data-i18n="dc.s2.pole.n1">1 entretien</span></p>
+                        <ul><li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.lead">Consultant, responsable d'équipe</span></li></ul>
+                    </div>
+                    <div class="dc-pole">
+                        <p class="dc-pole-t"><b data-i18n="dc.s2.pole3">Pôle 3</b><span data-i18n="dc.s2.pole.n1">1 entretien</span></p>
+                        <ul><li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.ops">Responsable opérationnelle</span></li></ul>
+                    </div>
+                    <div class="dc-pole">
+                        <p class="dc-pole-t"><b data-i18n="dc.s2.pole4">Pôle 4</b><span data-i18n="dc.s2.pole.n1">1 entretien</span></p>
+                        <ul><li><i aria-hidden="true"></i><span data-i18n="dc.s2.r.sales">Ingénieure d'affaires</span></li></ul>
+                    </div>
+                    <figcaption id="dc-panel-cap" data-i18n="dc.s2.panel.caption">Une case par personne interrogée. Les pôles ne sont pas nommés.</figcaption>
+                </figure>
+
+                <!-- le corpus : ce sur quoi tout le reste s'appuie -->
+                <div class="dc-corpus">
+                    <h3 data-i18n="dc.s2.corpus.title">Le corpus</h3>
+                    <ul>
+                        <li><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg><span data-i18n="dc.s2.corpus.1">Huit entretiens enregistrés et transcrits.</span></li>
+                        <li><svg class="dc-ic" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="dc.s2.corpus.2">Trois documents de procédure internes.</span></li>
+                        <li><svg class="dc-ic" aria-hidden="true"><use href="#i-folder"/></svg><span data-i18n="dc.s2.corpus.3">Des dossiers réels, ouverts à l'écran avec les consultants.</span></li>
+                    </ul>
+                </div>
+            </div>
+
             <ol class="dc-steps">
-                <li><h3 data-i18n="dc.s2.st1.t">Entretiens et observation</h3><p data-i18n="dc.s2.st1.d">Huit entretiens enregistrés, et des dossiers réels ouverts à l'écran.</p></li>
-                <li><h3 data-i18n="dc.s2.st2.t">Parcours et chemin critique</h3><p data-i18n="dc.s2.st2.d">Chaque étape de la collecte, de la signature au rapport.</p></li>
-                <li><h3 data-i18n="dc.s2.st3.t">Persona et empathy map</h3><p data-i18n="dc.s2.st3.d">Un persona principal&nbsp;: la consultante qui mène la collecte.</p></li>
-                <li><h3 data-i18n="dc.s2.st4.t">Douleurs et pistes</h3><p data-i18n="dc.s2.st4.d">Chaque difficulté reliée à une piste de solution.</p></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg><h3 data-i18n="dc.s2.st1.t">Entretiens et observation</h3><p data-i18n="dc.s2.st1.d">Huit entretiens enregistrés, et des dossiers réels ouverts à l'écran.</p></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-route"/></svg><h3 data-i18n="dc.s2.st2.t">Parcours et chemin critique</h3><p data-i18n="dc.s2.st2.d">Chaque étape de la collecte, de la signature au rapport.</p></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><h3 data-i18n="dc.s2.st3.t">Persona et empathy map</h3><p data-i18n="dc.s2.st3.d">Un persona principal&nbsp;: la consultante qui mène la collecte.</p></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-split"/></svg><h3 data-i18n="dc.s2.st4.t">Douleurs et pistes</h3><p data-i18n="dc.s2.st4.d">Une matrice&nbsp;: chaque difficulté reliée à une piste de solution.</p></li>
             </ol>
 
+            <p class="dc-take"><svg class="dc-ic" aria-hidden="true"><use href="#i-flag"/></svg><span data-i18n="dc.s2.take">Cinq entretiens dans un pôle, trois ailleurs&nbsp;: assez pour voir ce qui se répète, et ce qui ne tient qu'à un métier.</span></p>
+        </div>
+    </section>
+
+    <!-- ───────── 03 · Recouper ───────── -->
+    <section class="dc-sec" id="ia" aria-labelledby="dc-h-ia" data-chapter>
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-sparkle"/></svg>03 · <span data-i18n="dc.map.3.t">Recouper</span></p>
+                <h2 id="dc-h-ia" data-i18n="dc.s3.title" data-i18n-mode="html">L'IA rassemble, <em>je vérifie</em></h2>
+                <p class="dc-intro" data-i18n="dc.s3.intro">Huit entretiens, ce sont des heures d'enregistrement. J'ai confié à l'IA ce qu'elle fait vite, et gardé ce qui engage. Dans le conseil fiscal et l'optimisation, le savoir-faire est complexe et chaque levier compte&nbsp;: une réponse plausible ne suffit pas. Chaque rendu a donc été relu, corrigé et recadré, point par point.</p>
+            </header>
+
+            <!-- quatre étapes, deux rôles -->
+            <ol class="dc-pipe">
+                <li>
+                    <span class="dc-pipe-ic"><svg class="dc-ic" aria-hidden="true"><use href="#i-mic"/></svg></span>
+                    <h3 data-i18n="dc.s3.p1.t">Transcrire</h3>
+                    <p class="ai"><b data-i18n="dc.s3.ai">L'IA</b><span data-i18n="dc.s3.p1.ai">Chaque entretien enregistré est transcrit et résumé automatiquement.</span></p>
+                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p1.me">Je mène l'entretien, sur des dossiers réels ouverts à l'écran.</span></p>
+                </li>
+                <li>
+                    <span class="dc-pipe-ic"><svg class="dc-ic" aria-hidden="true"><use href="#i-book"/></svg></span>
+                    <h3 data-i18n="dc.s3.p2.t">Interroger</h3>
+                    <p class="ai"><b data-i18n="dc.s3.ai">L'IA</b><span data-i18n="dc.s3.p2.ai">Un carnet d'IA ne répond qu'à partir des transcriptions et des documents, et cite chaque passage.</span></p>
+                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p2.me">Je pose les questions, j'analyse chaque rendu et je le recadre.</span></p>
+                </li>
+                <li>
+                    <span class="dc-pipe-ic"><svg class="dc-ic" aria-hidden="true"><use href="#i-layers"/></svg></span>
+                    <h3 data-i18n="dc.s3.p3.t">Recouper</h3>
+                    <p class="ai"><b data-i18n="dc.s3.ai">L'IA</b><span data-i18n="dc.s3.p3.ai">Elle regroupe les verbatims, propose des fréquences, relie douleurs et pistes.</span></p>
+                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p3.me">Je recompte entretien par entretien et je relis chaque citation dans sa transcription.</span></p>
+                </li>
+                <li>
+                    <span class="dc-pipe-ic"><svg class="dc-ic" aria-hidden="true"><use href="#i-wand"/></svg></span>
+                    <h3 data-i18n="dc.s3.p4.t">Prototyper</h3>
+                    <p class="ai"><b data-i18n="dc.s3.ai">L'IA</b><span data-i18n="dc.s3.p4.ai">Elle produit les écrans et le prototype de recette.</span></p>
+                    <p class="me"><b data-i18n="dc.s3.me">Moi</b><span data-i18n="dc.s3.p4.me">Je fixe les parcours, les textes et les cas limites, puis j'audite la cohérence.</span></p>
+                </li>
+            </ol>
+
+            <!-- quatre garde-fous -->
+            <div class="dc-guards">
+                <div class="dc-guards-say">
+                    <svg class="dc-ic" aria-hidden="true"><use href="#i-shield"/></svg>
+                    <p data-i18n="dc.s3.say" data-i18n-mode="html">La même règle que pour le produit&nbsp;: <em>l'outil alerte, l'humain décide.</em></p>
+                </div>
+                <ul class="dc-guards-list">
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><b data-i18n="dc.s3.g1.t">Citations relues</b><span data-i18n="dc.s3.g1.d">Chaque verbatim retenu est relu dans sa transcription d'origine.</span></li>
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-chart"/></svg><b data-i18n="dc.s3.g2.t">Fréquences recomptées</b><span data-i18n="dc.s3.g2.d">Chaque «&nbsp;5 sur 5&nbsp;» est vérifié entretien par entretien.</span></li>
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-folder"/></svg><b data-i18n="dc.s3.g3.t">Dossiers réels</b><span data-i18n="dc.s3.g3.d">Les constats sont confrontés à des dossiers ouverts à l'écran.</span></li>
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-chat"/></svg><b data-i18n="dc.s3.g4.t">Validation avec l'équipe</b><span data-i18n="dc.s3.g4.d">Constats et décisions sont présentés au manager et à la product manager.</span></li>
+                </ul>
+            </div>
+
+            <!-- ce que les entretiens ont établi : chaque constat garde ses citations -->
             <div class="dc-sub">
                 <div class="dc-sub-head">
-                    <h3 data-i18n="dc.s2.f.title">Ce que les entretiens ont établi</h3>
-                    <p data-i18n="dc.s2.f.legend">Fréquence relevée dans les cinq entretiens du pôle pilote.</p>
+                    <h3 data-i18n="dc.s3.f.title">Ce que les entretiens ont établi</h3>
+                    <p data-i18n="dc.s3.f.legend">Fréquence relevée dans les cinq entretiens du pôle pilote. Chaque constat garde ses citations.</p>
                 </div>
                 <ol class="dc-finds">
                     <li>
-                        <p data-i18n="dc.s2.f1">La collecte est un ping-pong, sans signal quand un fichier arrive.</p>
-                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s2.n55">5 sur 5</b></span>
+                        <p data-i18n="dc.s3.f1">La collecte est un ping-pong, sans signal quand un fichier arrive.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s3.n55">5 sur 5</b></span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-1"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q2">2 citations</span></button>
+                        <div class="dc-glass" id="dc-ev-1">
+                            <blockquote><p data-i18n="dc.hook.quote">«&nbsp;Tu fais 12 échanges pour que le client ne te renvoie jamais le bon mois.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
+                            <blockquote><p data-i18n="dc.s1.k1.q">«&nbsp;On passe quelques jours entre le moment où il a déposé les docs et le moment où on s'en rend compte.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
+                        </div>
                     </li>
                     <li>
-                        <p data-i18n="dc.s2.f2">Le retraitement des données est le plus gros poste de temps&nbsp;: chaque logiciel de paie a sa propre mise en page.</p>
-                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s2.n55">5 sur 5</b></span>
+                        <p data-i18n="dc.s3.f2">Le retraitement des données est le premier poste de temps&nbsp;: chaque logiciel de paie a sa propre mise en page.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s3.n55">5 sur 5</b></span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-2"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q2">2 citations</span></button>
+                        <div class="dc-glass" id="dc-ev-2">
+                            <blockquote><p data-i18n="dc.s3.f2.q1">«&nbsp;Le plus gros job, ça va être de nettoyer cette data.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
+                            <blockquote><p data-i18n="dc.s1.k3.q">«&nbsp;Ça peut arriver où on actualise et on attend trois heures.&nbsp;»</p><footer data-i18n="dc.s1.k3.c">Une consultante senior</footer></blockquote>
+                        </div>
                     </li>
                     <li>
-                        <p data-i18n="dc.s2.f3">Un dossier incomplet ne se voit pas à la réception&nbsp;: on le découvre en cours d'analyse.</p>
-                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><b data-i18n="dc.s2.n45">4 sur 5</b></span>
+                        <p data-i18n="dc.s3.f3">Un dossier incomplet ne se voit pas à la réception&nbsp;: on le découvre en cours d'analyse.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><b data-i18n="dc.s3.n45">4 sur 5</b></span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-3"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q2">2 citations</span></button>
+                        <div class="dc-glass" id="dc-ev-3">
+                            <blockquote><p data-i18n="dc.s1.k2.q">«&nbsp;Des fois, le truc s'appelle 2025, tu ouvres, c'est 2024.&nbsp;»</p><footer data-i18n="dc.s1.k2.c">Un expert paie</footer></blockquote>
+                            <blockquote><p data-i18n="dc.s3.f3.q2">«&nbsp;Si tu manques un mois, tout est faux.&nbsp;»</p><footer data-i18n="dc.s3.cite.any">En entretien</footer></blockquote>
+                        </div>
                     </li>
                     <li>
-                        <p data-i18n="dc.s2.f4">La DSN est la seule donnée normée, celle qui fait foi.</p>
-                        <span class="dc-tag" data-i18n="dc.s2.f4.tag">Repère</span>
+                        <p data-i18n="dc.s3.f4">La DSN est la seule donnée normée, celle qui fait foi.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i></span><b data-i18n="dc.s3.n22">2 sur 2 concernés</b></span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-4"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q1">1 citation</span></button>
+                        <div class="dc-glass" id="dc-ev-4">
+                            <blockquote><p data-i18n="dc.s3.f4.q1">«&nbsp;En vert j'ai la DSN, en rouge je ne l'ai pas.&nbsp;»</p><footer data-i18n="dc.s1.k2.c">Un expert paie</footer></blockquote>
+                        </div>
                     </li>
                     <li>
-                        <p data-i18n="dc.s2.f5">L'outil doit alerter, jamais décider à la place du consultant.</p>
-                        <span class="dc-tag" data-i18n="dc.s2.f5.tag">Principe</span>
+                        <p data-i18n="dc.s3.f5">L'outil doit alerter, jamais décider à la place du consultant.</p>
+                        <span class="dc-meter"><span class="dc-meter-cells" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><b data-i18n="dc.s3.n25">2 sur 5, explicitement</b></span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-5"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q1">1 citation</span></button>
+                        <div class="dc-glass" id="dc-ev-5">
+                            <blockquote><p data-i18n="dc.s3.f5.q1">«&nbsp;On ne cherche plus, on perd la compétence.&nbsp;»</p><footer data-i18n="dc.s3.f5.c1">Une consultante senior, à propos d'un audit entièrement automatisé</footer></blockquote>
+                        </div>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s3.f6">Le suivi est déclaratif&nbsp;: rien ne garde la trace de ce qui a été vérifié.</p>
+                        <span class="dc-tag" data-i18n="dc.s3.f6.tag">Transversal</span>
+                        <button type="button" class="dc-q" aria-expanded="false" aria-controls="dc-ev-6"><svg class="dc-ic" aria-hidden="true"><use href="#i-quote"/></svg><span data-i18n="dc.s3.q2">2 citations</span></button>
+                        <div class="dc-glass" id="dc-ev-6">
+                            <blockquote><p data-i18n="dc.s3.f6.q1">«&nbsp;Il n'y a pas de traçabilité vraiment de tous les éléments que j'ai check.&nbsp;»</p><footer data-i18n="dc.s1.k1.c">Une manager</footer></blockquote>
+                            <blockquote><p data-i18n="dc.s3.f6.q2">«&nbsp;Dès qu'ils partent en Excel, ça part dans un autre monde. Tu n'as plus de visibilité.&nbsp;»</p><footer data-i18n="dc.s3.f6.c2">Un responsable produit</footer></blockquote>
+                        </div>
+                    </li>
+                    <li>
+                        <p data-i18n="dc.s3.f7">Quatre pôles, quatre façons de faire&nbsp;: un même document peut être demandé plusieurs fois au même client.</p>
+                        <span class="dc-tag" data-i18n="dc.s3.f7.tag">Contexte</span>
                     </li>
                 </ol>
             </div>
 
-            <blockquote class="dc-pull">
-                <p data-i18n="dc.s2.quote">«&nbsp;On ne cherche plus, on perd la compétence.&nbsp;»</p>
-                <footer data-i18n="dc.s2.cite">Une consultante senior, à propos d'un audit entièrement automatisé</footer>
-            </blockquote>
+            <p class="dc-take"><svg class="dc-ic" aria-hidden="true"><use href="#i-flag"/></svg><span data-i18n="dc.s3.take">L'IA accélère le dépouillement. Elle ne signe aucun constat&nbsp;: chacun a été vérifié, un par un.</span></p>
         </div>
     </section>
 
-    <!-- ───────── 03 · Le système ───────── -->
-    <section class="dc-sec" id="systeme" aria-labelledby="dc-h-systeme">
+    <!-- ───────── 04 · Trancher ───────── -->
+    <section class="dc-sec dc-sec--tint" id="arbitrages" aria-labelledby="dc-h-arbitrages" data-chapter>
         <div class="dc-wrap">
             <header class="dc-head">
-                <p class="dc-num">03</p>
-                <h2 id="dc-h-systeme" data-i18n="dc.s3.title" data-i18n-mode="html">Le système&nbsp;: <em>six décisions</em> tirées des entretiens</h2>
-                <p class="dc-intro" data-i18n="dc.s3.intro">Chaque décision répond à un constat, et dit le plus souvent ce qu'elle écarte. Les écrans sont montrés par extraits, avec des données fictives.</p>
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-split"/></svg>04 · <span data-i18n="dc.map.4.t">Trancher</span></p>
+                <h2 id="dc-h-arbitrages" data-i18n="dc.s4.title" data-i18n-mode="html">Huit arbitrages, <em>et ce qu'ils écartent</em></h2>
+                <p class="dc-intro" data-i18n="dc.s4.intro">Chaque décision répond à un constat, et dit le plus souvent ce qu'elle refuse. Deux arbitrages cadrent le chantier, six dessinent le produit.</p>
             </header>
 
-            <!-- quatre parcours, une seule boucle -->
-            <div class="dc-sub dc-sub--first">
+            <!-- du constat à la décision : le fil se suit au survol -->
+            <figure class="dc-flow" data-flow aria-labelledby="dc-flow-cap">
+                <div class="dc-flow-cols">
+                    <div class="dc-flow-col">
+                        <p class="dc-flow-t" data-i18n="dc.s4.flow.l">Constats</p>
+                        <ul>
+                            <li data-node="c1" tabindex="0"><span data-i18n="dc.s4.c1">Un ping-pong sans signal</span></li>
+                            <li data-node="c2" tabindex="0"><span data-i18n="dc.s4.c2">Le retraitement, premier poste de temps</span></li>
+                            <li data-node="c3" tabindex="0"><span data-i18n="dc.s4.c3">L'incomplétude invisible</span></li>
+                            <li data-node="c4" tabindex="0"><span data-i18n="dc.s4.c4">La DSN fait foi</span></li>
+                            <li data-node="c5" tabindex="0"><span data-i18n="dc.s4.c5">Alerter, jamais décider</span></li>
+                            <li data-node="c6" tabindex="0"><span data-i18n="dc.s4.c6">Un suivi déclaratif</span></li>
+                            <li data-node="c7" tabindex="0"><span data-i18n="dc.s4.c7">Quatre pôles, quatre façons de faire</span></li>
+                        </ul>
+                    </div>
+                    <div class="dc-flow-col">
+                        <p class="dc-flow-t" data-i18n="dc.s4.flow.r">Arbitrages</p>
+                        <ul>
+                            <li data-node="d1" data-from="c2" tabindex="0"><b>01</b><span data-i18n="dc.s4.d1.t">Deux chantiers plutôt qu'un</span></li>
+                            <li data-node="d2" data-from="c7" tabindex="0"><b>02</b><span data-i18n="dc.s4.d2.t">Un pôle pilote d'abord</span></li>
+                            <li data-node="d3" data-from="c3 c4" tabindex="0"><b>03</b><span data-i18n="dc.s4.d3.t">Voir ce qui manque dès la réception</span></li>
+                            <li data-node="d4" data-from="c6" tabindex="0"><b>04</b><span data-i18n="dc.s4.d4.t">Zéro saisie ajoutée</span></li>
+                            <li data-node="d5" data-from="c1" tabindex="0"><b>05</b><span data-i18n="dc.s4.d5.t">Demander le minimum utile</span></li>
+                            <li data-node="d6" data-from="c1" tabindex="0"><b>06</b><span data-i18n="dc.s4.d6.t">Côté client&nbsp;: une liste et un dépôt guidé</span></li>
+                            <li data-node="d7" data-from="c5" tabindex="0"><b>07</b><span data-i18n="dc.s4.d7.t">L'outil alerte, le consultant décide</span></li>
+                            <li data-node="d8" data-from="c1" tabindex="0"><b>08</b><span data-i18n="dc.s4.d8.t">Ne relancer que le manquant</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <svg class="dc-flow-svg" aria-hidden="true" focusable="false"></svg>
+                <figcaption id="dc-flow-cap" data-i18n="dc.s4.flow.caption">Du constat à la décision&nbsp;: survolez une ligne pour suivre le fil.</figcaption>
+            </figure>
+
+            <!-- deux arbitrages de cadrage -->
+            <div class="dc-sub">
                 <div class="dc-sub-head">
-                    <h3 data-i18n="dc.s3.loop.title">Quatre parcours, une seule boucle</h3>
-                    <p data-i18n="dc.s3.loop.legend">Un même dossier passe de main en main&nbsp;: chaque rôle a son parcours.</p>
+                    <h3 data-i18n="dc.s4.frame.title">Deux arbitrages pour cadrer</h3>
+                    <p data-i18n="dc.s4.frame.legend">Avant les écrans&nbsp;: réduire le périmètre pour pouvoir livrer.</p>
                 </div>
-                <ol class="dc-loop">
-                    <li><b data-i18n="dc.s3.loop1.t">Commercial</b><span data-i18n="dc.s3.loop1.d">Créer le client, préparer et envoyer la demande initiale.</span></li>
-                    <li><b data-i18n="dc.s3.loop2.t">Client</b><span data-i18n="dc.s3.loop2.d">Recevoir la demande, déposer, corriger ou classer les fichiers.</span></li>
-                    <li><b data-i18n="dc.s3.loop3.t">Manager</b><span data-i18n="dc.s3.loop3.d">Retrouver le client à assigner, appliquer puis enregistrer.</span></li>
-                    <li><b data-i18n="dc.s3.loop4.t">Consultant</b><span data-i18n="dc.s3.loop4.d">Consulter les fichiers, déposer pour le client et préparer une relance.</span></li>
-                    <li><b data-i18n="dc.s3.loop5.t">Retour client</b><span data-i18n="dc.s3.loop5.d">Recevoir une relance et des documents complémentaires.</span></li>
-                </ol>
+                <div class="dc-decs dc-decs--2">
+                    <article class="dc-mini" aria-labelledby="dc-dec-1">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-split"/></svg><span data-i18n="dc.dec">Arbitrage</span> 01</p>
+                        <h3 id="dc-dec-1" data-i18n="dc.s4.d1.t">Deux chantiers plutôt qu'un</h3>
+                        <p data-i18n="dc.s4.d1.d">La collecte d'un côté, la fiabilité des données de l'autre&nbsp;: deux périmètres, deux rythmes de livraison. Au chantier voisin, une exigence transmise&nbsp;: un gabarit par logiciel de paie.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c2">Le retraitement, premier poste de temps</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d1.out">Le projet unique, qui mêle collecte et détection d'anomalies.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-2">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-target"/></svg><span data-i18n="dc.dec">Arbitrage</span> 02</p>
+                        <h3 id="dc-dec-2" data-i18n="dc.s4.d2.t">Un pôle pilote d'abord</h3>
+                        <p data-i18n="dc.s4.d2.d">Le pôle où l'enjeu est le plus fort et le processus le plus mûr sert de terrain. Les trois autres donnent le contrepoint.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c7">Quatre pôles, quatre façons de faire</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d2.out">Lancer l'outil dans tous les pôles en même temps.</span></p>
+                    </article>
+                </div>
             </div>
 
-            <!-- décision 01 : un extrait d'écran annoté -->
-            <article class="dc-dec" aria-labelledby="dc-dec-1">
-                <div class="dc-dec-txt">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 01 <span class="of" data-i18n="dc.dec.of">sur 06</span></p>
-                    <h3 id="dc-dec-1" data-i18n="dc.d1.t">Voir ce qui manque dès la réception</h3>
-                    <p data-i18n="dc.d1.d">Chaque dépôt est contrôlé à l'arrivée&nbsp;: bon format, bonne période, mois manquants. Une vue par établissement et par mois montre les trous d'un coup d'œil.</p>
+            <!-- six arbitrages de conception -->
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s4.design.title">Six arbitrages pour concevoir</h3>
+                    <p data-i18n="dc.s4.design.legend">Ils se retrouvent, repère par repère, dans le parcours qui suit.</p>
                 </div>
-                <div class="dc-dec-side">
-                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d1.out">Ouvrir les fichiers un par un pour vérifier.</span></p>
-                    <blockquote><p data-i18n="dc.d1.q">«&nbsp;En vert j'ai la DSN, en rouge je ne l'ai pas.&nbsp;»</p><footer data-i18n="dc.d1.c">Un expert paie</footer></blockquote>
+                <div class="dc-decs">
+                    <article class="dc-mini" aria-labelledby="dc-dec-3">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-grid"/></svg><span data-i18n="dc.dec">Arbitrage</span> 03</p>
+                        <h3 id="dc-dec-3" data-i18n="dc.s4.d3.t">Voir ce qui manque dès la réception</h3>
+                        <p data-i18n="dc.s4.d3.d">Chaque dépôt est contrôlé à l'arrivée&nbsp;: bon format, bonne période, mois manquants. Une vue par établissement et par mois montre les trous d'un coup d'œil.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.d3.from">L'incomplétude invisible, et la DSN qui fait foi</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d3.out">Ouvrir les fichiers un par un pour vérifier.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-4">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-nopen"/></svg><span data-i18n="dc.dec">Arbitrage</span> 04</p>
+                        <h3 id="dc-dec-4" data-i18n="dc.s4.d4.t">Zéro saisie ajoutée</h3>
+                        <p data-i18n="dc.s4.d4.d">Aucun statut à remplir à la main&nbsp;: chaque état du dossier découle d'une action réelle.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c6">Un suivi déclaratif</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d4.out">Un outil de suivi à renseigner. Le précédent avait été abandonné, trop long à remplir.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-5">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="dc.dec">Arbitrage</span> 05</p>
+                        <h3 id="dc-dec-5" data-i18n="dc.s4.d5.t">Demander le minimum utile</h3>
+                        <p data-i18n="dc.s4.d5.d">Un socle de documents sans lequel aucun dossier ne démarre, et un pack de collecte standard.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c1">Un ping-pong sans signal</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d5.out">Le questionnaire exhaustif envoyé au client.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-6">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-upload"/></svg><span data-i18n="dc.dec">Arbitrage</span> 06</p>
+                        <h3 id="dc-dec-6" data-i18n="dc.s4.d6.t">Côté client&nbsp;: une liste et un dépôt guidé</h3>
+                        <p data-i18n="dc.s4.d6.d">Le client a besoin d'une consigne claire, pas d'un outil de gestion de projet. Le fichier dit lui-même où il va&nbsp;: l'établissement et le mois sont lus à chaque dépôt.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c1">Un ping-pong sans signal</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d6.out">Le portail complet avec tableau de bord&nbsp;: un client préfère décrocher son téléphone.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-7">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-bell"/></svg><span data-i18n="dc.dec">Arbitrage</span> 07</p>
+                        <h3 id="dc-dec-7" data-i18n="dc.s4.d7.t">L'outil alerte, le consultant décide</h3>
+                        <p data-i18n="dc.s4.d7.d">Un fichier refusé affiche son motif en clair et l'action attendue. L'analyse, elle, reste entre les mains des experts.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c5">Alerter, jamais décider</span></p>
+                        <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.s4.d7.out">L'audit entièrement automatique, une boîte noire qui gommerait les anomalies qu'eux seuls savent repérer.</span></p>
+                    </article>
+                    <article class="dc-mini" aria-labelledby="dc-dec-8">
+                        <p class="dc-dec-n"><svg class="dc-ic" aria-hidden="true"><use href="#i-send"/></svg><span data-i18n="dc.dec">Arbitrage</span> 08</p>
+                        <h3 id="dc-dec-8" data-i18n="dc.s4.d8.t">Ne relancer que le manquant</h3>
+                        <p data-i18n="dc.s4.d8.d">La relance ne porte que sur les documents encore attendus&nbsp;: les pièces complètes ne sont pas redemandées. Les rappels automatiques s'arrêtent pour chaque jeu complet et validé.</p>
+                        <p class="dc-from"><b data-i18n="dc.from">Répond à</b><span data-i18n="dc.s4.c1">Un ping-pong sans signal</span></p>
+                    </article>
                 </div>
-                <figure class="dc-shot">
-                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-                        <div class="dc-shot-canvas">
-                            <img src="image/data-collection/collecte-manques.webp" alt="Extrait de maquette : la carte « Ce qui manque encore » liste trois types de documents à compléter, à côté de la zone de dépôt." width="2000" height="612" loading="lazy" decoding="async" data-i18n="dc.d1.alt" data-i18n-attr="alt" data-i18n-no-text>
-                            <i class="dc-pin p1" aria-hidden="true">1</i>
-                            <i class="dc-pin p2" aria-hidden="true">2</i>
-                        </div>
-                    </div>
-                    <figcaption>
-                        <ol class="dc-notes">
-                            <li><b aria-hidden="true">1</b><span data-i18n="dc.d1.n1">La liste de ce qui manque, à jour à chaque dépôt.</span></li>
-                            <li><b aria-hidden="true">2</b><span data-i18n="dc.d1.n2">Le fichier est contrôlé à l'arrivée&nbsp;: format, période, établissement.</span></li>
-                        </ol>
-                        <p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <!-- décisions 02 à 04 : sans écran, le principe suffit -->
-            <div class="dc-trio">
-                <article class="dc-mini" aria-labelledby="dc-dec-2">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 02</p>
-                    <h3 id="dc-dec-2" data-i18n="dc.d2.t">Zéro saisie ajoutée</h3>
-                    <p data-i18n="dc.d2.d">Aucun statut à remplir à la main&nbsp;: chaque état du dossier découle d'une action réelle.</p>
-                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d2.out">Un outil de suivi à renseigner. Le précédent avait été abandonné, trop long à remplir.</span></p>
-                </article>
-                <article class="dc-mini" aria-labelledby="dc-dec-3">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 03</p>
-                    <h3 id="dc-dec-3" data-i18n="dc.d3.t">Demander le minimum utile</h3>
-                    <p data-i18n="dc.d3.d">Un socle de documents sans lequel aucun dossier ne démarre, et un pack de collecte standard.</p>
-                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d3.out">Le questionnaire exhaustif envoyé au client.</span></p>
-                </article>
-                <article class="dc-mini" aria-labelledby="dc-dec-4">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 04</p>
-                    <h3 id="dc-dec-4" data-i18n="dc.d4.t">Côté client&nbsp;: une liste et un dépôt guidé</h3>
-                    <p data-i18n="dc.d4.d">Le client a besoin d'une consigne claire, pas d'un outil de gestion de projet. Le fichier dit lui-même où il va&nbsp;: l'établissement et le mois sont lus à chaque dépôt.</p>
-                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d4.out">Le portail complet avec tableau de bord.</span></p>
-                </article>
             </div>
-
-            <!-- décision 05 : les rejets -->
-            <article class="dc-dec" aria-labelledby="dc-dec-5">
-                <div class="dc-dec-txt">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 05</p>
-                    <h3 id="dc-dec-5" data-i18n="dc.d5.t">L'outil alerte, le consultant décide</h3>
-                    <p data-i18n="dc.d5.d">Un fichier refusé affiche son motif en clair et l'action attendue. L'analyse, elle, reste entre les mains des experts.</p>
-                </div>
-                <div class="dc-dec-side">
-                    <p class="dc-out"><b data-i18n="dc.out">Écarté</b><span data-i18n="dc.d5.out">L'audit entièrement automatique, une boîte noire qui gommerait les anomalies qu'eux seuls savent repérer.</span></p>
-                </div>
-                <figure class="dc-shot">
-                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-                        <div class="dc-shot-canvas">
-                            <img src="image/data-collection/collecte-rejets.webp" alt="Extrait de maquette : zone de dépôt des DSN, puis cinq fichiers rejetés, chacun avec son motif et un bouton pour le redéposer." width="2000" height="1022" loading="lazy" decoding="async" data-i18n="dc.d5.alt" data-i18n-attr="alt" data-i18n-no-text>
-                            <i class="dc-pin p3" aria-hidden="true">1</i>
-                            <i class="dc-pin p4" aria-hidden="true">2</i>
-                        </div>
-                    </div>
-                    <figcaption>
-                        <ol class="dc-notes">
-                            <li><b aria-hidden="true">1</b><span data-i18n="dc.d5.n1">Rien à renseigner&nbsp;: le SIRET et le mois sont lus dans chaque fichier.</span></li>
-                            <li><b aria-hidden="true">2</b><span data-i18n="dc.d5.n2">Chaque rejet donne son motif et l'action attendue.</span></li>
-                        </ol>
-                        <p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p>
-                    </figcaption>
-                </figure>
-            </article>
-
-            <!-- décision 06 : la relance -->
-            <article class="dc-dec dc-dec--split" aria-labelledby="dc-dec-6">
-                <div class="dc-dec-txt">
-                    <p class="dc-dec-n"><span data-i18n="dc.dec">Décision</span> 06</p>
-                    <h3 id="dc-dec-6" data-i18n="dc.d6.t">Ne relancer que le manquant</h3>
-                    <p data-i18n="dc.d6.d">La relance ne porte que sur les documents encore attendus&nbsp;: les pièces complètes ne sont pas redemandées. Les rappels automatiques s'arrêtent pour chaque jeu complet et validé.</p>
-                </div>
-                <figure class="dc-card-shot">
-                    <img src="image/data-collection/collecte-relance-liste.webp" alt="Extrait de la fenêtre de relance : seuls les trois documents restant à fournir sont cochés." width="600" height="272" loading="lazy" decoding="async" data-i18n="dc.d6.alt" data-i18n-attr="alt" data-i18n-no-text>
-                    <figcaption data-i18n="dc.d6.caption">La fenêtre de relance&nbsp;: seuls les documents restant à fournir sont cochés.</figcaption>
-                </figure>
-            </article>
 
             <!-- un vocabulaire commun -->
             <div class="dc-sub">
                 <div class="dc-sub-head">
-                    <h3 data-i18n="dc.s3.voc.title">Un vocabulaire commun</h3>
-                    <p data-i18n="dc.s3.voc.legend">Quatre pôles, quatre façons de nommer le suivi des documents. La conception fixe quelques termes.</p>
+                    <h3 data-i18n="dc.s4.voc.title">Un vocabulaire commun</h3>
+                    <p data-i18n="dc.s4.voc.legend">Quatre pôles, quatre façons de nommer le suivi des documents. La conception fixe quelques termes.</p>
                 </div>
                 <dl class="dc-vocab">
-                    <div><dt data-i18n="dc.s3.voc1.t">Pack de collecte</dt><dd data-i18n="dc.s3.voc1.d">La liste des documents demandés, avec statuts et échéances.</dd></div>
-                    <div><dt data-i18n="dc.s3.voc2.t">Socle minimal</dt><dd data-i18n="dc.s3.voc2.d">Ce sans quoi un dossier ne démarre pas.</dd></div>
-                    <div><dt data-i18n="dc.s3.voc3.t">Vue périmètre</dt><dd data-i18n="dc.s3.voc3.d">La grille des établissements, mois par mois.</dd></div>
-                    <div><dt data-i18n="dc.s3.voc4.t">Déposant guidé</dt><dd data-i18n="dc.s3.voc4.d">Le client&nbsp;: il dépose, il ne pilote pas un projet.</dd></div>
+                    <div><dt data-i18n="dc.s4.voc1.t">Pack de collecte</dt><dd data-i18n="dc.s4.voc1.d">La liste des documents demandés, avec statuts et échéances.</dd></div>
+                    <div><dt data-i18n="dc.s4.voc2.t">Socle minimal</dt><dd data-i18n="dc.s4.voc2.d">Ce sans quoi un dossier ne démarre pas.</dd></div>
+                    <div><dt data-i18n="dc.s4.voc3.t">Vue périmètre</dt><dd data-i18n="dc.s4.voc3.d">La grille des établissements, mois par mois.</dd></div>
+                    <div><dt data-i18n="dc.s4.voc4.t">Déposant guidé</dt><dd data-i18n="dc.s4.voc4.d">Le client&nbsp;: il dépose, il ne pilote pas un projet.</dd></div>
                 </dl>
             </div>
 
-            <!-- de 0 à 100 % : la même liste, deux états -->
-            <div class="dc-sub">
-                <div class="dc-sub-head">
-                    <h3 data-i18n="dc.s3.cmp.title">De 0 à 100&nbsp;%</h3>
-                    <p data-i18n="dc.s3.cmp.legend">La même liste de suivi, du jour de la demande au dossier complet.</p>
-                </div>
-                <figure class="dc-compare" data-compare>
-                    <div class="dc-seg" role="group" aria-label="État de la collecte" data-i18n="dc.s3.cmp.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-                        <button type="button" data-state-btn="0" aria-pressed="true"><b>0&nbsp;%</b><span data-i18n="dc.s3.cmp.a">Demande envoyée</span></button>
-                        <button type="button" data-state-btn="100" aria-pressed="false"><b>100&nbsp;%</b><span data-i18n="dc.s3.cmp.b">Collecte complète</span></button>
-                    </div>
-                    <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-                        <div class="dc-shot-canvas dc-compare-canvas">
-                            <img class="a" src="image/data-collection/collecte-0.webp" alt="Liste de suivi le jour de la demande : aucun type de document complet, chaque ligne est « À déposer »." width="1190" height="425" loading="lazy" decoding="async" data-i18n="dc.s3.cmp.alt0" data-i18n-attr="alt" data-i18n-no-text>
-                            <img class="b" src="image/data-collection/collecte-100.webp" alt="La même liste à la fin de la collecte : 26 types de documents complets." width="1190" height="425" loading="lazy" decoding="async" data-i18n="dc.s3.cmp.alt100" data-i18n-attr="alt" data-i18n-no-text>
-                        </div>
-                    </div>
-                    <figcaption><p><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser pour voir la suite.</span></p></figcaption>
-                </figure>
-            </div>
+            <p class="dc-take"><svg class="dc-ic" aria-hidden="true"><use href="#i-flag"/></svg><span data-i18n="dc.s4.take">Dire non fait partie de la conception&nbsp;: sept arbitrages sur huit nomment ce qu'ils écartent.</span></p>
         </div>
     </section>
 
-    <!-- ───────── 04 · Le résultat ───────── -->
-    <section class="dc-sec dc-sec--tint" id="resultat" aria-labelledby="dc-h-resultat">
+    <!-- ───────── 05 · Concevoir ───────── -->
+    <section class="dc-sec" id="parcours" aria-labelledby="dc-h-parcours" data-chapter>
         <div class="dc-wrap">
             <header class="dc-head">
-                <p class="dc-num">04</p>
-                <h2 id="dc-h-resultat" data-i18n="dc.s4.title" data-i18n-mode="html">Le résultat&nbsp;: <em>ce qui a été livré,</em> sans chiffres inventés</h2>
-                <p class="dc-intro" data-i18n="dc.s4.intro">La fonction est en cours de conception. Voici ce que la mission a produit à ce jour.</p>
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-route"/></svg>05 · <span data-i18n="dc.map.5.t">Concevoir</span></p>
+                <h2 id="dc-h-parcours" data-i18n="dc.s5.title" data-i18n-mode="html">Le parcours, <em>de 0 à 100&nbsp;%</em></h2>
+                <p class="dc-intro" data-i18n="dc.s5.intro">Quatre parcours se croisent dans une seule boucle. En voici huit étapes, côté consultant et côté client. Sur chaque écran, un repère dit ce que fait l'interface, et de quel arbitrage elle vient.</p>
+            </header>
+
+            <!-- quatre parcours, une seule boucle -->
+            <ol class="dc-loop">
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-briefcase"/></svg><b data-i18n="dc.s5.loop1.t">Commercial</b><span data-i18n="dc.s5.loop1.d">Créer le client, préparer et envoyer la demande initiale.</span></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><b data-i18n="dc.s5.loop2.t">Client</b><span data-i18n="dc.s5.loop2.d">Recevoir la demande, déposer, corriger ou classer les fichiers.</span></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-users"/></svg><b data-i18n="dc.s5.loop3.t">Manager</b><span data-i18n="dc.s5.loop3.d">Retrouver le client à assigner, appliquer puis enregistrer.</span></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><b data-i18n="dc.s5.loop4.t">Consultant</b><span data-i18n="dc.s5.loop4.d">Consulter les fichiers, déposer pour le client et préparer une relance.</span></li>
+                <li><svg class="dc-ic" aria-hidden="true"><use href="#i-repeat"/></svg><b data-i18n="dc.s5.loop5.t">Retour client</b><span data-i18n="dc.s5.loop5.d">Recevoir une relance et des documents complémentaires.</span></li>
+            </ol>
+
+            <!-- le chemin : huit écrans sur deux couloirs -->
+            <div class="dc-path" data-path>
+                <div class="dc-path-map">
+                    <p class="dc-lane dc-lane--a"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></p>
+                    <p class="dc-lane dc-lane--b"><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><span data-i18n="dc.s5.lane.b">Client</span></p>
+                    <div class="dc-path-line">
+                        <svg viewBox="0 0 800 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                            <path data-seg d="M50 22C100 22 100 66 150 66"/>
+                            <path data-seg d="M150 66H250"/>
+                            <path data-seg d="M250 66H350"/>
+                            <path data-seg d="M350 66C400 66 400 22 450 22"/>
+                            <path data-seg d="M450 22H550"/>
+                            <path data-seg d="M550 22H650"/>
+                            <path data-seg d="M650 22H750"/>
+                        </svg>
+                        <div class="dc-path-tabs" role="tablist" aria-label="Étapes du parcours" data-i18n="dc.s5.tabs" data-i18n-attr="aria-label" data-i18n-no-text>
+                            <button type="button" role="tab" class="a" id="dc-tab-1" aria-controls="dc-st-1" aria-selected="true">1</button>
+                            <button type="button" role="tab" class="b" id="dc-tab-2" aria-controls="dc-st-2" aria-selected="false" tabindex="-1">2</button>
+                            <button type="button" role="tab" class="b" id="dc-tab-3" aria-controls="dc-st-3" aria-selected="false" tabindex="-1">3</button>
+                            <button type="button" role="tab" class="b" id="dc-tab-4" aria-controls="dc-st-4" aria-selected="false" tabindex="-1">4</button>
+                            <button type="button" role="tab" class="a" id="dc-tab-5" aria-controls="dc-st-5" aria-selected="false" tabindex="-1">5</button>
+                            <button type="button" role="tab" class="a" id="dc-tab-6" aria-controls="dc-st-6" aria-selected="false" tabindex="-1">6</button>
+                            <button type="button" role="tab" class="a" id="dc-tab-7" aria-controls="dc-st-7" aria-selected="false" tabindex="-1">7</button>
+                            <button type="button" role="tab" class="a" id="dc-tab-8" aria-controls="dc-st-8" aria-selected="false" tabindex="-1">8</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dc-path-stage">
+                    <!-- 1 -->
+                    <article class="dc-st" id="dc-st-1" role="tabpanel" aria-labelledby="dc-tab-1" data-done="0">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></span><span data-i18n="dc.s5.step1.k">Étape 1 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st1.t">La demande est partie</h3>
+                            <p data-i18n="dc.s5.st1.d">La liste des 26 types de documents est envoyée au client. Rien n'est encore complet&nbsp;: tout est «&nbsp;À déposer&nbsp;».</p>
+                            <p class="dc-st-meter"><b>0</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-1-demande.webp" alt="Extrait de maquette : zone « Déposer pour le client », puis la liste des 26 types de documents demandés, tous « À déposer »." width="1190" height="376" decoding="async" data-i18n="dc.s5.st1.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h11 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-11" aria-labelledby="dc-g-11-t">1</button><div class="dc-glass" id="dc-g-11"><p class="k" data-i18n="dc.s5.k.d4">Arbitrage 04 · Zéro saisie ajoutée</p><p class="t" id="dc-g-11-t" data-i18n="dc.s5.h11.t">Déposer à la place du client</p><p data-i18n="dc.s5.h11.d">Les fichiers reçus par e-mail entrent dans le même circuit&nbsp;: même contrôle, même suivi.</p></div></div>
+                                    <div class="dc-hot h12 to-l"><button type="button" aria-expanded="false" aria-controls="dc-g-12" aria-labelledby="dc-g-12-t">2</button><div class="dc-glass" id="dc-g-12"><p class="k" data-i18n="dc.s5.k.d4">Arbitrage 04 · Zéro saisie ajoutée</p><p class="t" id="dc-g-12-t" data-i18n="dc.s5.h12.t">Un statut qui ne se saisit pas</p><p data-i18n="dc.s5.h12.d">«&nbsp;À déposer&nbsp;», «&nbsp;À compléter&nbsp;», «&nbsp;Complet&nbsp;»&nbsp;: chaque état découle d'un dépôt réel.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 2 -->
+                    <article class="dc-st" id="dc-st-2" role="tabpanel" aria-labelledby="dc-tab-2" data-done="0">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role dc-role--b"><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><span data-i18n="dc.s5.lane.b">Client</span></span><span data-i18n="dc.s5.step2.k">Étape 2 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st2.t">Premier dépôt, premier contrôle</h3>
+                            <p data-i18n="dc.s5.st2.d">Quatorze fichiers déposés&nbsp;: neuf acceptés, cinq rejetés. Le client le sait tout de suite, sans attendre un retour du cabinet.</p>
+                            <p class="dc-st-meter"><b>0</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-2-controle.webp" alt="Extrait de maquette : bandeau « Contrôle terminé, 14 fichiers DSN, 9 acceptés, 5 rejetés », puis la carte « Ce qui manque encore »." width="1190" height="362" loading="lazy" decoding="async" data-i18n="dc.s5.st2.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h21 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-21" aria-labelledby="dc-g-21-t">1</button><div class="dc-glass" id="dc-g-21"><p class="k" data-i18n="dc.s5.k.c3">Constat · 4 sur 5</p><p class="t" id="dc-g-21-t" data-i18n="dc.s5.h21.t">Le contrôle a lieu à l'arrivée</p><p data-i18n="dc.s5.h21.d">Format, période, établissement&nbsp;: ce qui passe est gardé, ce qui bloque est signalé aussitôt.</p></div></div>
+                                    <div class="dc-hot h22 to-tl"><button type="button" aria-expanded="false" aria-controls="dc-g-22" aria-labelledby="dc-g-22-t">2</button><div class="dc-glass" id="dc-g-22"><p class="k" data-i18n="dc.s5.k.d6">Arbitrage 06 · Liste et dépôt guidé</p><p class="t" id="dc-g-22-t" data-i18n="dc.s5.h22.t">Une consigne, pas un tableau de bord</p><p data-i18n="dc.s5.h22.d">Trois lignes&nbsp;: ce qui manque, et le bouton pour agir.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 3 -->
+                    <article class="dc-st" id="dc-st-3" role="tabpanel" aria-labelledby="dc-tab-3" data-done="0">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role dc-role--b"><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><span data-i18n="dc.s5.lane.b">Client</span></span><span data-i18n="dc.s5.step3.k">Étape 3 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st3.t">Cinq fichiers à redéposer</h3>
+                            <p data-i18n="dc.s5.st3.d">Chaque rejet affiche son motif et ce qu'il faut faire. Personne n'a besoin d'appeler pour comprendre.</p>
+                            <p class="dc-st-meter"><b>0</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/collecte-rejets.webp" alt="Extrait de maquette : zone de dépôt des DSN, puis cinq fichiers rejetés, chacun avec son motif et un bouton pour le redéposer." width="2000" height="1022" loading="lazy" decoding="async" data-i18n="dc.s5.st3.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h31 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-31" aria-labelledby="dc-g-31-t">1</button><div class="dc-glass" id="dc-g-31"><p class="k" data-i18n="dc.s5.k.d6">Arbitrage 06 · Liste et dépôt guidé</p><p class="t" id="dc-g-31-t" data-i18n="dc.s5.h31.t">Le fichier dit où il va</p><p data-i18n="dc.s5.h31.d">Le SIRET et le mois sont lus dans chaque fichier&nbsp;: rien à renseigner.</p></div></div>
+                                    <div class="dc-hot h32 to-l"><button type="button" aria-expanded="false" aria-controls="dc-g-32" aria-labelledby="dc-g-32-t">2</button><div class="dc-glass" id="dc-g-32"><p class="k" data-i18n="dc.s5.k.d7">Arbitrage 07 · L'outil alerte</p><p class="t" id="dc-g-32-t" data-i18n="dc.s5.h32.t">Un motif, une action</p><p data-i18n="dc.s5.h32.d">«&nbsp;Période illisible&nbsp;: réexportez ce fichier depuis votre logiciel de paie.&nbsp;» Le rejet explique, et guide.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 4 -->
+                    <article class="dc-st" id="dc-st-4" role="tabpanel" aria-labelledby="dc-tab-4" data-done="23">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role dc-role--b"><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><span data-i18n="dc.s5.lane.b">Client</span></span><span data-i18n="dc.s5.step4.k">Étape 4 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st4.t">Il reste trois types</h3>
+                            <p data-i18n="dc.s5.st4.d">Au fil des dépôts, la liste se vide. Elle ne montre plus que les documents et les périodes qui manquent.</p>
+                            <p class="dc-st-meter"><b>23</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-4-reste.webp" alt="Extrait de maquette, côté client : 23 types complets, et la carte « Ce qui manque encore » avec trois types à compléter." width="2000" height="645" loading="lazy" decoding="async" data-i18n="dc.s5.st4.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h41 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-41" aria-labelledby="dc-g-41-t">1</button><div class="dc-glass" id="dc-g-41"><p class="k" data-i18n="dc.s5.k.d3">Arbitrage 03 · Voir ce qui manque</p><p class="t" id="dc-g-41-t" data-i18n="dc.s5.h41.t">Seulement ce qui reste</p><p data-i18n="dc.s5.h41.d">Les dépôts contrôlés disparaissent de la liste&nbsp;: le client ne relit pas ce qu'il a déjà fourni.</p></div></div>
+                                    <div class="dc-hot h42 to-tl"><button type="button" aria-expanded="false" aria-controls="dc-g-42" aria-labelledby="dc-g-42-t">2</button><div class="dc-glass" id="dc-g-42"><p class="k" data-i18n="dc.s5.k.edge">Cas limite</p><p class="t" id="dc-g-42-t" data-i18n="dc.s5.h42.t">Des dizaines d'établissements</p><p data-i18n="dc.s5.h42.d">Chaque site a ses propres périodes&nbsp;: le manque se compte par établissement, pas par dossier.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 5 -->
+                    <article class="dc-st" id="dc-st-5" role="tabpanel" aria-labelledby="dc-tab-5" data-done="23">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></span><span data-i18n="dc.s5.step5.k">Étape 5 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st5.t">Le même état, vu du cabinet</h3>
+                            <p data-i18n="dc.s5.st5.d">Le consultant voit exactement ce que voit le client. Il peut déposer à sa place, ou relancer.</p>
+                            <p class="dc-st-meter"><b>23</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-5-suivi.webp" alt="Extrait de maquette, côté consultant : suivi de la collecte, boutons « Relancer les manquants » et « Actualiser », et la même carte « Ce qui manque encore »." width="2000" height="760" loading="lazy" decoding="async" data-i18n="dc.s5.st5.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h51 to-tl"><button type="button" aria-expanded="false" aria-controls="dc-g-51" aria-labelledby="dc-g-51-t">1</button><div class="dc-glass" id="dc-g-51"><p class="k" data-i18n="dc.s5.k.d8">Arbitrage 08 · Relancer le manquant</p><p class="t" id="dc-g-51-t" data-i18n="dc.s5.h51.t">Relancer d'ici, en un geste</p><p data-i18n="dc.s5.h51.d">La relance part de l'écran de suivi, déjà limitée à ce qui manque.</p></div></div>
+                                    <div class="dc-hot h52 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-52" aria-labelledby="dc-g-52-t">2</button><div class="dc-glass" id="dc-g-52"><p class="k" data-i18n="dc.s5.k.c1">Constat · 5 sur 5</p><p class="t" id="dc-g-52-t" data-i18n="dc.s5.h52.t">Une seule liste pour deux lecteurs</p><p data-i18n="dc.s5.h52.d">Client et consultant lisent le même état&nbsp;: plus d'aller-retour pour savoir où en est le dossier.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 6 -->
+                    <article class="dc-st" id="dc-st-6" role="tabpanel" aria-labelledby="dc-tab-6" data-done="23">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></span><span data-i18n="dc.s5.step6.k">Étape 6 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st6.t">La vue périmètre</h3>
+                            <p data-i18n="dc.s5.st6.d">Une ligne par établissement, une case par mois, sur toute la période à couvrir. Les trous se voient sans ouvrir un seul fichier.</p>
+                            <p class="dc-st-meter"><b>23</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-6-perimetre.webp" alt="Extrait de maquette : grille des DSN, une ligne par établissement, une case par mois de 2023 à 2026." width="2000" height="806" loading="lazy" decoding="async" data-i18n="dc.s5.st6.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h61 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-61" aria-labelledby="dc-g-61-t">1</button><div class="dc-glass" id="dc-g-61"><p class="k" data-i18n="dc.s5.k.c4">Constat · La DSN fait foi</p><p class="t" id="dc-g-61-t" data-i18n="dc.s5.h61.t">Une case, un mois, un établissement</p><p data-i18n="dc.s5.h61.d">«&nbsp;En vert j'ai la DSN, en rouge je ne l'ai pas.&nbsp;» La phrase d'un expert paie est devenue l'écran.</p></div></div>
+                                    <div class="dc-hot h62 to-tl"><button type="button" aria-expanded="false" aria-controls="dc-g-62" aria-labelledby="dc-g-62-t">2</button><div class="dc-glass" id="dc-g-62"><p class="k" data-i18n="dc.s5.k.edge">Cas limite</p><p class="t" id="dc-g-62-t" data-i18n="dc.s5.h62.t">Manquant n'est pas hors période</p><p data-i18n="dc.s5.h62.d">Un établissement qui ouvre ou ferme en cours d'année n'a pas de trou&nbsp;: la grille distingue les deux.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 7 -->
+                    <article class="dc-st dc-st--narrow" id="dc-st-7" role="tabpanel" aria-labelledby="dc-tab-7" data-done="23">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></span><span data-i18n="dc.s5.step7.k">Étape 7 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st7.t">Relancer, mais seulement le manquant</h3>
+                            <p data-i18n="dc.s5.st7.d">La fenêtre de relance ne coche que les documents encore attendus, avec leurs périodes. Les rappels s'arrêtent d'eux-mêmes pour chaque jeu complet.</p>
+                            <p class="dc-st-meter"><b>23</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/collecte-relance-liste.webp" alt="Extrait de la fenêtre de relance : seuls les trois documents restant à fournir sont cochés." width="600" height="272" loading="lazy" decoding="async" data-i18n="dc.s5.st7.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h71 to-r"><button type="button" aria-expanded="false" aria-controls="dc-g-71" aria-labelledby="dc-g-71-t">1</button><div class="dc-glass" id="dc-g-71"><p class="k" data-i18n="dc.s5.k.d8">Arbitrage 08 · Relancer le manquant</p><p class="t" id="dc-g-71-t" data-i18n="dc.s5.h71.t">Seul le manquant est coché</p><p data-i18n="dc.s5.h71.d">Les pièces complètes ne sont pas redemandées.</p></div></div>
+                                    <div class="dc-hot h72 to-r"><button type="button" aria-expanded="false" aria-controls="dc-g-72" aria-labelledby="dc-g-72-t">2</button><div class="dc-glass" id="dc-g-72"><p class="k" data-i18n="dc.s5.k.c1">Constat · 5 sur 5</p><p class="t" id="dc-g-72-t" data-i18n="dc.s5.h72.t">Jusqu'à la période</p><p data-i18n="dc.s5.h72.d">La relance précise les mois attendus, pas seulement le nom du document.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                    <!-- 8 -->
+                    <article class="dc-st" id="dc-st-8" role="tabpanel" aria-labelledby="dc-tab-8" data-done="26">
+                        <header class="dc-st-head">
+                            <p class="dc-st-k"><span class="dc-role"><svg class="dc-ic" aria-hidden="true"><use href="#i-user"/></svg><span data-i18n="dc.s5.lane.a">Consultant</span></span><span data-i18n="dc.s5.step8.k">Étape 8 sur 8</span></p>
+                            <h3 data-i18n="dc.s5.st8.t">Collecte complète</h3>
+                            <p data-i18n="dc.s5.st8.d">26 types sur 26&nbsp;: le périmètre est couvert et les fichiers sont valides. Les relances s'arrêtent, l'analyse commence.</p>
+                            <p class="dc-st-meter"><b>26</b><span data-i18n="dc.s5.of26">sur 26 types complets</span></p>
+                        </header>
+                        <figure class="dc-shot">
+                            <div class="dc-shot-scroll" tabindex="0" role="group" aria-label="Extrait de maquette, défilable horizontalement sur petit écran" data-i18n="dc.shot.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                                <div class="dc-shot-canvas">
+                                    <img src="image/data-collection/parcours-8-complet.webp" alt="Extrait de maquette : bandeau « 26 types complets », relances arrêtées, et la liste où chaque type est « Complet »." width="1190" height="412" loading="lazy" decoding="async" data-i18n="dc.s5.st8.alt" data-i18n-attr="alt" data-i18n-no-text>
+                                    <div class="dc-hot h81 to-t"><button type="button" aria-expanded="false" aria-controls="dc-g-81" aria-labelledby="dc-g-81-t">1</button><div class="dc-glass" id="dc-g-81"><p class="k" data-i18n="dc.s5.k.d8">Arbitrage 08 · Relancer le manquant</p><p class="t" id="dc-g-81-t" data-i18n="dc.s5.h81.t">La collecte s'arrête d'elle-même</p><p data-i18n="dc.s5.h81.d">Périmètre couvert, fichiers valides&nbsp;: les rappels cessent sans que personne y pense.</p></div></div>
+                                    <div class="dc-hot h82 to-l"><button type="button" aria-expanded="false" aria-controls="dc-g-82" aria-labelledby="dc-g-82-t">2</button><div class="dc-glass" id="dc-g-82"><p class="k" data-i18n="dc.s5.k.d4">Arbitrage 04 · Zéro saisie ajoutée</p><p class="t" id="dc-g-82-t" data-i18n="dc.s5.h82.t">100&nbsp;%, sans une saisie</p><p data-i18n="dc.s5.h82.d">Aucun statut n'a été rempli à la main entre la demande et le dossier complet.</p></div></div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                </div>
+
+                <div class="dc-path-nav">
+                    <button type="button" class="dc-arrow" data-prev aria-label="Étape précédente" data-i18n="dc.s5.prev" data-i18n-attr="aria-label" data-i18n-no-text><svg class="dc-ic" aria-hidden="true"><use href="#i-arrow-l"/></svg></button>
+                    <p class="dc-path-cap"><span data-i18n="dc.shot.caption">Extrait de maquette, données fictives.</span><span class="dc-swipe" data-i18n="dc.shot.swipe"> Faites glisser l'image pour voir la suite.</span></p>
+                    <button type="button" class="dc-arrow" data-next aria-label="Étape suivante" data-i18n="dc.s5.next" data-i18n-attr="aria-label" data-i18n-no-text><svg class="dc-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+                </div>
+            </div>
+
+            <!-- trois cas limites qui ont pesé -->
+            <div class="dc-sub">
+                <div class="dc-sub-head">
+                    <h3 data-i18n="dc.s5.edge.title">Trois cas limites qui ont pesé</h3>
+                    <p data-i18n="dc.s5.edge.legend">Ils viennent des entretiens, pas d'une liste de cas d'école.</p>
+                </div>
+                <ul class="dc-edges">
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-clock"/></svg><b data-i18n="dc.s5.e1.t">Un mois manquant</b><span data-i18n="dc.s5.e1.d">Un seul mois absent fausse les calculs de l'année&nbsp;: la vue par établissement le signale dès le dépôt.</span></li>
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-file"/></svg><b data-i18n="dc.s5.e2.t">Un fichier trompeur</b><span data-i18n="dc.s5.e2.d">Mal nommé ou au mauvais format, il est contrôlé à l'arrivée et refusé avec son motif.</span></li>
+                    <li><svg class="dc-ic" aria-hidden="true"><use href="#i-building"/></svg><b data-i18n="dc.s5.e3.t">Des établissements qui bougent</b><span data-i18n="dc.s5.e3.d">Des centaines de sites ouvrent et ferment&nbsp;: la grille distingue un mois manquant d'un mois hors période.</span></li>
+                </ul>
+            </div>
+
+            <p class="dc-take"><svg class="dc-ic" aria-hidden="true"><use href="#i-flag"/></svg><span data-i18n="dc.s5.take">Chaque écran porte au moins un arbitrage&nbsp;: rien n'est là pour faire joli.</span></p>
+        </div>
+    </section>
+
+    <!-- ───────── 06 · Livrer ───────── -->
+    <section class="dc-sec dc-sec--tint" id="resultat" aria-labelledby="dc-h-resultat" data-chapter>
+        <div class="dc-wrap">
+            <header class="dc-head">
+                <p class="dc-num"><svg class="dc-ic" aria-hidden="true"><use href="#i-box"/></svg>06 · <span data-i18n="dc.map.6.t">Livrer</span></p>
+                <h2 id="dc-h-resultat" data-i18n="dc.s6.title" data-i18n-mode="html">Le résultat&nbsp;: <em>ce qui a été livré,</em> sans chiffres inventés</h2>
+                <p class="dc-intro" data-i18n="dc.s6.intro">La fonction est en cours de conception. Voici ce que la mission a produit à ce jour.</p>
             </header>
 
             <ul class="dc-stats">
-                <li><b>8</b><span data-i18n="dc.s4.st1">entretiens, dans quatre pôles d'expertise</span></li>
-                <li><b>4</b><span data-i18n="dc.s4.st2">parcours&nbsp;: commercial, client, manager, consultant</span></li>
-                <li><b>26</b><span data-i18n="dc.s4.st3">types de documents suivis</span></li>
-                <li><b>8</b><span data-i18n="dc.s4.st4">cas limites vérifiables en recette</span></li>
+                <li><b>8</b><span data-i18n="dc.s6.st1">entretiens, dans quatre pôles d'expertise</span></li>
+                <li><b>8</b><span data-i18n="dc.s6.st2">arbitrages, dont sept nomment ce qu'ils écartent</span></li>
+                <li><b>4</b><span data-i18n="dc.s6.st3">parcours&nbsp;: commercial, client, manager, consultant</span></li>
+                <li><b>26</b><span data-i18n="dc.s6.st4">types de documents suivis, de 0 à 100&nbsp;%</span></li>
             </ul>
 
             <div class="dc-two">
                 <div>
-                    <h3 data-i18n="dc.s4.del.title">Les livrables</h3>
+                    <h3 data-i18n="dc.s6.del.title">Les livrables</h3>
                     <ul class="dc-check">
-                        <li data-i18n="dc.s4.del1">Dossier de cadrage&nbsp;: problème, contexte, périmètre.</li>
-                        <li data-i18n="dc.s4.del2">Persona principal et empathy map.</li>
-                        <li data-i18n="dc.s4.del3">Parcours de bout en bout et chemin critique.</li>
-                        <li data-i18n="dc.s4.del4">Socle minimal de documents pour le pôle pilote.</li>
-                        <li data-i18n="dc.s4.del5">Cartographie des croisements de données entre les pôles.</li>
-                        <li data-i18n="dc.s4.del6">Prototype des quatre parcours, avec sa planche de recette.</li>
+                        <li data-i18n="dc.s6.del1">Dossier de cadrage&nbsp;: problème, contexte, périmètre.</li>
+                        <li data-i18n="dc.s6.del2">Persona principal et empathy map.</li>
+                        <li data-i18n="dc.s6.del3">Matrice des douleurs et des pistes.</li>
+                        <li data-i18n="dc.s6.del4">Parcours de bout en bout et chemin critique.</li>
+                        <li data-i18n="dc.s6.del5">Socle minimal de documents pour le pôle pilote.</li>
+                        <li data-i18n="dc.s6.del6">Cartographie des croisements de données entre les pôles.</li>
+                        <li data-i18n="dc.s6.del7">Exigence transmise au chantier d'extraction&nbsp;: un gabarit par logiciel de paie.</li>
+                        <li data-i18n="dc.s6.del8">Prototype des quatre parcours, avec sa planche de recette.</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 data-i18n="dc.s4.aud.title">Un audit avant la recette</h3>
-                    <p data-i18n="dc.s4.aud.d">J'ai relu les quatre parcours comme un seul récit et relevé les incohérences&nbsp;: textes qui ne correspondent pas à l'état affiché, chiffres de référence qui diffèrent d'un écran à l'autre, doublons de nommage, trous dans le parcours.</p>
-                    <p class="dc-chips-t" data-i18n="dc.s4.aud.cases">Huit cas limites à rejouer dans le prototype</p>
+                    <h3 data-i18n="dc.s6.aud.title">Un audit avant la recette</h3>
+                    <p data-i18n="dc.s6.aud.d">J'ai relu les quatre parcours comme un seul récit et relevé les incohérences&nbsp;: textes qui ne correspondent pas à l'état affiché, chiffres de référence qui diffèrent d'un écran à l'autre, doublons de nommage, trous dans le parcours.</p>
+                    <p class="dc-chips-t" data-i18n="dc.s6.aud.cases">Huit cas limites à rejouer dans le prototype</p>
                     <ul class="dc-chips">
-                        <li data-i18n="dc.s4.c1">SIREN invalide</li>
-                        <li data-i18n="dc.s4.c2">Client déjà présent</li>
-                        <li data-i18n="dc.s4.c3">Source indisponible</li>
-                        <li data-i18n="dc.s4.c4">E-mail non livré</li>
-                        <li data-i18n="dc.s4.c5">Invitation expirée</li>
-                        <li data-i18n="dc.s4.c6">Transfert interrompu</li>
-                        <li data-i18n="dc.s4.c7">Aucun document à relancer</li>
-                        <li data-i18n="dc.s4.c8">Compte non autorisé</li>
+                        <li data-i18n="dc.s6.c1">SIREN invalide</li>
+                        <li data-i18n="dc.s6.c2">Client déjà présent</li>
+                        <li data-i18n="dc.s6.c3">Source indisponible</li>
+                        <li data-i18n="dc.s6.c4">E-mail non livré</li>
+                        <li data-i18n="dc.s6.c5">Invitation expirée</li>
+                        <li data-i18n="dc.s6.c6">Transfert interrompu</li>
+                        <li data-i18n="dc.s6.c7">Aucun document à relancer</li>
+                        <li data-i18n="dc.s6.c8">Compte non autorisé</li>
                     </ul>
+                    <p class="dc-quick"><svg class="dc-ic" aria-hidden="true"><use href="#i-bell"/></svg><span data-i18n="dc.s6.quick">Un gain proposé sans une ligne de développement&nbsp;: activer l'alerte de dépôt de l'espace de partage déjà en place.</span></p>
                 </div>
             </div>
 
             <div class="dc-cards">
                 <article class="dc-card">
-                    <h3 data-i18n="dc.s4.num.title">Et les chiffres&nbsp;?</h3>
-                    <p data-i18n="dc.s4.num.d">Il n'y a pas encore de chiffres après mise en service, et je n'en invente pas. La discovery a montré que le temps de collecte n'était mesuré nulle part&nbsp;: la conception prévoit donc d'horodater chaque étape, demande, dépôt, dossier complet, pour disposer d'une base de comparaison.</p>
+                    <h3 data-i18n="dc.s6.num.title">Et les chiffres&nbsp;?</h3>
+                    <p data-i18n="dc.s6.num.d">Il n'y a pas encore de chiffres après mise en service, et je n'en invente pas. La discovery a montré que le temps de collecte n'était mesuré nulle part&nbsp;: la conception prévoit donc d'horodater chaque étape, demande, dépôt, dossier complet, pour disposer d'une base de comparaison.</p>
                 </article>
                 <article class="dc-card dc-card--say">
-                    <h3 data-i18n="dc.s4.hand.title">Le handoff</h3>
-                    <p data-i18n="dc.s4.hand.d">Les parcours ont été salués par l'équipe de développement pour leur précision et leur clarté technique.</p>
+                    <h3 data-i18n="dc.s6.hand.title">Le handoff</h3>
+                    <p data-i18n="dc.s6.hand.d">Les parcours ont été salués par l'équipe de développement pour leur précision et leur clarté technique.</p>
                 </article>
             </div>
 
             <div class="dc-sub">
                 <div class="dc-sub-head">
-                    <h3 data-i18n="dc.s4.learn.title">Ce que j'en retiens</h3>
+                    <h3 data-i18n="dc.s6.learn.title">Ce que j'en retiens</h3>
                 </div>
                 <ol class="dc-learn">
-                    <li data-i18n="dc.s4.l1">Un bulletin de paie ne se lit pas comme un document générique&nbsp;: chaque logiciel de paie a sa mise en page, il faut un gabarit par logiciel.</li>
-                    <li data-i18n="dc.s4.l2">Un outil de suivi qui demande de saisir des statuts à la main finit abandonné.</li>
-                    <li data-i18n="dc.s4.l3">Le client ne veut pas suivre un projet en ligne&nbsp;: il veut une consigne de dépôt claire.</li>
-                    <li data-i18n="dc.s4.l4">L'automatisation doit faire remonter des alertes et laisser l'enquête aux experts.</li>
+                    <li data-i18n="dc.s6.l1">Un bulletin de paie ne se lit pas comme un document générique&nbsp;: chaque logiciel de paie a sa mise en page, il faut un gabarit par logiciel.</li>
+                    <li data-i18n="dc.s6.l2">Un outil de suivi qui demande de saisir des statuts à la main finit abandonné.</li>
+                    <li data-i18n="dc.s6.l3">Le client ne veut pas suivre un projet en ligne&nbsp;: il veut une consigne de dépôt claire.</li>
+                    <li data-i18n="dc.s6.l4">L'automatisation, IA comprise, doit faire remonter des alertes et laisser l'enquête aux experts.</li>
                 </ol>
             </div>
         </div>
@@ -449,7 +889,7 @@
                 </a>
             </nav>
 
-            <p class="dc-legal" data-i18n="dc.legal">Les extraits d'écran sont mes maquettes, avec des données fictives. Les citations viennent des entretiens et sont attribuées à un rôle, pas à une personne. Le nom du cabinet reste confidentiel.</p>
+            <p class="dc-legal" data-i18n="dc.legal">Les extraits d'écran sont mes maquettes, avec des données fictives. Les citations viennent des entretiens et sont attribuées à un rôle, pas à une personne. Le nom du cabinet et ceux de ses pôles restent confidentiels.</p>
         </div>
     </section>
 
@@ -468,7 +908,7 @@
                 <p class="dc-rdv-sub" data-i18n="v3.rdv.sub">Choisissez un créneau : la confirmation arrive par e-mail.</p>
                 <p class="dc-rdv-sub dc-rdv-ok" data-i18n="v3.rdv.done" role="status">C'est réservé. À très vite !</p>
             </div>
-            <button type="button" class="dc-rdv-x" data-rdv-close aria-label="Fermer" data-i18n="v3.rdv.close" data-i18n-attr="aria-label" data-i18n-no-text><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            <button type="button" class="dc-rdv-x" data-rdv-close aria-label="Fermer" data-i18n="v3.rdv.close" data-i18n-attr="aria-label" data-i18n-no-text><svg class="dc-ic" aria-hidden="true"><use href="#i-x"/></svg></button>
         </div>
         <div class="dc-rdv-body">
             <div class="dc-rdv-load" aria-hidden="true"><i></i><span data-i18n="v3.rdv.loading">Chargement de l'agenda…</span></div>

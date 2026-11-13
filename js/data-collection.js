@@ -1,7 +1,8 @@
 /* data-collection.js — étude de cas « Data Collection » (data-collection.html). Sans dépendance.
    Chargé en tête de page : il marque la page « js » tout de suite, puis attend le document pour le reste :
-   progression de lecture, sommaire, langue, illustration de la collecte, comparatif de 0 à 100 %, carte de rendez-vous,
-   apparitions au défilement. En « mouvement réduit », tout est à l'état final. */
+   barre du site, fil de lecture et repère des six temps, langue, illustration de la collecte, bulles en verre,
+   schéma « du constat à la décision », chemin des huit écrans, carte de rendez-vous, apparitions au défilement.
+   En « mouvement réduit », tout est à l'état final. */
 (() => {
   'use strict';
   const root = document.documentElement;
@@ -29,24 +30,49 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
   const init = () => {
-    /* ---------- Progression de lecture (le fil « de 0 à 100 % ») et section en cours ---------- */
-    const bar = $('[data-progress]'), read = $('[data-read]');
-    const tocLinks = $$('[data-toc] a');
-    const tocSecs = tocLinks.map((a) => $(a.getAttribute('href')));
+    /* ---------- Barre du site : menu replié sous 921 px ---------- */
+    const header = $('#header'), toggle = $('.nav-toggle'), menu = $('#primary-navigation');
+    const mqMenu = matchMedia('(max-width: 920px)');
+    if (toggle && menu) {
+      const sync = () => {
+        const closed = mqMenu.matches && !document.body.classList.contains('is-nav-open');
+        $$('a, button', menu).forEach((el) => { if (closed) el.setAttribute('tabindex', '-1'); else el.removeAttribute('tabindex'); });
+      };
+      const setMenu = (open) => {
+        document.body.classList.toggle('is-nav-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        sync();
+      };
+      toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('is-nav-open')));
+      menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('click', (e) => { if (document.body.classList.contains('is-nav-open') && !e.target.closest('#header')) setMenu(false); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('is-nav-open')) { setMenu(false); toggle.focus(); }
+      });
+      mqMenu.addEventListener('change', () => setMenu(false));
+      sync();
+    }
+
+    /* ---------- Fil de lecture (le « de 0 à 100 % » de la page), barre réduite, repère des six temps ---------- */
+    const bar = $('[data-progress]');
+    const railLinks = $$('[data-rail] a');
+    const chapters = railLinks.map((a) => $(a.getAttribute('href')));
     let ticking = false;
     const onScroll = () => {
       ticking = false;
       const max = root.scrollHeight - innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
       if (bar) bar.style.setProperty('--p', p.toFixed(4));
-      if (read) read.textContent = Math.round(p * 100);
+      if (header) header.classList.toggle('scrolled', scrollY > 80);
       let cur = -1;
-      tocSecs.forEach((s, k) => {
-        if (!s) return;
-        const r = s.getBoundingClientRect();
-        if (r.top <= innerHeight * 0.4 && r.bottom > innerHeight * 0.3) cur = k;
+      const line = innerHeight * 0.4;
+      chapters.forEach((s, k) => { if (s && s.getBoundingClientRect().top <= line) cur = k; });
+      const last = chapters[chapters.length - 1];
+      const past = last && last.getBoundingClientRect().bottom < line;   /* après le dernier temps : tout est lu */
+      railLinks.forEach((a, k) => {
+        a.classList.toggle('done', k < cur || (past && k === cur));
+        if (k === cur && !past) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
       });
-      tocLinks.forEach((a, k) => { if (k === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     };
     const ask = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
     addEventListener('scroll', ask, { passive: true });
@@ -133,27 +159,131 @@
       if (replay) replay.addEventListener('click', () => (reduce ? final() : play()));
     }
 
-    /* à chaque changement de langue : bouton actif, et libellé d'état de l'illustration */
-    document.addEventListener('i18n:updated', (e) => { markLang((e.detail && e.detail.lang) || pickLang()); refreshDemo(); });
+    /* ---------- Bulles en verre : citations d'un constat, repères d'un écran ----------
+       Au survol et au clavier, la mise en forme suffit. Le clic (ou le toucher) épingle la bulle ;
+       un clic ailleurs ou la touche Échap la referme. */
+    const hostOf = (btn) => btn.closest('.dc-hot') || btn.closest('li');
+    const closeGlass = (except) => $$('.dc-hot.is-open, .dc-finds li.is-open').forEach((host) => {
+      if (host === except) return;
+      host.classList.remove('is-open');
+      const b = $('[aria-expanded]', host);
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    $$('.dc-q, .dc-hot > button').forEach((btn) => btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const host = hostOf(btn);
+      const open = !host.classList.contains('is-open');
+      closeGlass(host);
+      host.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      if (!open) btn.blur();   /* sinon le focus garderait la bulle affichée */
+    }));
+    document.addEventListener('click', (e) => { if (!e.target.closest('.is-open')) closeGlass(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      closeGlass();
+      const a = document.activeElement;
+      if (a && a.matches && a.matches('.dc-q, .dc-hot > button')) a.blur();
+    });
 
-    /* ---------- De 0 à 100 % : la même liste, deux états ---------- */
-    $$('[data-compare]').forEach((box) => {
-      const btns = $$('[data-state-btn]', box);
-      let touched = false;
-      const set = (full) => {
-        box.classList.toggle('is-full', full);
-        btns.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.stateBtn === '100') === full)));
+    /* ---------- Du constat à la décision : les liens se tracent d'une case à l'autre ---------- */
+    let redrawFlow = () => {};
+    const flow = $('[data-flow]');
+    if (flow) {
+      const svg = $('.dc-flow-svg', flow);
+      const nodes = $$('[data-node]', flow);
+      const byId = {};
+      nodes.forEach((n) => { byId[n.dataset.node] = n; });
+      const edges = [];
+      nodes.forEach((to) => (to.dataset.from || '').split(' ').filter(Boolean).forEach((id) => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        svg.append(path);
+        edges.push({ from: byId[id], to, path });
+      }));
+      redrawFlow = () => {
+        const box = flow.getBoundingClientRect();
+        if (!box.width) return;   /* masqué sur petit écran */
+        svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+        edges.forEach(({ from, to, path }) => {
+          const a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+          const x1 = a.right - box.left, y1 = a.top + a.height / 2 - box.top;
+          const x2 = b.left - box.left, y2 = b.top + b.height / 2 - box.top;
+          const dx = (x2 - x1) * 0.5;
+          path.setAttribute('d', 'M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'C' + (x1 + dx).toFixed(1) + ' ' + y1.toFixed(1) + ' ' + (x2 - dx).toFixed(1) + ' ' + y2.toFixed(1) + ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1));
+        });
       };
-      btns.forEach((b) => b.addEventListener('click', () => { touched = true; set(b.dataset.stateBtn === '100'); }));
-      /* une fois à l'écran, la liste se complète d'elle-même (sauf si l'on a déjà choisi, ou en mouvement réduit) */
-      if (!reduce && 'IntersectionObserver' in window) {
-        const io = new IntersectionObserver((es) => {
-          if (!es.some((e) => e.isIntersecting)) return;
-          io.disconnect();
-          setTimeout(() => { if (!touched) set(true); }, 1400);
-        }, { threshold: 0.6 });
-        io.observe(box);
-      }
+      const light = (node) => {
+        flow.classList.add('has-focus');
+        nodes.forEach((n) => n.classList.remove('on'));
+        edges.forEach((e) => {
+          const hit = e.from === node || e.to === node;
+          e.path.classList.toggle('on', hit);
+          if (hit) { e.from.classList.add('on'); e.to.classList.add('on'); }
+        });
+        node.classList.add('on');
+      };
+      const dim = () => {
+        flow.classList.remove('has-focus');
+        nodes.forEach((n) => n.classList.remove('on'));
+        edges.forEach((e) => e.path.classList.remove('on'));
+      };
+      nodes.forEach((n) => {
+        n.addEventListener('mouseenter', () => light(n));
+        n.addEventListener('focus', () => light(n));
+        n.addEventListener('mouseleave', dim);
+        n.addEventListener('blur', dim);
+      });
+      redrawFlow();
+      if ('ResizeObserver' in window) new ResizeObserver(redrawFlow).observe(flow);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(redrawFlow);
+    }
+
+    /* ---------- Le chemin : huit écrans, un à la fois ---------- */
+    let namePath = () => {};
+    const path = $('[data-path]');
+    if (path) {
+      const tabs = $$('[role="tab"]', path), panels = $$('.dc-st', path), segs = $$('[data-seg]', path);
+      const prev = $('[data-prev]', path), next = $('[data-next]', path);
+      const n = panels.length;
+      let cur = -1;
+      /* nom lisible de chaque pastille : « 3 · Cinq fichiers à redéposer » */
+      namePath = () => tabs.forEach((t, i) => { const h = $('h3', panels[i]); if (h) t.setAttribute('aria-label', (i + 1) + ' · ' + h.textContent.trim()); });
+      const go = (k, focus) => {
+        k = Math.max(0, Math.min(n - 1, k));
+        if (k === cur) return;
+        const back = k < cur, first = cur === -1;
+        closeGlass();
+        panels.forEach((p, i) => { p.hidden = i !== k; p.classList.remove('enter', 'back'); });
+        if (!first && !reduce) { panels[k].classList.add('enter'); if (back) panels[k].classList.add('back'); }
+        tabs.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); t.tabIndex = i === k ? 0 : -1; t.classList.toggle('seen', i < k); });
+        segs.forEach((s, i) => s.classList.toggle('done', i < k));
+        if (prev) prev.disabled = k === 0;
+        if (next) next.disabled = k === n - 1;
+        const ahead = panels[k + 1] && $('img', panels[k + 1]);   /* l'écran suivant se charge d'avance */
+        if (ahead) ahead.loading = 'eager';
+        cur = k;
+        if (focus) tabs[k].focus();
+      };
+      tabs.forEach((t, i) => t.addEventListener('click', () => go(i)));
+      const list = $('[role="tablist"]', path);
+      if (list) list.addEventListener('keydown', (e) => {
+        const move = { ArrowRight: cur + 1, ArrowLeft: cur - 1, Home: 0, End: n - 1 }[e.key];
+        if (move === undefined) return;
+        e.preventDefault();
+        go(move, true);
+      });
+      if (prev) prev.addEventListener('click', () => go(cur - 1));
+      if (next) next.addEventListener('click', () => go(cur + 1));
+      namePath();
+      go(0);
+    }
+
+    /* à chaque changement de langue : bouton actif, libellé d'état de l'illustration, noms des pastilles, tracé du schéma */
+    document.addEventListener('i18n:updated', (e) => {
+      markLang((e.detail && e.detail.lang) || pickLang());
+      refreshDemo();
+      namePath();
+      requestAnimationFrame(redrawFlow);
     });
 
     /* ---------- Prise de rendez-vous : carte dans la page (Calendly chargé à la première ouverture) ---------- */
@@ -189,11 +319,11 @@
     }
 
     /* ---------- Apparitions au défilement ---------- */
-    const targets = $$('.dc-hook blockquote, .dc-head, .dc-knots > li, .dc-steps > li, .dc-sub-head, .dc-finds > li, .dc-pull, .dc-loop > li, .dc-dec-txt, .dc-dec-side, .dc-shot, .dc-card-shot, .dc-mini, .dc-vocab > div, .dc-compare, .dc-stats > li, .dc-two > div, .dc-card, .dc-learn > li, .dc-end-in, .dc-more a, .dc-legal');
+    const targets = $$('.dc-hook blockquote, .dc-map-list > li, .dc-head, .dc-knots > li, .dc-sub-head, .dc-time, .dc-take, .dc-panel, .dc-corpus, .dc-steps > li, .dc-pipe > li, .dc-guards-say, .dc-guards-list > li, .dc-finds > li, .dc-flow, .dc-mini, .dc-vocab > div, .dc-loop > li, .dc-path-map, .dc-path-stage, .dc-edges > li, .dc-stats > li, .dc-two > div, .dc-card, .dc-learn > li, .dc-end-in, .dc-more a, .dc-legal');
     targets.forEach((el) => {
       el.setAttribute('data-rv', '');
       const rank = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
-      el.style.setProperty('--d', (rank % 5) * 60 + 'ms');
+      el.style.setProperty('--d', (rank % 6) * 55 + 'ms');
     });
     if (reduce || !('IntersectionObserver' in window)) targets.forEach((el) => el.classList.add('in'));
     else {
