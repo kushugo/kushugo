@@ -145,7 +145,7 @@ window.ACCUEIL_CONTENU.en = {
       sector: 'B2B SaaS', sub: 'Collecting payroll and HR documents, from 0 to 100%', chip: 'Discovery · UX writing',
       lead: 'Gathering 26 types of payroll and HR documents from a client, and knowing at any moment what is still missing.',
       desc: 'Discovery and design of document collection for an HR and finance consulting firm whose name stays confidential: eight interviews, then four journeys (sales, client, manager, consultant) to request, upload, check and follow up on a company’s payroll and HR documents.',
-      facts: [['Role', 'B2B Product Designer, since July 2026'], ['Scope', 'Eight interviews · Four journeys · 26 document types']],
+      facts: [['Role', 'B2B Product Designer, July to October 2026'], ['Scope', 'Eight interviews · Four journeys · 26 document types']],
       tags: ['B2B SaaS', 'UX writing', 'Discovery'],
       main_alt: 'Mockup excerpt: what is still missing, upload area and tracking of the 26 document types',
       float_cap: 'Targeted reminder', float_alt: 'Reminder dialog for missing documents',

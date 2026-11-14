@@ -147,7 +147,7 @@ window.ACCUEIL_CONTENU.fr = {
       sector: 'SaaS B2B', sub: 'Collecte de documents sociaux, de 0 à 100 %', chip: 'Discovery · UX writing',
       lead: 'Réunir 26 types de documents sociaux auprès d’un client, et savoir à tout moment ce qui manque encore.',
       desc: 'Discovery et conception de la collecte de documents d’un cabinet de conseil RH et finance, dont le nom reste confidentiel : huit entretiens, puis quatre parcours (commercial, client, manager, consultant) pour demander, déposer, contrôler et relancer les documents sociaux d’une entreprise.',
-      facts: [['Rôle', 'Product Designer B2B, depuis juillet 2026'], ['Périmètre', 'Huit entretiens · Quatre parcours · 26 types de documents']],
+      facts: [['Rôle', 'Product Designer B2B, de juillet à octobre 2026'], ['Périmètre', 'Huit entretiens · Quatre parcours · 26 types de documents']],
       tags: ['SaaS B2B', 'UX writing', 'Discovery'],
       main_alt: 'Extrait de maquette : ce qui manque encore, zone de dépôt et suivi des 26 types de documents',
       float_cap: 'Relance ciblée', float_alt: 'Fenêtre de relance des documents manquants',
