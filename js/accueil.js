@@ -95,10 +95,6 @@ const PROJECTS = [
     main:{ src:IMG+'agorasquare-hero-2.webp', cls:'light', pos:'left top' },
     float:{ src:IMG+'agorasquare-hero.webp', style:'width:40%;aspect-ratio:878/540;left:5%;bottom:7%' },
     case:'agorasquare-good.html' },
-  { id:'gomind', tex:'gomind', hue:300, title:'GoMind', thumb:IMG+'apr%C3%A8s%201.webp',
-    main:{ src:IMG+'apr%C3%A8s%201.webp' },
-    float:{ src:IMG+'apres.webp', style:'width:26%;aspect-ratio:1280/1400;right:5%;bottom:6%' },
-    case:'gomind-good.html' },
   { id:'collecte', tex:'collecte', hue:286, title:'Data Collection', thumb:'image/accueil/collecte-thumb.webp',
     main:{ src:'image/data-collection/collecte-suivi.webp', cls:'light', pos:'left top' },
     float:{ src:'image/data-collection/collecte-relance-liste.webp', style:'width:38%;aspect-ratio:600/272;right:5%;bottom:6%' },
@@ -125,12 +121,11 @@ const CLIENTS = [
   { id:'c-tf1', title:'TF1 Factory', logo:LOGO+'tf1.png', dark:true },
   { id:'c-agora', title:'AgoraSquare', logo:LOGO+'agorasquare.png', proj:'agora', dark:true },
   { id:'c-mc', title:'Master Coach', logo:LOGO+'mastercoach.png', dark:true },
-  { id:'c-gomind', title:'GoMind', logo:LOGO+'gomind.png', proj:'gomind', dark:true },
+  { id:'c-gomind', title:'GoMind', logo:LOGO+'gomind.png', dark:true },
   { id:'c-wisely', title:'Wisely', logo:LOGO+'wisely.png', dark:true },
   { id:'c-artcurial', title:'Artcurial', logo:LOGO+'artcurial.png', dark:true },
   { id:'c-al', title:'Action Logement', logo:LOGO+'actionlogement.png', dark:true },
-  { id:'c-delico', title:'Délicorner', logo:LOGO+'delicorner.png', proj:'delicorner', dark:true },
-  { id:'c-spartes', title:'Spartes', logo:LOGO+'spartes.png', dark:true }
+  { id:'c-delico', title:'Délicorner', logo:LOGO+'delicorner.png', proj:'delicorner', dark:true }
 ];
 const pIndex = id => PROJECTS.findIndex(p => p.id === id);
 (function applyUI() {
@@ -794,7 +789,7 @@ function setActiveP(i, instant) {
   if (i === activeP) return;
   const dir = activeP < 0 ? 1 : (i > activeP ? 1 : -1);
   const prev = activeP; activeP = i;
-  if (HAS_GSAP && !RM && !instant) {
+  if (HAS_GSAP && !instant) {   /* aussi en mouvement réduit : simple glissement du titre et du numéro */
     if (prev > -1) {
       const oc = ttlEls[prev].querySelectorAll('.ch'), el = ttlEls[prev];
       gsap.killTweensOf(oc);
@@ -833,6 +828,18 @@ PROJECTS.forEach((p, i) => {
 const flatBtns = $$('#flat button');
 
 function makeStatic() {
+  /* la carte arrêtée au centre de la rangée devient le projet actif (compteur, titre, vignette en couleur) sans attendre
+     un appui ; on attend la fin du glissement pour ne pas faire défiler les projets intermédiaires */
+  let settle = 0;
+  flat.addEventListener('scroll', () => {
+    clearTimeout(settle);
+    settle = setTimeout(() => {
+      const mid = flat.scrollLeft + flat.clientWidth / 2;
+      let best = activeP, gap = Infinity;
+      flatBtns.forEach((b, k) => { const d = Math.abs(b.offsetLeft + b.offsetWidth / 2 - mid); if (d < gap) { gap = d; best = k; } });
+      if (best !== activeP) setActiveP(best);
+    }, 120);
+  }, { passive: true });
   const api = {
     mode: 'static', ready: true,
     go(i) { i = clamp(i, 0, N - 1); setActiveP(i); const b = flatBtns[i]; flat.scrollTo({ left: b.offsetLeft - (flat.clientWidth - b.offsetWidth) / 2, behavior: RM ? 'auto' : 'smooth' }); },
@@ -931,7 +938,7 @@ void main(){
     const hd = loadImg(TEX[p.tex]).then(im => { if (im) { big = true; put(im); } return !!im; });
     const sm = SMALL.test(p.thumb) ? loadImg(p.thumb).then(im => { if (im && !big) put(im); return !!im; }) : hd;
     return Promise.race([sm, hd]).then(shown => (shown ? true : Promise.all([sm, hd]))).then(() => {
-      loaded++; if (bootN) bootN.textContent = loaded + '/5';
+      loaded++; if (bootN) bootN.textContent = loaded + '/' + PROJECTS.length;
       const bar = $('.boot-bar i'); if (bar) bar.style.setProperty('--p', loaded / N);
     });
   });
@@ -1266,7 +1273,7 @@ else {
   const fonts = document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1600))]) : Promise.resolve();
   const tex = gal.texReady ? Promise.race([Promise.all(gal.texReady), new Promise(r => setTimeout(r, 1700))]) : Promise.resolve();
   const minT = new Promise(r => setTimeout(r, 950));
-  if (gal.mode === 'static') { const bn = $('[data-boot-n]'); if (bn) bn.textContent = '5/5'; $('.boot-bar i').style.setProperty('--p', 1); }
+  if (gal.mode === 'static') { const bn = $('[data-boot-n]'); if (bn) bn.textContent = PROJECTS.length + '/' + PROJECTS.length; $('.boot-bar i').style.setProperty('--p', 1); }
   Promise.all([fonts, tex, minT]).then(() => {
     fitTitles();
     boot.classList.add('done');

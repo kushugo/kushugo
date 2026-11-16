@@ -19,7 +19,7 @@ window.ACCUEIL_CONTENU.fr = {
     'rail.aria': 'Calques : sections et projets',
     'hero.flat': 'Sélection de projets',
     'hero.metier': 'Product Designer · Paris',
-    'hero.dispo': 'Disponible · missions freelance',
+    'hero.dispo': 'Disponible · freelance ou CDI',
     'hero.paris': 'Paris',
     'hero.secteur1': 'Secteur public',
     'hero.secteur2': 'SaaS B2B',
@@ -99,7 +99,7 @@ window.ACCUEIL_CONTENU.fr = {
   },
 
   /* titre du hero, découpé en mots animés */
-  hero: { nom: 'Hugo Ferrer.', accroche1: 'Plateformes à fort impact.', accroche2: 'Transformer la complexité en expériences fluides.' },
+  hero: { nom: 'Hugo Ferrer.', accroche1: 'Product designer B2B.', accroche2: 'Du MVP au produit, design systems AI-ready.' },
 
   /* projets : textes par identifiant (le fait « Secteur » est retiré : le secteur est déjà sous le titre) */
   projets: {
@@ -168,11 +168,11 @@ window.ACCUEIL_CONTENU.fr = {
   /* rail et « Aller à » de la palette */
   sections: {
     accueil: { rail: 'Accueil', titre: 'Accueil', sous: 'Haut de page, galerie de projets' },
-    marques: { rail: 'Marques', titre: 'Marques', sous: 'A travaillé avec : 10 organisations' },
+    marques: { rail: 'Marques', titre: 'Marques', sous: 'A travaillé avec : 9 organisations' },
     'ai-ready': { rail: 'Design system AI-ready', titre: 'Design system AI-ready', sous: 'Un système que vos équipes et vos outils savent lire' },
-    projets: { rail: 'Projets', titre: 'Projets', sous: 'Sélection de 5 études de cas' },
+    projets: { rail: 'Projets', titre: 'Projets', sous: 'Sélection de 4 études de cas' },
     expertise: { rail: 'Expertise', titre: 'Expertise & Compétences', sous: '6 compétences, 6 scènes manipulables' },
-    contact: { rail: 'Contact', titre: 'Contact', sous: 'Prendre rendez-vous, LinkedIn' }
+    contact: { rail: 'Contact', titre: 'Contact', sous: 'Parler d’une mission, e-mail, CV, LinkedIn' }
   },
   rail_projet: 'Projet {num} : {t}',
 
@@ -185,7 +185,7 @@ window.ACCUEIL_CONTENU.fr = {
   /* palette de commandes */
   palette: {
     groupes: { act: 'Actions', proj: 'Projets', skill: 'Compétences', client: 'Clients', nav: 'Aller à' },
-    rdv: { title: 'Prendre rendez-vous', sub: 'Calendly · carte dans la page', kw: 'rendez vous rdv contact calendly appel reserver creneau mission freelance disponible embaucher', desc: 'Un créneau sur Calendly, dans une carte ouverte sur la page.', rows: [['Lien', 'calendly.com/ferrerhugo91300'], ['Statut', 'Disponible · freelance']], act: 'ouvrir la carte de rendez-vous' },
+    rdv: { title: 'Parler d’une mission', sub: 'Calendly · carte dans la page', kw: 'rendez vous rdv contact calendly appel reserver creneau mission freelance disponible embaucher', desc: 'Un créneau sur Calendly, dans une carte ouverte sur la page.', rows: [['Lien', 'calendly.com/ferrerhugo91300'], ['Statut', 'Disponible · freelance ou CDI']], act: 'ouvrir la carte de rendez-vous' },
     copie: { title: 'Copier le lien LinkedIn', sub: 'Presse-papiers', kw: 'linkedin copier lien profil partager contact', desc: 'Copie l’URL du profil dans le presse-papiers.', rows: [['URL', 'linkedin.com/in/hugo-ferrer-…']] },
     linkedin: { title: 'Ouvrir LinkedIn', sub: 'Profil · nouvel onglet', kw: 'linkedin profil reseau contact', desc: 'Le profil complet de Hugo Ferrer.', rows: [['URL', 'linkedin.com/in/hugo-ferrer-…']] },
     immersif: { title: 'Lancer le mode immersif', sub: 'Délicorner · scène 3D', kw: 'immersif immersive 3d scene mode creatif delicorner experience', pvTitle: 'Mode immersif · Délicorner', desc: 'L’étude de cas Délicorner mise en scène : la boutique et la livraison en 3D, à explorer.', rows: [['Projet', 'Délicorner']], act: 'ouvrir le mode immersif' },
@@ -206,8 +206,8 @@ window.ACCUEIL_CONTENU.fr = {
 
   /* inspecteur */
   insp: {
-    entete: 'Inspecteur · {num}/05',
-    cle: '{num} / 05 · {s}',
+    entete: 'Inspecteur · {num}/04',
+    cle: '{num} / 04 · {s}',
     parcourir: 'Comment le parcourir', modes: ['2 modes', '3 modes'],
     etude: 'Voir l’étude de cas', etude_txt: 'La lecture classique, page par page : contexte, démarche, écrans et livrables.',
     immersif: 'Mode immersif', immersif_txt: 'Le même projet mis en scène : la boutique et la livraison en 3D, à explorer plutôt qu’à lire.',

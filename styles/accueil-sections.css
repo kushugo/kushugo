@@ -775,3 +775,8 @@ body.is-nav-open .v3zone .nav-toggle-bar:nth-child(3) { bottom: 6px; transform: 
 /* Menu déroulant du téléphone : fond opaque (surface de F), filet et ombre conservés : rien ne transparaît du hero */
 @media (max-width: 640px) { .v3zone .nav-links { background: var(--bg-1); } }
 
+/* téléphone : la démonstration de l'agent (« l'agent de design lit tokens.json ») est retirée, le texte de la section reste */
+@media (max-width: 640px) {
+  .v3zone .ai3-demo { display: none; }
+}
+

@@ -21,7 +21,10 @@
   const ST = window.ScrollTrigger;
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const anim = !!G && !reduce;
+  // mouvement réduit : seuls les grands mouvements s'arrêtent (épinglage, effets liés au défilement, apparitions,
+  // curseur) ; les démonstrations des cartes et le bandeau de logos continuent
+  const anim = !!G;
+  const full = !!G && !reduce;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const wide = matchMedia('(min-width: 1100px)');
   /* textes de la langue courante (js/accueil-contenu.<langue>.js) ; DEC = séparateur décimal */
@@ -29,7 +32,7 @@
   const DEC = UI['sc.decimale'] || ',';
 
   if (G) G.registerPlugin(...[ST, window.Draggable].filter(Boolean));
-  if (!(anim && ST)) root.classList.remove('v3-pin');
+  if (!(full && ST)) root.classList.remove('v3-pin');
 
   /* ---------- Utilitaires ---------- */
   const nf2 = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -683,7 +686,8 @@
       sc.tl = G.timeline({ paused: true, repeat: -1, repeatDelay: 1.2, delay: group === 'board' ? rank * 0.85 : group === 'xp' ? rank * 0.45 : 0.4, onRepeat: () => api.reset() });
       api.demo(sc.tl, ptr);
     };
-    sc.sync = () => { if (api.run) api.run(sc.on); if (!sc.tl) return; if (sc.on && !sc.engaged) sc.tl.play(); else sc.tl.pause(); };
+    // une scène masquée (display: none, par exemple sur téléphone) ne joue pas
+    sc.sync = () => { const go = sc.on && el.getClientRects().length > 0; if (api.run) api.run(go); if (!sc.tl) return; if (go && !sc.engaged) sc.tl.play(); else sc.tl.pause(); };
     const engage = () => {
       if (!isLive(el)) return;
       clearTimeout(sc.timer); if (sc.engaged) return;
@@ -760,7 +764,7 @@
     document.addEventListener('pointerleave', () => c.classList.remove('on'));
   };
   const magnets = () => {
-    if (!anim || !fine) return;
+    if (!full || !fine) return;
     $$('[data-mag]').forEach((el) => {
       const x = G.quickTo(el, 'x', { duration: 0.5, ease: 'power3' }), y = G.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
       el.addEventListener('pointermove', (e) => { const b = el.getBoundingClientRect(); x((e.clientX - b.left - b.width / 2) * 0.28); y((e.clientY - b.top - b.height / 2) * 0.36); });
@@ -801,7 +805,7 @@
   const hero = () => {
     const pin = $('.h3-pin'), board = $('#board');
     if (!pin || !board) return;
-    if (!(anim && ST)) { board.classList.add('is-live'); return; }
+    if (!(full && ST)) { board.classList.add('is-live'); return; }
     const tilt = $('.bd-tilt'), mouse = $('.bd-mouse'), copy = $('.h3-copy'), head = $('.bd-head'), fade = $('.h3-fade'), hint = $('.h3-hint'), cards = $$('.sc', board);
     const depth = [26, 60, 14, 44, 70, 30];
     const mm = G.matchMedia();
@@ -870,7 +874,8 @@
     $$('img', t).forEach((img) => { const c = img.cloneNode(true); c.alt = ''; c.setAttribute('aria-hidden', 'true'); t.append(c); });
     let x = 0, boost = 0, period = 0;
     const measure = () => { period = (t.scrollWidth + parseFloat(getComputedStyle(t).columnGap || 0)) / 2; };
-    if (ST) ST.create({ onUpdate: (s) => { boost = Math.min(Math.abs(s.getVelocity()) / 260, 12); } });
+    // en mouvement réduit, le bandeau défile à vitesse constante, sans accélération ni inclinaison au défilement
+    if (ST && full) ST.create({ onUpdate: (s) => { boost = Math.min(Math.abs(s.getVelocity()) / 260, 12); } });
     addEventListener('resize', measure);
     G.ticker.add(() => {
       if (!period) measure();
@@ -882,7 +887,7 @@
 
   const projects = () => {
     const cards = $$('.pj');
-    if (anim && ST) {
+    if (full && ST) {
       cards.forEach((card, i) => {
         const inner = $('.pj-in', card), media = $('.pj-media', card), next = cards[i + 1];
         const st = { trigger: card, start: 'top 96%', end: 'top 14%', scrub: 0.4 };
@@ -894,7 +899,7 @@
     }
     if (!fine) return;
     // L'image suit légèrement la souris
-    if (anim) $$('.pj-media img').forEach((img) => {
+    if (full) $$('.pj-media img').forEach((img) => {
       const m = img.parentElement, x = G.quickTo(img, 'x', { duration: 0.8, ease: 'power3' }), y = G.quickTo(img, 'y', { duration: 0.8, ease: 'power3' });
       m.addEventListener('pointermove', (e) => { const b = m.getBoundingClientRect(); x(-((e.clientX - b.left) / b.width - 0.5) * 22); y(-((e.clientY - b.top) / b.height - 0.5) * 16); });
       m.addEventListener('pointerleave', () => { x(0); y(0); });
@@ -921,7 +926,7 @@
   };
 
   const reveals = () => {
-    if (!(anim && ST)) return;
+    if (!(full && ST)) return;
     // mix : filet de sécurité — si le moteur d'animation est figé (onglet en arrière-plan, panneau gelé),
     // un IntersectionObserver + minuterie (sans requestAnimationFrame) pose l'état final des éléments restés masqués.
     const guard = (tw, list) => {
@@ -955,7 +960,7 @@
       if (gx) { gx(e.clientX - s.left); gy(e.clientY - s.top); }
     }, { passive: true });
     sec.addEventListener('pointerleave', () => ['--sx', '--sy', '--sr'].forEach((k) => title.style.removeProperty(k)));
-    if (!anim || !wrap || !big) return;
+    if (!full || !wrap || !big) return;
     const ATOMS = [['at-toggle', ''], ['at-badge', 'RGAA AA'], ['at-btn', UI['sc.ct.valider'] || 'Valider'], ['at-check', '✓'], ['at-chip', 'tokens.json'], ['at-slider', ''], ['at-chip', 'DSFR'], ['at-badge', 'AI-ready']];
     const atoms = ATOMS.map(([cls, txt]) => { const a = document.createElement('span'); a.className = 'ct3-atom ' + cls; a.textContent = txt; a.setAttribute('aria-hidden', 'true'); wrap.append(a); return a; });
     G.set(atoms, { scale: 0.4 });
@@ -988,11 +993,11 @@
         frame.src = u.toString();
       }
       dlg.showModal();
-      if (anim) G.fromTo(card, { y: 44, scale: 0.94, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.65, ease: 'expo.out', overwrite: true });
+      if (full) G.fromTo(card, { y: 44, scale: 0.94, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.65, ease: 'expo.out', overwrite: true });
     };
     const close = () => {
       if (!dlg.open) return;
-      if (!anim) { dlg.close(); return; }
+      if (!full) { dlg.close(); return; }
       G.to(card, { y: 24, scale: 0.97, opacity: 0, duration: 0.22, ease: 'power2.in', overwrite: true, onComplete: () => dlg.close() });
     };
     $$('[data-rdv]').forEach((a) => a.addEventListener('click', (e) => {
@@ -1088,8 +1093,20 @@
     if (anim && ST) {
       ST.addEventListener('refreshInit', fitAll);
       const b = ST.create({ trigger: '.ai3-demo', start: 'top 85%', end: 'bottom top', onToggle: (s) => setGroup('agent', s.isActive) });
-      const c = ST.create({ trigger: '.expertise-grid', start: 'top 90%', end: 'bottom top', onToggle: (s) => setGroup('xp', s.isActive) });
-      setGroup('agent', b.isActive); setGroup('xp', c.isActive);
+      setGroup('agent', b.isActive);
+      // cartes Expertise : sur ordinateur, toute la grille joue quand elle est à l'écran ; sur téléphone (cartes
+      // empilées), chaque carte rejoue sa démonstration depuis le début quand elle arrive à l'écran
+      const xpCards = $$('.expertise-grid > *');
+      if (xpCards.length > 1 && xpCards[1].offsetTop > xpCards[0].offsetTop + 10) {
+        scenes.filter((sc) => sc.group === 'xp').forEach((sc) => {
+          const t = ST.create({ trigger: sc.el.closest('.expertise-card') || sc.el, start: 'top 80%', end: 'bottom 20%',
+            onToggle: (s) => { sc.on = s.isActive; if (s.isActive && sc.tl && !sc.engaged) { sc.api.reset(); sc.tl.restart(); } sc.sync(); } });
+          sc.on = t.isActive; sc.sync();
+        });
+      } else {
+        const c = ST.create({ trigger: '.expertise-grid', start: 'top 90%', end: 'bottom top', onToggle: (s) => setGroup('xp', s.isActive) });
+        setGroup('xp', c.isActive);
+      }
       document.addEventListener('visibilitychange', () => scenes.forEach((sc) => { if (!sc.tl) return; if (document.hidden) sc.tl.pause(); else sc.sync(); }));
     }
     let rz = 0;

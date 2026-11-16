@@ -1,0 +1,47 @@
+/* proposition.css : ajouts votés par le board le 16/11/2026 (bouton Mission, recommandation, contact). Reprend les tokens de la page (--acc, --tx, --ln, --mono). */
+
+/* Bouton « Parler d'une mission » dans la barre de navigation */
+.v3zone .nav-cta { display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px; background: var(--acc); color: #0b0c12; font-weight: 600; font-size: .86rem; text-decoration: none; white-space: nowrap; transition: transform .3s var(--e, ease), filter .3s; }
+.v3zone .nav-cta:hover { filter: brightness(1.06); }
+.v3zone .nav-cta:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+@media (max-width: 420px) { .v3zone .nav-cta { height: 32px; padding: 0 12px; font-size: .8rem; } }
+
+/* Recommandation signée, sous le bandeau des marques */
+.v3zone .pr-quote { max-width: 760px; margin: 38px auto 0; padding: 0 var(--sx, 24px); text-align: center; }
+.v3zone .pr-quote blockquote { margin: 0; }
+.v3zone .pr-quote p { margin: 0; font-size: clamp(1.08rem, 1.7vw, 1.4rem); line-height: 1.45; color: var(--tx); text-wrap: balance; letter-spacing: -.01em; }
+.v3zone .pr-quote figcaption { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; font-size: .86rem; color: var(--tx2); text-align: left; }
+.v3zone .pr-quote figcaption b { display: block; color: var(--tx); font-weight: 600; }
+.v3zone .pr-av { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--acc); color: #0b0c12; font: 600 .78rem/1 var(--mono); }
+
+/* Contact : offre d'audit et liens directs */
+.v3zone .pr-contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: center; margin-top: clamp(32px, 5vw, 56px); padding-top: 28px; border-top: 1px solid var(--ln); }
+.v3zone .pr-offer { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "k t i" "k d i"; column-gap: 18px; row-gap: 2px; align-items: center; max-width: 520px; padding: 16px 20px; border: 1px solid var(--ln2); border-radius: 14px; color: var(--tx); text-decoration: none; transition: border-color .3s, background .3s; }
+.v3zone .pr-offer:hover { border-color: var(--acc); background: color-mix(in oklab, var(--acc) 6%, transparent); }
+.v3zone .pr-offer:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+.v3zone .pr-offer-k { grid-area: k; font: 500 .68rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--tx3); }
+.v3zone .pr-offer-t { grid-area: t; font-weight: 600; font-size: 1.02rem; }
+.v3zone .pr-offer-d { grid-area: d; font-size: .88rem; color: var(--tx2); }
+.v3zone .pr-offer i { grid-area: i; font-style: normal; font-size: 1.2rem; color: var(--acc); transition: transform .35s var(--e, ease); }
+.v3zone .pr-offer:hover i { transform: translateX(4px); }
+.v3zone .pr-links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin: 0; padding: 0; list-style: none; }
+.v3zone .pr-links a { color: var(--tx2); text-decoration: underline; text-decoration-color: var(--ln2); text-underline-offset: 4px; font-size: .95rem; transition: color .25s, text-decoration-color .25s; }
+.v3zone .pr-links a:hover { color: var(--tx); text-decoration-color: var(--acc); }
+@media (max-width: 760px) { .v3zone .pr-contact { grid-template-columns: 1fr; } }
+
+/* Pied de page : liens directs */
+.v3zone .pr-foot { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 22px; margin-top: 10px; }
+.v3zone .pr-foot a { color: var(--tx3); font-size: .85rem; text-decoration: none; }
+.v3zone .pr-foot a:hover { color: var(--tx); }
+
+/* Mobile : libellé court pour tenir dans la barre */
+.v3zone .nav-cta-s { display: none; }
+/* Barre trop étroite pour le libellé complet : de 641 à 1 240 px les liens restent affichés et la pilule déborderait.
+   Sous 1 240 px : « Mission » ; sous 1 080 px : le badge du logo disparaît aussi (le grand titre dit déjà « Product designer »). */
+@media (max-width: 1240px) {
+  .v3zone .nav-cta-l { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .v3zone .nav-cta-s { display: inline; }
+}
+@media (max-width: 1080px) {
+  .v3zone .logo > span { display: none; }
+}
