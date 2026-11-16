@@ -788,5 +788,20 @@
   "v3.rdv.note": "Agenda fourni par Calendly, chargé uniquement à l'ouverture de cette carte.",
   "v3.rdv.open": "Ouvrir dans Calendly",
   "v3.rdv.close": "Fermer",
-  "home.footer.copyright": "© 2026 Hugo Ferrer. Tous droits réservés. · Product Designer à Paris"
+  "home.footer.copyright": "© 2026 Hugo Ferrer. Tous droits réservés. · Product Designer à Paris",
+  "gomind.cta.subtitle": "J'accompagne les équipes produit et marketing pour transformer leurs expériences numériques en leviers de conversion durables. Discutons ensemble de vos ambitions.",
+  "gomind.cta.primary": "Discuter de votre projet",
+  "gomind.cta.secondary": "Explorer d'autres études de cas",
+  "gomind.cta.disclaimer": "Réponse sous 48h – Collaboration possible en régie ou sur mission ciblée.",
+  "gomind.toc.cta": "Passer à l'action",
+  "gouv.cta.title": "Prêt·e à faire évoluer vos services publics ?",
+  "gouv.cta.subtitle": "J'accompagne les organisations publiques et parapubliques pour transformer leurs plateformes numériques en expériences inclusives, accessibles et orientées impact. Parlons de vos prochains défis.",
+  "gouv.cta.primary": "Discuter de votre projet",
+  "gouv.cta.secondary": "Explorer d'autres études de cas",
+  "gouv.cta.disclaimer": "Réponse sous 48h – Possibilité de collaboration en régie ou en mission ciblée.",
+  "gouv.toc.cta": "Passer à l'action",
+  "nav.aria.main": "Navigation principale",
+  "nav.aria.home": "Retour à l'accueil",
+  "nav.aria.menu": "Ouvrir le menu de navigation",
+  "case.info": "Informations du projet"
 }

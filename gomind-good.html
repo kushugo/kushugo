@@ -179,6 +179,10 @@
             box-sizing: border-box;
         }
 
+        /* colonne commune aux pages projet, la même que sur Data Collection : 1180 px au plus, marges de 20 à 56 px.
+           La barre de navigation et le contenu la partagent, pour être alignés et garder la même largeur d'une page à l'autre. */
+        :root { --col-max: 1180px; --col-gut: clamp(20px, 5vw, 56px); }
+
         :root {
             --primary-color: #000;
             --secondary-color: #fff;
@@ -273,8 +277,8 @@
 
         /* Hero Section */
         .project-hero {
-            padding: 8rem 5% 3.5rem;
-            max-width: 1400px;
+            padding: 8rem var(--col-gut) 3.5rem;
+            max-width: calc(var(--col-max) + 2 * var(--col-gut));
             margin: 0 auto;
         }
 
@@ -434,15 +438,16 @@
 
         /* Hero Image */
         .hero-wrapper {
-            max-width: 1200px;
+            max-width: calc(var(--col-max) + 2 * var(--col-gut));
             margin: 3rem auto 4rem;
-            padding: 0 5%;
+            padding: 0 var(--col-gut);
         }
 
         .hero-image {
             position: relative;
             width: 100%;
-            height: clamp(353px, 55.2vw, 507px);
+            /* la colonne commune élargit l'image : la hauteur suit, pour garder le cadrage d'origine (1056 × 507 à 1440 px) */
+            height: max(clamp(353px, 55.2vw, 507px), calc(min(var(--col-max), 100vw - 2 * var(--col-gut)) * 507 / 1056));
             min-height: clamp(353px, 55.2vw, 507px);
             border-radius: 24px;
             overflow: hidden;
@@ -698,9 +703,9 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 4rem;
-            max-width: 1400px;
+            max-width: calc(var(--col-max) + 2 * var(--col-gut));
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 0 var(--col-gut);
             margin-bottom: 4rem;
         }
 
@@ -1525,7 +1530,7 @@
 
         @media (max-width: 768px) {
             .project-hero {
-                padding: 6rem 5% 2rem;
+                padding: 6rem var(--col-gut) 2rem;
             }
 
             .chart-container {
@@ -1534,7 +1539,7 @@
 
             .hero-wrapper {
                 margin: 2.5rem auto 3rem;
-                padding: 0 5%;
+                padding: 0 var(--col-gut);
             }
 
             .hero-image {
@@ -1694,7 +1699,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.4rem 5%;
+            padding: 1.4rem var(--col-gut);   /* marges de la colonne commune */
             z-index: 1000;
             background: transparent;
             backdrop-filter: none;
@@ -1703,19 +1708,21 @@
         }
 
         header.scrolled {
-            padding: 0.9rem 5%;
+            padding: 0.9rem var(--col-gut);
             border-bottom: 1px solid transparent;
         }
 
+        /* la barre prend la colonne commune : même largeur que sur Data Collection, alignée sur le contenu */
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            max-width: 1400px;
+            max-width: var(--col-max);
             margin: 0 auto;
         }
 
         .nav-inner {
+            flex: 1 1 auto;   /* la pilule remplit la colonne */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1910,36 +1917,50 @@
             }
         }
 
-        @media (min-width: 921px) and (max-width: 1180px) {
+        /* resserrements de la barre : ceux de Data Collection, pour qu'elle tienne dans la colonne commune */
+        @media (min-width: 921px) and (max-width: 1240px) {
             .nav-inner {
-                gap: 1.4rem;
-                padding-inline: 1.6rem;
+                gap: 1.2rem;
+                padding-inline: 1.5rem;
             }
 
             .nav-main,
             .nav-links {
-                gap: 1.4rem;
+                gap: 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
             }
         }
 
-        @media (min-width: 921px) and (max-width: 1000px) {
+        @media (min-width: 921px) and (max-width: 1010px) {
             .nav-inner {
-                gap: 1rem;
-                padding-inline: 1.25rem;
+                gap: .9rem;
+                padding-inline: 1.2rem;
             }
 
             .nav-main {
-                gap: 1rem;
+                gap: .9rem;
             }
 
             .nav-links {
-                gap: 1.05rem;
+                gap: .95rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo span {
+                padding-inline: .5rem;
+                font-size: .72rem;
             }
         }
 
         @media (max-width: 920px) {
             header {
-                padding: 0.85rem 5%;
+                padding: 0.85rem var(--col-gut);
             }
 
             .nav-inner {
@@ -1948,7 +1969,7 @@
 
             .nav-links {
                 position: fixed;
-                inset: 4.5rem 1rem auto 1rem;
+                inset: 4.5rem var(--col-gut) auto var(--col-gut);   /* menu aligné sur la pilule */
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 1.1rem 1.3rem 1.4rem 1.3rem;
@@ -2022,9 +2043,9 @@
 
     <!-- Header avec nav globale -->
     <header id="header" role="banner">
-        <nav role="navigation" aria-label="Navigation principale">
+        <nav role="navigation" aria-label="Navigation principale" data-i18n="nav.aria.main" data-i18n-attr="aria-label" data-i18n-no-text>
             <div class="nav-inner">
-                <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+                <a href="index.html" class="logo" aria-label="Retour à l'accueil" data-i18n="nav.aria.home" data-i18n-attr="aria-label" data-i18n-no-text>
                     Hugo Ferrer
                     <span>UX/UI</span>
                 </a>
@@ -2066,7 +2087,7 @@
                         <button
                             type="button"
                             class="nav-toggle"
-                            aria-label="Ouvrir le menu de navigation"
+                            aria-label="Ouvrir le menu de navigation" data-i18n="nav.aria.menu" data-i18n-attr="aria-label" data-i18n-no-text
                             aria-expanded="false"
                             aria-controls="primary-navigation"
                         >
@@ -2101,7 +2122,7 @@
                     améliorer l'acquisition client B2B.
                 </p>
 
-                <h2 class="sr-only">Informations du projet</h2>
+                <h2 class="sr-only" data-i18n="case.info">Informations du projet</h2>
                 <div class="project-meta">
                     <div class="meta-item">
                         <h3 data-i18n="case.role">Rôle</h3>
@@ -2122,7 +2143,7 @@
                 </div>
             </div>
             <figure class="project-hero-media" data-hero-media hidden>
-                <img src="" alt="Image héro du projet GoMind" loading="lazy" data-hero-media-image>
+                <img src="" alt="Image héro du projet GoMind" data-i18n="gomind.img.hero" data-i18n-attr="alt" data-i18n-no-text loading="lazy" data-hero-media-image>
             </figure>
         </div>
     </section>
@@ -2130,12 +2151,12 @@
     <div class="hero-wrapper">
         <div class="hero-image data-hero">
             <div class="hero-image-background" aria-hidden="true">
-                <img src="image/images_webp/hero-go.webp" alt="" loading="eager" decoding="async" role="presentation" width="2304" height="1536">
+                <img src="image/images_webp/hero-go.webp" srcset="image/images_webp/hero-go-1200.webp 1200w, image/images_webp/hero-go.webp 2304w" sizes="100vw" alt="" loading="eager" decoding="async" role="presentation" width="2304" height="1536">
             </div>
             <picture>
-                <source srcset="image/images_webp/hero-go.webp" media="(max-width: 768px)">
+                <source srcset="image/images_webp/hero-go-1200.webp" media="(max-width: 768px)">
                 <source srcset="image/images_webp/hero-go.webp" media="(max-width: 1200px)">
-                <img src="image/images_webp/hero-go.webp" data-zoom-src="image/images_webp/hero-go.webp" data-i18n="gomind.hero.img.alt" data-i18n-attr="alt" alt="Refonte du site GoMind avec générateur de mascotte IA" loading="lazy" onerror="this.style.display='none'" width="2304" height="1536">
+                <img src="image/images_webp/hero-go.webp" data-zoom-src="image/images_webp/hero-go.webp" data-i18n="gomind.hero.img.alt" data-i18n-attr="alt" alt="Refonte du site GoMind avec générateur de mascotte IA" loading="eager" fetchpriority="high" onerror="this.style.display='none'" width="2304" height="1536">
             </picture>
             <button class="hero-zoom-button" type="button" data-zoom-src="image/images_webp/hero-go.webp" data-i18n="gomind.hero.zoom.aria" data-i18n-attr="aria-label" data-i18n-no-text>⤢</button>
             <div class="data-overlay">
@@ -2201,7 +2222,7 @@
             <section class="content-section" id="recherche">
                 <div class="section-header">
                     <div class="section-icon">🔍</div>
-                    <h2>Phase de Recherche</h2>
+                    <h2 data-i18n="gomind.research.title">Phase de Recherche</h2>
                 </div>
                 
                 <p data-i18n="gomind.research.intro">
@@ -2210,7 +2231,7 @@
                     co-création, et utilisation de l'IA pour structurer les insights métier.
                 </p>
 
-                <h3 class="sr-only">Étapes de recherche</h3>
+                <h3 class="sr-only" data-i18n="gomind.research.steps">Étapes de recherche</h3>
                 <div class="process-grid">
                     <div class="step-card" data-number="1">
                         <h4 data-i18n="gomind.research.step1.title">Audit UX Existant</h4>
@@ -2252,7 +2273,7 @@
             <section class="content-section" id="ideation">
                 <div class="section-header">
                     <div class="section-icon">💡</div>
-                    <h2>Idéation & Wireframes</h2>
+                    <h2 data-i18n="gomind.ideation.title">Idéation & Wireframes</h2>
                 </div>
                 
                 <p data-i18n="gomind.ideation.intro">
@@ -2326,12 +2347,12 @@
                 <div class="comparison-container" id="comparisonContainer">
                     <!-- Image Après -->
                     <div class="comparison-after">
-                        <img src="image/images_webp/apres.webp" alt="Site GoMind après refonte - Interface moderne avec design system et identité visuelle améliorée" class="comparison-image zoomable" data-lightbox data-lightbox-src="image/images_webp/apres.webp" width="1280" height="1400" />
+                        <img src="image/images_webp/apres.webp" alt="Site GoMind après refonte - Interface moderne avec design system et identité visuelle améliorée" data-i18n="gomind.img.after" data-i18n-attr="alt" data-i18n-no-text class="comparison-image zoomable" data-lightbox data-lightbox-src="image/images_webp/apres.webp" width="1280" height="1400" />
                     </div>
             
                     <!-- Image Avant -->
                     <div class="comparison-before" id="comparisonBefore">
-                        <img src="image/images_webp/avant.webp" alt="Site GoMind avant refonte - Interface surchargée nécessitant une modernisation" class="comparison-image zoomable" data-lightbox data-lightbox-src="image/images_webp/avant.webp" width="640" height="700" />
+                        <img src="image/images_webp/avant.webp" alt="Site GoMind avant refonte - Interface surchargée nécessitant une modernisation" data-i18n="gomind.img.before" data-i18n-attr="alt" data-i18n-no-text class="comparison-image zoomable" data-lightbox data-lightbox-src="image/images_webp/avant.webp" width="640" height="700" />
                     </div>
             
                     <!-- Slider -->
@@ -2356,7 +2377,7 @@
                     par IA avec système de filtres pour automatiser la production visuelle.
                 </p>
 
-                <h3 class="sr-only">Étapes de développement</h3>
+                <h3 class="sr-only" data-i18n="gomind.prototype.steps">Étapes de développement</h3>
                 <div class="timeline">
                     <div class="timeline-item">
                         <h4 data-i18n="gomind.prototype.timeline1.title">Identité Visuelle</h4>
@@ -2393,7 +2414,7 @@
                 <div class="mascot-grid">
 
                     <div class="mascot-item">
-                        <img src="image/images_webp/zig-basique.webp" alt="Mascotte GoMind — version standard" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-basique.webp" width="1024" height="1536">
+                        <img src="image/images_webp/zig-basique.webp" alt="Mascotte GoMind — version standard" data-i18n="gomind.img.mascot1" data-i18n-attr="alt" data-i18n-no-text class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-basique.webp" width="1024" height="1536">
                         <div class="mascot-caption">
                             <h4 data-i18n="gomind.mascots.standard.title">Version Standard</h4>
                             <p data-i18n="gomind.mascots.standard.text">Mascotte principale utilisée sur le site et réseaux sociaux</p>
@@ -2401,7 +2422,7 @@
                     </div>
 
                     <div class="mascot-item">
-                        <img src="image/images_webp/zig-work.webp" alt="Mascotte GoMind — variation créative" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-work.webp" width="1024" height="1536">
+                        <img src="image/images_webp/zig-work.webp" alt="Mascotte GoMind — variation créative" data-i18n="gomind.img.mascot2" data-i18n-attr="alt" data-i18n-no-text class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-work.webp" width="1024" height="1536">
                         <div class="mascot-caption">
                             <h4 data-i18n="gomind.mascots.creative.title">Version Créative</h4>
                             <p data-i18n="gomind.mascots.creative.text">Générée par IA pour campagne marketing spécifique</p>
@@ -2409,7 +2430,7 @@
                     </div>
 
                     <div class="mascot-item">
-                        <img src="image/images_webp/zig-ecolo.webp" alt="Mascotte GoMind — variation business" class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-ecolo.webp" width="1536" height="1024">
+                        <img src="image/images_webp/zig-ecolo.webp" alt="Mascotte GoMind — variation business" data-i18n="gomind.img.mascot3" data-i18n-attr="alt" data-i18n-no-text class="mascot-img zoomable" loading="lazy" data-lightbox data-lightbox-src="image/images_webp/zig-ecolo.webp" width="1536" height="1024">
                         <div class="mascot-caption">
                             <h4 data-i18n="gomind.mascots.business.title">Version Business</h4>
                             <p data-i18n="gomind.mascots.business.text">Adaptée pour communications corporate B2B</p>
@@ -2423,7 +2444,7 @@
             <section class="content-section" id="resultats">
                 <div class="section-header">
                     <div class="section-icon">📊</div>
-                    <h2>Résultats & Impact</h2>
+                    <h2 data-i18n="gomind.results.title">Résultats & Impact</h2>
                 </div>
                 
                 <p data-i18n="gomind.results.intro">
@@ -2488,7 +2509,7 @@
             <section class="content-section" id="apprentissages">
                 <div class="section-header">
                     <div class="section-icon">🎓</div>
-                    <h2>Apprentissages</h2>
+                    <h2 data-i18n="gomind.learnings.title">Apprentissages</h2>
                 </div>
 
                 <h3 data-i18n="gomind.learnings.success.title">Ce qui a bien fonctionné</h3>
@@ -2510,41 +2531,41 @@
             <section class="content-section" id="faq" itemscope itemtype="https://schema.org/FAQPage">
                 <div class="section-header">
                     <div class="section-icon">❓</div>
-                    <h2>Questions Fréquentes</h2>
+                    <h2 data-i18n="gomind.faq.title">Questions Fréquentes</h2>
                 </div>
                 
                 <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">Combien de temps a duré le projet GoMind ?</h3>
+                    <h3 itemprop="name" data-i18n="gomind.faq.q1">Combien de temps a duré le projet GoMind ?</h3>
                     <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Le projet de refonte du site vitrine GoMind a duré environ 4 mois, incluant la création de l'identité visuelle, le design system, le générateur de mascotte IA et le développement du site.</p>
+                        <p itemprop="text" data-i18n="gomind.faq.a1">Le projet de refonte du site vitrine GoMind a duré environ 4 mois, incluant la création de l'identité visuelle, le design system, le générateur de mascotte IA et le développement du site.</p>
                     </div>
                 </div>
 
                 <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">Qu'est-ce qu'une ESN et pourquoi GoMind avait besoin d'une refonte ?</h3>
+                    <h3 itemprop="name" data-i18n="gomind.faq.q2">Qu'est-ce qu'une ESN et pourquoi GoMind avait besoin d'une refonte ?</h3>
                     <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Une ESN (Entreprise de Services du Numérique) est une entreprise de services informatiques. GoMind, spécialisée en GreenIT, avait besoin d'une refonte pour moderniser son image, améliorer l'acquisition client B2B et mieux communiquer sur ses valeurs environnementales.</p>
+                        <p itemprop="text" data-i18n="gomind.faq.a2">Une ESN (Entreprise de Services du Numérique) est une entreprise de services informatiques. GoMind, spécialisée en GreenIT, avait besoin d'une refonte pour moderniser son image, améliorer l'acquisition client B2B et mieux communiquer sur ses valeurs environnementales.</p>
                     </div>
                 </div>
 
                 <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">Qu'est-ce que le générateur de mascotte IA créé pour GoMind ?</h3>
+                    <h3 itemprop="name" data-i18n="gomind.faq.q3">Qu'est-ce que le générateur de mascotte IA créé pour GoMind ?</h3>
                     <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Le générateur de mascotte IA est un outil interactif permettant aux visiteurs du site de créer une mascotte personnalisée. Cette fonctionnalité innovante améliore l'engagement et différencie GoMind de ses concurrents dans le secteur ESN.</p>
+                        <p itemprop="text" data-i18n="gomind.faq.a3">Le générateur de mascotte IA est un outil interactif permettant aux visiteurs du site de créer une mascotte personnalisée. Cette fonctionnalité innovante améliore l'engagement et différencie GoMind de ses concurrents dans le secteur ESN.</p>
                     </div>
                 </div>
 
                 <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">Quels étaient les objectifs de cette refonte de site vitrine ?</h3>
+                    <h3 itemprop="name" data-i18n="gomind.faq.q4">Quels étaient les objectifs de cette refonte de site vitrine ?</h3>
                     <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Les objectifs principaux étaient : moderniser l'identité visuelle pour refléter l'expertise GreenIT, améliorer l'acquisition client B2B, créer une expérience utilisateur engageante, et développer un design system réutilisable pour les futurs projets.</p>
+                        <p itemprop="text" data-i18n="gomind.faq.a4">Les objectifs principaux étaient : moderniser l'identité visuelle pour refléter l'expertise GreenIT, améliorer l'acquisition client B2B, créer une expérience utilisateur engageante, et développer un design system réutilisable pour les futurs projets.</p>
                     </div>
                 </div>
 
                 <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name">Quelles technologies ont été utilisées pour GoMind ?</h3>
+                    <h3 itemprop="name" data-i18n="gomind.faq.q5">Quelles technologies ont été utilisées pour GoMind ?</h3>
                     <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">Le projet a été conçu avec Figma pour le design, incluant la création d'un design system complet. Le site utilise des technologies modernes pour le générateur de mascotte IA et une architecture optimisée pour les performances et l'accessibilité.</p>
+                        <p itemprop="text" data-i18n="gomind.faq.a5">Le projet a été conçu avec Figma pour le design, incluant la création d'un design system complet. Le site utilise des technologies modernes pour le générateur de mascotte IA et une architecture optimisée pour les performances et l'accessibilité.</p>
                     </div>
                 </div>
             </section>
@@ -2589,14 +2610,13 @@
     <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" data-i18n="gomind.lightbox.aria" data-i18n-attr="aria-label" data-i18n-no-text>
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose" type="button" data-i18n="gomind.lightbox.close" data-i18n-attr="aria-label">×</button>
-            <img src="" alt="Vue agrandie de l'interface GoMind - Refonte site vitrine ESN GreenIT avec design system" class="lightbox-image" id="lightboxImage">
+            <img src="" alt="Vue agrandie de l'interface GoMind - Refonte site vitrine ESN GreenIT avec design system" data-i18n="gomind.img.zoom" data-i18n-attr="alt" data-i18n-no-text class="lightbox-image" id="lightboxImage">
         </div>
     </div>
 
     <script src="js/gomind.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
-    <script src="js/analytics-idle.js" defer></script>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>

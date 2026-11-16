@@ -1,0 +1,17 @@
+{
+  "gouv.benchmark.sites": "Government websites analyzed",
+  "gouv.workshops.details": "Workshop details",
+  "gouv.ds.components": "Design system components",
+  "gouv.results.aria": "Measured impact and results",
+  "gouv.img.bench1": "GOV.UK benchmark - Clear navigation and task focus",
+  "gouv.img.bench2": "Canada.ca benchmark - Optimized information structure",
+  "gouv.img.bench3": "EU benchmark - Clean design and search first",
+  "gouv.img.bench4": "Portal benchmark - Categorization by business domain",
+  "gouv.img.bench5": "France benchmark - Institutional communication",
+  "gouv.img.bench6": "Germany benchmark - Federal structure",
+  "gouv.img.figjam": "FigJam workshop - Priority Policies redesign",
+  "gouv.img.ds": "Design system - DSFR adaptation for Priority Policies",
+  "gouv.img.before": "Interface before the redesign - Focus on government news",
+  "gouv.img.after": "Interface after the redesign - Optimized UX and stronger accessibility",
+  "gouv.img.zoom": "Enlarged view of the Gouvernement.fr interface - UX/UI redesign with the DSFR design system and RGAA accessibility"
+}

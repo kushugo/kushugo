@@ -1,0 +1,17 @@
+{
+  "gouv.benchmark.sites": "Sites gouvernementaux analysés",
+  "gouv.workshops.details": "Détails des ateliers",
+  "gouv.ds.components": "Composants du design system",
+  "gouv.results.aria": "Impact et résultats mesurés",
+  "gouv.img.bench1": "Benchmark GOV.UK - Navigation claire et orientation tâche",
+  "gouv.img.bench2": "Benchmark Canada.ca - Structure d'information optimisée",
+  "gouv.img.bench3": "Benchmark EU - Design épuré et recherche prioritaire",
+  "gouv.img.bench4": "Benchmark Portal - Catégorisation par domaine métier",
+  "gouv.img.bench5": "Benchmark France - Communication institutionnelle",
+  "gouv.img.bench6": "Benchmark Allemagne - Structure fédérale",
+  "gouv.img.figjam": "Atelier FigJam - Refonte Politiques Prioritaires",
+  "gouv.img.ds": "Design System - Adaptation DSFR pour Politiques Prioritaires",
+  "gouv.img.before": "Interface avant refonte - Focus actualités gouvernementales",
+  "gouv.img.after": "Interface après refonte - UX optimisée et accessibilité renforcée",
+  "gouv.img.zoom": "Vue agrandie de l'interface Gouvernement.fr - Refonte UX/UI avec design system DSFR et accessibilité RGAA"
+}

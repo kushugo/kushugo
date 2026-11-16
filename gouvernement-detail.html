@@ -131,6 +131,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* colonne commune aux pages projet, la même que sur Data Collection : 1180 px au plus, marges de 20 à 56 px.
+           La barre de navigation et le contenu la partagent, pour être alignés et garder la même largeur d'une page à l'autre. */
+        :root { --col-max: 1180px; --col-gut: clamp(20px, 5vw, 56px); }
+
         :root {
             --primary-color: #000091;
             --secondary-color: #fff;
@@ -178,8 +182,8 @@
 
         /* Hero Section */
         .project-hero {
-            padding: 8rem 5% 3rem;
-            max-width: 1400px;
+            padding: 8rem var(--col-gut) 3rem;
+            max-width: calc(var(--col-max) + 2 * var(--col-gut));
             margin: 0 auto;
         }
 
@@ -304,7 +308,8 @@
         /* Hero Image avec Data Overlay */
         .hero-image {
             width: 100%;
-            height: 500px;
+            /* la colonne commune élargit l'image : la hauteur suit, pour garder le cadrage d'origine (1130 × 500 à 1440 px) */
+            height: max(500px, calc(min(var(--col-max), 100vw - 2 * var(--col-gut)) * 500 / 1130));
             background: linear-gradient(135deg, #000091 0%, #6366f1 100%);
             border-radius: 16px;
             position: relative;
@@ -368,11 +373,9 @@
             font-weight: 600;
         }
 
+        /* rangée dans .project-hero, qui porte déjà la colonne : pas de seconde marge */
         .hero-wrapper {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            padding: 0 5%;
-            position: relative;
+            margin: 3rem auto 0; position: relative;
         }
 
         .hero-zoom-button {
@@ -406,9 +409,9 @@
             display: grid;
             grid-template-columns: minmax(0, 3fr) minmax(220px, 0.8fr);
             gap: 4rem;
-            max-width: 1400px;
+            max-width: calc(var(--col-max) + 2 * var(--col-gut));
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 0 var(--col-gut);
             margin-bottom: 4rem;
         }
 
@@ -1313,7 +1316,7 @@
 
         @media (max-width: 640px) {
             .project-hero {
-                padding: 6rem 5% 2rem;
+                padding: 6rem var(--col-gut) 2rem;
             }
 
             .hero-image .data-overlay {
@@ -1375,7 +1378,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.4rem 5%;
+            padding: 1.4rem var(--col-gut);   /* marges de la colonne commune */
             z-index: 1000;
             background: transparent;
             backdrop-filter: none;
@@ -1384,19 +1387,21 @@
         }
 
         header.scrolled {
-            padding: 0.9rem 5%;
+            padding: 0.9rem var(--col-gut);
             border-bottom: 1px solid transparent;
         }
 
+        /* la barre prend la colonne commune : même largeur que sur Data Collection, alignée sur le contenu */
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            max-width: 1400px;
+            max-width: var(--col-max);
             margin: 0 auto;
         }
 
         .nav-inner {
+            flex: 1 1 auto;   /* la pilule remplit la colonne */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1591,36 +1596,50 @@
             }
         }
 
-        @media (min-width: 921px) and (max-width: 1180px) {
+        /* resserrements de la barre : ceux de Data Collection, pour qu'elle tienne dans la colonne commune */
+        @media (min-width: 921px) and (max-width: 1240px) {
             .nav-inner {
-                gap: 1.4rem;
-                padding-inline: 1.6rem;
+                gap: 1.2rem;
+                padding-inline: 1.5rem;
             }
 
             .nav-main,
             .nav-links {
-                gap: 1.4rem;
+                gap: 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
             }
         }
 
-        @media (min-width: 921px) and (max-width: 1000px) {
+        @media (min-width: 921px) and (max-width: 1010px) {
             .nav-inner {
-                gap: 1rem;
-                padding-inline: 1.25rem;
+                gap: .9rem;
+                padding-inline: 1.2rem;
             }
 
             .nav-main {
-                gap: 1rem;
+                gap: .9rem;
             }
 
             .nav-links {
-                gap: 1.05rem;
+                gap: .95rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo span {
+                padding-inline: .5rem;
+                font-size: .72rem;
             }
         }
 
         @media (max-width: 920px) {
             header {
-                padding: 0.85rem 5%;
+                padding: 0.85rem var(--col-gut);
             }
 
             .nav-inner {
@@ -1629,7 +1648,7 @@
 
             .nav-links {
                 position: fixed;
-                inset: 4.5rem 1rem auto 1rem;
+                inset: 4.5rem var(--col-gut) auto var(--col-gut);   /* menu aligné sur la pilule */
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 1.1rem 1.3rem 1.4rem 1.3rem;
@@ -1702,9 +1721,9 @@
 
     <!-- Header avec nav globale (même barre que GoMind) -->
     <header id="header" role="banner">
-        <nav role="navigation" aria-label="Navigation principale">
+        <nav role="navigation" aria-label="Navigation principale" data-i18n="nav.aria.main" data-i18n-attr="aria-label" data-i18n-no-text>
             <div class="nav-inner">
-                <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+                <a href="index.html" class="logo" aria-label="Retour à l'accueil" data-i18n="nav.aria.home" data-i18n-attr="aria-label" data-i18n-no-text>
                     Hugo Ferrer
                     <span>UX/UI</span>
                 </a>
@@ -1746,7 +1765,7 @@
                         <button
                             type="button"
                             class="nav-toggle"
-                            aria-label="Ouvrir le menu de navigation"
+                            aria-label="Ouvrir le menu de navigation" data-i18n="nav.aria.menu" data-i18n-attr="aria-label" data-i18n-no-text
                             aria-expanded="false"
                             aria-controls="primary-navigation"
                         >
@@ -1776,7 +1795,7 @@
             En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés, en collaboration avec l'équipe design du SIG.
         </p>
 
-        <h2 class="sr-only">Informations du projet</h2>
+        <h2 class="sr-only" data-i18n="case.info">Informations du projet</h2>
         <div class="project-meta">
             <div class="meta-item">
                 <h3 data-i18n="case.role">Rôle</h3>
@@ -1801,7 +1820,7 @@
                     <source srcset="image/images_webp/bg-gouv.webp" media="(max-width: 1200px)">
                     <img src="image/images_webp/bg-gouv.webp" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr - Héro et section Politiques prioritaires montrant la nouvelle interface accessible avec design system DSFR" loading="lazy" width="1468" height="827">
                 </picture>
-                <div class="data-overlay" aria-label="Impact et résultats mesurés">
+                <div class="data-overlay" aria-label="Impact et résultats mesurés" data-i18n="gouv.results.aria" data-i18n-attr="aria-label" data-i18n-no-text>
                     <div class="kpi">
                         <b data-count="42" data-prefix="+" data-suffix="%">0%</b>
                         <span data-i18n="gouv.kpi.cta">Taux de clic CTA</span>
@@ -1905,11 +1924,11 @@
                     Analyse comparative des meilleures pratiques UX sur les sites gouvernementaux européens et nord-américains pour identifier les patterns d'excellence et les opportunités d'innovation.
                 </p>
 
-                <h3 class="sr-only">Sites gouvernementaux analysés</h3>
+                <h3 class="sr-only" data-i18n="gouv.benchmark.sites">Sites gouvernementaux analysés</h3>
                 <div class="media-showcase">
                     <div class="media-grid">
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-1.webp" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" loading="lazy" width="878" height="798">
+                            <img src="image/images_webp/Bench-UX-1.webp" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" data-i18n="gouv.img.bench1" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="878" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.govuk.title">GOV.UK</h4>
                                 <p data-i18n="gouv.bench.govuk.desc">Excellence en navigation orientée tâche et messages orientés bénéfices utilisateur</p>
@@ -1917,7 +1936,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-2.webp" alt="Benchmark Canada.ca - Structure d'information optimisée" loading="lazy" width="882" height="798">
+                            <img src="image/images_webp/Bench-UX-2.webp" alt="Benchmark Canada.ca - Structure d'information optimisée" data-i18n="gouv.img.bench2" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="882" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.canada.title">Canada.ca</h4>
                                 <p data-i18n="gouv.bench.canada.desc">Structure "How can we help you?" optimisant l'accès rapide aux services prioritaires</p>
@@ -1925,7 +1944,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-3.webp" alt="Benchmark EU - Design épuré et recherche prioritaire" loading="lazy" width="850" height="798">
+                            <img src="image/images_webp/Bench-UX-3.webp" alt="Benchmark EU - Design épuré et recherche prioritaire" data-i18n="gouv.img.bench3" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="850" height="798">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.eu.title">European Union</h4>
                                 <p data-i18n="gouv.bench.eu.desc">Design épuré avec recherche prioritaire et architecture d'information claire</p>
@@ -1933,7 +1952,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-4.webp" alt="Benchmark Portal - Catégorisation par domaine métier" loading="lazy" width="882" height="824">
+                            <img src="image/images_webp/Bench-UX-4.webp" alt="Benchmark Portal - Catégorisation par domaine métier" data-i18n="gouv.img.bench4" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="882" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.portal.title">Government Portal</h4>
                                 <p data-i18n="gouv.bench.portal.desc">Catégorisation par domaines métiers avec iconographie claire et CTA explicites</p>
@@ -1941,7 +1960,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-5.webp" alt="Benchmark France - Communication institutionnelle" loading="lazy" width="852" height="824">
+                            <img src="image/images_webp/Bench-UX-5.webp" alt="Benchmark France - Communication institutionnelle" data-i18n="gouv.img.bench5" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="852" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.france.title">Gouvernement.fr (avant)</h4>
                                 <p data-i18n="gouv.bench.france.desc">Approche communication institutionnelle avec focus actualités politiques</p>
@@ -1949,7 +1968,7 @@
                         </div>
 
                         <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-6.webp" alt="Benchmark Allemagne - Structure fédérale" loading="lazy" width="884" height="824">
+                            <img src="image/images_webp/Bench-UX-6.webp" alt="Benchmark Allemagne - Structure fédérale" data-i18n="gouv.img.bench6" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="884" height="824">
                             <div class="media-caption">
                                 <h4 data-i18n="gouv.bench.germany.title">Bundesregierung.de</h4>
                                 <p data-i18n="gouv.bench.germany.desc">Gestion complexe de la structure fédérale avec personnalisation du contenu</p>
@@ -1970,10 +1989,10 @@
                     Workshops FigJam multi-parties prenantes pour aligner les objectifs métiers, les contraintes techniques et les attentes utilisateurs. Approche "Design Thinking" adaptée au contexte institutionnel.
                 </p>
 
-                <h3 class="sr-only">Détails des ateliers</h3>
+                <h3 class="sr-only" data-i18n="gouv.workshops.details">Détails des ateliers</h3>
                 <div class="media-showcase">
                     <div class="single-media"> 
-                        <img src="image/images_webp/Wire-ppg.webp" alt="Atelier FigJam - Refonte Politiques Prioritaires" loading="lazy" width="1536" height="1024">
+                        <img src="image/images_webp/Wire-ppg.webp" alt="Atelier FigJam - Refonte Politiques Prioritaires" data-i18n="gouv.img.figjam" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="1536" height="1024">
                         <div class="media-caption">
                             <h4 data-i18n="gouv.workshops.figjam.title">Atelier FigJam - Refonte Politiques Prioritaires</h4>
                             <p data-i18n="gouv.workshops.figjam.desc">Session collaborative avec les équipes métiers, communication et technique pour identifier les irritants UX et co-construire les solutions. Méthode divergence → convergence avec priorisation RICE.</p>
@@ -2018,10 +2037,10 @@
                     Contribution à l'adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
                 </p>
 
-                <h3 class="sr-only">Composants du design system</h3>
+                <h3 class="sr-only" data-i18n="gouv.ds.components">Composants du design system</h3>
                 <div class="media-showcase">
                     <div class="single-media">
-                        <img src="image/images_webp/Étude de cas UX UI Hugo Ferrer .webp" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" loading="lazy" width="4099" height="4099">
+                        <img src="image/images_webp/Étude de cas UX UI Hugo Ferrer .webp" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" data-i18n="gouv.img.ds" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="4099" height="4099">
                         <div class="media-caption">
                             <h4 data-i18n="gouv.prototype.ds.title">Design System - Adaptation DSFR</h4>
                             <p data-i18n="gouv.prototype.ds.desc">Contribution à la création et à l'adaptation de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires, basés sur les normes DSFR. Documentation complète des tokens, variants et guidelines d'usage.</p>
@@ -2068,7 +2087,7 @@
                         <div class="before-section">
                             <h3 data-i18n="gouv.transform.before.title">Avant - Approche institutionnelle</h3>
                             <div class="media-item">
-                                <img src="image/images_webp/Dossier avant ppg.webp" alt="Interface avant refonte - Focus actualités gouvernementales" loading="lazy" width="2942" height="10060">
+                                <img src="image/images_webp/Dossier avant ppg.webp" alt="Interface avant refonte - Focus actualités gouvernementales" data-i18n="gouv.img.before" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="2942" height="10060">
                                 <div class="issues-list">
                                     <h4 data-i18n="gouv.transform.before.issues">Problèmes identifiés :</h4>
                                     <ul class="icon-list">
@@ -2085,7 +2104,7 @@
                         <div class="after-section">
                             <h3 data-i18n="gouv.transform.after.title">Après - Approche orientée utilisateur</h3>
                             <div class="media-item">
-                                <img src="image/images_webp/après-refonte.webp" alt="Interface après refonte - UX optimisée et accessibilité renforcée" loading="lazy" width="2942" height="11062">
+                                <img src="image/images_webp/après-refonte.webp" alt="Interface après refonte - UX optimisée et accessibilité renforcée" data-i18n="gouv.img.after" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="2942" height="11062">
                                 <div class="improvements-list">
                                     <h4 data-i18n="gouv.transform.after.improvements">Améliorations apportées :</h4>
                                     <ul class="icon-list">
@@ -2417,7 +2436,7 @@
     <div class="lightbox-overlay" id="lightboxOverlay">
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose">×</button>
-            <img src="" alt="Vue agrandie de l'interface Gouvernement.fr - Refonte UX/UI avec design system DSFR et accessibilité RGAA" class="lightbox-image" id="lightboxImage">
+            <img src="" alt="Vue agrandie de l'interface Gouvernement.fr - Refonte UX/UI avec design system DSFR et accessibilité RGAA" data-i18n="gouv.img.zoom" data-i18n-attr="alt" data-i18n-no-text class="lightbox-image" id="lightboxImage">
         </div>
     </div>
 
@@ -2788,7 +2807,6 @@
     </script>
     <script src="js/i18n.js" defer></script>
     <script src="js/nav.js" defer></script>
-    <script src="js/analytics-idle.js" defer></script>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>

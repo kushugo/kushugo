@@ -797,5 +797,9 @@
   "v3.rdv.note": "Calendar provided by Calendly, loaded only when this card opens.",
   "v3.rdv.open": "Open in Calendly",
   "v3.rdv.close": "Close",
-  "home.footer.copyright": "© 2026 Hugo Ferrer. All rights reserved. · Product Designer in Paris"
+  "home.footer.copyright": "© 2026 Hugo Ferrer. All rights reserved. · Product Designer in Paris",
+  "nav.aria.main": "Main navigation",
+  "nav.aria.home": "Back to home",
+  "nav.aria.menu": "Open the navigation menu",
+  "case.info": "Project information"
 }

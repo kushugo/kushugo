@@ -37,12 +37,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Hugo F - UX/UI Designer Paris">
     <meta property="og:description" content="Portfolio de Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
-    <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/og-image.webp">
+    <meta property="og:image" content="https://portfolio-2026-hugof.vercel.app/image/accueil/partage.jpg">
     <meta property="og:url" content="https://portfolio-2026-hugof.vercel.app/">
     <meta property="og:site_name" content="Hugo F - Portfolio">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:image:secure_url" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/og-image.webp">
-    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:secure_url" content="https://portfolio-2026-hugof.vercel.app/image/accueil/partage.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Aperçu du portfolio de Hugo Ferrer, UX/UI Designer basé à Paris">
@@ -50,7 +50,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hugo F - UX/UI Designer Paris">
     <meta name="twitter:description" content="Portfolio de Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
-    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/images_webp/twitter-card.webp">
+    <meta name="twitter:image" content="https://portfolio-2026-hugof.vercel.app/image/accueil/partage.jpg">
     <meta name="twitter:creator" content="@hugoferrer">
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/image/images_webp/Flavicone.webp">
@@ -66,7 +66,7 @@
                 "alternateName": "Hugo F",
                 "jobTitle": "UX/UI Designer",
                 "url": "https://portfolio-2026-hugof.vercel.app/",
-                "image": "https://portfolio-2026-hugof.vercel.app/image/images_webp/og-image.webp",
+                "image": "https://portfolio-2026-hugof.vercel.app/image/accueil/partage.jpg",
                 "description": "UX/UI Designer basé à Paris spécialisé dans la création d'expériences digitales accessibles et engageantes pour les organisations publiques et privées.",
                 "worksFor": {
                     "@type": "Organization",
@@ -121,7 +121,7 @@
                 "inLanguage": "fr-FR",
                 "primaryImageOfPage": {
                     "@type": "ImageObject",
-                    "url": "https://portfolio-2026-hugof.vercel.app/image/images_webp/og-image.webp",
+                    "url": "https://portfolio-2026-hugof.vercel.app/image/accueil/partage.jpg",
                     "caption": "Aperçu du portfolio de Hugo Ferrer, UX/UI Designer basé à Paris"
                 },
                 "description": "Découvrez le portfolio de Hugo Ferrer, designer UX/UI basé à Paris, spécialisé dans la conception d'expériences digitales mémorables."
@@ -135,10 +135,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/instrument-sans@5.1.0/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400-italic.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono@5.1.0/index.css">
-    <link rel="stylesheet" href="styles/accueil.css?v=20">
-    <link rel="stylesheet" href="styles/accueil-sections.css?v=20">
-    <!-- 1re partie immédiate (classes js / gl / rm, langue), le reste au DOMContentLoaded -->
-    <script src="js/accueil.js?v=20"></script>
+    <link rel="stylesheet" href="styles/accueil.css?v=22">
+    <link rel="stylesheet" href="styles/accueil-sections.css?v=22">
+    <!-- premières lignes de js/accueil.js, avant la peinture : thème, classes gl / no-gl / rm, langue ;
+         le fichier, chargé en defer, les rejoue sans effet -->
+    <script>
+    (function () {
+      var d = document.documentElement, ok = false;
+      d.dataset.theme = 'dark';
+      try { var c = document.createElement('canvas'); ok = !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) {}
+      var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      d.classList.add('js', (ok && !rm) ? 'gl' : 'no-gl');
+      if (rm) d.classList.add('rm');
+      var L = 'fr', ok2 = function (v) { return v === 'fr' || v === 'en'; };
+      try { var q = new URLSearchParams(location.search).get('lang'), st = localStorage.getItem('lang'), b = (navigator.language || 'fr').slice(0, 2).toLowerCase(); L = ok2(q) ? q : ok2(st) ? st : ok2(b) ? b : 'fr'; } catch (e) {}
+      window.__accLang = L; d.lang = L;
+      setTimeout(function () { d.classList.add('i18n-ready'); }, 2500);
+    })();
+    </script>
+    <script src="js/accueil.js?v=22" defer></script>
 </head>
 <body>
 <a class="skip" href="#marques" data-t="skip">Aller au contenu</a>
@@ -563,14 +578,14 @@
 <div class="cur" id="cur" aria-hidden="true" data-t="curseur.glisser">Glisser</div>
 
 <script src="js/i18n.js" defer></script>
-<script src="js/accueil-contenu.fr.js?v=20" defer></script>
-<script src="js/accueil-contenu.en.js?v=20" defer></script>
+<script src="js/accueil-contenu.fr.js?v=22" defer></script>
+<script src="js/accueil-contenu.en.js?v=22" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" defer></script>
-<script src="js/accueil-sections.js?v=20" defer></script>
+<script src="js/accueil-sections.js?v=22" defer></script>
 <script>
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>

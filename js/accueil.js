@@ -87,11 +87,11 @@ const PROJECTS = [
     main:{ src:'delico%20projet/delicorner-cover.jpg' },
     float:{ video:'delico%20projet/delicorner-scene.mp4', poster:'delico%20projet/delicorner-scene-poster.jpg', style:'width:46%;aspect-ratio:16/9;left:5%;bottom:7%' },
     case:'delico%20projet/delicorner-preview.html', immersive:IMM },
-  { id:'gouv', tex:'gouv', hue:262, title:'Gouvernement.fr', thumb:IMG+'gouvcover.webp',
+  { id:'gouv', tex:'gouv', hue:262, title:'Gouvernement.fr', thumb:'image/accueil/gouv-thumb.webp',
     main:{ src:IMG+'gouvcover.webp', cls:'light contain' },
     float:{ src:IMG+'bg-gouv.webp', style:'width:40%;aspect-ratio:1468/827;right:5%;bottom:6%' },
     case:'gouvernement-detail.html' },
-  { id:'agora', tex:'agora', hue:278, title:'AgoraSquare', thumb:IMG+'agorasquare-hero-2.webp',
+  { id:'agora', tex:'agora', hue:278, title:'AgoraSquare', thumb:'image/accueil/agora-thumb.webp',
     main:{ src:IMG+'agorasquare-hero-2.webp', cls:'light', pos:'left top' },
     float:{ src:IMG+'agorasquare-hero.webp', style:'width:40%;aspect-ratio:878/540;left:5%;bottom:7%' },
     case:'agorasquare-good.html' },
@@ -722,11 +722,12 @@ function fitTitles() {
 /* mix : hero ≤ 640 px (il y avait trop de vide entre le texte et le visuel sur téléphone).
    La scène reste collante et pleine hauteur (la galerie avance au défilement : une scène plus courte laisserait une bande
    vide sous elle pendant tout l'épinglage). On empile : en-tête · titre · statut · VISUEL · compteur + titre · dock.
-   Le visuel prend la largeur de la grille ; sa hauteur remplit l'espace libre, bornée à un carré (au-delà, recadrage
-   excessif des captures 16:10) ; écarts statut↔visuel et visuel↔compteur = 24 à 40 px ; s'il reste de la hauteur
+   Le visuel prend la largeur de la grille ; sa hauteur remplit l'espace libre, bornée au format des vignettes (PLANE_R :
+   elles portent un titre à gauche, un visuel plus haut le couperait) ; écarts statut↔visuel et visuel↔compteur = 24 à 40 px ; s'il reste de la hauteur
    (écran très haut), le surplus est réparti à parts égales sur 4 intervalles (en-tête↔titre, titre↔statut,
    titre de projet↔dock, dock↔bas) via --m-x (accueil.css). */
 let heroM = null;
+const PLANE_R = .62;   /* format des vignettes de projet : hauteur = 0,62 × largeur (1600 × 992), le même que sur bureau */
 const MQ_M = matchMedia('(max-width: 640px)');
 const MQ_LOW = matchMedia('(max-height: 520px) and (min-width: 641px)');   /* écran bas : même requête que accueil.css */
 function mobileHero() {
@@ -736,30 +737,30 @@ function mobileHero() {
     /* 641 à 860 px (tablette, fenêtre étroite ; même retour : visuel à 70 % de la largeur, 110 px de vide au-dessus et
        150 px en dessous). Le CSS n'est pas réempilé : titre en haut, statut juste dessous, bloc du bas ancré en bas.
        Le visuel prend la largeur de la grille et remplit l'espace libre entre le statut et le bloc du bas, écarts de
-       32 px au moins, sans dépasser le format 4:3 (au-delà, recadrage excessif des captures 16:10). Peu de hauteur :
-       écarts de 12 px, et le visuel ne s'étire pas au-delà de 2,2:1 (il se resserre et reste centré).
+       32 px au moins, sans dépasser le format des vignettes (PLANE_R ; plus haut, leur titre serait coupé). Peu de hauteur :
+       écarts de 12 px, et le visuel garde le format des vignettes (il se resserre et reste centré, jamais recadré).
        Écran bas (téléphone en paysage) : le CSS met le statut à droite du titre, le visuel part donc du titre. */
     stage.style.removeProperty('--m-x');
     const low = MQ_LOW.matches, idB = hid.offsetTop + hid.offsetHeight;
     if (!low) stage.style.setProperty('--st-top', (idB + 10) + 'px');
     const top = low ? idB : idB + 10 + hst.offsetHeight, free = bot.offsetTop - top;
-    let planeH = Math.min(gridW * .75, free - 64);
-    if (planeH < 120) planeH = Math.max(60, Math.min(gridW * .75, free - 24));
+    let planeH = Math.min(gridW * PLANE_R, free - 64);
+    if (planeH < 120) planeH = Math.max(60, Math.min(gridW * PLANE_R, free - 24));
     const g = (free - planeH) / 2;
-    return { planeTop: top + g, planeH, gridW: Math.min(gridW, planeH * 2.2), gap: g, extra: 0, tab: true };
+    return { planeTop: top + g, planeH, gridW: Math.min(gridW, planeH / PLANE_R), gap: g, extra: 0, tab: true };
   }
   const vh = stage.clientHeight, hdr = parseFloat(getComputedStyle(root).getPropertyValue('--hdr-b')) || 76;
   const Hh = hid.offsetHeight, Hs = hst.offsetHeight, Hb = $('.h-ttl').offsetHeight + $('#dock').offsetHeight + 12;
   const TOP = hdr + 12, T2S = 10, BOT = 12;
   const avail = vh - TOP - Hh - T2S - Hs - Hb - BOT;      /* hauteur pour : écart + visuel + écart + surplus */
-  let g = 32, planeH = Math.min(gridW, avail - 2 * g);
+  let g = 32, planeH = Math.min(gridW * PLANE_R, avail - 2 * g);
   if (planeH < gridW * .5) { g = 24; planeH = Math.max(80, avail - 2 * g); }
   else g = clamp((avail - planeH) / 2, 24, 40);
   const x = Math.max(0, (avail - planeH - 2 * g) / 4);
   stage.style.setProperty('--m-x', x.toFixed(2) + 'px');
   const statusTop = TOP + x + Hh + T2S + x;
   stage.style.setProperty('--st-top', statusTop.toFixed(2) + 'px');
-  return { planeTop: statusTop + Hs + g, planeH, gridW, gap: g, extra: x };
+  return { planeTop: statusTop + Hs + g, planeH, gridW: Math.min(gridW, planeH / PLANE_R), gap: g, extra: x };   /* peu de hauteur : le visuel se resserre, entier */
 }
 /* bureau (plus de 860 px) : boîte du visuel en px, pour une scène de w × h.
    36 % de la hauteur, format 1:0,62, centré à 50,5 % : inchangé sur un écran large (1,38:1 et plus).
@@ -918,11 +919,22 @@ void main(){
   const bootN = $('[data-boot-n]');
   const mkTex = src => { const t = new THREE.Texture(src); t.generateMipmaps = false; t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter; t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; t.needsUpdate = true; return t; };
   const loadImg = src => new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
-  const texReady = PROJECTS.map((p, i) => loadImg(TEX[p.tex]).then(im => (im ? [mkTex(im), im.naturalWidth, im.naturalHeight] : null)).then(r => {
-    if (r) { const u = meshes[i].material.uniforms; u.uTex.value = r[0]; u.uImg.value.set(r[1], r[2]); meshes[i].visible = true; }
-    loaded++; if (bootN) bootN.textContent = loaded + '/5';
-    const bar = $('.boot-bar i'); if (bar) bar.style.setProperty('--p', loaded / N);
-  }));
+  /* connexion lente : la miniature (même image, 720 px) s'affiche d'abord, la grande la remplace dès qu'elle arrive ;
+     une vignette compte comme prête dès que l'une des deux est affichée */
+  const SMALL = /^image\/accueil\/.+-thumb\.webp$/;
+  const skel = hue => { const c = document.createElement('canvas'); c.width = 16; c.height = 10; const g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 16, 10); gr.addColorStop(0, `hsl(${hue}, 26%, 15%)`); gr.addColorStop(1, `hsl(${hue}, 32%, 24%)`); g.fillStyle = gr; g.fillRect(0, 0, 16, 10); return c; };
+  const texReady = PROJECTS.map((p, i) => {
+    const u = meshes[i].material.uniforms;
+    let big = false;
+    const put = im => { const old = u.uTex.value; u.uTex.value = mkTex(im); u.uImg.value.set(im.naturalWidth || im.width, im.naturalHeight || im.height); meshes[i].visible = true; if (old) old.dispose(); };
+    put(skel(p.hue));   /* squelette tant qu'aucune image n'est arrivée */
+    const hd = loadImg(TEX[p.tex]).then(im => { if (im) { big = true; put(im); } return !!im; });
+    const sm = SMALL.test(p.thumb) ? loadImg(p.thumb).then(im => { if (im && !big) put(im); return !!im; }) : hd;
+    return Promise.race([sm, hd]).then(shown => (shown ? true : Promise.all([sm, hd]))).then(() => {
+      loaded++; if (bootN) bootN.textContent = loaded + '/5';
+      const bar = $('.boot-bar i'); if (bar) bar.style.setProperty('--p', loaded / N);
+    });
+  });
 
   /* mise en page 3D */
   const L = { vw: 1, vh: 1, Wv: 1, Hv: 1, w: 1, h: 1, R: 10, step: .6, yOff: 0, mobile: false, gap: 1.1, shiftW: 0 };
