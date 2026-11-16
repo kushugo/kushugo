@@ -803,5 +803,11 @@
   "nav.aria.main": "Navigation principale",
   "nav.aria.home": "Retour à l'accueil",
   "nav.aria.menu": "Ouvrir le menu de navigation",
-  "case.info": "Informations du projet"
+  "case.info": "Informations du projet",
+  "avis.julien.q": "« Hugo a su gérer les délais et livrer des travaux de qualité dans un contexte d'incertitude et de changements fréquents. »",
+  "avis.julien.c": "Head of Product, Délicorner · recommandation du 28/05/2026",
+  "avis.angelica.q": "« Grâce à lui, mes designs sont aujourd'hui plus clairs, plus structurés et beaucoup plus faciles à transmettre aux développeurs. »",
+  "avis.angelica.c": "Directrice artistique · design system d'un projet UI",
+  "avis.haroun.q": "« Son professionnalisme, son expertise et sa capacité à rendre accessibles des notions complexes ont été très appréciés. »",
+  "avis.haroun.c": "Institut Supérieur de Gestion (ISG) · cours de UI/UX design · traduit de l'anglais"
 }

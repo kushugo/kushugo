@@ -6,14 +6,24 @@
 .v3zone .nav-cta:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
 @media (max-width: 420px) { .v3zone .nav-cta { height: 32px; padding: 0 12px; font-size: .8rem; } }
 
-/* Recommandation signée, sous le bandeau des marques */
+/* Avis signés, sous le bandeau des marques : trois colonnes séparées par un filet (pas de cartes), empilées sur mobile */
 /* largeur bornée par la gouttière du site (--sx grandit sur les très grands écrans : en marge intérieure, elle écrasait le texte) */
-.v3zone .pr-quote { width: min(760px, calc(100% - 2 * var(--sx, 24px))); margin: 38px auto 0; padding: 0; text-align: center; }
+.v3zone .pr-avis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(1160px, calc(100% - 2 * var(--sx, 24px))); margin: 44px auto 0; }
+.v3zone .pr-quote { display: flex; flex-direction: column; justify-content: space-between; gap: 22px; margin: 0; padding: 4px clamp(20px, 2.6vw, 36px); text-align: left; }
+.v3zone .pr-quote + .pr-quote { border-left: 1px solid var(--ln); }
+.v3zone .pr-quote:first-child { padding-left: 0; }
+.v3zone .pr-quote:last-child { padding-right: 0; }
 .v3zone .pr-quote blockquote { margin: 0; }
-.v3zone .pr-quote p { margin: 0; font-size: clamp(1.08rem, 1.7vw, 1.4rem); line-height: 1.45; color: var(--tx); text-wrap: balance; letter-spacing: -.01em; }
-.v3zone .pr-quote figcaption { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; font-size: .86rem; color: var(--tx2); text-align: left; }
+.v3zone .pr-quote p { margin: 0; font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.5; color: var(--tx); text-wrap: pretty; letter-spacing: -.01em; }
+.v3zone .pr-quote figcaption { display: flex; align-items: center; gap: 12px; font-size: .84rem; line-height: 1.4; color: var(--tx2); }
 .v3zone .pr-quote figcaption b { display: block; color: var(--tx); font-weight: 600; }
 .v3zone .pr-av { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--acc); color: #0b0c12; font: 600 .78rem/1 var(--mono); }
+@media (max-width: 860px) {
+  .v3zone .pr-avis { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
+  .v3zone .pr-quote, .v3zone .pr-quote:first-child, .v3zone .pr-quote:last-child { padding: 24px 0; }
+  .v3zone .pr-quote:first-child { padding-top: 0; }
+  .v3zone .pr-quote + .pr-quote { border-left: 0; border-top: 1px solid var(--ln); }
+}
 
 /* Contact : offre d'audit et liens directs */
 .v3zone .pr-contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: center; margin-top: clamp(32px, 5vw, 56px); padding-top: 28px; border-top: 1px solid var(--ln); }
