@@ -1080,6 +1080,63 @@
     });
   };
 
+  /* ---------- Niveau sur les tags « Expertise & Compétences » ----------
+     Chaque tag est un bouton (data-lvl de 1 à 4). Une seule bulle pour toute la section : survol ou focus clavier
+     sur ordinateur, appui sur téléphone (un second appui, Échap, un clic ailleurs ou le défilement la referment). */
+  const levels = () => {
+    const tags = $$('.expertise-card .skill-tag[data-lvl]');
+    if (!tags.length) return;
+    const tip = document.createElement('div');
+    tip.className = 'lvl-tip'; tip.id = 'lvl-tip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+    tip.innerHTML = '<span class="lvl-k"></span><b class="lvl-v"></b><span class="lvl-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="lvl-n"></span>';
+    ($('#expertise') || document.body).appendChild(tip);
+    let cur = null, pinned = false;
+    const place = () => {
+      if (!cur) return;
+      const r = cur.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 10;
+      const x = Math.min(Math.max(r.left + r.width / 2 - w / 2, m), innerWidth - w - m);
+      const below = r.top - h - m < 8;
+      tip.style.left = x + 'px';
+      tip.style.top = (below ? r.bottom + m : r.top - h - m) + 'px';
+      tip.style.setProperty('--ax', (r.left + r.width / 2 - x) + 'px');
+      tip.classList.toggle('below', below);
+    };
+    const show = (b, pin) => {
+      if (cur && cur !== b) { cur.classList.remove('on'); cur.removeAttribute('aria-describedby'); }
+      const n = Math.min(Math.max(+b.dataset.lvl || 1, 1), 4);
+      cur = b; pinned = !!pin;
+      tip.querySelector('.lvl-k').textContent = UI['niv.titre'] || 'Mon niveau';
+      tip.querySelector('.lvl-v').textContent = UI['niv.' + n] || String(n);
+      tip.querySelector('.lvl-n').textContent = (UI['niv.sur'] || '{n} sur 4').replace('{n}', n);
+      tip.querySelectorAll('.lvl-bar i').forEach((s, k) => s.classList.toggle('f', k < n));
+      tip.hidden = false; b.classList.add('on'); b.setAttribute('aria-describedby', 'lvl-tip');
+      place();
+      requestAnimationFrame(() => tip.classList.add('in'));
+    };
+    const hide = () => {
+      if (!cur) return;
+      cur.classList.remove('on'); cur.removeAttribute('aria-describedby');
+      cur = null; pinned = false; tip.classList.remove('in'); tip.hidden = true;
+    };
+    tags.forEach((b) => {
+      if (fine) {
+        b.addEventListener('mouseenter', () => { if (!pinned) show(b); });
+        b.addEventListener('mouseleave', () => { if (!pinned) hide(); });
+      }
+      b.addEventListener('focus', () => { if (b.matches(':focus-visible')) show(b); });
+      b.addEventListener('blur', () => { if (cur === b) hide(); });
+      b.addEventListener('click', () => { if (cur === b && pinned) hide(); else show(b, true); });
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && cur) hide(); });
+    document.addEventListener('pointerdown', (e) => { if (cur && !e.target.closest('.skill-tag[data-lvl]')) hide(); });
+    addEventListener('scroll', () => {   /* la bulle suit son tag, et se ferme quand il sort de l'écran */
+      if (!cur) return;
+      const r = cur.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) hide(); else place();
+    }, { passive: true });
+    addEventListener('resize', place);
+  };
+
   /* ---------- Démarrage ---------- */
   const start = () => {
     fitAll();
@@ -1088,7 +1145,7 @@
     lightUp($('.ai3-demo'), '.ag');
     lightUp($('.expertise-grid'), '.expertise-card');
     accent(); cursor(); magnets();
-    marquee(); contact(); rdv(); reveals(); nav(); langSwitch();
+    marquee(); contact(); rdv(); reveals(); nav(); langSwitch(); levels();
 
     if (anim && ST) {
       ST.addEventListener('refreshInit', fitAll);

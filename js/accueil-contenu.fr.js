@@ -60,6 +60,13 @@ window.ACCUEIL_CONTENU.fr = {
 
     /* intérieur des scènes animées des sections « Système d'abord » (agent de design, six scènes d'expertise, contact).
        Posés par data-t dans index.html et lus par js/accueil-sections.js pour les textes écrits par le script. */
+    /* niveau affiché dans la bulle des tags « Expertise & Compétences » (js/accueil-sections.js, levels) */
+    'niv.titre': 'Mon niveau',
+    'niv.1': 'Notions',
+    'niv.2': 'Intermédiaire',
+    'niv.3': 'Avancé',
+    'niv.4': 'Expert',
+    'niv.sur': '{n} sur 4',
     'sc.decimale': ',',
     'sc.ag.titre': 'Agent de design',
     'sc.ag.lit': 'lit',

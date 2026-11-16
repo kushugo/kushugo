@@ -57,6 +57,13 @@ window.ACCUEIL_CONTENU.en = {
     'nav.aria': 'Main navigation',
 
     /* inside the animated scenes of the "Système d'abord" sections (design agent, six expertise scenes, contact) */
+    /* niveau affiché dans la bulle des tags « Expertise & Compétences » (js/accueil-sections.js, levels) */
+    'niv.titre': 'My level',
+    'niv.1': 'Familiar',
+    'niv.2': 'Intermediate',
+    'niv.3': 'Advanced',
+    'niv.4': 'Expert',
+    'niv.sur': '{n} out of 4',
     'sc.decimale': '.',
     'sc.ag.titre': 'Design agent',
     'sc.ag.lit': 'reads',

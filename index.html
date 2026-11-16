@@ -135,9 +135,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/instrument-sans@5.1.0/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.1.0/400-italic.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono@5.1.0/index.css">
-    <link rel="stylesheet" href="styles/accueil.css?v=24">
-    <link rel="stylesheet" href="styles/accueil-sections.css?v=24">
-    <link rel="stylesheet" href="styles/proposition.css?v=25">
+    <link rel="stylesheet" href="styles/accueil.css?v=27">
+    <link rel="stylesheet" href="styles/accueil-sections.css?v=27">
+    <link rel="stylesheet" href="styles/proposition.css?v=27">
     <!-- premières lignes de js/accueil.js, avant la peinture : thème, classes gl / no-gl / rm, langue ;
          le fichier, chargé en defer, les rejoue sans effet -->
     <script>
@@ -154,7 +154,7 @@
       setTimeout(function () { d.classList.add('i18n-ready'); }, 2500);
     })();
     </script>
-    <script src="js/accueil.js?v=24" defer></script>
+    <script src="js/accueil.js?v=27" defer></script>
 </head>
 <body>
 <a class="skip" href="#marques" data-t="skip">Aller au contenu</a>
@@ -386,9 +386,9 @@
                       <h3 data-i18n="skill.uxresearch.title">UX Research</h3>
                       <p data-i18n="skill.uxresearch.description">Comprendre les utilisateurs pour créer des expériences qui répondent à leurs besoins réels</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="skill.uxresearch.tag1">Personas</span>
-                          <span class="skill-tag" data-i18n="skill.uxresearch.tag2">User Testing</span>
-                          <span class="skill-tag" data-i18n="skill.uxresearch.tag3">Analytics</span>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.uxresearch.tag1">Personas</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.uxresearch.tag2">User Testing</span></button>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.uxresearch.tag3">Analytics</span></button>
                       </div>
                   </div>
                   <div class="expertise-card">
@@ -409,9 +409,9 @@
                       <h3 data-i18n="skill.uidesign.title">UI Design</h3>
                       <p data-i18n="skill.uidesign.description">Créer des interfaces élégantes et intuitives qui enchantent les utilisateurs</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="skill.uidesign.tag1">Figma</span>
-                          <span class="skill-tag" data-i18n="skill.uidesign.tag2">Design Systems</span>
-                          <span class="skill-tag" data-i18n="skill.uidesign.tag3">Prototyping</span>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.uidesign.tag1">Figma</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.uidesign.tag2">Design Systems</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.uidesign.tag3">Prototyping</span></button>
                       </div>
                   </div>
                   <div class="expertise-card">
@@ -425,9 +425,9 @@
                       <h3 data-i18n="skill.designthinking.title">Design Thinking</h3>
                       <p data-i18n="skill.designthinking.description">Résoudre des problèmes complexes avec créativité et méthodologie</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="skill.designthinking.tag1">Idéation</span>
-                          <span class="skill-tag" data-i18n="skill.designthinking.tag2">Workshops</span>
-                          <span class="skill-tag" data-i18n="skill.designthinking.tag3">Validation</span>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.designthinking.tag1">Idéation</span></button>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.designthinking.tag2">Workshops</span></button>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.designthinking.tag3">Validation</span></button>
                       </div>
                   </div>
                   <div class="expertise-card">
@@ -445,9 +445,9 @@
                       <h3 data-i18n="skill.tools.title">Outils & Tech</h3>
                       <p data-i18n="skill.tools.description">Maîtrise des outils modernes de design et compétences techniques</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="skill.tools.tag1">Adobe Suite</span>
-                          <span class="skill-tag" data-i18n="skill.tools.tag2">Webflow</span>
-                          <span class="skill-tag" data-i18n="skill.tools.tag3">Notion</span>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.tools.tag1">Adobe Suite</span></button>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="skill.tools.tag2">Webflow</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.tools.tag3">Notion</span></button>
                       </div>
                   </div>
                   <div class="expertise-card">
@@ -467,9 +467,9 @@
                       <h3 data-i18n="skill.video.title">MCP Design</h3>
                       <p data-i18n="skill.video.description">Conception d'agents MCP et d'outils connectés, du prototype au produit déployé</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="skill.video.tag1">Agents IA</span>
-                          <span class="skill-tag" data-i18n="skill.video.tag2">Intégrations</span>
-                          <span class="skill-tag" data-i18n="skill.video.tag3">Workflows</span>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.video.tag1">Agents IA</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.video.tag2">Intégrations</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="skill.video.tag3">Workflows</span></button>
                       </div>
                   </div>
                   <div class="expertise-card">
@@ -483,9 +483,9 @@
                       <h3 data-i18n="v3.skill.ai.title">AI-Ready</h3>
                       <p data-i18n="v3.skill.ai.desc">Des design systems que vos équipes et vos outils IA lisent sans ambiguïté : l'IA produit juste, du premier coup.</p>
                       <div class="skill-tags">
-                          <span class="skill-tag" data-i18n="v3.skill.ai.tag1">Tokens</span>
-                          <span class="skill-tag" data-i18n="v3.skill.ai.tag2">Documentation</span>
-                          <span class="skill-tag" data-i18n="v3.skill.ai.tag3">Agents IA</span>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="v3.skill.ai.tag1">Tokens</span></button>
+                          <button type="button" class="skill-tag" data-lvl="3"><span data-i18n="v3.skill.ai.tag2">Documentation</span></button>
+                          <button type="button" class="skill-tag" data-lvl="4"><span data-i18n="v3.skill.ai.tag3">Agents IA</span></button>
                       </div>
                   </div>
               </div>
@@ -594,14 +594,14 @@
 <div class="cur" id="cur" aria-hidden="true" data-t="curseur.glisser">Glisser</div>
 
 <script src="js/i18n.js" defer></script>
-<script src="js/accueil-contenu.fr.js?v=24" defer></script>
-<script src="js/accueil-contenu.en.js?v=24" defer></script>
+<script src="js/accueil-contenu.fr.js?v=27" defer></script>
+<script src="js/accueil-contenu.en.js?v=27" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" defer></script>
-<script src="js/accueil-sections.js?v=24" defer></script>
+<script src="js/accueil-sections.js?v=27" defer></script>
 <script>
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>

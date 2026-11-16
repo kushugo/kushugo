@@ -603,7 +603,7 @@ $$('[data-open]').forEach(b => b.addEventListener('click', () => open(b.closest(
 /* ═════════════════ Inspecteur (canvas) ═════════════════ */
 const insp = $('#insp'), inspC = $('[data-insp-c]'), inspK = $('[data-insp-k]'), scrim = $('[data-scrim]');
 const MQ_SHEET = matchMedia('(max-width: 760px)');
-let inspI = -1, inspReturn = null;
+let inspI = -1, inspReturn = null, inspFromStage = false;
 const inspMobileOpen = () => inspI > -1 && MQ_SHEET.matches;
 function inspHTML(i) {
   const p = PROJECTS[i];
@@ -622,6 +622,7 @@ function openInsp(i, from) {
   inspI = i;
   if (from) inspReturn = from;
   else if (was < 0) inspReturn = document.activeElement;
+  if (was < 0) inspFromStage = gal.inStage();
   inspC.innerHTML = inspHTML(i);
   inspC.scrollTop = 0;
   inspK.textContent = fmt(C.insp.entete, { num: pad2(i) });
@@ -643,6 +644,9 @@ function closeInsp() {
   if (inspReturn && inspReturn.focus && document.contains(inspReturn)) inspReturn.focus({ preventScroll: true });
 }
 insp.inert = true;
+/* fiche ouverte depuis la galerie : elle se ferme quand on descend sous la galerie (« A travaillé avec »...) ;
+   une fiche ouverte plus bas (liste des projets) n'est pas concernée */
+addEventListener('scroll', () => { if (inspI >= 0 && inspFromStage && !gal.inStage()) closeInsp(); }, { passive: true });
 $('[data-insp-x]').addEventListener('click', closeInsp);
 scrim.addEventListener('click', closeInsp);
 $('[data-insp-prev]').addEventListener('click', () => { openInsp(inspI - 1); gal.follow(inspI); });
@@ -812,6 +816,8 @@ function setActiveP(i, instant) {
   $('#detBtn').setAttribute('aria-label', fmt(C.galerie.details_projet, { t: PROJECTS[i].title }));
   if (inspI < 0) railProject(i);
   flatBtns.forEach((b, k) => b.setAttribute('aria-current', k === i ? 'true' : 'false'));
+  /* fiche ouverte : elle suit la carte active quand on fait défiler la galerie (Délicorner, puis Gouvernement.fr...) */
+  if (inspI >= 0 && inspI !== i) openInsp(i);
 }
 
 /* fallback statique */
@@ -822,7 +828,13 @@ PROJECTS.forEach((p, i) => {
   if (p.logo) b.className = 'lg';
   b.setAttribute('aria-label', fmt(C.galerie.carte, { num: pad2(i), t: p.title, s: p.sector }));
   b.innerHTML = `<img src="${p.thumb}" alt="" loading="lazy">`;
-  b.addEventListener('click', () => { if (activeP === i) openInsp(i, b); else { setActiveP(i); } });
+  /* souris : la carte survolée s'ouvre au premier clic, même si le défilement ne l'a pas encore rendue active
+     (sinon il fallait cliquer deux fois) ; au doigt, le premier appui sélectionne, le second ouvre */
+  b.addEventListener('click', () => {
+    if (activeP === i) { openInsp(i, b); return; }
+    if (FINE) { gal.go(i); openInsp(i, b); return; }
+    setActiveP(i);
+  });
   flat.appendChild(b);
 });
 const flatBtns = $$('#flat button');
@@ -830,22 +842,34 @@ const flatBtns = $$('#flat button');
 function makeStatic() {
   /* la carte arrêtée au centre de la rangée devient le projet actif (compteur, titre, vignette en couleur) sans attendre
      un appui ; on attend la fin du glissement pour ne pas faire défiler les projets intermédiaires */
-  let settle = 0;
+  let settle = 0, progUntil = 0;
   flat.addEventListener('scroll', () => {
     clearTimeout(settle);
     settle = setTimeout(() => {
+      /* recentrage lancé par go() il y a moins d'une seconde : la carte demandée reste active, même si en bout de
+         rangée (ou avec l'aimantation) une voisine est plus proche du milieu ; un défilement de l'utilisateur, lui,
+         change la carte active (et la fiche ouverte la suit, voir setActiveP) */
+      if (performance.now() < progUntil) return;
       const mid = flat.scrollLeft + flat.clientWidth / 2;
       let best = activeP, gap = Infinity;
       flatBtns.forEach((b, k) => { const d = Math.abs(b.offsetLeft + b.offsetWidth / 2 - mid); if (d < gap) { gap = d; best = k; } });
+      /* en butée, la première ou la dernière carte ne peut pas atteindre le centre : c'est elle qui devient active */
+      const end = flat.scrollWidth - flat.clientWidth;
+      if (end > 2 && flat.scrollLeft <= 2) best = 0; else if (end > 2 && flat.scrollLeft >= end - 2) best = N - 1;
       if (best !== activeP) setActiveP(best);
     }, 120);
   }, { passive: true });
   const api = {
     mode: 'static', ready: true,
-    go(i) { i = clamp(i, 0, N - 1); setActiveP(i); const b = flatBtns[i]; flat.scrollTo({ left: b.offsetLeft - (flat.clientWidth - b.offsetWidth) / 2, behavior: RM ? 'auto' : 'smooth' }); },
+    go(i) {
+      i = clamp(i, 0, N - 1); setActiveP(i); const b = flatBtns[i];
+      const max = flat.scrollWidth - flat.clientWidth;
+      const left = clamp(b.offsetLeft - (flat.clientWidth - b.offsetWidth) / 2, 0, Math.max(0, max));
+      if (Math.abs(left - flat.scrollLeft) > 1) { progUntil = performance.now() + 1000; flat.scrollTo({ left, behavior: RM ? 'auto' : 'smooth' }); }
+    },
     match(i) { flatBtns.forEach((b, k) => b.classList.toggle('match', k === i)); },
     follow(i) { api.go(i); },
-    onInsp() {}, inStage: () => scrollY < innerHeight * .8, active: () => activeP, layout: fitTitles, reveal() {}
+    onInsp() {}, inStage: () => flat.getBoundingClientRect().bottom > innerHeight * .3, /* la rangée occupe encore le haut de l'écran */ active: () => activeP, layout: fitTitles, reveal() {}
   };
   return api;
 }
@@ -1026,6 +1050,14 @@ void main(){
     mouse.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     mouseIn = e.pointerType === 'mouse';
   }
+  /* défilement sans bouger la souris : la galerie se déplace sous le curseur ; on recalcule la position relative
+     pour que le survol (et donc le clic suivant) suive la carte réellement sous le curseur */
+  function refreshPointer() {
+    if (!mouseIn) return;
+    const r = canvas.getBoundingClientRect();
+    mouse.set(((mx - r.left) / r.width) * 2 - 1, -((my - r.top) / r.height) * 2 + 1);
+  }
+  addEventListener('scroll', refreshPointer, { passive: true });
   canvas.addEventListener('pointerleave', () => { mouseIn = false; hovered = -1; cur.classList.remove('on'); });
   function pick() {
     ray.setFromCamera(mouse, camera);

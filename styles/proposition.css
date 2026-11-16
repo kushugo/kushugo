@@ -7,7 +7,8 @@
 @media (max-width: 420px) { .v3zone .nav-cta { height: 32px; padding: 0 12px; font-size: .8rem; } }
 
 /* Recommandation signée, sous le bandeau des marques */
-.v3zone .pr-quote { max-width: 760px; margin: 38px auto 0; padding: 0 var(--sx, 24px); text-align: center; }
+/* largeur bornée par la gouttière du site (--sx grandit sur les très grands écrans : en marge intérieure, elle écrasait le texte) */
+.v3zone .pr-quote { width: min(760px, calc(100% - 2 * var(--sx, 24px))); margin: 38px auto 0; padding: 0; text-align: center; }
 .v3zone .pr-quote blockquote { margin: 0; }
 .v3zone .pr-quote p { margin: 0; font-size: clamp(1.08rem, 1.7vw, 1.4rem); line-height: 1.45; color: var(--tx); text-wrap: balance; letter-spacing: -.01em; }
 .v3zone .pr-quote figcaption { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; font-size: .86rem; color: var(--tx2); text-align: left; }
@@ -45,3 +46,22 @@
 @media (max-width: 1080px) {
   .v3zone .logo > span { display: none; }
 }
+
+/* Tags « Expertise & Compétences » : boutons qui montrent mon niveau dans une bulle (js/accueil-sections.js, levels) */
+.v3zone .expertise-card .skill-tag[data-lvl] { appearance: none; -webkit-appearance: none; margin: 0; cursor: pointer; touch-action: manipulation; transition: background .25s, border-color .25s, color .25s; }
+.v3zone .expertise-card .skill-tag[data-lvl]:hover,
+.v3zone .expertise-card .skill-tag[data-lvl].on { background: color-mix(in srgb, var(--acc) 16%, transparent); border-color: color-mix(in srgb, var(--acc) 55%, transparent); color: var(--tx); }
+.v3zone .lvl-tip { position: fixed; left: 0; top: 0; z-index: 1100; display: grid; grid-template-columns: auto auto; align-items: baseline; column-gap: 14px; row-gap: 8px; min-width: 164px; padding: 11px 13px 12px; border: 1px solid var(--ln2); border-radius: 12px; background: var(--bg3); color: var(--tx); box-shadow: 0 16px 40px rgba(0, 0, 0, .45); pointer-events: none; opacity: 0; transform: translateY(4px); transition: opacity .18s var(--e), transform .25s var(--e); }
+.v3zone .lvl-tip.below { transform: translateY(-4px); }
+.v3zone .lvl-tip.in { opacity: 1; transform: none; }
+.v3zone .lvl-tip[hidden] { display: none; }
+.v3zone .lvl-tip::after { content: ''; position: absolute; left: var(--ax, 50%); bottom: -6px; width: 10px; height: 10px; margin-left: -5px; background: var(--bg3); border: solid var(--ln2); border-width: 0 1px 1px 0; transform: rotate(45deg); }
+.v3zone .lvl-tip.below::after { bottom: auto; top: -6px; border-width: 1px 0 0 1px; }
+.v3zone .lvl-k { font: 500 .62rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--tx3); }
+.v3zone .lvl-v { justify-self: end; font-weight: 600; font-size: .92rem; line-height: 1; }
+.v3zone .lvl-bar { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.v3zone .lvl-bar i { height: 6px; border-radius: 3px; background: var(--ln2); }
+.v3zone .lvl-bar i.f { background: var(--acc); }
+.v3zone .lvl-n { grid-column: 1 / -1; font: 500 .66rem/1 var(--mono); color: var(--tx2); }
+@media (prefers-reduced-motion: reduce) { .v3zone .lvl-tip, .v3zone .lvl-tip.below { transform: none; transition: opacity .12s; } }
+.v3zone .expertise-card:hover .skill-tag[data-lvl]:not(.on):not(:hover) { background: rgba(255, 255, 255, .06); border-color: var(--ln2); }
