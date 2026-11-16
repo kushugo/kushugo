@@ -1,0 +1,149 @@
+/* Carte de prise de rendez-vous commune aux études de cas (fabriquée par js/rendez-vous.js).
+   Les règles internes sont préfixées par .rdv pour résister aux styles généraux des pages (a:hover, button…).
+   Le reset des pages (* { margin: 0 }) annule le centrage natif du <dialog> : il est redéclaré ici. */
+
+.rdv {
+  --rdv-ink: #17161f;
+  --rdv-ink-2: #555366;
+  --rdv-ink-3: #64627a;
+  --rdv-surface: #f4f4f7;
+  --rdv-panel: #fff;
+  --rdv-line: rgba(23, 22, 31, .1);
+  --rdv-accent: #5b45d3;
+  --rdv-ok: #0b6e46;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  box-sizing: border-box;
+  width: min(1040px, calc(100vw - 48px));
+  height: min(780px, calc(100vh - 48px));
+  height: min(780px, calc(100dvh - 48px));
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: var(--rdv-surface);
+  color: var(--rdv-ink);
+  color-scheme: light;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 40px 110px -30px rgba(0, 0, 0, .5);
+  font-size: 1rem;
+  line-height: 1.45;
+  text-align: left;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+.rdv::backdrop {
+  background: rgba(14, 12, 28, .52);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.rdv[open] { animation: rdv-entree .5s cubic-bezier(.16, 1, .3, 1); }
+.rdv[open]::backdrop { animation: rdv-fondu .3s ease-out; }
+
+.rdv *, .rdv *::before, .rdv *::after { box-sizing: border-box; }
+.rdv [hidden] { display: none !important; }
+
+.rdv .rdv-card { display: flex; flex-direction: column; height: 100%; }
+
+/* en-tête : titre, consigne (ou confirmation de réservation) et bouton de fermeture */
+.rdv .rdv-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 18px 16px 26px; }
+.rdv .rdv-intro { min-width: 0; }
+.rdv .rdv-title {
+  margin: 0; padding: 0; border: 0; background: none;
+  font: inherit; font-size: clamp(1.25rem, 1.05rem + .55vw, 1.6rem); font-weight: 600; line-height: 1.15;
+  letter-spacing: -.02em; text-transform: none; color: var(--rdv-ink);
+}
+.rdv .rdv-sub { margin: 6px 0 0; padding: 0; font-size: .95rem; line-height: 1.4; color: var(--rdv-ink-2); }
+.rdv .rdv-ok { display: none; font-weight: 600; color: var(--rdv-ok); }
+.rdv.is-booked .rdv-ok { display: block; }
+.rdv.is-booked .rdv-sub:not(.rdv-ok) { display: none; }
+
+.rdv .rdv-x {
+  flex: none; display: grid; place-items: center;
+  width: 42px; height: 42px; margin: 0; padding: 0;
+  border: 1px solid var(--rdv-line); border-radius: 50%;
+  background: var(--rdv-panel); color: var(--rdv-ink);
+  font: inherit; line-height: 1; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  transition: background-color .2s, transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.rdv .rdv-x svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.rdv .rdv-x:hover { background: #e9e9ee; transform: rotate(90deg); }
+.rdv .rdv-x:focus-visible,
+.rdv .rdv-open:focus-visible { outline: 2px solid var(--rdv-accent); outline-offset: 3px; }
+
+/* agenda : panneau blanc, attente affichée jusqu'au chargement de Calendly */
+.rdv .rdv-body {
+  position: relative; flex: 1; min-height: 0; margin: 0 12px;
+  border-radius: 16px; background: var(--rdv-panel); box-shadow: 0 0 0 1px var(--rdv-line); overflow: hidden;
+}
+.rdv .rdv-frame {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+  margin: 0; padding: 0; border: 0; background: transparent;
+  opacity: 0; transition: opacity .4s ease;
+}
+.rdv.is-ready .rdv-frame { opacity: 1; }
+.rdv .rdv-load {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px;
+  font-size: .92rem; color: var(--rdv-ink-3);
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.rdv .rdv-load i {
+  display: block; width: 26px; height: 26px; border-radius: 50%;
+  border: 2.5px solid #e4e4ea; border-top-color: var(--rdv-accent);
+  animation: rdv-tour .8s linear infinite;
+}
+.rdv.is-ready .rdv-load { opacity: 0; visibility: hidden; }
+
+/* pied : mention Calendly et lien de secours vers la page Calendly */
+.rdv .rdv-foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px;
+  padding: 12px 26px 16px; font-size: .8rem; line-height: 1.4; color: var(--rdv-ink-3);
+}
+.rdv .rdv-open {
+  flex: none; padding-bottom: 1px;
+  color: var(--rdv-ink); font-weight: 600; text-decoration: none; white-space: nowrap;
+  border-bottom: 1px solid rgba(23, 22, 31, .28);
+}
+.rdv .rdv-open:hover { color: var(--rdv-ink); border-bottom-color: currentColor; }
+
+/* téléphone (et écran très bas) : feuille presque pleine hauteur, l'agenda prend toute la place disponible */
+@media (max-width: 640px), (max-height: 520px) {
+  .rdv {
+    inset: auto 0 0;
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 12px);
+    height: calc(100dvh - 12px);
+    border-radius: 20px 20px 0 0;
+  }
+  .rdv[open] { animation-name: rdv-montee; }
+  .rdv .rdv-head { gap: 12px; padding: 14px 12px 10px 18px; }
+  .rdv .rdv-title { font-size: 1.15rem; }
+  .rdv .rdv-sub { margin-top: 3px; font-size: .84rem; }
+  .rdv .rdv-x { width: 44px; height: 44px; }
+  .rdv .rdv-body { margin: 0 6px; border-radius: 14px; }
+  .rdv .rdv-note { display: none; }
+  .rdv .rdv-foot { justify-content: center; padding: 10px 18px calc(12px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-height: 520px) {
+  .rdv .rdv-sub:not(.rdv-ok) { display: none; }
+}
+
+/* mouvement réduit : simple fondu, sans déplacement ni rotation */
+@media (prefers-reduced-motion: reduce) {
+  .rdv[open], .rdv[open]::backdrop { animation: rdv-fondu .15s ease-out; }
+  .rdv .rdv-x, .rdv .rdv-frame, .rdv .rdv-load { transition: none; }
+  .rdv .rdv-x:hover { transform: none; }
+}
+
+@keyframes rdv-entree { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+@keyframes rdv-montee { from { opacity: 0; transform: translateY(48px); } }
+@keyframes rdv-fondu { from { opacity: 0; } }
+@keyframes rdv-tour { to { transform: rotate(360deg); } }
+
+/* page figée tant que la carte est ouverte (classes posées par js/rendez-vous.js) */
+html.rdv-lock { overflow: hidden !important; }
+html.rdv-lock-gutter { scrollbar-gutter: stable; }
+body.rdv-lock-body { overflow: visible !important; }

@@ -1,11 +1,11 @@
 # Robots.txt pour Portfolio Hugo F
-# https://portfolio-2026-hugof.vercel.app
+# https://www.designeruxuihugo.com
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://portfolio-2026-hugof.vercel.app/sitemap.xml
+Sitemap: https://www.designeruxuihugo.com/sitemap.xml
 
 # Bloquer les fichiers système et de configuration
 Disallow: /node_modules/
