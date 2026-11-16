@@ -125,11 +125,11 @@
   /* ---------- Balises ---------- */
   const regles = [
     ['.nav-cta', 'cta_mission'],
+    ['.pr-offer', 'offre_audit'],   /* avant la règle rendez-vous : l'offre ouvre aussi la carte */
     ['[data-rdv], [data-open-rdv], a[href*="calendly.com"]', 'rdv_ouverture'],
     ['a[href^="mailto:"]', 'contact_email'],
     ['a[href*="linkedin.com"]', 'lien_linkedin'],
     ['a[href$=".pdf"], a[href*="/cv"], a[href*="CV"]', 'cv_ouvert'],
-    ['.pr-offer', 'offre_audit'],
     ['a[href*="gouvernement-detail"], a[href*="agorasquare-good"], a[href*="data-collection"], a[href*="delicorner-preview"], a[href*="gomind-good"]', 'etude_de_cas'],
     ['a[href*="immersi"], #immToggle', 'mode_immersif'],
     ['.imm-box[data-step]', 'immersif_colis'],

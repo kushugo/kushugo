@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0b0c12">
+<title>Page introuvable · Hugo Ferrer</title>
+<link rel="icon" type="image/webp" href="/image/images_webp/Flavicone.webp">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.1.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono@5.1.0/index.css">
+<!-- 404.html : servie par Vercel pour toute adresse inconnue, à n'importe quelle profondeur : tous les liens sont absolus (/...). -->
+<style>
+  :root {
+    --bg: #0b0c12; --bg2: #11121a; --ln: rgba(255, 255, 255, .09); --ln2: rgba(255, 255, 255, .16);
+    --tx: #f2f2f6; --tx2: #b6b7c6; --tx3: #8587a0; --acc: oklch(0.9 0.185 122); --on-acc: #0b0c12;
+    --sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sx: clamp(16px, 5vw, 64px); --e: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--tx); }
+  body { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; font: 400 1rem/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .top, .foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px var(--sx); }
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; letter-spacing: -.01em; }
+  .logo i { width: 10px; height: 10px; border-radius: 3px; background: var(--acc); }
+  .lang { display: flex; gap: 4px; font: 500 .78rem/1 var(--mono); }
+  .lang button { appearance: none; border: 0; background: none; color: var(--tx3); padding: 8px; cursor: pointer; font: inherit; }
+  .lang button[aria-pressed="true"] { color: var(--tx); }
+  .lang button:focus-visible, a:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 4px; }
+  main { width: min(1040px, 100%); margin: 0 auto; padding: clamp(32px, 8vh, 96px) var(--sx); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .code { margin: 0 0 22px; font: 500 .8rem/1.6 var(--mono); color: var(--tx3); overflow-wrap: anywhere; }
+  .code b { color: var(--acc); font-weight: 500; }
+  h1 { margin: 0; font-size: clamp(2.1rem, 1.3rem + 3.6vw, 4rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 600; text-wrap: balance; }
+  .lead { margin: 20px 0 0; max-width: 46ch; font-size: clamp(1rem, .95rem + .3vw, 1.15rem); color: var(--tx2); text-wrap: pretty; }
+  .acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--ln2); text-decoration: none; font-weight: 500; font-size: .95rem; transition: background .25s, border-color .25s, transform .35s var(--e); }
+  .btn:hover { border-color: var(--tx3); }
+  .btn.p { background: var(--acc); border-color: var(--acc); color: var(--on-acc); font-weight: 600; }
+  .btn.p:hover { filter: brightness(1.06); }
+  .btn span { transition: transform .35s var(--e); }
+  .btn:hover span { transform: translateX(3px); }
+  /* le « catalogue » : les pages qui existent, comme une liste de composants */
+  .cat { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--ln); }
+  .cat-k { margin: 0 0 12px; font: 500 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--tx3); }
+  .cat a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 15px 2px; border-bottom: 1px solid var(--ln); text-decoration: none; transition: padding .35s var(--e), background .25s; }
+  .cat a:hover { padding-left: 10px; background: rgba(255, 255, 255, .025); }
+  .cat b { font-weight: 500; }
+  .cat small { grid-column: 1; color: var(--tx3); font-size: .84rem; }
+  .cat i { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-style: normal; color: var(--acc); }
+  .foot { font-size: .84rem; color: var(--tx3); }
+  .foot a { color: var(--tx2); text-underline-offset: 4px; }
+  /* entrée douce : le contenu reste visible par défaut, l'animation ne fait que l'accompagner */
+  .in { animation: in .7s var(--e); }
+  .in.d2 { animation-duration: .9s; }
+  @keyframes in { from { opacity: 0; transform: translateY(10px); } }
+  @media (max-width: 820px) { main { grid-template-columns: minmax(0, 1fr); align-items: start; } }
+  @media (prefers-reduced-motion: reduce) { .in { animation: none; } .btn, .btn span, .cat a { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/"><i aria-hidden="true"></i>Hugo Ferrer</a>
+  <div class="lang" role="group" aria-label="Langue">
+    <button type="button" data-l="fr" aria-pressed="true">FR</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main>
+  <div class="in">
+    <p class="code" aria-hidden="true">&lt;Page path="<b id="chemin">/</b>" /&gt; <span data-t="code">· erreur 404</span></p>
+    <h1 data-t="titre">Cette page n'existe pas dans le système.</h1>
+    <p class="lead" data-t="texte">Le lien est peut-être ancien ou mal recopié. Rien de cassé de votre côté : voici où retrouver ce que vous cherchiez.</p>
+    <div class="acts">
+      <a class="btn p" href="/"><span data-t="accueil">Retour à l'accueil</span></a>
+      <a class="btn" href="/#projets"><span data-t="projets">Voir les projets</span></a>
+      <a class="btn" href="https://calendly.com/ferrerhugo91300/freelance" target="_blank" rel="noopener"><span data-t="mission">Parler d'une mission</span> ↗</a>
+    </div>
+  </div>
+  <nav class="in d2" aria-labelledby="cat-k">
+    <p class="cat-k" id="cat-k" data-t="catalogue">Études de cas</p>
+    <ul class="cat">
+      <li><a href="/delico%20projet/delicorner-preview.html"><b>Délicorner</b><small data-t="c1">Foodtech B2B : portail client et design system</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="/gouvernement-detail.html"><b>Gouvernement.fr</b><small data-t="c2">Refonte, secteur public et accessibilité RGAA</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="/data-collection.html"><b>Data Collection</b><small data-t="c3">SaaS B2B : collecte de documents</small><i aria-hidden="true">→</i></a></li>
+      <li><a href="/agorasquare-good.html"><b>AgoraSquare</b><small data-t="c4">SaaS B2B : grossistes du marché de Rungis</small><i aria-hidden="true">→</i></a></li>
+    </ul>
+  </nav>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <span>© Hugo Ferrer</span>
+  <a href="https://www.linkedin.com/in/hugo-ferrer-0038a517a/" target="_blank" rel="noopener">LinkedIn ↗</a>
+</footer>
+
+<script>
+(() => {
+  const T = {
+    fr: { titre: "Cette page n'existe pas dans le système.", texte: "Le lien est peut-être ancien ou mal recopié. Rien de cassé de votre côté : voici où retrouver ce que vous cherchiez.", code: '· erreur 404', accueil: "Retour à l'accueil", projets: 'Voir les projets', mission: "Parler d'une mission", catalogue: 'Études de cas', c1: 'Foodtech B2B : portail client et design system', c2: 'Refonte, secteur public et accessibilité RGAA', c3: 'SaaS B2B : collecte de documents', c4: 'SaaS B2B : grossistes du marché de Rungis', doc: 'Page introuvable · Hugo Ferrer', aria: 'Langue' },
+    en: { titre: "This page isn't in the system.", texte: "The link may be old or mistyped. Nothing is broken on your side: here is where to find what you were looking for.", code: '· error 404', accueil: 'Back to home', projets: 'See the projects', mission: 'Talk about a project', catalogue: 'Case studies', c1: 'B2B foodtech: client portal and design system', c2: 'Redesign, public sector and accessibility', c3: 'B2B SaaS: document collection', c4: 'B2B SaaS: Rungis market wholesalers', doc: 'Page not found · Hugo Ferrer', aria: 'Language' }
+  };
+  const lire = () => { try { return localStorage.getItem('lang'); } catch (e) { return null; } };
+  const appliquer = (l) => {
+    const t = T[l] || T.fr;
+    document.documentElement.lang = l;
+    document.title = t.doc;
+    document.querySelectorAll('[data-t]').forEach((el) => { const k = el.dataset.t; if (t[k]) el.textContent = t[k]; });
+    document.querySelector('.lang').setAttribute('aria-label', t.aria);
+    document.querySelectorAll('[data-l]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.l === l)));
+  };
+  /* l'adresse demandée, affichée telle quelle (textContent : jamais interprétée) */
+  let chemin = location.pathname;
+  try { chemin = decodeURIComponent(chemin); } catch (e) {}
+  document.getElementById('chemin').textContent = chemin.length > 60 ? chemin.slice(0, 57) + '…' : chemin;
+  const l0 = lire() || ((navigator.language || 'fr').slice(0, 2) === 'en' ? 'en' : 'fr');
+  appliquer(l0 === 'en' ? 'en' : 'fr');
+  document.querySelectorAll('[data-l]').forEach((b) => b.addEventListener('click', () => {
+    try { localStorage.setItem('lang', b.dataset.l); } catch (e) {}
+    appliquer(b.dataset.l);
+  }));
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
