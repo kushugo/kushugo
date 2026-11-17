@@ -22,6 +22,39 @@
   if (!CLARITY_ID || window.__mesure) return;
   window.__mesure = true;
 
+  /* Mode interne : les visites d'Hugo ne doivent pas fausser les chiffres.
+     Ouvrir une page du site avec ?interne=1 marque ce navigateur (ordinateur ou téléphone) : Clarity ne s'y charge
+     plus jamais, le bandeau ne s'affiche plus. ?interne=0 retire la marque. Rien n'est envoyé nulle part :
+     la marque reste dans le navigateur. Plus fiable que le blocage d'IP de Clarity, qui ne suit pas le téléphone. */
+  const INTERNE = 'mesure-interne';
+  let interne = false;
+  try {
+    const u = new URL(location.href);
+    const q = u.searchParams.get('interne');
+    if (q === '1') localStorage.setItem(INTERNE, '1');
+    if (q === '0') localStorage.removeItem(INTERNE);
+    interne = localStorage.getItem(INTERNE) === '1';
+    if (q !== null) {
+      u.searchParams.delete('interne');
+      history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+      const fr = (document.documentElement.lang || 'fr').slice(0, 2) !== 'en';
+      const msg = q === '1'
+        ? (fr ? 'Mode interne activé : tes visites sur ce navigateur ne sont plus mesurées.' : 'Internal mode on: visits from this browser are no longer measured.')
+        : (fr ? 'Mode interne retiré : ce navigateur est de nouveau mesuré, avec ton accord.' : 'Internal mode off: this browser is measured again, with your consent.');
+      const montrerAvis = () => {
+        const n = document.createElement('p');
+        n.className = 'mz-bandeau mz-avis';
+        n.setAttribute('role', 'status');
+        n.textContent = msg;
+        document.body.appendChild(n);
+        requestAnimationFrame(() => n.classList.add('in'));
+        setTimeout(() => { n.classList.remove('in'); setTimeout(() => n.remove(), 400); }, 4000);
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montrerAvis); else montrerAvis();
+    }
+  } catch (e) {}
+  if (interne) { window.mesure = () => {}; return; }
+
   const D = document;
   const CLE = 'mesure-consentement';
   const DUREE = 182 * 24 * 3600 * 1000;   /* 6 mois */

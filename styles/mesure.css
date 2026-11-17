@@ -13,5 +13,6 @@
 .mz-lien { appearance: none; margin: 0 0 0 18px; padding: 0; border: 0; background: none; color: inherit; opacity: .7; font: inherit; font-size: .85em; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .mz-lien:hover { opacity: 1; }
 .mz-lien--seul { position: relative; display: block; margin: 24px auto; }
+.mz-avis { margin: 0; font-weight: 600; color: #fff; }
 @media (max-width: 480px) { .mz-bandeau { left: 12px; bottom: 12px; width: calc(100vw - 24px); } }
 @media (prefers-reduced-motion: reduce) { .mz-bandeau { transform: none; transition: opacity .15s; } }
