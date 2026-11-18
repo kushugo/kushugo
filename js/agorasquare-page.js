@@ -1,4 +1,4 @@
-/* agorasquare-page.js — étude de cas « AgoraSquare » (agorasquare-good.html). Sans dépendance.
+/* agorasquare-page.js - étude de cas « AgoraSquare » (agorasquare-good.html). Sans dépendance.
    Chargé en tête : il marque la page « js », puis attend le document pour le reste : barre du site, fil de lecture,
    langue, démonstration de la commande express (client et note de solvabilité, articles, validation, facture, mode
    hors ligne), sections du récit et gestes des onze étapes du parcours. En « mouvement réduit », tout est montré à

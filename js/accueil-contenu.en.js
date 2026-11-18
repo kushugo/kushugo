@@ -1,4 +1,4 @@
-/* accueil-contenu.en.js — English texts of the home page (gallery, dock, rail, palette, inspector, selected projects,
+/* accueil-contenu.en.js - English texts of the home page (gallery, dock, rail, palette, inspector, selected projects,
    boot screen, accessible labels). Pure data, no logic. Same structure and same keys as accueil-contenu.fr.js.
    Faithful translation of the French: no fact added. Proper nouns (projects, brands) live in the code. */
 window.ACCUEIL_CONTENU = window.ACCUEIL_CONTENU || {};
@@ -103,7 +103,7 @@ window.ACCUEIL_CONTENU.en = {
   },
 
   /* hero title, split into animated words */
-  hero: { nom: 'Hugo Ferrer.', accroche1: 'High-impact platforms.', accroche2: 'Turning complexity into fluid experiences.' },
+  hero: { nom: 'Hugo Ferrer.', accroche1: 'B2B product designer.', accroche2: 'From MVP to product, AI-ready design systems.' },
 
   /* projects: texts by identifier */
   projets: {

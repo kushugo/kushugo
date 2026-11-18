@@ -8,11 +8,9 @@ e-learning, accessibility (RGAA/WCAG), Design Systems (DSFR).
 
 ## Key Projects
 
-- Gouvernement.fr: Complete redesign focusing on accessibility and DSFR design system implementation. Improved user experience for government information access.
+- Gouvernement.fr: UX/UI work at the Government Information Service (SIG) on info.gouv.fr: DSFR and RGAA audit, redesigned priority policy journeys, mockups and design system contributions. Live site: https://www.info.gouv.fr/
 
 - AgoraSquare: B2B platform redesign for Rungis market wholesalers. Digital transformation combining order management, solvency checks, electronic invoicing, and accounting.
-
-- GoMind: Complete website redesign for a GreenIT-focused ESN. Created modern visual identity, AI mascot generator, and design system to improve B2B client acquisition.
 
 - Data Collection (B2B SaaS, client name withheld): discovery and design of document collection for an HR and finance consulting firm: eight user interviews, then four user journeys (sales, client, manager, consultant) to request, upload, check and follow up on payroll and HR documents.
 
@@ -35,7 +33,6 @@ Available for: Freelance, Consulting, Full-time opportunities
 
 ## Notable Achievements
 
-- 84% user satisfaction on government platforms
 - 3M+ social media subscribers on managed platforms
 - Successfully delivered 15+ major digital transformations
 - Expert in DSFR (Design System de l'État français)

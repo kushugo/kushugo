@@ -1,4 +1,4 @@
-/* data-collection.js — étude de cas « Data Collection » (data-collection.html). Sans dépendance.
+/* data-collection.js - étude de cas « Data Collection » (data-collection.html). Sans dépendance.
    Chargé en tête de page : il marque la page « js » tout de suite, puis attend le document pour le reste :
    barre du site, fil de lecture et repère des six temps, langue, illustration de la collecte, bulles en verre,
    schéma « du constat à la décision », chemin des huit écrans, carte de rendez-vous, apparitions au défilement.

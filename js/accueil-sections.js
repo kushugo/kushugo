@@ -1,5 +1,5 @@
 /* ==========================================================================
-   accueil-sections.js — sections « Système d'abord » de la page d'accueil (index.html) : marques, IA, expertise,
+   accueil-sections.js - sections « Système d'abord » de la page d'accueil (index.html) : marques, IA, expertise,
    contact, carte de rendez-vous, barre de navigation et sélecteur de langue.
    Dans les commentaires : « V » = ces sections, « F » = le reste de la page (js/accueil.js), « mix : » = réglage fait
    pour les assembler : démarrage sans i18n, sans hero ni projets de V,
@@ -7,7 +7,7 @@
    ouvrable depuis la palette de F (window.FMV.openRdv), Lenis arrêté pendant la carte, filet de
    sécurité des apparitions indépendant de requestAnimationFrame.
    ==========================================================================
-   Accueil v3 — interactions
+   Accueil v3 - interactions
    Dépendances (jsDelivr) : GSAP 3.13, ScrollTrigger, Draggable.
    Sans GSAP ou en « mouvement réduit », tout reste lisible et manipulable :
    seules les animations automatiques et l'épinglage du hero sont coupés.
@@ -113,7 +113,7 @@
      Les scènes : chacune renvoie { reset, demo(tl, ptr) [, engage, still] }
      ========================================================================== */
 
-  // Gouvernement · DSFR — tableau à états : sélection de lignes et action groupée
+  // Gouvernement · DSFR - tableau à états : sélection de lignes et action groupée
   const gouv = (el) => {
     const rows = $$('.g-row', el), count = $('.g-count', el), act = $('.g-act', el);
     const init = rows.map((r) => { const b = $('.g-badge', r); return [b.className, b.textContent]; });
@@ -146,7 +146,7 @@
     };
   };
 
-  // Délicorner — prochaine livraison : quantités, budget qui roule, enregistrement
+  // Délicorner - prochaine livraison : quantités, budget qui roule, enregistrement
   const deli = (el) => {
     const rows = $$('.d-row', el).map((r) => ({ r, u: +r.dataset.u, q0: +r.dataset.q, q: +r.dataset.q, out: $('output', r), price: $('.d-price', r) }));
     const total = $('.d-total', el), budget = $('.d-budget', el), units = $('.d-units', el);
@@ -186,7 +186,7 @@
     };
   };
 
-  // AgoraSquare — score de paiement et facture à émettre en glissant
+  // AgoraSquare - score de paiement et facture à émettre en glissant
   const ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
   const CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>';
   const agora = (el) => {
@@ -285,7 +285,7 @@
     };
   };
 
-  // Artcurial — ERP iPad « scan-first » : on vise le QR code, la fiche s'ouvre, on range
+  // Artcurial - ERP iPad « scan-first » : on vise le QR code, la fiche s'ouvre, on range
   const qrSvg = () => {
     let s = 11; const rnd = () => (s = (s * 48271) % 2147483647) / 2147483647;
     const N = 21, cells = [];
@@ -349,7 +349,7 @@
     };
   };
 
-  // Action Logement — gouvernance d'un design system : la matrice réagit au survol, l'audit la colore
+  // Action Logement - gouvernance d'un design system : la matrice réagit au survol, l'audit la colore
   const al = (el) => {
     const grid = $('.l-grid', el), tip = $('.l-tip', el), sw = $('.l-switch', el), pct = $('.l-pct', el), fix = $('.l-fix', el), wrap = $('.vl', el);
     const COLS = 31, ROWS = 10, N = COLS * ROWS, STEP = 12;
@@ -410,7 +410,7 @@
     };
   };
 
-  // Agent de design — l'IA propose une correction de tokens, l'humain valide ou refuse
+  // Agent de design - l'IA propose une correction de tokens, l'humain valide ou refuse
   const agent = (el) => {
     const tools = $$('.ag-tools li', el), say = $('.ag-say', el), rows = $$('.ag-diff tr', el), yes = $('.ag-yes', el), no = $('.ag-no', el), toast = $('.ag-toast', el), time = $('.ag-time', el);
     const TEXT = UI['sc.ag.texte'] || "Le bouton principal a un rayon de 6 px, alors que cartes et champs sont à 12 px. Son anneau de focus est trop pâle pour le niveau AA. Je propose d'aligner les deux.";
@@ -461,7 +461,7 @@
      Expertise & Compétences : six scènes manipulables
      ========================================================================== */
 
-  // UX Research — des verbatims en vrac se rangent par thème ; on peut les déplacer
+  // UX Research - des verbatims en vrac se rangent par thème ; on peut les déplacer
   const xux = (el) => {
     const stage = $('.x1', el), cols = $$('.x1-cols span', el), count = $('.x1-count', el), insight = $('.x1-insight', el);
     const K = ['#fb7185', '#fbbf24', '#34d399'], CW = 127.33;
@@ -501,7 +501,7 @@
     };
   };
 
-  // UI Design — les états d'un composant : survol, pression, chargement, succès
+  // UI Design - les états d'un composant : survol, pression, chargement, succès
   const xui = (el) => {
     const btn = $('.x2-btn', el), lbl = $('span', btn), state = $('.x2-state', el), hex = $('.x2-hex', el), sw = $('.x2-sw', el), sh = $('.x2-shadow', el), minis = $$('.x2-set span', el);
     const S = { default: ['Default', '9A97FF', '0 · 8 · 24'], hover: ['Hover', 'B4B1FF', '0 · 14 · 30'], pressed: ['Pressed', '7F7BF0', '0 · 2 · 8'], loading: ['Loading', '9A97FF', '0 · 8 · 24'], success: ['Success', '34D399', '0 · 8 · 24'] };
@@ -528,7 +528,7 @@
     };
   };
 
-  // Design Thinking — double diamant : les idées divergent, convergent, puis recommencent
+  // Design Thinking - double diamant : les idées divergent, convergent, puis recommencent
   const xdt = (el) => {
     const svg = $('.x3-svg', el), g = $('.x3-dots', el), labels = $$('.x3-labels span', el), mid = $('.x3-mid', el), end = $('.x3-end', el), done = $('.x3-done', el);
     const NS = 'http://www.w3.org/2000/svg', N = 9, F1 = [], F2 = [], dots = [];
@@ -553,7 +553,7 @@
     };
   };
 
-  // Outils & Tech — un cadre en auto-layout : le curseur attrape exactement le coin et le contenu se réorganise
+  // Outils & Tech - un cadre en auto-layout : le curseur attrape exactement le coin et le contenu se réorganise
   const xtools = (el) => {
     const frame = $('.x4-frame', el), handle = $('.x4-h.br', el), dim = $('.x4-dim', el), fitEl = $('.sc-fit', el);
     const size = { w: 190, h: 124 };
@@ -590,7 +590,7 @@
     };
   };
 
-  // MCP Design — un agent appelle Storybook, Figma et Notion à travers un serveur MCP
+  // MCP Design - un agent appelle Storybook, Figma et Notion à travers un serveur MCP
   const xmcp = (el) => {
     const edges = $$('.x5-e', el), pulse = $('.x5-p', el), tools = $$('.x5-tool', el), log = $('.x5-log', el);
     const CALLS = ['storybook.read', 'figma.update', 'notion.append'];
@@ -625,7 +625,7 @@
     };
   };
 
-  // AI-Ready — ce que produit l'IA traverse le design system : lisible, tout s'aligne ; coupé, les écarts passent
+  // AI-Ready - ce que produit l'IA traverse le design system : lisible, tout s'aligne ; coupé, les écarts passent
   const xai = (el) => {
     const stage = $('.x6', el), lane = $('.x6-lane', el), sw = $('.x6-sw', el), gap = $('.x6-gap', el);
     const RAW = [[34, 22, 0, '#fb7185'], [58, 48, 24, '#fbbf24'], [28, 40, 4, '#60a5fa'], [64, 18, 9, '#f472b6'], [40, 54, 27, '#a3e635'], [52, 30, 0, '#fb923c'], [30, 30, 15, '#22d3ee'], [60, 42, 3, '#e879f9']];
@@ -927,7 +927,7 @@
 
   const reveals = () => {
     if (!(full && ST)) return;
-    // mix : filet de sécurité — si le moteur d'animation est figé (onglet en arrière-plan, panneau gelé),
+    // mix : filet de sécurité - si le moteur d'animation est figé (onglet en arrière-plan, panneau gelé),
     // un IntersectionObserver + minuterie (sans requestAnimationFrame) pose l'état final des éléments restés masqués.
     const guard = (tw, list) => {
       const io = new IntersectionObserver((en) => {

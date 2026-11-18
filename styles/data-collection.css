@@ -682,3 +682,8 @@ html:not(.js) .dc-path-nav .dc-arrow { display: none; }
     .js .dc-time:not(.in) .track i { transform: none; }
     .dc-rdv[open], .dc-rdv-load i, .dc-pipe::after, .dc-hot > button::after, .dc-st.enter, .dc-opp-arrow path, .dc-flow.has-focus .dc-flow-svg path.on { animation: none; }
 }
+
+/* Titre voté, petite ligne au-dessus du H1 */
+.h1-pos { display: block; font-family: inherit; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 600; font-style: normal; letter-spacing: .01em; line-height: 1.4; opacity: .75; margin-bottom: .9em; }
+
+.dc-hero .h1-pos, #dc-h1 .h1-pos { font-family: 'Geist Variable', ui-sans-serif, system-ui, sans-serif; }

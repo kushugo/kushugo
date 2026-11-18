@@ -1,6 +1,6 @@
 {
-  "meta.title.data-collection": "Data Collection - Étude de cas UX B2B | Hugo Ferrer",
-  "meta.desc.data-collection": "Étude de cas UX, SaaS B2B : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, synthèse IA vérifiée à la main.",
+  "meta.title.data-collection": "Data Collection · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready",
+  "meta.desc.data-collection": "Product designer B2B · Du MVP au produit, design systems AI-ready. Data Collection : discovery et conception de la collecte de documents d'un cabinet de conseil. Huit entretiens, synthèse IA vérifiée à la main.",
   "dc.skip": "Aller au contenu",
   "dc.nav.aria": "Navigation principale",
   "dc.nav.back": "Retour à l'accueil",
@@ -16,7 +16,7 @@
   "dc.hero.k1": "Étude de cas",
   "dc.hero.k2": "SaaS B2B",
   "dc.hero.k4": "11 min de lecture",
-  "dc.hero.title": "Réunir les documents d'un client, <em>de 0 à 100&nbsp;%.</em>",
+  "dc.hero.title": "<span class=\"h1-pos\">Product designer B2B · Du MVP au produit, design systems AI-ready</span>Réunir les documents d'un client, <em>de 0 à 100&nbsp;%.</em>",
   "dc.hero.lede": "Discovery UX puis conception de la collecte de documents d'un cabinet de conseil RH et finance : huit entretiens utilisateurs, une synthèse menée avec l'IA et vérifiée à la main. Un principe : voir ce qui manque dès la réception.",
   "dc.meta.role.t": "Rôle",
   "dc.meta.role.d": "Product Designer B2B",
@@ -419,5 +419,6 @@
   "dc.more.k": "Étude de cas",
   "dc.more.deli": "Portail B2B, de bout en bout",
   "dc.more.gouv": "Refonte de la page des politiques prioritaires",
-  "dc.legal": "Les extraits d'écran sont mes maquettes, avec des données fictives. Les citations viennent des entretiens et sont attribuées à un rôle, pas à une personne. Le nom du cabinet et ceux de ses pôles restent confidentiels."
+  "dc.legal": "Les extraits d'écran sont mes maquettes, avec des données fictives. Les citations viennent des entretiens et sont attribuées à un rôle, pas à une personne. Le nom du cabinet et ceux de ses pôles restent confidentiels.",
+  "dc.end.mission": "Parler d'une mission"
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Meta de base -->
-    <title>Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris</title>
-    <meta name="description" content="Case study de la refonte de Gouvernement.fr par Hugo F. Découvrez le processus de design d'interface, l'accessibilité RGAA et le système de design pour le secteur public.">
+    <title>Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready</title>
+    <meta name="description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
     <meta name="keywords" content="UX Designer Paris, UI Designer, Design d'interface, Accessibilité RGAA, Design System, Gouvernement.fr, Portfolio Designer">
     <meta name="author" content="Hugo F">
     <meta name="robots" content="index, follow">
@@ -15,16 +15,16 @@
     <link rel="stylesheet" href="styles/rendez-vous.css">
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
-    <meta property="og:description" content="Case study de la refonte de Gouvernement.fr par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
+    <meta property="og:title" content="Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready">
+    <meta property="og:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
     <meta property="og:image" content="https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp">
     <meta property="og:url" content="https://www.designeruxuihugo.com/gouvernement-detail.html">
     <meta property="og:site_name" content="Hugo F - Portfolio">
     <meta property="og:locale" content="fr_FR">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gouvernement.fr - Case Study | Hugo F - UX/UI Designer Paris">
-    <meta name="twitter:description" content="Case study de la refonte de Gouvernement.fr par Hugo F, UX/UI Designer spécialisé en accessibilité et design system.">
+    <meta name="twitter:title" content="Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready">
+    <meta name="twitter:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
     <meta name="twitter:image" content="https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp">
     <meta name="twitter:creator" content="@hugoferrer">
     <!-- Mobile -->
@@ -336,6 +336,9 @@
             display: block;
             border-radius: 16px;
         }
+
+        .h1-pos { display: block; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 600; letter-spacing: .01em; line-height: 1.4; opacity: .75; margin-bottom: .9em; }
+        .done-link a { color: inherit; text-decoration: underline; }
 
         .data-overlay {
             position: absolute;
@@ -1721,13 +1724,13 @@
 </head>
 <body data-page="gouvernement" data-nav-bp="920">
 
-    <!-- Header avec nav globale (même barre que GoMind) -->
+    <!-- Header avec nav globale (même barre sur les quatre études de cas) -->
     <header id="header" role="banner">
         <nav role="navigation" aria-label="Navigation principale" data-i18n="nav.aria.main" data-i18n-attr="aria-label" data-i18n-no-text>
             <div class="nav-inner">
                 <a href="index.html" class="logo" aria-label="Retour à l'accueil" data-i18n="nav.aria.home" data-i18n-attr="aria-label" data-i18n-no-text>
                     Hugo Ferrer
-                    <span>UX/UI</span>
+                    <span>Product</span>
                 </a>
 
                 <div class="nav-main">
@@ -1738,7 +1741,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="gomind-good.html"><span>GoMind</span></a>
+                            <a href="delico%20projet/delicorner-preview.html"><span>Délicorner</span></a>
                         </li>
                         <li>
                             <a href="gouvernement-detail.html" aria-current="page"><span>Gouvernement.fr</span></a>
@@ -1792,9 +1795,9 @@
             <span class="tag" data-i18n="gouv.tag.year">2024</span>
         </div>
 
-        <h1 data-i18n="gouv.title">Gouvernement.fr</h1>
+        <h1 data-i18n="gouv.title" data-i18n-mode="html"><span class="h1-pos">Product designer B2B · Du MVP au produit, design systems AI-ready</span>Gouvernement.fr</h1>
         <p class="project-subtitle" data-i18n="gouv.subtitle" data-i18n-mode="html">
-            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong> — la vitrine numérique du gouvernement français — en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés, en collaboration avec l'équipe design du SIG.
+            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong>, la vitrine numérique du gouvernement français, en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés, en collaboration avec l'équipe design du SIG.
         </p>
 
         <h2 class="sr-only" data-i18n="case.info">Informations du projet</h2>
@@ -1822,22 +1825,18 @@
                     <source srcset="image/images_webp/bg-gouv.webp" media="(max-width: 1200px)">
                     <img src="image/images_webp/bg-gouv.webp" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr - Héro et section Politiques prioritaires montrant la nouvelle interface accessible avec design system DSFR" loading="lazy" width="1468" height="827">
                 </picture>
-                <div class="data-overlay" aria-label="Impact et résultats mesurés" data-i18n="gouv.results.aria" data-i18n-attr="aria-label" data-i18n-no-text>
+                <div class="data-overlay" aria-label="Travail livré" data-i18n="gouv.results.aria" data-i18n-attr="aria-label" data-i18n-no-text>
                     <div class="kpi">
-                        <b data-count="42" data-prefix="+" data-suffix="%">0%</b>
-                        <span data-i18n="gouv.kpi.cta">Taux de clic CTA</span>
+                        <b data-i18n="gouv.live.k1.t">Audit</b>
+                        <span data-i18n="gouv.live.k1.d">DSFR et RGAA</span>
                     </div>
                     <div class="kpi">
-                        <b data-count="35" data-prefix="-" data-suffix="%">0%</b>
-                        <span data-i18n="gouv.kpi.accesstime">Temps d'accès info</span>
+                        <b data-i18n="gouv.live.k2.t">Parcours</b>
+                        <span data-i18n="gouv.live.k2.d">refondus, mobile-first</span>
                     </div>
                     <div class="kpi">
-                        <b data-count="100" data-suffix="%">0%</b>
-                        <span data-i18n="gouv.kpi.rgaa">Conformité RGAA</span>
-                    </div>
-                    <div class="kpi">
-                        <b data-count="28" data-prefix="+" data-suffix="%">0%</b>
-                        <span data-i18n="gouv.kpi.engagement">Engagement utilisateur</span>
+                        <b data-i18n="gouv.live.k3.t">En ligne</b>
+                        <span data-i18n="gouv.live.k3.d">info.gouv.fr</span>
                     </div>
                 </div>
             </div>
@@ -1852,16 +1851,14 @@
             <!-- Contexte -->
             <section id="contexte" class="content-section">
                 <h2 data-i18n="case.context">Contexte &amp; Enjeux</h2>
-                <p data-i18n="gouv.context.intro">
-                    Info.gouv.fr reçoit plusieurs millions de visites mensuelles et constitue le point d'entrée principal pour les citoyens souhaitant s'informer sur les politiques prioritaires du gouvernement. Face à des taux de rebond élevés (>60%) et une difficulté d'accès à l'information, une refonte s'imposait.
-                </p>
+                <p data-i18n="gouv.context.intro">Info.gouv.fr est le point d'entrée principal pour les citoyens qui veulent s'informer sur les politiques prioritaires du gouvernement. L'information y était difficile d'accès : une refonte s'imposait.</p>
                 <p>
                     <strong data-i18n="gouv.context.objectives.title">Les objectifs :</strong>
                 </p>
                 <ul class="icon-list">
                     <li data-i18n="gouv.context.obj1">Améliorer la clarté et l'accessibilité des landing pages stratégiques</li>
                     <li data-i18n="gouv.context.obj2">Augmenter le taux de conversion sur les CTA prioritaires (démarches, prises de RDV)</li>
-                    <li data-i18n="gouv.context.obj3">Garantir une conformité RGAA AA+ et une cohérence DSFR stricte</li>
+                    <li data-i18n="gouv.context.obj3">Respecter le RGAA et une cohérence DSFR stricte</li>
                     <li data-i18n="gouv.context.obj4">Réduire le temps d'accès à l'information critique pour les citoyens</li>
                     <li data-i18n="gouv.context.obj5">Préparer l'infrastructure de mesure (tracking GA4, GTM, consent mode)</li>
                 </ul>
@@ -2114,64 +2111,10 @@
                                         <li data-i18n="gouv.transform.after.imp2">Messages orientés bénéfices utilisateur</li>
                                         <li data-i18n="gouv.transform.after.imp3">Hiérarchie visuelle renforcée (hero + preuves + CTA)</li>
                                         <li data-i18n="gouv.transform.after.imp4">CTA clairement identifiables et accessibles</li>
-                                        <li data-i18n="gouv.transform.after.imp5">Conformité RGAA AA+ garantie</li>
+                                        <li data-i18n="gouv.transform.after.imp5">Écarts d'accessibilité RGAA relevés et corrigés</li>
                                         <li data-i18n="gouv.transform.after.imp6">Performance optimisée</li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Métriques de transformation -->
-                <div class="transformation-metrics">
-                    <h3 data-i18n="gouv.transform.metrics.title">Impact mesurable de la transformation</h3>
-                    <div class="metrics-comparison">
-                        <div class="metric-item">
-                            <div class="metric-before">
-                                <span class="value">18%</span>
-                                <span class="label" data-i18n="gouv.transform.metric.cta.label">Taux de clic CTA</span>
-                            </div>
-                            <div class="metric-arrow">→</div>
-                            <div class="metric-after">
-                                <span class="value">42%</span>
-                                <span class="improvement">+24pts</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-item">
-                            <div class="metric-before">
-                                <span class="value">5.2min</span>
-                                <span class="label" data-i18n="gouv.transform.metric.time.label">Temps d'accès info</span>
-                            </div>
-                            <div class="metric-arrow">→</div>
-                            <div class="metric-after">
-                                <span class="value">3.4min</span>
-                                <span class="improvement">-35%</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-item">
-                            <div class="metric-before">
-                                <span class="value">62%</span>
-                                <span class="label" data-i18n="gouv.transform.metric.bounce.label">Taux de rebond</span>
-                            </div>
-                            <div class="metric-arrow">→</div>
-                            <div class="metric-after">
-                                <span class="value">34%</span>
-                                <span class="improvement">-45%</span>
-                            </div>
-                        </div>
-
-                        <div class="metric-item">
-                            <div class="metric-before">
-                                <span class="value">73%</span>
-                                <span class="label" data-i18n="gouv.transform.metric.access.label">Score accessibilité</span>
-                            </div>
-                            <div class="metric-arrow">→</div>
-                            <div class="metric-after">
-                                <span class="value">100%</span>
-                                <span class="improvement">+27pts</span>
                             </div>
                         </div>
                     </div>
@@ -2215,9 +2158,7 @@
                         <div class="timeline-number">4</div>
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step4.title">Design haute-fidélité</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step4.desc">
-                                Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions. Ajustements tokens (typo, couleurs, spacing) et composants pour garantir accessibilité AA+.
-                            </p>
+                            <p class="timeline-description" data-i18n="gouv.process.step4.desc">Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions. Ajustements tokens (typo, couleurs, spacing) et composants pour respecter le RGAA.</p>
                         </div>
                     </div>
 
@@ -2245,70 +2186,25 @@
 
             <!-- Résultats & Impact -->
             <section id="resultats" class="content-section">
-                <h2 data-i18n="gouv.results.title">Résultats & Impact Mesurés</h2>
+                <h2 data-i18n="gouv.results.title">Ce qui a été livré</h2>
                 
+                <p data-i18n="gouv.results.intro">Pas de chiffres d'audience ici : ils appartiennent au SIG. Voici le travail livré.</p>
+
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.cta.value">+42%</div>
-                        <div class="stat-label" data-i18n="gouv.results.cta.label">Taux de clic CTA primaire</div>
-                        <div class="stat-description" data-i18n="gouv.results.cta.desc">
-                            Amélioration significative de la conversion grâce à une meilleure hiérarchie visuelle et des CTA orientés bénéfices.
-                        </div>
+                        <div class="stat-value" data-i18n="gouv.done.audit.value">Audit</div>
+                        <div class="stat-label" data-i18n="gouv.done.audit.label">DSFR et accessibilité RGAA</div>
+                        <div class="stat-description" data-i18n="gouv.done.audit.desc">Écarts de composants, tailles, interlignages, états focus et survol, contrastes : relevés dans un rapport, puis corrigés dans les maquettes.</div>
                     </div>
-
                     <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.time.value">-35%</div>
-                        <div class="stat-label" data-i18n="gouv.results.time.label">Temps d'accès à l'information</div>
-                        <div class="stat-description" data-i18n="gouv.results.time.desc">
-                            Réduction du temps moyen grâce à la structure en entonnoir et la simplification du parcours.
-                        </div>
+                        <div class="stat-value" data-i18n="gouv.done.journeys.value">Parcours</div>
+                        <div class="stat-label" data-i18n="gouv.done.journeys.label">Pages des politiques prioritaires refondues</div>
+                        <div class="stat-description" data-i18n="gouv.done.journeys.desc">Sitemap simplifié, wireframes mobile-first annotés, hiérarchie hero, preuves et CTA, variantes de hero proposées aux équipes.</div>
                     </div>
-
                     <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.rgaa.value">100%</div>
-                        <div class="stat-label" data-i18n="gouv.results.rgaa.label">Conformité RGAA AA+</div>
-                        <div class="stat-description" data-i18n="gouv.results.rgaa.desc">
-                            Respect complet des standards d'accessibilité (contrastes, navigation clavier, lecteurs d'écran).
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.engagement.value">+28%</div>
-                        <div class="stat-label" data-i18n="gouv.results.engagement.label">Engagement utilisateur</div>
-                        <div class="stat-description" data-i18n="gouv.results.engagement.desc">
-                            Augmentation du temps passé sur les pages stratégiques.
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.bounce.value">-45%</div>
-                        <div class="stat-label" data-i18n="gouv.results.bounce.label">Taux de rebond</div>
-                        <div class="stat-description" data-i18n="gouv.results.bounce.desc">
-                            Diminution importante du taux de rebond grâce aux messages hero orientés bénéfices.
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.results.debt.value">-60%</div>
-                        <div class="stat-label" data-i18n="gouv.results.debt.label">Dette de design</div>
-                        <div class="stat-description" data-i18n="gouv.results.debt.desc">
-                            Réduction drastique grâce à la normalisation DSFR et à l'utilisation de la librairie Figma unifiée, à laquelle j'ai contribué.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Graphiques -->
-                <div class="chart-container">
-                    <h3 class="chart-title" data-i18n="gouv.results.chart1.title">Évolution des indicateurs clés de performance</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="kpiChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <h3 class="chart-title" data-i18n="gouv.results.chart2.title">Impact avant / après refonte</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="beforeAfterChart"></canvas>
+                        <div class="stat-value" data-i18n="gouv.done.live.value">En ligne</div>
+                        <div class="stat-label" data-i18n="gouv.done.live.label">info.gouv.fr</div>
+                        <div class="stat-description done-link" data-i18n="gouv.done.live.desc" data-i18n-mode="html">Le site sur lequel j'ai travaillé au SIG est en ligne : <a href="https://www.info.gouv.fr/" target="_blank" rel="noopener">www.info.gouv.fr</a>. Il a continué d'évoluer depuis.</div>
                     </div>
                 </div>
             </section>
@@ -2357,15 +2253,13 @@
                     <div class="method-card">
                         <div class="method-icon">✅</div>
                         <h3 class="method-title" data-i18n="gouv.deliverables.audit.title">Rapport d'audit RGAA</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.audit.desc">
-                            Rapport détaillé des écarts identifiés et corrections appliquées pour garantir la conformité AA+.
-                        </p>
+                        <p class="method-description" data-i18n="gouv.deliverables.audit.desc">Rapport détaillé des écarts identifiés et des corrections appliquées pour respecter le RGAA.</p>
                     </div>
 
                 </div>
 
                 <div class="highlight-box">
-                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Participation à la normalisation autour du DSFR via l'utilisation et l'enrichissement d'une bibliothèque Figma déjà en place (atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation a permis de réduire le temps de design/intégration de 40% et d'améliorer l'homogénéité UI sur l'ensemble des projets.</span></p>
+                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Participation à la normalisation autour du DSFR via l'utilisation et l'enrichissement d'une bibliothèque Figma déjà en place (atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation rend l'interface plus homogène d'un projet à l'autre.</span></p>
                 </div>
             </section>
 
@@ -2375,16 +2269,16 @@
                 
                 <ul class="icon-list">
                     <li>
-                        <strong data-i18n="gouv.learnings.item1.label">L'accessibilité comme contrainte créative :</strong> <span data-i18n="gouv.learnings.item1.text">Le respect strict du RGAA AA+ n'est pas un frein à l'innovation, mais un cadre qui force à penser clarté et lisibilité. Les contraintes de contraste et de hiérarchie ont conduit à des choix de design plus forts et plus efficaces.</span>
+                        <strong data-i18n="gouv.learnings.item1.label">L'accessibilité comme contrainte créative :</strong> <span data-i18n="gouv.learnings.item1.text">Le respect strict du RGAA n'est pas un frein à l'innovation, mais un cadre qui force à penser clarté et lisibilité. Les contraintes de contraste et de hiérarchie ont conduit à des choix de design plus forts et plus efficaces.</span>
                     </li>
                     <li>
-                        <strong data-i18n="gouv.learnings.item2.label">La puissance des messages orientés bénéfices :</strong> <span data-i18n="gouv.learnings.item2.text">Remplacer les titres institutionnels par des messages centrés sur les avantages concrets pour le citoyen a eu un impact direct et mesurable sur l'engagement (+28%) et la conversion (+42%).</span>
+                        <strong data-i18n="gouv.learnings.item2.label">La puissance des messages orientés bénéfices :</strong> <span data-i18n="gouv.learnings.item2.text">Remplacer les titres institutionnels par des messages centrés sur les avantages concrets pour le citoyen a guidé toutes les variantes de hero proposées aux équipes.</span>
                     </li>
                     <li>
                         <strong data-i18n="gouv.learnings.item3.label">L'importance du cadrage multi-parties :</strong> <span data-i18n="gouv.learnings.item3.text">Les ateliers FigJam avec métiers, communication et tech ont permis d'aligner rapidement toutes les parties prenantes et d'éviter les allers-retours coûteux en fin de projet.</span>
                     </li>
                     <li>
-                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et l'enrichissement de la librairie Figma unifiée ont réduit la dette de design de 60% et accéléré significativement les futurs projets.</span>
+                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et l'enrichissement de la librairie Figma unifiée donnent aux équipes une base commune pour les pages suivantes.</span>
                     </li>
                 </ul>
 
@@ -2402,7 +2296,7 @@
                 </p>
                 <div class="cta-actions">
                     <a class="cta-button primary" href="https://calendly.com/ferrerhugo91300/freelance" data-i18n="gouv.cta.primary" target="_blank" rel="noopener" data-rdv>
-                        Discuter de votre projet
+                        Parler d'une mission
                     </a>
                     <a class="cta-button secondary" href="index.html#projets" data-i18n="gouv.cta.secondary">
                         Explorer d'autres études de cas
@@ -2426,7 +2320,7 @@
                 <div class="toc-item" data-section="prototypage" data-i18n="gouv.toc.prototypage">Prototypage & DS</div>
                 <div class="toc-item" data-section="transformation" data-i18n="gouv.toc.transformation">Avant / Après</div>
                 <div class="toc-item" data-section="processus" data-i18n="gouv.toc.processus">Processus Design</div>
-                <div class="toc-item" data-section="resultats" data-i18n="gouv.toc.resultats">Résultats & Impact</div>
+                <div class="toc-item" data-section="resultats" data-i18n="gouv.toc.resultats">Ce qui a été livré</div>
                 <div class="toc-item" data-section="livrables" data-i18n="gouv.toc.livrables">Livrables & DS</div>
                 <div class="toc-item" data-section="apprentissages" data-i18n="gouv.toc.apprentissages">Apprentissages</div>
                 <div class="toc-item" data-section="cta" data-i18n="gouv.toc.cta">Passer à l'action</div>

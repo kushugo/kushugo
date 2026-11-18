@@ -745,7 +745,7 @@
                 };
             })();
 
-            /* CARD 3 · Design Systems — staggered blink */
+            /* CARD 3 · Design Systems - staggered blink */
             const dsCtrl = (() => {
                 const rects = ['ds1', 'ds2', 'ds3', 'ds4'].map(id => document.getElementById(id));
                 if (rects.some(r => !r)) return null;
@@ -790,7 +790,7 @@
                 };
             })();
 
-            /* CARD 4 · Figma — cursor click + resize */
+            /* CARD 4 · Figma - cursor click + resize */
             const figmaCtrl = (() => {
                 const bg      = document.getElementById('figma-bg');
                 const inner   = document.getElementById('figma-inner');
@@ -912,7 +912,7 @@
                 };
             })();
 
-            /* CARD 6 · Micro-interactions — toggle + state pills */
+            /* CARD 6 · Micro-interactions - toggle + state pills */
             const microCtrl = (() => {
                 const zone   = document.getElementById('micro-zone');
                 const scene  = document.getElementById('micro-scene');
@@ -984,7 +984,7 @@
                 };
             })();
 
-            /* CARD 1 · User Testing — heatmap cursor */
+            /* CARD 1 · User Testing - heatmap cursor */
             const utCtrl = (() => {
                 const scene  = document.getElementById('ut-scene');
                 const cursor = document.getElementById('ut-cursor');

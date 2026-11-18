@@ -1,4 +1,4 @@
-/* accueil-contenu.fr.js — textes français de la page d'accueil (parties « galerie, dock, rail, palette, inspecteur,
+/* accueil-contenu.fr.js - textes français de la page d'accueil (parties « galerie, dock, rail, palette, inspecteur,
    sélection de projets, écran de démarrage, libellés accessibles »). Structure de données pure, sans logique.
    Même structure dans accueil-contenu.en.js. Les textes des sections « Système d'abord » (marques, IA, expertise,
    contact, barre de navigation, pied de page) passent par js/i18n.js et i18n/<langue>.json (attributs data-i18n).

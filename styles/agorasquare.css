@@ -822,3 +822,10 @@ body.is-nav-open .ag-site .nav-toggle-bar:nth-child(3) { bottom: 6px; transform:
 @media (max-width: 380px) {
     .ag-path-tabs button { width: 20px; height: 20px; font-size: .56rem; }
 }
+
+/* Titre voté, petite ligne au-dessus du H1 */
+.h1-pos { display: block; font-family: inherit; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 600; font-style: normal; letter-spacing: .01em; line-height: 1.4; opacity: .75; margin-bottom: .9em; }
+/* Bloc résultat : la source citée sous le 92 % allonge le texte, la colonne de gauche ne doit pas écraser les trois cartes */
+.ag-adopt p { max-width: 24ch; }
+@media (min-width: 921px) { .ag-results { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); } }
+.ag-res-list b { font-size: clamp(1.5rem, 2.4vw, 2rem); }

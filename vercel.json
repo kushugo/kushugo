@@ -9,9 +9,17 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/gomind-good.html",
+      "destination": "/#projets",
+      "permanent": false
+    },
+    {
+      "source": "/gomind-good",
+      "destination": "/#projets",
+      "permanent": false
+    }
   ]
 }
-
-
-
-

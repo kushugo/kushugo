@@ -1,4 +1,4 @@
-/* accueil.js — page d'accueil (index.html) : galerie, dock, rail, palette, inspecteur, sélection de projets.
+/* accueil.js - page d'accueil (index.html) : galerie, dock, rail, palette, inspecteur, sélection de projets.
    Dans les commentaires : « F » = cette partie de la page, « V » = les sections de js/accueil-sections.js, « mix : » = réglage fait pour les assembler.
    Textes : js/accueil-contenu.fr.js / .en.js (window.ACCUEIL_CONTENU) ; langue choisie comme js/i18n.js.
    Chargé sans defer dans le <head> : la 1re partie pose les classes de <html> avant la peinture,
@@ -943,7 +943,7 @@ void main(){
     const m = new THREE.Mesh(geo, mat); m.userData.i = i; m.userData.hover = 0; m.visible = false;
     group.add(m); return m;
   });
-  /* mix : thème sombre seul — les uniformes uMonoK / uMonoB sont initialisés aux valeurs sombres de F ci-dessus */
+  /* mix : thème sombre seul - les uniformes uMonoK / uMonoB sont initialisés aux valeurs sombres de F ci-dessus */
 
   /* textures de la galerie : une capture par projet */
   let loaded = 0;

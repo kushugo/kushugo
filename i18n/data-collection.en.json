@@ -1,6 +1,6 @@
 {
-  "meta.title.data-collection": "Data Collection - B2B UX case study | Hugo Ferrer",
-  "meta.desc.data-collection": "UX case study of a B2B SaaS: discovery and design of document collection for a consulting firm. Eight interviews, an AI synthesis checked by hand.",
+  "meta.title.data-collection": "Data Collection · Hugo Ferrer · B2B product designer · From MVP to product, AI-ready design systems",
+  "meta.desc.data-collection": "B2B product designer · From MVP to product, AI-ready design systems. Data Collection: discovery and design of document collection for a consulting firm. Eight interviews, an AI synthesis checked by hand.",
   "dc.skip": "Skip to content",
   "dc.nav.aria": "Main navigation",
   "dc.nav.back": "Back to the homepage",
@@ -16,7 +16,7 @@
   "dc.hero.k1": "Case study",
   "dc.hero.k2": "B2B SaaS",
   "dc.hero.k4": "11 min read",
-  "dc.hero.title": "Gathering a client's documents, <em>from 0 to 100%.</em>",
+  "dc.hero.title": "<span class=\"h1-pos\">B2B product designer · From MVP to product, AI-ready design systems</span>Gathering a client's documents, <em>from 0 to 100%.</em>",
   "dc.hero.lede": "UX discovery, then design, of document collection for an HR and finance consulting firm: eight user interviews, a synthesis run with AI and verified by hand. One principle: seeing what is missing the moment a file arrives.",
   "dc.meta.role.t": "Role",
   "dc.meta.role.d": "B2B Product Designer",
@@ -419,5 +419,6 @@
   "dc.more.k": "Case study",
   "dc.more.deli": "B2B portal, end to end",
   "dc.more.gouv": "Redesign of the priority policies page",
-  "dc.legal": "The screen excerpts are my mockups, with fictional data. The quotes come from the interviews, are translated from French, and are attributed to a role, not a person. The names of the firm and of its areas of expertise are withheld."
+  "dc.legal": "The screen excerpts are my mockups, with fictional data. The quotes come from the interviews, are translated from French, and are attributed to a role, not a person. The names of the firm and of its areas of expertise are withheld.",
+  "dc.end.mission": "Talk about a mission"
 }
