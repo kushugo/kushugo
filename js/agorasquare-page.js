@@ -432,7 +432,7 @@
         return isEn() ? `${m}\u00a0${min} ${s}\u00a0s` : `${m}\u00a0${min}\u00a0${s}`;
       };
       const cards = $$('.ag-flow-cards li', flows), btns = $$('[data-flows-mode]', flows);
-      const maxT = Math.max(...cards.map((c) => +c.dataset.beforeTime));
+      const maxT = Math.max(...cards.filter((c) => c.dataset.beforeTime).map((c) => +c.dataset.beforeTime));
       let current = 'apres';
       const show = (mode) => {
         current = mode;
@@ -445,8 +445,10 @@
           if (dots) dots.innerHTML = '<i></i>'.repeat(n);
           const st = $('[data-fc-steps]', c);
           if (n) st.textContent = `${n} ${lab('steps')}`; else st.textContent = before ? lab('scatter') : lab('live');
-          $('[data-fc-time]', c).textContent = fmt(t);
-          $('[data-timebar]', c).style.setProperty('--t', (t / maxT).toFixed(3));
+          if (c.dataset.beforeTime) {
+            $('[data-fc-time]', c).textContent = fmt(t);
+            $('[data-timebar]', c).style.setProperty('--t', (t / maxT).toFixed(3));
+          }
         });
       };
       btns.forEach((b) => b.addEventListener('click', () => show(b.dataset.flowsMode)));

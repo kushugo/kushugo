@@ -95,11 +95,11 @@
   "ag.hero.17": "Outcome",
   "ag.hero.18": "92% adoption among the first 25 wholesalers equipped, according to AgoraSquare's management",
   "ag.bref.01": "At a glance",
-  "ag.bref.02": "Six months after rollout, across 25 equipped wholesalers",
+  "ag.bref.02": "At the equipped wholesalers",
   "ag.bref.03": "Time spent on admin",
   "ag.bref.04": "3 h",
   "ag.bref.05": "0.8 h",
-  "ag.bref.06": "a day: more than two hours given back to the trade",
+  "ag.bref.06": "a day, timed: more than two hours given back to the trade",
   "ag.bref.11": "Average payment time",
   "ag.bref.12": "30 days",
   "ag.bref.13": "according to the heads of the equipped wholesalers",
@@ -329,7 +329,7 @@
   "ag.st3.01": "Step 3 · at the market · the check",
   "ag.st3.02": "Knowing whether you will be paid, before delivering",
   "ag.st3.03": "Before validating, the customer's solvency score appears, along with their average payment delay compared with their sector. The wholesaler decides with full knowledge: accept, ask for a deposit, or require payment with the order.",
-  "ag.st3.04": "<b>Validated in workshops</b>Colour codes and interpretation messages tested in 3 workshops, for a reading in under 3&nbsp;seconds.",
+  "ag.st3.04": "<b>Validated in workshops</b>Colour codes and interpretation messages tested in workshops.",
   "ag.st3.05": "72%",
   "ag.st3.06": "Brasserie du Pont Neuf",
   "ag.st3.07": "Restaurant · Paris 6<sup>th</sup>",
@@ -602,7 +602,7 @@
   "ag.lecons.13": "<b>Offline, technically hard</b>Especially syncing. The answer: an architecture designed from the start with the CTO, and prototypes to check feasibility.",
   "ag.lecons.14": "<b>Very different trades</b>Fruit, meat, dairy: each with its own needs. The answer: flexible, configurable modules rather than one rigid block.",
   "ag.lecons.15": "<b>Involve developers earlier</b>Some ideas turned out to be complex to build: bringing them in at the wireframe stage would have saved back-and-forth.",
-  "ag.lecons.16": "<b>Plan more time for offline</b>Syncing took 30% longer than planned: the estimate should have been doubled.",
+  "ag.lecons.16": "<b>Plan more time for offline</b>Offline sync took longer than planned: the estimate needed doubling.",
   "ag.lecons.17": "<b>Document decisions</b>Some, made during the research, had been forgotten six months later.",
   "ag.lecons.18": "<b>Anticipate how the product will evolve</b>A few architecture choices slowed down adding features.",
   "ag.lecons.19": "<b>Prepare training from the design stage</b>It was improvised: a programme planned early would have made adoption easier.",
@@ -623,5 +623,5 @@
   "ag.end.04": "See the other case studies",
   "ag.foot.01": "© 2026 Hugo Ferrer · Product Designer, Paris",
   "ag.foot.02": "All case studies",
-  "ag.resultat.11b": "45 to 30 d"
+  "ag.resultat.11b": "45 to 30 days"
 }

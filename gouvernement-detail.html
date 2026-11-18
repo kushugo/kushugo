@@ -340,42 +340,6 @@
         .h1-pos { display: block; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 600; letter-spacing: .01em; line-height: 1.4; opacity: .75; margin-bottom: .9em; }
         .done-link a { color: inherit; text-decoration: underline; }
 
-        .data-overlay {
-            position: absolute;
-            left: 16px;
-            right: 16px;
-            bottom: 16px;
-            display: flex;
-            gap: 18px;
-            z-index: 2;
-            color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        .data-overlay .kpi {
-            backdrop-filter: blur(6px);
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            padding: 10px 14px;
-            min-width: 120px;
-            text-align: center;
-        }
-
-        .data-overlay .kpi b {
-            display: block;
-            font-size: 26px;
-            line-height: 1;
-            font-weight: 800;
-        }
-
-        .data-overlay .kpi span {
-            font-size: 12px;
-            opacity: 0.9;
-            font-weight: 600;
-        }
 
         /* rangée dans .project-hero, qui porte déjà la colonne : pas de seconde marge */
         .hero-wrapper {
@@ -505,7 +469,6 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid var(--accent-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -515,11 +478,11 @@
         }
 
         .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-color);
             margin-bottom: 0.5rem;
-            line-height: 1;
+            line-height: 1.2;
         }
 
         .stat-label {
@@ -530,7 +493,7 @@
 
         .stat-description {
             font-size: 0.9rem;
-            color: #888;
+            color: #555;
             margin-top: 0.5rem;
             line-height: 1.5;
         }
@@ -1297,22 +1260,6 @@
         }
 
         @media (max-width: 768px) {
-            .data-overlay {
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-                gap: 10px;
-                justify-content: center;
-            }
-
-            .data-overlay .kpi {
-                min-width: 100px;
-                padding: 8px 10px;
-            }
-
-            .data-overlay .kpi b {
-                font-size: 22px;
-            }
             .cta-section {
                 margin-top: 3.5rem;
             }
@@ -1323,9 +1270,6 @@
                 padding: 6rem var(--col-gut) 2rem;
             }
 
-            .hero-image .data-overlay {
-                display: none;
-            }
 
             .stats-grid {
                 grid-template-columns: 1fr;
@@ -1825,20 +1769,6 @@
                     <source srcset="image/images_webp/bg-gouv.webp" media="(max-width: 1200px)">
                     <img src="image/images_webp/bg-gouv.webp" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr - Héro et section Politiques prioritaires montrant la nouvelle interface accessible avec design system DSFR" loading="lazy" width="1468" height="827">
                 </picture>
-                <div class="data-overlay" aria-label="Travail livré" data-i18n="gouv.results.aria" data-i18n-attr="aria-label" data-i18n-no-text>
-                    <div class="kpi">
-                        <b data-i18n="gouv.live.k1.t">Audit</b>
-                        <span data-i18n="gouv.live.k1.d">DSFR et RGAA</span>
-                    </div>
-                    <div class="kpi">
-                        <b data-i18n="gouv.live.k2.t">Parcours</b>
-                        <span data-i18n="gouv.live.k2.d">refondus, mobile-first</span>
-                    </div>
-                    <div class="kpi">
-                        <b data-i18n="gouv.live.k3.t">En ligne</b>
-                        <span data-i18n="gouv.live.k3.d">info.gouv.fr</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -2177,7 +2107,7 @@
                         <div class="timeline-content">
                             <h3 class="timeline-title" data-i18n="gouv.process.step6.title">Déploiement & Mesure</h3>
                             <p class="timeline-description" data-i18n="gouv.process.step6.desc">
-                                Documentation développeur et design system. Suivi des optimisations continues.
+                                Plan de marquage et indicateurs définis pour le suivi après mise en ligne. Documentation développeur et design system.
                             </p>
                         </div>
                     </div>
