@@ -22,7 +22,7 @@ TITRE = 'Product designer B2B · Du MVP au produit, design systems AI-ready'
 PAGES = {  # page publiée -> (data-page, dictionnaire de page)
     '/': ('home', None),
     '/delico%20projet/delicorner-preview.html': ('delicorner', 'delicorner'),
-    '/gouvernement-detail.html': ('gouvernement', None),
+    '/gouvernement-detail.html': ('gouvernement', 'gouvernement'),
     '/agorasquare-good.html': ('agora', 'agora'),
     '/data-collection.html': ('data-collection', 'data-collection'),
 }
@@ -155,7 +155,7 @@ gtxt = texte(re.sub(r'<(script|style)\b.*?</\1>', ' ', gsrc, flags=re.S))
 trouve = CHIFFRES_GOUV.findall(gtxt)
 ok('Gouvernement.fr : aucun chiffre (%, pts, AA+, rebond) dans la page', not trouve, ', '.join(trouve))
 for lang in ('fr', 'en'):
-    vals = ' '.join(v for k, v in dicts[lang].items() if k.startswith(('gouv.', 'meta.title.gouvernement', 'meta.desc.gouvernement')) and isinstance(v, str))
+    vals = ' '.join(v for k, v in {**dicts[lang], **dicts[f'gouvernement.{lang}']}.items() if k.startswith(('gouv.', 'gp.', 'meta.title.gouvernement', 'meta.desc.gouvernement')) and isinstance(v, str))
     trouve = CHIFFRES_GOUV.findall(texte(vals))
     ok(f'Gouvernement.fr : aucun chiffre dans le dictionnaire {lang}', not trouve, ', '.join(trouve))
 ok('Gouvernement.fr : aucun graphique de chiffres', 'kpiChart' not in gsrc.split('<script')[0] and '<canvas' not in gsrc)

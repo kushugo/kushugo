@@ -1,2647 +1,666 @@
 <!DOCTYPE html>
-<html lang="fr" class="i18n-ready">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Meta de base -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready</title>
-    <meta name="description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
-    <meta name="keywords" content="UX Designer Paris, UI Designer, Design d'interface, Accessibilité RGAA, Design System, Gouvernement.fr, Portfolio Designer">
-    <meta name="author" content="Hugo F">
+    <meta name="description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Étude de cas Gouvernement.fr : deux ans au SIG sur info.gouv.fr, audit DSFR et RGAA, ateliers de cadrage, composant Tableau adapté du DSFR et documenté.">
+    <meta name="author" content="Hugo Ferrer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.designeruxuihugo.com/gouvernement-detail.html">
-    <link rel="preload" href="/critical.css" as="style">
-    <link rel="stylesheet" href="/critical.css">
-    <link rel="stylesheet" href="styles/rendez-vous.css">
-    <!-- Open Graph (Facebook, LinkedIn) -->
+
     <meta property="og:type" content="article">
     <meta property="og:title" content="Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready">
-    <meta property="og:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
-    <meta property="og:image" content="https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp">
+    <meta property="og:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Étude de cas Gouvernement.fr : deux ans au SIG sur info.gouv.fr, audit DSFR et RGAA, ateliers de cadrage, composant Tableau adapté du DSFR et documenté.">
     <meta property="og:url" content="https://www.designeruxuihugo.com/gouvernement-detail.html">
+    <meta property="og:image" content="https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp">
+    <meta property="og:image:width" content="878">
+    <meta property="og:image:height" content="540">
+    <meta property="og:image:alt" content="Maquette de la page Politiques prioritaires d'info.gouv.fr, étude de cas Gouvernement.fr.">
     <meta property="og:site_name" content="Hugo F - Portfolio">
     <meta property="og:locale" content="fr_FR">
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gouvernement.fr · Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready">
-    <meta name="twitter:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Gouvernement.fr : audit DSFR et RGAA, parcours des politiques prioritaires refondus, maquettes et design system pour info.gouv.fr.">
+    <meta name="twitter:description" content="Product designer B2B · Du MVP au produit, design systems AI-ready. Étude de cas Gouvernement.fr : deux ans au SIG sur info.gouv.fr, audit DSFR et RGAA, ateliers de cadrage, composant Tableau adapté du DSFR et documenté.">
     <meta name="twitter:image" content="https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp">
-    <meta name="twitter:creator" content="@hugoferrer">
-    <!-- Mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
-    <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
-    <script src="js/gouvernement.js" defer></script>
-    <!-- Schema.org JSON-LD -->
+    <meta name="twitter:image:alt" content="Maquette de la page Politiques prioritaires d'info.gouv.fr, étude de cas Gouvernement.fr.">
+
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Person",
-                "@id": "https://www.designeruxuihugo.com/#person",
-                "name": "Hugo Ferrer",
-                "alternateName": "Hugo F",
-                "jobTitle": "Product designer B2B",
-                "url": "https://www.designeruxuihugo.com/",
-                "image": "https://www.designeruxuihugo.com/image/accueil/partage.jpg",
-                "description": "Product designer B2B · Du MVP au produit, design systems AI-ready. Basé à Paris, Hugo Ferrer conçoit des produits SaaS B2B, des services du secteur public (DSFR, RGAA) et des outils métiers.",
-                "worksFor": {
-                    "@type": "Organization",
-                    "name": "Hugo Ferrer Studio"
-                },
-                "sameAs": [
-                    "https://www.linkedin.com/in/hugo-ferrer-0038a517a/"
-                ],
-                "knowsAbout": [
-                    "UX Research",
-                    "UI Design",
-                    "Design Thinking",
-                    "Design Systems",
-                    "DSFR",
-                    "Accessibilité RGAA",
-                    "WCAG",
-                    "Figma",
-                    "Front-end Development",
-                    "Government Digital Services"
-                ],
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Paris",
-                    "addressCountry": "FR"
-                }
-            },
-            {
-                "@type": "CreativeWork",
-                "@id": "https://www.designeruxuihugo.com/gouvernement-detail.html#article",
-                "name": "Gouvernement.fr - Case Study | Refonte UX/UI et Accessibilité RGAA",
-                "headline": "Gouvernement.fr - Case Study | Refonte UX/UI et Accessibilité RGAA",
-                "description": "Case study de la refonte de Gouvernement.fr par Hugo F. Découvrez le processus de design d'interface, l'accessibilité RGAA et le système de design pour le secteur public.",
-                "url": "https://www.designeruxuihugo.com/gouvernement-detail.html",
-                "datePublished": "2024-01-15",
-                "dateModified": "2026-11-18",
-                "author": {
-                    "@id": "https://www.designeruxuihugo.com/#person"
-                },
-                "creator": {
-                    "@id": "https://www.designeruxuihugo.com/#person"
-                },
-                "publisher": {
-                    "@id": "https://www.designeruxuihugo.com/#person"
-                },
-                "image": {
-                    "@type": "ImageObject",
-                    "url": "https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp",
-                    "caption": "Refonte UX/UI de Gouvernement.fr - Design System et Accessibilité RGAA",
-                    "width": 878,
-                    "height": 540
-                },
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "https://www.designeruxuihugo.com/gouvernement-detail.html"
-                },
-                "articleSection": "Case Study",
-                "keywords": [
-                    "Gouvernement.fr",
-                    "Design System",
-                    "Accessibilité RGAA",
-                    "UX Design",
-                    "UI Design",
-                    "Secteur Public",
-                    "Design d'interface",
-                    "DSFR",
-                    "info.gouv.fr",
-                    "RGAA 4.1"
-                ],
-                "about": {
-                    "@type": "WebSite",
-                    "name": "Gouvernement.fr",
-                    "description": "Refonte complète de l'interface utilisateur de Gouvernement.fr avec focus sur l'accessibilité RGAA et le design system DSFR"
-                },
-                "inLanguage": "fr-FR"
-            }
-        ]
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.designeruxuihugo.com/#person",
+          "name": "Hugo Ferrer",
+          "jobTitle": "Product designer B2B",
+          "url": "https://www.designeruxuihugo.com/",
+          "sameAs": ["https://www.linkedin.com/in/hugo-ferrer-0038a517a/"],
+          "knowsAbout": ["Design systems", "DSFR", "Accessibilité RGAA", "Figma"]
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.designeruxuihugo.com/gouvernement-detail.html#article",
+          "name": "Gouvernement.fr : rendre lisible une information dense, sans sortir du design system de l'État",
+          "headline": "Gouvernement.fr : rendre lisible une information dense, sans sortir du design system de l'État",
+          "description": "Product designer B2B · Du MVP au produit, design systems AI-ready. Étude de cas Gouvernement.fr : deux ans au Service d'information du Gouvernement sur info.gouv.fr, audit DSFR et RGAA, ateliers de cadrage, composant Tableau adapté du DSFR et documenté.",
+          "url": "https://www.designeruxuihugo.com/gouvernement-detail.html",
+          "datePublished": "2024",
+          "dateModified": "2026-11-18",
+          "author": {"@id": "https://www.designeruxuihugo.com/#person"},
+          "creator": {"@id": "https://www.designeruxuihugo.com/#person"},
+          "publisher": {"@id": "https://www.designeruxuihugo.com/#person"},
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://www.designeruxuihugo.com/image/images_webp/gouvcover.webp",
+            "caption": "Maquette de la page Politiques prioritaires d'info.gouv.fr, étude de cas Gouvernement.fr.",
+            "width": 878,
+            "height": 540
+          },
+          "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.designeruxuihugo.com/gouvernement-detail.html"},
+          "genre": "Étude de cas",
+          "keywords": ["Étude de cas UX", "Service public", "DSFR", "RGAA", "Design system", "info.gouv.fr", "Composant Tableau"],
+          "about": {
+            "@type": "Thing",
+            "name": "Pages clés d'info.gouv.fr, Service d'information du Gouvernement",
+            "description": "Audit DSFR et RGAA, ateliers de cadrage, page Politiques prioritaires repensée et composant Tableau adapté du DSFR."
+          },
+          "inLanguage": "fr-FR"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.designeruxuihugo.com/gouvernement-detail.html#breadcrumb",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.designeruxuihugo.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Projets", "item": "https://www.designeruxuihugo.com/#projets"},
+            {"@type": "ListItem", "position": 3, "name": "Gouvernement.fr", "item": "https://www.designeruxuihugo.com/gouvernement-detail.html"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "Quel était mon rôle ?", "acceptedAnswer": {"@type": "Answer", "text": "UX/UI designer au Service d'information du Gouvernement (Services du Premier ministre) pendant deux ans, dans une équipe de designers, de PM, de data-analystes et de développeurs. J'ai contribué à la refonte avec l'équipe design du SIG : audit, ateliers, wireframes, maquettes, prototypes et documentation."}},
+            {"@type": "Question", "name": "Qu'est-ce que le DSFR ?", "acceptedAnswer": {"@type": "Answer", "text": "Le Système de design de l'État : les composants, les tokens et les règles communs aux sites publics. J'ai travaillé dans ce cadre et contribué à adapter son composant Tableau pour le baromètre des Politiques prioritaires."}},
+            {"@type": "Question", "name": "Comment l'accessibilité a-t-elle été traitée ?", "acceptedAnswer": {"@type": "Answer", "text": "Par un audit des écarts (tailles, interlignages, états de focus et de survol, contrastes), des corrections consignées dans un rapport d'audit RGAA, et des tests des prototypes avec les lecteurs d'écran NVDA et VoiceOver."}}
+          ]
+        }
+      ]
     }
     </script>
-    <style>
-        :root:not(.i18n-ready) [data-i18n] {
-            visibility: hidden;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        /* colonne commune aux pages projet, la même que sur Data Collection : 1180 px au plus, marges de 20 à 56 px.
-           La barre de navigation et le contenu la partagent, pour être alignés et garder la même largeur d'une page à l'autre. */
-        :root { --col-max: 1180px; --col-gut: clamp(20px, 5vw, 56px); }
 
-        :root {
-            --primary-color: #000091;
-            --secondary-color: #fff;
-            --accent-color: #6366f1;
-            --accent-secondary: #f5576c;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --dark-gray: #1a1a2e;
-            --dsfr-blue: #000091;
-            --dsfr-red: #e1000f;
-            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: -1px -1px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Screen reader only - accessible but visually hidden */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Ancien header avec progress bar supprimé au profit de la nav globale */
-
-        /* Hero Section */
-        .project-hero {
-            padding: 8rem var(--col-gut) 3rem;
-            max-width: calc(var(--col-max) + 2 * var(--col-gut));
-            margin: 0 auto;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            background: var(--light-gray);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #666;
-            opacity: 0;
-            animation: fadeInScale 0.5s ease forwards;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .tag:nth-child(1) { animation-delay: 0.1s; }
-        .tag:nth-child(2) { animation-delay: 0.2s; }
-        .tag:nth-child(3) { animation-delay: 0.3s; }
-        .tag:nth-child(4) { animation-delay: 0.4s; }
-        .tag:nth-child(5) { animation-delay: 0.5s; }
-
-        .project-hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            opacity: 0;
-            animation: slideInFromLeft 0.8s ease forwards 0.3s;
-        }
-
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .project-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            line-height: 1.6;
-            opacity: 0;
-            animation: slideInFromLeft 0.8s ease forwards 0.5s;
-        }
-
-        .project-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            padding: 1.5rem 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 3rem;
-            min-height: 0;
-        }
-
-        .meta-item {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-            will-change: opacity, transform;
-            min-width: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .meta-item:nth-child(1) { animation-delay: 0.6s; }
-        .meta-item:nth-child(2) { animation-delay: 0.7s; }
-        .meta-item:nth-child(3) { animation-delay: 0.8s; }
-        .meta-item:nth-child(4) { animation-delay: 0.9s; }
-
-        .meta-item h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 0.3rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-width: 0;
-        }
-
-        .meta-item p {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        /* Hero Image avec Data Overlay */
-        .hero-image {
-            width: 100%;
-            /* la colonne commune élargit l'image : la hauteur suit, pour garder le cadrage d'origine (1130 × 500 à 1440 px) */
-            height: max(500px, calc(min(var(--col-max), 100vw - 2 * var(--col-gut)) * 500 / 1130));
-            background: linear-gradient(135deg, #000091 0%, #6366f1 100%);
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeInScale 1s ease forwards 1s;
-        }
-
-        .hero-image.data-hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0f172a;
-        }
-
-        .hero-image.data-hero picture,
-        .hero-image.data-hero img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 16px;
-        }
-
-        .h1-pos { display: block; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 600; letter-spacing: .01em; line-height: 1.4; opacity: .75; margin-bottom: .9em; }
-        .done-link a { color: inherit; text-decoration: underline; }
-
-
-        /* rangée dans .project-hero, qui porte déjà la colonne : pas de seconde marge */
-        .hero-wrapper {
-            margin: 3rem auto 0; position: relative;
-        }
-
-        .hero-zoom-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 8px;
-            padding: 0.5rem 1rem;
-            color: #fff;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 3;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-            white-space: nowrap;
-            min-width: fit-content;
-            will-change: transform;
-        }
-
-        .hero-zoom-button:hover {
-            background: rgba(15, 23, 42, 0.95);
-            transform: translateY(-1px);
-        }
-
-        /* Layout 2 colonnes */
-        .two-column-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(220px, 0.8fr);
-            gap: 4rem;
-            max-width: calc(var(--col-max) + 2 * var(--col-gut));
-            margin: 0 auto;
-            padding: 0 var(--col-gut);
-            margin-bottom: 4rem;
-        }
-
-        .main-content {
-            min-width: 0;
-        }
-
-        .sidebar {
-            position: sticky;
-            top: 110px;
-            height: fit-content;
-        }
-
-        /* Table des matières */
-        .table-of-contents {
-            background: var(--light-gray);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .toc-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .toc-item {
-            padding: 0.6rem 0;
-            cursor: pointer;
-            color: #666;
-            font-size: 0.9rem;
-            transition: color 0.3s ease, padding-left 0.3s ease;
-            border-left: 3px solid transparent;
-            padding-left: 1rem;
-        }
-
-        .toc-item:hover {
-            color: var(--accent-color);
-            padding-left: 1.3rem;
-        }
-
-        .toc-item.active {
-            color: var(--accent-color);
-            border-left-color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        /* Sections de contenu */
-        .content-section {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .content-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .content-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-
-        .content-section p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Grille de stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .stat-description {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-
-        /* Graphiques */
-        .chart-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            margin: 2rem 0;
-        }
-
-        .chart-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-
-        .chart-wrapper {
-            position: relative;
-            height: 350px;
-            width: 100%;
-        }
-
-        /* Méthodologie */
-        .methodology-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .method-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .method-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .method-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .method-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
-
-        .method-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #666;
-        }
-
-        /* Timeline processus */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-            margin: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-color), var(--accent-secondary));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            grid-column: 1;
-        }
-
-        .timeline-item:nth-child(even) .timeline-number {
-            grid-column: 2;
-            order: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            grid-column: 2;
-        }
-
-        .timeline-number {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            background: white;
-            border: 3px solid var(--accent-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin: 0 auto;
-            z-index: 2;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            max-width: 420px;
-            margin: 0 auto;
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-            text-align: center;
-        }
-
-        .timeline-description {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        .timeline-item .timeline-content {
-            justify-self: center;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            text-align: center;
-        }
-
-        /* Liste avec icônes */
-        .icon-list {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .icon-list li {
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .icon-list li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .icon-list li::before {
-            content: '✓';
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--accent-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        /* Highlight boxes */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(245, 87, 108, 0.1));
-            border-left: 4px solid var(--accent-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .highlight-box strong {
-            color: var(--accent-color);
-        }
-
-        /* Section CTA finale */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(0, 0, 145, 0.9), rgba(99, 102, 241, 0.85));
-            border-radius: 18px;
-            padding: 3.5rem 4rem;
-            margin-top: 5rem;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta-section::before,
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            border-radius: 999px;
-            opacity: 0.25;
-            mix-blend-mode: screen;
-        }
-
-        .cta-section::before {
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle at center, rgba(245, 87, 108, 0.6), transparent 70%);
-            top: -140px;
-            right: -120px;
-        }
-
-        .cta-section::after {
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
-            bottom: -120px;
-            left: -80px;
-        }
-
-        .cta-section h2 {
-            color: #fff;
-            font-size: clamp(2rem, 4vw, 2.6rem);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 720px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.8rem;
-            border-radius: 999px;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .cta-button.primary {
-            background: #fff;
-            color: var(--dsfr-blue);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.18);
-        }
-
-        .cta-button.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 32px rgba(255, 255, 255, 0.25);
-        }
-
-        .cta-button.secondary {
-            background: rgba(255, 255, 255, 0.16);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .cta-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.24);
-            transform: translateY(-2px);
-        }
-
-        .cta-disclaimer {
-            display: block;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.65);
-        }
-
-        /* Lightbox */
-        .lightbox-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 8px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-        }
-
-        img[data-lightbox] {
-            cursor: zoom-in;
-            transition: transform 0.2s ease;
-        }
-
-        img[data-lightbox]:hover {
-            transform: scale(1.02);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Média showcase */
-        .media-showcase {
-            margin: 3rem 0;
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .media-item {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .media-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .media-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .media-caption {
-            padding: 1.5rem;
-        }
-
-        .media-caption h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
-
-        .media-caption p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .single-media {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin: 2rem 0;
-        }
-
-        .single-media img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .single-media .media-caption {
-            padding: 2rem;
-        }
-
-        .single-media .media-caption h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .single-media .media-caption p {
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* Insights grid */
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .insight-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .insight-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
-        }
-
-        .insight-card p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .insight-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .insight-card li {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-
-        .insight-card li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: 700;
-        }
-
-        /* Avant/Après sections */
-        .before-after-container {
-            margin: 3rem 0;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin: 2rem 0;
-        }
-
-        .before-section,
-        .after-section {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .before-section h3 {
-            background: linear-gradient(135deg, #fee, #fcc);
-            color: #c53030;
-            padding: 1rem 1.5rem;
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .after-section h3 {
-            background: linear-gradient(135deg, #f0fff4, #c6f6d5);
-            color: #38a169;
-            padding: 1rem 1.5rem;
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .before-section .media-item,
-        .after-section .media-item {
-            box-shadow: none;
-            border-radius: 0;
-        }
-
-        .before-section .media-item:hover,
-        .after-section .media-item:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        .before-section img,
-        .after-section img {
-            height: 300px;
-        }
-
-        .issues-list,
-        .improvements-list {
-            padding: 1.5rem;
-        }
-
-        .issues-list h4,
-        .improvements-list h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .issues-list .icon-list li::before {
-            background: #e53e3e;
-            content: '×';
-        }
-
-        .improvements-list .icon-list li::before {
-            background: #38a169;
-            content: '✓';
-        }
-
-        /* Métriques de transformation */
-        .transformation-metrics {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 3rem 0;
-        }
-
-        .transformation-metrics h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--text-color);
-        }
-
-        .metrics-comparison {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .metric-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .metric-before,
-        .metric-after {
-            text-align: center;
-            flex: 1;
-        }
-
-        .metric-before .value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e53e3e;
-            margin-bottom: 0.3rem;
-        }
-
-        .metric-after .value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #38a169;
-            margin-bottom: 0.3rem;
-        }
-
-        .metric-before .label,
-        .metric-after .label {
-            font-size: 0.8rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .metric-arrow {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin: 0 1rem;
-        }
-
-        .improvement {
-            display: block;
-            font-size: 0.8rem;
-            color: #38a169;
-            font-weight: 600;
-            margin-top: 0.2rem;
-        }
-
-        /* Responsive pour médias */
-        @media (max-width: 968px) {
-            .media-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .metrics-comparison {
-                grid-template-columns: 1fr;
-            }
-
-            .metric-item {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .metric-arrow {
-                transform: rotate(90deg);
-            }
-
-            .insights-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 968px) {
-            .two-column-layout {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .sidebar {
-                position: relative;
-                top: 0;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                grid-template-columns: auto 1fr;
-                gap: 1.25rem;
-                align-items: flex-start;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content,
-            .timeline-item:nth-child(odd) .timeline-content {
-                grid-column: 2;
-                text-align: center;
-                padding-left: 0;
-            }
-
-            .timeline-number {
-                position: relative;
-                left: 0;
-                margin: 0;
-                justify-self: center;
-            }
-
-            .timeline-item:nth-child(even) .timeline-number {
-                order: initial;
-                grid-column: 1;
-            }
-
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-image {
-                height: 400px;
-            }
-            .cta-section {
-                padding: 3rem 2.5rem;
-            }
-            .cta-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .cta-button {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cta-section {
-                margin-top: 3.5rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .project-hero {
-                padding: 6rem var(--col-gut) 2rem;
-            }
-
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .methodology-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 2.5rem 1.75rem;
-            }
-        }
-
-        /* Language switch buttons (navigation) */
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-switch button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            min-width: 36px;
-            min-height: 32px;
-            padding: 0.15rem 0.4rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            border-radius: 4px;
-            line-height: 1;
-        }
-
-        .lang-switch button:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .lang-switch button:active {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-lang-item {
-            display: none;
-        }
-
-        /* Header / Navigation (global) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.4rem var(--col-gut);   /* marges de la colonne commune */
-            z-index: 1000;
-            background: transparent;
-            backdrop-filter: none;
-            transition: var(--transition);
-            border-bottom: 1px solid transparent;
-        }
-
-        header.scrolled {
-            padding: 0.9rem var(--col-gut);
-            border-bottom: 1px solid transparent;
-        }
-
-        /* la barre prend la colonne commune : même largeur que sur Data Collection, alignée sur le contenu */
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: var(--col-max);
-            margin: 0 auto;
-        }
-
-        .nav-inner {
-            flex: 1 1 auto;   /* la pilule remplit la colonne */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2.4rem;
-            padding: 0.85rem 2.45rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-        }
-
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            transition: var(--transition);
-            white-space: nowrap;
-            line-height: 1;
-        }
-
-        .logo span {
-            display: inline-block;
-            padding: 0.18rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            line-height: 1;
-        }
-
-        a.logo {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .nav-main {
-            display: flex;
-            align-items: center;
-            gap: 2.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.1rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: var(--transition);
-            padding-inline: 0.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            line-height: 1;
-        }
-
-        .nav-links a[aria-current="page"],
-        .nav-links a[aria-current="true"] {
-            color: var(--accent-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .nav-toggle {
-            display: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 999px;
-            border: 1px solid rgba(15, 23, 42, 0.12);
-            background: #ffffff;
-            padding: 0;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
-        }
-
-        .nav-toggle:hover {
-            background: #f9fafb;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
-            transform: translateY(-1px);
-        }
-
-        .nav-toggle-icon {
-            position: relative;
-            width: 18px;
-            height: 14px;
-        }
-
-        .nav-toggle-bar {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 2px;
-            border-radius: 999px;
-            background: #020617;
-            transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
-        }
-
-        .nav-toggle-bar:nth-child(1) {
-            top: 0;
-        }
-
-        .nav-toggle-bar:nth-child(2) {
-            top: 6px;
-        }
-
-        .nav-toggle-bar:nth-child(3) {
-            bottom: 0;
-        }
-
-        body.is-nav-open .nav-toggle-bar:nth-child(1) {
-            top: 6px;
-            transform: rotate(45deg);
-        }
-
-        body.is-nav-open .nav-toggle-bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        body.is-nav-open .nav-toggle-bar:nth-child(3) {
-            bottom: 6px;
-            transform: rotate(-45deg);
-        }
-
-        .skip-link {
-            position: absolute;
-            top: 0.75rem;
-            left: 50%;
-            transform: translate(-50%, -200%);
-            padding: 0.6rem 1.2rem;
-            border-radius: 999px;
-            background: #020617;
-            color: #f9fafb;
-            text-decoration: none;
-            font-size: 0.9rem;
-            z-index: 1100;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
-        }
-
-        .skip-link:focus-visible {
-            transform: translate(-50%, 0);
-            outline: 2px solid #e5e7eb;
-            outline-offset: 3px;
-        }
-
-        @media (max-width: 968px) {
-            .nav-inner {
-                gap: 1.25rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
-
-        /* cinq liens de projet : le menu de bureau tient sur une ligne */
-        @media (min-width: 921px) {
-            .nav-links a {
-                white-space: nowrap;
-            }
-        }
-
-        /* resserrements de la barre : ceux de Data Collection, pour qu'elle tienne dans la colonne commune */
-        @media (min-width: 921px) and (max-width: 1240px) {
-            .nav-inner {
-                gap: 1.2rem;
-                padding-inline: 1.5rem;
-            }
-
-            .nav-main,
-            .nav-links {
-                gap: 1.25rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (min-width: 921px) and (max-width: 1010px) {
-            .nav-inner {
-                gap: .9rem;
-                padding-inline: 1.2rem;
-            }
-
-            .nav-main {
-                gap: .9rem;
-            }
-
-            .nav-links {
-                gap: .95rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .logo span {
-                padding-inline: .5rem;
-                font-size: .72rem;
-            }
-        }
-
-        @media (max-width: 920px) {
-            header {
-                padding: 0.85rem var(--col-gut);
-            }
-
-            .nav-inner {
-                padding: 0.9rem 1.6rem;
-            }
-
-            .nav-links {
-                position: fixed;
-                inset: 4.5rem var(--col-gut) auto var(--col-gut);   /* menu aligné sur la pilule */
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1.1rem 1.3rem 1.4rem 1.3rem;
-                border-radius: 1rem;
-                background: rgba(255, 255, 255, 0.98);
-                box-shadow: 0 24px 55px rgba(15, 23, 42, 0.28);
-                border: 1px solid rgba(15, 23, 42, 0.07);
-                gap: 0.6rem;
-                transform: translateY(-0.5rem);
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-
-            body.is-nav-open .nav-links {
-                opacity: 1;
-                visibility: visible;
-                pointer-events: auto;
-                transform: translateY(0);
-            }
-
-            .nav-links a {
-                font-size: 0.98rem;
-                padding-block: 0.3rem;
-            }
-
-            .nav-meta {
-                gap: 0.4rem;
-            }
-
-            .nav-meta .lang-switch {
-                display: none;
-            }
-
-            .nav-lang-item {
-                display: list-item;
-                width: 100%;
-                margin-top: 0.5rem;
-                padding-top: 1rem;
-                border-top: 1px solid rgba(15, 23, 42, 0.08);
-            }
-
-            .nav-lang-item .lang-switch--mobile {
-                width: 100%;
-                justify-content: flex-start;
-                gap: 0.75rem;
-            }
-
-            .nav-lang-item .lang-switch--mobile button {
-                font-size: 0.98rem;
-                min-height: 40px;
-                padding: 0.4rem 0.75rem;
-                border-radius: 8px;
-                border: 1px solid rgba(15, 23, 42, 0.1);
-                background: rgba(15, 23, 42, 0.03);
-            }
-
-            .nav-lang-item .lang-switch--mobile button:hover {
-                background: rgba(99, 102, 241, 0.08);
-                border-color: rgba(99, 102, 241, 0.25);
-            }
-
-            .nav-toggle {
-                display: inline-flex;
-            }
-        }
-    </style>
-<link rel="stylesheet" href="styles/mesure.css?v=28">
+    <meta name="theme-color" content="#f5f5fe">
+    <link rel="icon" type="image/png" href="image/Flavicone.png">
+    <link rel="icon" type="image/webp" href="image/images_webp/Flavicone.webp">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.1.0/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.1.0/index.css">
+    <!-- même ossature que l'étude AgoraSquare, puis la couche propre à cette page -->
+    <link rel="stylesheet" href="styles/agorasquare.css?v=8">
+    <link rel="stylesheet" href="styles/gouvernement-proposition.css?v=5">
+    <link rel="stylesheet" href="styles/rendez-vous.css">
+    <script src="js/gouvernement-proposition.js?v=4" defer></script>
+    <link rel="stylesheet" href="styles/mesure.css?v=28">
 </head>
-<body data-page="gouvernement" data-nav-bp="920">
+<body data-page="gouvernement">
 
-    <!-- Header avec nav globale (même barre sur les quatre études de cas) -->
-    <header id="header" role="banner">
-        <nav role="navigation" aria-label="Navigation principale" data-i18n="nav.aria.main" data-i18n-attr="aria-label" data-i18n-no-text>
-            <div class="nav-inner">
-                <a href="index.html" class="logo" aria-label="Retour à l'accueil" data-i18n="nav.aria.home" data-i18n-attr="aria-label" data-i18n-no-text>
-                    Hugo Ferrer
-                    <span>Product</span>
-                </a>
+<!-- jeu d'icônes de la page : traits de 1,6 px sur une grille de 24, comme AgoraSquare -->
+<svg class="ag-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M9 11.5V5.2a1.6 1.6 0 0 1 3.2 0v5.3M12.2 10.2V4a1.6 1.6 0 0 1 3.2 0v6.4M15.4 10.4V6.2a1.6 1.6 0 0 1 3.2 0V14c0 4-2.6 6.5-6.2 6.5-2.4 0-3.9-1.1-5.2-3l-2.6-4a1.6 1.6 0 0 1 2.6-1.8L9 13.3"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4h4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><rect x="3.5" y="5" width="7" height="14" rx="1.5"/><rect x="13.5" y="5" width="7" height="14" rx="1.5"/><path d="M6 9h2M6 12h2M16 9h2M16 12h2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.5" cy="9" r="2.4"/><path d="M16 14.1c2.3.1 4 1.6 4.5 4.4"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4.5 19.5l1-4L15.8 5.2a2 2 0 0 1 2.9 0l.1.1a2 2 0 0 1 0 2.9L8.5 18.5z"/><path d="M14 7l3 3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v13.5H6.5A1.5 1.5 0 0 0 5 19z"/><path d="M5 19a1.5 1.5 0 0 0 1.5 1.5H19M9 8h6M9 11.5h4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H14a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h5.8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 6.5A1.5 1.5 0 0 1 6 5h12a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 18 16h-7l-4 3.5V16H6a1.5 1.5 0 0 1-1.5-1.5z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l8.5 4.5L12 13 3.5 8.5z"/><path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5"/></symbol>
+    <symbol id="i-pointer" viewBox="0 0 24 24"><path d="M6 4l12 7-5.2 1.4L15.5 19l-2.4 1-2.7-6.5L6 17z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5l7 2.5v5.5c0 4.3-2.9 7.6-7 9-4.1-1.4-7-4.7-7-9V6z"/><path d="M9 12l2.2 2.2L15 10.2"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 4l1.8 4.6L18.5 10l-4.7 1.4L12 16l-1.8-4.6L5.5 10l4.7-1.4z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M14 3.5V8h4.5M8.8 12.5h6.4M8.8 16h4"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><path d="M3.5 9.5h17M3.5 14h17M9.5 9.5V19"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 7h11M9 12h11M9 17h11"/><circle cx="5" cy="7" r=".9"/><circle cx="5" cy="12" r=".9"/><circle cx="5" cy="17" r=".9"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><path d="M6 10h.01M9 10h.01M12 10h.01M15 10h.01M18 10h.01M7.5 14h9"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4.5L3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19.5h16"/><path d="M7 16v-4M11 16V8M15 16v-6M19 16V5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5"/><path d="M6.5 9.5V19h11V9.5"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M13.5 4.5h6v6M19.5 4.5L11 13"/><path d="M17.5 13.5v4.5a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 18V8A1.5 1.5 0 0 1 6 6.5h4.5"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 15.5H3z"/><path d="M12 10v4.5M12 17.2h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</svg>
 
-                <div class="nav-main">
-                    <ul class="nav-links" id="primary-navigation">
-                        <li>
-                            <a href="index.html" data-i18n="nav.home">
-                                <span>Accueil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="delico%20projet/delicorner-preview.html"><span>Délicorner</span></a>
-                        </li>
-                        <li>
-                            <a href="gouvernement-detail.html" aria-current="page"><span>Gouvernement.fr</span></a>
-                        </li>
-                        <li>
-                            <a href="agorasquare-good.html"><span>AgoraSquare</span></a>
-                        </li>
-                        <li>
-                            <a href="data-collection.html"><span>Data Collection</span></a>
-                        </li>
-                        <li class="nav-lang-item">
-                            <div class="lang-switch lang-switch--mobile">
-                                <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
-                                <span aria-hidden="true">|</span>
-                                <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
-                            </div>
-                        </li>
-                    </ul>
+<a data-i18n="gp.misc.01" class="ag-skip" href="#contenu">Aller au contenu</a>
+<div class="ag-progress" aria-hidden="true"><i data-progress></i></div>
 
-                    <div class="nav-meta">
-                        <div class="lang-switch">
-                            <button type="button" aria-label="Basculer en français" onclick="window.__i18n && window.__i18n.setLang('fr')">FR</button>
+<!-- barre du site : la même que sur AgoraSquare (liens, FR | EN, menu mobile) -->
+<header class="ag-site" id="header">
+    <nav data-i18n="gp.nav.01" data-i18n-attr="aria-label" data-i18n-no-text aria-label="Navigation principale">
+        <div class="nav-inner">
+            <a data-i18n="gp.nav.02" data-i18n-attr="aria-label" data-i18n-no-text href="index.html" class="logo" aria-label="Retour à l'accueil">Hugo Ferrer <span data-i18n="gp.nav.03">Product</span></a>
+            <div class="nav-main">
+                <ul class="nav-links" id="primary-navigation">
+                    <li><a href="index.html"><span data-i18n="gp.nav.04">Accueil</span></a></li>
+                    <li><a href="delico%20projet/delicorner-preview.html"><span>Délicorner</span></a></li>
+                    <li><a href="gouvernement-detail.html" aria-current="page"><span data-i18n="gp.nav.06">Gouvernement.fr</span></a></li>
+                    <li><a href="agorasquare-good.html"><span data-i18n="gp.nav.07">AgoraSquare</span></a></li>
+                    <li><a href="data-collection.html"><span data-i18n="gp.nav.08">Data Collection</span></a></li>
+                    <li class="nav-lang-item">
+                        <div class="lang-switch lang-switch--mobile">
+                            <button data-i18n="gp.nav.09" type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
                             <span aria-hidden="true">|</span>
-                            <button type="button" aria-label="Switch to English" onclick="window.__i18n && window.__i18n.setLang('en')">EN</button>
+                            <button data-i18n="gp.nav.10" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
                         </div>
-                        <button
-                            type="button"
-                            class="nav-toggle"
-                            aria-label="Ouvrir le menu de navigation" data-i18n="nav.aria.menu" data-i18n-attr="aria-label" data-i18n-no-text
-                            aria-expanded="false"
-                            aria-controls="primary-navigation"
-                        >
-                            <span class="nav-toggle-icon" aria-hidden="true">
-                                <span class="nav-toggle-bar"></span>
-                                <span class="nav-toggle-bar"></span>
-                                <span class="nav-toggle-bar"></span>
-                            </span>
-                        </button>
+                    </li>
+                </ul>
+                <div class="nav-meta">
+                    <div class="lang-switch">
+                        <button data-i18n="gp.nav.09" type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
+                        <span aria-hidden="true">|</span>
+                        <button data-i18n="gp.nav.10" type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
                     </div>
+                    <button data-i18n="gp.nav.13" data-i18n-attr="aria-label" data-i18n-no-text type="button" class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation">
+                        <span class="nav-toggle-icon" aria-hidden="true"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></span>
+                    </button>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="project-hero">
-        <div class="project-tags">
-            <span class="tag" data-i18n="gouv.tag.uxui">UX/UI Design</span>
-            <span class="tag" data-i18n="gouv.tag.publicservice">Service Public</span>
-            <span class="tag" data-i18n="gouv.tag.accessibility">Accessibilité</span>
-            <span class="tag" data-i18n="gouv.tag.year">2024</span>
+<!-- repère de lecture sur les grands écrans : un point par temps de la mission -->
+<nav data-i18n="gp.rail.01" data-i18n-attr="aria-label" data-i18n-no-text class="ag-rail" data-rail aria-label="Les temps de la mission">
+    <a href="#probleme"><i aria-hidden="true"></i><span data-i18n="gp.rail.02">Comprendre</span></a>
+    <a href="#comparer"><i aria-hidden="true"></i><span data-i18n="gp.rail.03">Comparer</span></a>
+    <a href="#ateliers"><i aria-hidden="true"></i><span data-i18n="gp.rail.04">Cadrer</span></a>
+    <a href="#structure"><i aria-hidden="true"></i><span data-i18n="gp.rail.05">Structurer</span></a>
+    <a href="#composant"><i aria-hidden="true"></i><span data-i18n="gp.rail.06">Concevoir</span></a>
+    <a href="#livrables"><i aria-hidden="true"></i><span data-i18n="gp.rail.07">Livrer</span></a>
+</nav>
+
+<main id="contenu">
+
+    <!-- ───────── Accroche : la promesse, et la page refondue à manipuler ───────── -->
+    <section class="ag-hero">
+        <div class="ag-wrap ag-hero-grid">
+            <div class="ag-hero-text">
+                <p class="ag-kicker"><span data-i18n="gp.hero.01">Étude de cas</span><span data-i18n="gp.hero.02">DSFR et RGAA</span><span>2024</span></p>
+                <h1 data-i18n="gp.hero.03" data-i18n-mode="html" class="ag-h1"><span class="h1-pos">Product designer B2B · Du MVP au produit, design systems AI-ready</span>Rendre lisible une information dense, <em>sans sortir du design system de l'État.</em></h1>
+                <p data-i18n="gp.hero.04" class="ag-lede">Deux ans au Service d'information du Gouvernement (SIG), avec designers, PM, data-analystes et développeurs&nbsp;: j'ai contribué à refondre les pages clés d'info.gouv.fr, de l'audit DSFR et RGAA aux ateliers de cadrage, jusqu'à un composant Tableau adapté du DSFR et documenté pour les développeurs.</p>
+                <p class="ag-try"><svg class="ag-ic" aria-hidden="true"><use href="#i-hand"/></svg><span data-i18n="gp.hero.05">Cette page se manipule&nbsp;: choisissez une priorité, parcourez-la au clavier, changez le thème d'affichage.</span></p>
+            </div>
+
+            <figure class="gp-demo" data-demo aria-labelledby="gp-demo-cap">
+                <div class="gp-tricolor" aria-hidden="true"><i></i><i></i><i></i></div>
+                <!-- les trois temps de chaque bloc, en frise : ils s'allument au fil de la lecture -->
+                <div class="ag-chips gp-chips" aria-hidden="true">
+                    <div class="ag-chip" data-chip="titre"><span class="ag-chip-ic"><svg class="ag-ic"><use href="#i-eye"/></svg></span><span data-i18n="gp.hero.06">Titre</span></div>
+                    <div class="ag-chip" data-chip="preuve"><span class="ag-chip-ic"><svg class="ag-ic"><use href="#i-chart"/></svg></span><span data-i18n="gp.hero.07">Preuve</span></div>
+                    <div class="ag-chip" data-chip="action"><span class="ag-chip-ic"><svg class="ag-ic"><use href="#i-pointer"/></svg></span><span data-i18n="gp.hero.08">Action</span></div>
+                </div>
+                <div class="gp-browser" data-theme-box>
+                    <div class="gp-bar">
+                        <span class="gp-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="gp-url">info.gouv.fr</span>
+                        <button type="button" class="gp-theme" data-theme aria-pressed="false" title="Paramètres d'affichage : thème sombre"><svg class="ag-ic" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="gp.hero.09">Paramètres d'affichage</span></button>
+                    </div>
+                    <div class="gp-site">
+                        <p class="gp-site-head"><span class="gp-flag" aria-hidden="true"><i></i><i></i><i></i></span><b>GOUVERNEMENT</b><span class="gp-site-name">info.gouv.fr</span></p>
+                        <div class="gp-site-hero" data-zone="titre">
+                            <p data-i18n="gp.hero.10" class="gp-site-k">Baromètre des résultats de l'action publique</p>
+                            <p data-i18n="gp.hero.11" data-i18n-mode="html" class="gp-site-h">Ce qui change <em>pour moi</em></p>
+                        </div>
+                        <div data-i18n="gp.hero.12" data-i18n-attr="aria-label" data-i18n-no-text class="gp-prio-tabs" role="tablist" aria-label="Les quatre priorités" data-prio-tabs>
+                            <button data-i18n="gp.hero.13" type="button" role="tab" id="gp-pt-1" aria-controls="gp-pp" aria-selected="true" data-prio="0">Plein emploi</button>
+                            <button data-i18n="gp.hero.14" type="button" role="tab" id="gp-pt-2" aria-controls="gp-pp" aria-selected="false" tabindex="-1" data-prio="1">Services publics</button>
+                            <button data-i18n="gp.hero.15" type="button" role="tab" id="gp-pt-3" aria-controls="gp-pp" aria-selected="false" tabindex="-1" data-prio="2">Transition écologique</button>
+                            <button data-i18n="gp.hero.16" type="button" role="tab" id="gp-pt-4" aria-controls="gp-pp" aria-selected="false" tabindex="-1" data-prio="3">Ordre républicain</button>
+                        </div>
+                        <div class="gp-prio-panel" id="gp-pp" role="tabpanel" aria-labelledby="gp-pt-1" data-prio-panel>
+                            <p class="gp-prio-t" data-prio-title>Atteindre le plein emploi et réindustrialiser le pays</p>
+                            <div class="gp-prio-body" data-zone="preuve" data-prio-slot>
+                                <p data-i18n="gp.hero.17" data-i18n-mode="html" class="gp-prio-count"><b>9</b> politiques prioritaires</p>
+                                <ul class="gp-prio-list">
+                                    <li data-i18n="gp.hero.18">Créer des emplois pour notre souveraineté industrielle</li>
+                                    <li data-i18n="gp.hero.19">Simplifier la vie des entreprises avec la facturation électronique</li>
+                                    <li data-i18n="gp.hero.20">Favoriser la réussite et l'accès à l'emploi par le lycée professionnel</li>
+                                </ul>
+                            </div>
+                            <a data-i18n="gp.hero.21" href="#structure" class="gp-dsfr-btn" data-zone="action">Consulter la priorité</a>
+                        </div>
+                        <!-- intitulés complets, tels qu'ils figurent sur la maquette finale -->
+                        <span data-i18n="gp.hero.22" hidden data-prio-text="0">Atteindre le plein emploi et réindustrialiser le pays</span>
+                        <span data-i18n="gp.hero.23" hidden data-prio-text="1">Bâtir de nouveaux progrès et refonder nos services publics</span>
+                        <span data-i18n="gp.hero.24" hidden data-prio-text="2">Planifier et accélérer la transition écologique</span>
+                        <span data-i18n="gp.hero.25" hidden data-prio-text="3">Renforcer l'ordre républicain et encourager l'engagement</span>
+                        <!-- nombre de politiques et exemples, tels qu'ils figurent sur la maquette finale -->
+                        <template data-prio-body="0"><p data-i18n="gp.hero.17" data-i18n-mode="html" class="gp-prio-count"><b>9</b> politiques prioritaires</p><ul class="gp-prio-list"><li data-i18n="gp.hero.18">Créer des emplois pour notre souveraineté industrielle</li><li data-i18n="gp.hero.19">Simplifier la vie des entreprises avec la facturation électronique</li><li data-i18n="gp.hero.20">Favoriser la réussite et l'accès à l'emploi par le lycée professionnel</li></ul></template>
+                        <template data-prio-body="1"><p data-i18n="gp.hero.26" data-i18n-mode="html" class="gp-prio-count"><b>34</b> politiques prioritaires</p><ul class="gp-prio-list"><li data-i18n="gp.hero.27">Renforcer l'égalité salariale femme / homme avec l'index Egapro</li><li data-i18n="gp.hero.28">Simplifier l'accès aux droits des personnes handicapées</li><li data-i18n="gp.hero.29">Donner accès à la culture à tous les jeunes avec le «&nbsp;Pass culture&nbsp;»</li></ul></template>
+                        <template data-prio-body="2"><p data-i18n="gp.hero.30" data-i18n-mode="html" class="gp-prio-count"><b>11</b> politiques prioritaires</p><ul class="gp-prio-list"><li data-i18n="gp.hero.31">Développer l'économie circulaire</li><li data-i18n="gp.hero.32">Permettre à tous les Français de faire du vélo</li><li data-i18n="gp.hero.33">Rénover son logement grâce à MaPrimeRénov'</li></ul></template>
+                        <template data-prio-body="3"><p data-i18n="gp.hero.34" data-i18n-mode="html" class="gp-prio-count"><b>13</b> politiques prioritaires</p><ul class="gp-prio-list"><li data-i18n="gp.hero.35">Garantir l'accès à la justice grâce à l'aide juridictionnelle</li><li data-i18n="gp.hero.36">Renforcer la présence des forces de l'ordre dans l'espace public</li><li data-i18n="gp.hero.37">Renforcer l'efficacité de la procédure d'asile</li></ul></template>
+                    </div>
+                </div>
+                <figcaption class="ag-demo-cap" id="gp-demo-cap">
+                    <span data-i18n="gp.hero.38" data-i18n-mode="html"><b>Reconstitution interactive</b> de la maquette finale du baromètre des Politiques prioritaires, avec ses intitulés et ses exemples de politiques. Ce n'est pas le site en ligne. Chaque bloc se lit dans le même ordre&nbsp;: un titre, une preuve, une action.</span>
+                    <button type="button" class="ag-replay" data-replay><svg class="ag-ic" aria-hidden="true"><use href="#i-replay"/></svg><span data-i18n="gp.hero.39">Rejouer</span></button>
+                </figcaption>
+            </figure>
         </div>
 
-        <h1 data-i18n="gouv.title" data-i18n-mode="html"><span class="h1-pos">Product designer B2B · Du MVP au produit, design systems AI-ready</span>Gouvernement.fr</h1>
-        <p class="project-subtitle" data-i18n="gouv.subtitle" data-i18n-mode="html">
-            En tant qu'UX/UI Designer au Service d'Information du Gouvernement (SIG), j'ai contribué à la modernisation du site <strong>info.gouv.fr</strong>, la vitrine numérique du gouvernement français, en travaillant sur l'amélioration de la lisibilité, de l'accessibilité et de la cohérence visuelle des pages clés, en collaboration avec l'équipe design du SIG.
-        </p>
-
-        <h2 class="sr-only" data-i18n="case.info">Informations du projet</h2>
-        <div class="project-meta">
-            <div class="meta-item">
-                <h3 data-i18n="case.role">Rôle</h3>
-                <p data-i18n="gouv.role.value">UX/UI Designer – SIG (Services du Premier ministre)</p>
-            </div>
-            <div class="meta-item">
-                <h3 data-i18n="case.team">Équipe</h3>
-                <p data-i18n="gouv.team.value">Designers, PM, data-analystes et développeurs du SIG</p>
-            </div>
-            <div class="meta-item">
-                <h3 data-i18n="case.duration">Durée</h3>
-                <p data-i18n="gouv.duration.value">2 ans</p>
-            </div>
+        <div class="ag-wrap">
+            <dl class="ag-meta">
+                <div><dt data-i18n="gp.hero.40">Rôle</dt><dd data-i18n="gp.hero.41">UX/UI designer, SIG (Services du Premier ministre)</dd></div>
+                <div><dt data-i18n="gp.hero.42">Durée</dt><dd data-i18n="gp.hero.43">2 ans</dd></div>
+                <div><dt data-i18n="gp.hero.44">Équipe</dt><dd data-i18n="gp.hero.45">Designers, PM, data-analystes et développeurs du SIG</dd></div>
+                <div><dt data-i18n="gp.hero.46">Cadre</dt><dd data-i18n="gp.hero.02">DSFR et RGAA</dd></div>
+                <div><dt data-i18n="gp.hero.47">Méthode</dt><dd data-i18n="gp.hero.48">Audit, benchmark, ateliers, prototypes testés</dd></div>
+                <div><dt data-i18n="gp.hero.49">En ligne</dt><dd><a class="gp-ext" href="https://www.info.gouv.fr/" target="_blank" rel="noopener">info.gouv.fr<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a></dd></div>
+            </dl>
         </div>
+    </section>
 
-        <!-- Hero avec KPIs -->
-        <div class="hero-wrapper">
-            <div class="hero-image data-hero">
-                <button class="hero-zoom-button" data-i18n="gouv.hero.zoom.text" data-i18n-attr="aria-label" aria-label="Agrandir l'image">🔍 Voir en grand</button>
-                <picture>
-                    <source srcset="image/images_webp/bg-gouv.webp" media="(max-width: 768px)">
-                    <source srcset="image/images_webp/bg-gouv.webp" media="(max-width: 1200px)">
-                    <img src="image/images_webp/bg-gouv.webp" data-i18n="img.hero" data-i18n-attr="alt" alt="Refonte info.gouv.fr - Héro et section Politiques prioritaires montrant la nouvelle interface accessible avec design system DSFR" loading="lazy" width="1468" height="827">
-                </picture>
+    <!-- ───────── En bref : ce qui a été livré, et où le vérifier ───────── -->
+    <section class="ag-brief" id="bref" aria-labelledby="gp-brief-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.bref.01" class="ag-sec-k">En bref</p>
+            <h2 data-i18n="gp.bref.02" class="ag-h2" id="gp-brief-t">Trois livrables, montrés sur cette page</h2>
+            <ul class="gp-proofs" data-reveal>
+                <li>
+                    <svg class="ag-ic" aria-hidden="true"><use href="#i-home"/></svg>
+                    <b data-i18n="gp.bref.03">La page Politiques prioritaires, repensée</b>
+                    <span data-i18n="gp.bref.04">D'une logique « institution d'abord » à une logique « service d'abord »&nbsp;: la page part de ce qui change pour le citoyen.</span>
+                    <a class="gp-ext gp-ext--in" href="#probleme"><span data-i18n="gp.bref.05">Voir l'avant et l'après</span><svg class="ag-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+                </li>
+                <li>
+                    <svg class="ag-ic" aria-hidden="true"><use href="#i-table"/></svg>
+                    <b data-i18n="gp.bref.06">Un composant Tableau adapté du DSFR</b>
+                    <span data-i18n="gp.bref.07">Pour les résultats du baromètre, documenté en quatre planches&nbsp;: structure, états, style, vues alternatives.</span>
+                    <a class="gp-ext gp-ext--in" href="#composant"><span data-i18n="gp.bref.08">Voir le composant</span><svg class="ag-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+                </li>
+                <li>
+                    <svg class="ag-ic" aria-hidden="true"><use href="#i-shield"/></svg>
+                    <b data-i18n="gp.bref.09">Un audit DSFR et RGAA</b>
+                    <span data-i18n="gp.bref.10">Écarts relevés sur les composants, les tailles, les interlignages, les états de focus et de survol, les contrastes&nbsp;; corrections consignées dans un rapport.</span>
+                    <a class="gp-ext gp-ext--in" href="#structure"><span data-i18n="gp.bref.11">Voir le parcours au clavier</span><svg class="ag-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ───────── La mission, en six temps ───────── -->
+    <section class="ag-sec ag-mission" id="mission" aria-labelledby="gp-mission-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.mission.01" class="ag-sec-k">La mission</p>
+            <h2 data-i18n="gp.mission.02" class="ag-h2" id="gp-mission-t">Deux ans, en six temps</h2>
+            <p data-i18n="gp.mission.03" class="ag-intro">Au sein du SIG, avec des designers, des PM, des data-analystes et des développeurs. Chaque temps a nourri le suivant&nbsp;: rien n'a été maquetté avant d'avoir été audité, comparé et cadré avec les équipes.</p>
+            <ol class="ag-phases" data-reveal>
+                <li><span class="ag-ph-n">01</span><svg class="ag-ic" aria-hidden="true"><use href="#i-search"/></svg><b data-i18n="gp.mission.04">Auditer</b><span data-i18n="gp.mission.05">DSFR, heuristiques, parcours à risque</span></li>
+                <li><span class="ag-ph-n">02</span><svg class="ag-ic" aria-hidden="true"><use href="#i-compare"/></svg><b data-i18n="gp.mission.06">Comparer</b><span data-i18n="gp.mission.07">6 sites comparés, l'ancien compris</span></li>
+                <li><span class="ag-ph-n">03</span><svg class="ag-ic" aria-hidden="true"><use href="#i-users"/></svg><b data-i18n="gp.mission.08">Cadrer</b><span data-i18n="gp.mission.09">3 ateliers FigJam avec métiers, communication et technique</span></li>
+                <li><span class="ag-ph-n">04</span><svg class="ag-ic" aria-hidden="true"><use href="#i-grid"/></svg><b data-i18n="gp.mission.10">Structurer</b><span data-i18n="gp.mission.11">Moins de niveaux, wireframes mobile d'abord</span></li>
+                <li><span class="ag-ph-n">05</span><svg class="ag-ic" aria-hidden="true"><use href="#i-pen"/></svg><b data-i18n="gp.mission.12">Concevoir</b><span data-i18n="gp.mission.13">Maquettes et prototypes conformes au DSFR</span></li>
+                <li><span class="ag-ph-n">06</span><svg class="ag-ic" aria-hidden="true"><use href="#i-book"/></svg><b data-i18n="gp.mission.14">Documenter</b><span data-i18n="gp.mission.15">Bibliothèque Figma et guide pour les développeurs</span></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ───────── Le problème ───────── -->
+    <section class="ag-sec ag-sec--tint" id="probleme" aria-labelledby="gp-pb-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.probleme.01" class="ag-sec-k">Le problème</p>
+            <h2 data-i18n="gp.probleme.02" class="ag-h2" id="gp-pb-t">Une vitrine qui parlait de l'État, pas au citoyen</h2>
+            <div class="ag-split">
+                <div>
+                    <p data-i18n="gp.probleme.03" class="ag-intro">Info.gouv.fr est le point d'entrée des citoyens qui veulent s'informer sur les politiques prioritaires du Gouvernement. L'ancienne page suivait une logique de communication institutionnelle&nbsp;: quatre axes aux titres longs, des chiffres empilés par axe, et des actions noyées dans le texte.</p>
+                    <p data-i18n="gp.probleme.04" class="ag-intro">L'information était là. La trouver demandait trop d'efforts.</p>
+                    <p data-i18n="gp.probleme.05" data-i18n-mode="html" class="gp-challenge"><b>Le défi</b>Concilier les exigences d'accessibilité réglementaires et une expérience moderne, sans jamais sortir du Système de design de l'État.</p>
+                </div>
+                <!-- la même page, avant puis après : les vraies maquettes, qui défilent seules -->
+                <figure class="gp-scroll" data-scroll>
+                    <div data-i18n="gp.probleme.06" data-i18n-attr="aria-label" data-i18n-no-text class="ag-seg" role="group" aria-label="Voir la page">
+                        <button data-i18n="gp.probleme.07" type="button" data-scroll-mode="avant" aria-pressed="true">Avant</button>
+                        <button data-i18n="gp.probleme.08" type="button" data-scroll-mode="apres" aria-pressed="false">Après la refonte</button>
+                    </div>
+                    <div class="gp-scroll-frame">
+                        <p class="gp-scroll-bar" aria-hidden="true"><i></i><i></i><i></i><span data-i18n="gp.probleme.09">info.gouv.fr/politiques-prioritaires</span></p>
+                        <div data-i18n="gp.probleme.10" data-i18n-attr="aria-label" data-i18n-no-text class="gp-scroll-view" data-scroll-view tabindex="0" aria-label="Maquette de la page, faites-la défiler">
+                            <img data-i18n="gp.probleme.11" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/page-avant.webp" alt="Maquette de l'ancienne page Politiques prioritaires : « Quatre axes pour une France plus juste et plus indépendante », puis un bloc par axe avec des chiffres et un lien vers les chantiers." width="900" height="3077" data-scroll-side="avant">
+                            <img data-i18n="gp.probleme.12" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/page-apres.webp" alt="Maquette de la page refondue : « Ce qui change pour moi », quatre promesses, quatre priorités en cartes avec un bouton chacune, une carte de France cliquable et les derniers résultats chiffrés." width="900" height="3384" data-scroll-side="apres" hidden loading="lazy">
+                        </div>
+                    </div>
+                    <figcaption data-i18n="gp.probleme.13">Les maquettes de la page, avant et après la refonte. Elles défilent seules&nbsp;; survolez ou touchez pour reprendre la main.</figcaption>
+                </figure>
+            </div>
+
+            <h3 data-i18n="gp.probleme.14" class="ag-h3">Cinq nœuds relevés à l'audit</h3>
+            <ol class="ag-knots" data-reveal>
+                <li><span class="ag-kn-n">1</span><b data-i18n="gp.probleme.15">Une navigation trop profonde</b><span data-i18n="gp.probleme.16">Trop de niveaux avant d'arriver à l'information.</span></li>
+                <li><span class="ag-kn-n">2</span><b data-i18n="gp.probleme.17">Un discours de communication</b><span data-i18n="gp.probleme.18">Le contenu parlait de l'institution plutôt que du service rendu.</span></li>
+                <li><span class="ag-kn-n">3</span><b data-i18n="gp.probleme.19">Une hiérarchie floue</b><span data-i18n="gp.probleme.20">Rien ne guidait l'œil vers l'essentiel.</span></li>
+                <li><span class="ag-kn-n">4</span><b data-i18n="gp.probleme.21">Des actions noyées</b><span data-i18n="gp.probleme.22">Les boutons se perdaient dans le texte éditorial.</span></li>
+                <li><span class="ag-kn-n">5</span><b data-i18n="gp.probleme.23">Une accessibilité à reprendre</b><span data-i18n="gp.probleme.24">Des écarts au RGAA et au DSFR&nbsp;: tailles, focus, contrastes.</span></li>
+            </ol>
+
+            <div class="ag-constraints">
+                <p data-i18n="gp.probleme.25" class="ag-ct-t">Et cinq contraintes à tenir</p>
+                <ul>
+                    <li><svg class="ag-ic" aria-hidden="true"><use href="#i-layers"/></svg><span data-i18n="gp.probleme.26">Rester dans le Système de design de l'État (DSFR)</span></li>
+                    <li><svg class="ag-ic" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="gp.probleme.27">Tenir le RGAA&nbsp;: contrastes, clavier, lecteurs d'écran</span></li>
+                    <li><svg class="ag-ic" aria-hidden="true"><use href="#i-users"/></svg><span data-i18n="gp.probleme.28">Aligner métiers, communication et développement</span></li>
+                    <li><svg class="ag-ic" aria-hidden="true"><use href="#i-mobile"/></svg><span data-i18n="gp.probleme.29">Penser le téléphone d'abord</span></li>
+                    <li><svg class="ag-ic" aria-hidden="true"><use href="#i-sparkle"/></svg><span data-i18n="gp.probleme.30">Offrir une expérience moderne malgré le cadre</span></li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Layout 2 colonnes -->
-    <div class="two-column-layout">
-        <!-- Contenu principal -->
-        <main class="main-content">
+    <!-- ───────── Comparer : le benchmark ───────── -->
+    <section class="ag-sec" id="comparer" aria-labelledby="gp-bm-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.comparer.01" class="ag-sec-k">Comparer</p>
+            <h2 data-i18n="gp.comparer.02" class="ag-h2" id="gp-bm-t">Six sites comparés, l'ancien Gouvernement.fr compris</h2>
+            <p data-i18n="gp.comparer.03" class="ag-intro">Avant de dessiner, une analyse comparative des sites gouvernementaux européens et nord-américains, l'ancien Gouvernement.fr compris&nbsp;: ce qui marche, ce qui se répète, ce qui manque.</p>
 
-            <!-- Contexte -->
-            <section id="contexte" class="content-section">
-                <h2 data-i18n="case.context">Contexte &amp; Enjeux</h2>
-                <p data-i18n="gouv.context.intro">Info.gouv.fr est le point d'entrée principal pour les citoyens qui veulent s'informer sur les politiques prioritaires du gouvernement. L'information y était difficile d'accès : une refonte s'imposait.</p>
-                <p>
-                    <strong data-i18n="gouv.context.objectives.title">Les objectifs :</strong>
-                </p>
-                <ul class="icon-list">
-                    <li data-i18n="gouv.context.obj1">Améliorer la clarté et l'accessibilité des landing pages stratégiques</li>
-                    <li data-i18n="gouv.context.obj2">Augmenter le taux de conversion sur les CTA prioritaires (démarches, prises de RDV)</li>
-                    <li data-i18n="gouv.context.obj3">Respecter le RGAA et une cohérence DSFR stricte</li>
-                    <li data-i18n="gouv.context.obj4">Réduire le temps d'accès à l'information critique pour les citoyens</li>
-                    <li data-i18n="gouv.context.obj5">Préparer l'infrastructure de mesure (tracking GA4, GTM, consent mode)</li>
-                </ul>
+            <!-- six fiches de lecture, sans capture : chaque site se vérifie à son adresse -->
+            <ul class="gp-bench-grid" data-reveal>
+                <li class="gp-bench-card gp-bench-card--ref"><p data-i18n="gp.comparer.04" class="gp-bench-k">Référence</p><b>GOV.UK</b><span data-i18n="gp.comparer.05">Une navigation orientée tâche et des messages orientés bénéfice pour l'utilisateur.</span><a class="gp-ext" href="https://www.gov.uk/" target="_blank" rel="noopener">gov.uk<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+                <li class="gp-bench-card gp-bench-card--ref"><p data-i18n="gp.comparer.04" class="gp-bench-k">Référence</p><b>Canada.ca</b><span data-i18n="gp.comparer.06">Une entrée «&nbsp;Comment pouvons-nous vous aider&nbsp;?&nbsp;» qui mène vite aux services prioritaires.</span><a class="gp-ext" href="https://www.canada.ca/fr.html" target="_blank" rel="noopener">canada.ca<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+                <li class="gp-bench-card"><p data-i18n="gp.comparer.07" class="gp-bench-k">Europe</p><b data-i18n="gp.comparer.08">Union européenne</b><span data-i18n="gp.comparer.09">Un design épuré, la recherche en premier, une architecture d'information claire.</span><a class="gp-ext" href="https://european-union.europa.eu/" target="_blank" rel="noopener">european-union.europa.eu<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+                <li class="gp-bench-card"><p data-i18n="gp.comparer.07" class="gp-bench-k">Europe</p><b>Bundesregierung.de</b><span data-i18n="gp.comparer.10">Une structure fédérale complexe à présenter, avec un contenu personnalisé.</span><a class="gp-ext" href="https://www.bundesregierung.de/" target="_blank" rel="noopener">bundesregierung.de<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+                <li class="gp-bench-card"><p data-i18n="gp.comparer.11" class="gp-bench-k">Portail</p><b data-i18n="gp.comparer.12">Un portail par domaines</b><span data-i18n="gp.comparer.13">Des domaines métiers, une iconographie claire, des appels à l'action explicites.</span></li>
+                <li class="gp-bench-card gp-bench-card--self"><p data-i18n="gp.comparer.14" class="gp-bench-k">Point de départ</p><b data-i18n="gp.comparer.15">Gouvernement.fr, avant</b><span data-i18n="gp.comparer.16">Une communication institutionnelle, centrée sur l'actualité politique.</span></li>
+            </ul>
 
-                <div class="highlight-box">
-                    <p><strong data-i18n="gouv.context.challenge.label">Défi majeur :</strong> <span data-i18n="gouv.context.challenge.text">Concilier les exigences d'accessibilité réglementaires avec une expérience moderne et engageante, tout en respectant les contraintes du Design System de l'État français (DSFR).</span></p>
-                </div>
-            </section>
-
-            <!-- Méthodologie -->
-            <section id="methodologie" class="content-section">
-                <h2 data-i18n="case.method">Méthodologie UX &amp; Design</h2>
-                
-                <div class="methodology-grid">
-                    <div class="method-card">
-                        <div class="method-icon">🔍</div>
-                        <h3 class="method-title" data-i18n="gouv.method.research.title">Recherche & Audit</h3>
-                        <p class="method-description" data-i18n="gouv.method.research.desc">
-                            Audit DSFR complet (composants, tokens, contraste), analyse heuristique, benchmarking des sites institutionnels européens, analyse GA4 des parcours à risque.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">🎯</div>
-                        <h3 class="method-title" data-i18n="gouv.method.workshops.title">Ateliers de cadrage</h3>
-                        <p class="method-description" data-i18n="gouv.method.workshops.desc">
-                            Workshops FigJam multi-parties (métiers, communication, dev) pour définir objectifs, messages clés, objections et priorisation RICE/MoSCoW des features.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">📐</div>
-                        <h3 class="method-title" data-i18n="gouv.method.architecture.title">Architecture & Wireframes</h3>
-                        <p class="method-description" data-i18n="gouv.method.architecture.desc">
-                            Simplification du sitemap (réduction profondeur de navigation), wireframes mobile-first annotés avec hiérarchie d'information optimisée (hero + preuves + CTA).
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">🎨</div>
-                        <h3 class="method-title" data-i18n="gouv.method.design.title">Design haute-fidélité</h3>
-                        <p class="method-description" data-i18n="gouv.method.design.desc">
-                            Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions et transitions douces, validées et retenues par les équipes.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">⚡</div>
-                        <h3 class="method-title" data-i18n="gouv.method.prototype.title">Prototypage & Tests</h3>
-                        <p class="method-description" data-i18n="gouv.method.prototype.desc">
-                            Prototypes interactifs haute-fidélité avec scénarios de test utilisateur, variantes A/B pour optimisation des CTA et messages hero.
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Benchmark UX -->
-            <section id="benchmark" class="content-section">
-                <h2 data-i18n="gouv.benchmark.title">Benchmark UX International</h2>
-                <p data-i18n="gouv.benchmark.intro">
-                    Analyse comparative des meilleures pratiques UX sur les sites gouvernementaux européens et nord-américains pour identifier les patterns d'excellence et les opportunités d'innovation.
-                </p>
-
-                <h3 class="sr-only" data-i18n="gouv.benchmark.sites">Sites gouvernementaux analysés</h3>
-                <div class="media-showcase">
-                    <div class="media-grid">
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-1.webp" alt="Benchmark GOV.UK - Navigation claire et orientation tâche" data-i18n="gouv.img.bench1" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="878" height="798">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.govuk.title">GOV.UK</h4>
-                                <p data-i18n="gouv.bench.govuk.desc">Excellence en navigation orientée tâche et messages orientés bénéfices utilisateur</p>
-                            </div>
-                        </div>
-
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-2.webp" alt="Benchmark Canada.ca - Structure d'information optimisée" data-i18n="gouv.img.bench2" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="882" height="798">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.canada.title">Canada.ca</h4>
-                                <p data-i18n="gouv.bench.canada.desc">Structure "How can we help you?" optimisant l'accès rapide aux services prioritaires</p>
-                            </div>
-                        </div>
-
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-3.webp" alt="Benchmark EU - Design épuré et recherche prioritaire" data-i18n="gouv.img.bench3" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="850" height="798">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.eu.title">European Union</h4>
-                                <p data-i18n="gouv.bench.eu.desc">Design épuré avec recherche prioritaire et architecture d'information claire</p>
-                            </div>
-                        </div>
-
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-4.webp" alt="Benchmark Portal - Catégorisation par domaine métier" data-i18n="gouv.img.bench4" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="882" height="824">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.portal.title">Government Portal</h4>
-                                <p data-i18n="gouv.bench.portal.desc">Catégorisation par domaines métiers avec iconographie claire et CTA explicites</p>
-                            </div>
-                        </div>
-
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-5.webp" alt="Benchmark France - Communication institutionnelle" data-i18n="gouv.img.bench5" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="852" height="824">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.france.title">Gouvernement.fr (avant)</h4>
-                                <p data-i18n="gouv.bench.france.desc">Approche communication institutionnelle avec focus actualités politiques</p>
-                            </div>
-                        </div>
-
-                        <div class="media-item">
-                            <img src="image/images_webp/Bench-UX-6.webp" alt="Benchmark Allemagne - Structure fédérale" data-i18n="gouv.img.bench6" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="884" height="824">
-                            <div class="media-caption">
-                                <h4 data-i18n="gouv.bench.germany.title">Bundesregierung.de</h4>
-                                <p data-i18n="gouv.bench.germany.desc">Gestion complexe de la structure fédérale avec personnalisation du contenu</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong data-i18n="gouv.bench.insight.label">Insight clé :</strong> <span data-i18n="gouv.bench.insight.text">Les sites les plus performants (GOV.UK, Canada.ca) privilégient une approche "service d'abord" vs "institution d'abord". L'accent est mis sur ce que peut accomplir l'utilisateur plutôt que sur la communication gouvernementale.</span></p>
-                </div>
-            </section>
-
-            <!-- Ateliers collaboratifs -->
-            <section id="ateliers" class="content-section">
-                <h2 data-i18n="gouv.workshops.title">Ateliers Collaboratifs</h2>
-                <p data-i18n="gouv.workshops.intro">
-                    Workshops FigJam multi-parties prenantes pour aligner les objectifs métiers, les contraintes techniques et les attentes utilisateurs. Approche "Design Thinking" adaptée au contexte institutionnel.
-                </p>
-
-                <h3 class="sr-only" data-i18n="gouv.workshops.details">Détails des ateliers</h3>
-                <div class="media-showcase">
-                    <div class="single-media"> 
-                        <img src="image/images_webp/Wire-ppg.webp" alt="Atelier FigJam - Refonte Politiques Prioritaires" data-i18n="gouv.img.figjam" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="1536" height="1024">
-                        <div class="media-caption">
-                            <h4 data-i18n="gouv.workshops.figjam.title">Atelier FigJam - Refonte Politiques Prioritaires</h4>
-                            <p data-i18n="gouv.workshops.figjam.desc">Session collaborative avec les équipes métiers, communication et technique pour identifier les irritants UX et co-construire les solutions. Méthode divergence → convergence avec priorisation RICE.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.workshops.s1.title">🔍 Session 1 - Diagnostic</h4>
-                        <ul>
-                            <li data-i18n="gouv.workshops.s1.item1">Identification des points de friction utilisateur</li>
-                            <li data-i18n="gouv.workshops.s1.item2">Mapping des contraintes techniques et éditoriales</li>
-                            <li data-i18n="gouv.workshops.s1.item3">Analyse des objectifs métiers par direction</li>
-                        </ul>
-                    </div>
-
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.workshops.s2.title">💡 Session 2 - Idéation</h4>
-                        <ul>
-                            <li data-i18n="gouv.workshops.s2.item1">Brainstorming solutions UX (baromètre simplifié, CTA clairs)</li>
-                            <li data-i18n="gouv.workshops.s2.item2">Exploration de patterns d'interaction innovants</li>
-                            <li data-i18n="gouv.workshops.s2.item3">Validation faisabilité technique en temps réel</li>
-                        </ul>
-                    </div>
-
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.workshops.s3.title">✅ Session 3 - Décision</h4>
-                        <ul>
-                            <li data-i18n="gouv.workshops.s3.item1">Priorisation MoSCoW des fonctionnalités</li>
-                            <li data-i18n="gouv.workshops.s3.item2">Définition architecture d'information cible</li>
-                            <li data-i18n="gouv.workshops.s3.item3">Roadmap de déploiement par étapes</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Prototypage & Design System -->
-            <section id="prototypage" class="content-section">
-                <h2 data-i18n="gouv.prototype.title">Prototypage & Design System</h2>
-                <p data-i18n="gouv.prototype.intro">
-                    Contribution à l'adaptation du DSFR (Design System de l'État Français) pour créer des composants spécifiques au baromètre des Politiques Prioritaires. Approche atomic design avec documentation complète pour les équipes de développement.
-                </p>
-
-                <h3 class="sr-only" data-i18n="gouv.ds.components">Composants du design system</h3>
-                <div class="media-showcase">
-                    <div class="single-media">
-                        <img src="image/images_webp/Étude de cas UX UI Hugo Ferrer .webp" alt="Design System - Adaptation DSFR pour Politiques Prioritaires" data-i18n="gouv.img.ds" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="4099" height="4099">
-                        <div class="media-caption">
-                            <h4 data-i18n="gouv.prototype.ds.title">Design System - Adaptation DSFR</h4>
-                            <p data-i18n="gouv.prototype.ds.desc">Contribution à la création et à l'adaptation de composants spécialisés (Structure, États, Style, Alternatives) pour le baromètre des Politiques prioritaires, basés sur les normes DSFR. Documentation complète des tokens, variants et guidelines d'usage.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.prototype.structure.title">🧩 Structure</h4>
-                        <p data-i18n="gouv.prototype.structure.desc">Définition des éléments de composant avec hiérarchie claire et espacement cohérent selon les tokens DSFR.</p>
-                    </div>
-
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.prototype.states.title">⚡ États</h4>
-                        <p data-i18n="gouv.prototype.states.desc">Gestion complète des états interactifs (défaut, survol, focus, désactivé) avec respect des contraintes d'accessibilité RGAA.</p>
-                    </div>
-
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.prototype.style.title">🎨 Style</h4>
-                        <p data-i18n="gouv.prototype.style.desc">Déclinaisons visuelles (horizontales, verticales) avec bordures harmonisées et typographie système cohérente.</p>
-                    </div>
-
-                    <div class="insight-card">
-                        <h4 data-i18n="gouv.prototype.alternatives.title">🔄 Alternatives</h4>
-                        <p data-i18n="gouv.prototype.alternatives.desc">Variantes desktop/mobile avec options d'affichage (vue desktop, cartes verticales) pour optimiser l'expérience multi-device.</p>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong data-i18n="gouv.prototype.innovation.label">Innovation DSFR :</strong> <span data-i18n="gouv.prototype.innovation.text">Contribution à la création de composants inédits tout en respectant strictement les contraintes du design system gouvernemental. Cette approche a permis de maintenir la cohérence visuelle tout en répondant aux besoins spécifiques du projet.</span></p>
-                </div>
-            </section>
-
-            <!-- Avant/Après Transformation -->
-            <section id="transformation" class="content-section">
-                <h2 data-i18n="gouv.transform.title">Transformation UX/UI : Avant / Après</h2>
-                <p data-i18n="gouv.transform.intro">
-                    Comparaison de l'expérience utilisateur avant et après la refonte. Focus sur l'amélioration de la lisibilité, de l'accessibilité et de l'engagement utilisateur à travers une approche data-driven.
-                </p>
-
-                <div class="before-after-container">
-                    <div class="comparison-grid">
-                        <div class="before-section">
-                            <h3 data-i18n="gouv.transform.before.title">Avant - Approche institutionnelle</h3>
-                            <div class="media-item">
-                                <img src="image/images_webp/Dossier avant ppg.webp" alt="Interface avant refonte - Focus actualités gouvernementales" data-i18n="gouv.img.before" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="2942" height="10060">
-                                <div class="issues-list">
-                                    <h4 data-i18n="gouv.transform.before.issues">Problèmes identifiés :</h4>
-                                    <ul class="icon-list">
-                                        <li data-i18n="gouv.transform.before.issue1">Navigation complexe avec trop de niveaux</li>
-                                        <li data-i18n="gouv.transform.before.issue2">Contenu orienté "communication" vs "service"</li>
-                                        <li data-i18n="gouv.transform.before.issue3">Hiérarchie visuelle peu claire</li>
-                                        <li data-i18n="gouv.transform.before.issue4">CTA noyés dans le contenu éditorial</li>
-                                        <li data-i18n="gouv.transform.before.issue5">Accessibilité RGAA non optimale</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="after-section">
-                            <h3 data-i18n="gouv.transform.after.title">Après - Approche orientée utilisateur</h3>
-                            <div class="media-item">
-                                <img src="image/images_webp/après-refonte.webp" alt="Interface après refonte - UX optimisée et accessibilité renforcée" data-i18n="gouv.img.after" data-i18n-attr="alt" data-i18n-no-text loading="lazy" width="2942" height="11062">
-                                <div class="improvements-list">
-                                    <h4 data-i18n="gouv.transform.after.improvements">Améliorations apportées :</h4>
-                                    <ul class="icon-list">
-                                        <li data-i18n="gouv.transform.after.imp1">Architecture d'information simplifiée</li>
-                                        <li data-i18n="gouv.transform.after.imp2">Messages orientés bénéfices utilisateur</li>
-                                        <li data-i18n="gouv.transform.after.imp3">Hiérarchie visuelle renforcée (hero + preuves + CTA)</li>
-                                        <li data-i18n="gouv.transform.after.imp4">CTA clairement identifiables et accessibles</li>
-                                        <li data-i18n="gouv.transform.after.imp5">Écarts d'accessibilité RGAA relevés et corrigés</li>
-                                        <li data-i18n="gouv.transform.after.imp6">Performance optimisée</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="processus" class="content-section">
-                <h2 data-i18n="gouv.process.title">Processus de Design</h2>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-number">1</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step1.title">Audit & Diagnostic</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step1.desc">
-                                Audit DSFR complet : identification des écarts de composants, tailles, interlignages, états focus/hover, ratios de contraste. Participation à l'analyse des parcours GA4 pour identifier les points de friction.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-number">2</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step2.title">Ateliers de cadrage</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step2.desc">
-                                Workshops FigJam pour aligner métiers/communication/tech sur les politiques prioritaires (PPG). Cartographie des parcours critiques et priorisation des fonctionnalités.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-number">3</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step3.title">Wireframing & Architecture</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step3.desc">
-                                J'ai produit des wireframes clairs et structurés, mobile-first annotés avec hiérarchie d'information optimisée, qui ont facilité le travail de l'équipe de développement. Simplification du sitemap pour réduire la profondeur de navigation.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-number">4</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step4.title">Design haute-fidélité</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step4.desc">Maquettes Figma conformes DSFR avec propositions proactives de micro-interactions. Ajustements tokens (typo, couleurs, spacing) et composants pour respecter le RGAA.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-number">5</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step5.title">Prototypage & Validation</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step5.desc">
-                                J'ai prototypé les solutions retenues et collaboré avec les développeurs pour faciliter leur intégration. Variantes A/B des sections hero pour optimiser les messages et CTA. Tests d'accessibilité (NVDA, VoiceOver).
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-number">6</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title" data-i18n="gouv.process.step6.title">Déploiement & Mesure</h3>
-                            <p class="timeline-description" data-i18n="gouv.process.step6.desc">
-                                Plan de marquage et indicateurs définis pour le suivi après mise en ligne. Documentation développeur et design system.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Résultats & Impact -->
-            <section id="resultats" class="content-section">
-                <h2 data-i18n="gouv.results.title">Ce qui a été livré</h2>
-                
-                <p data-i18n="gouv.results.intro">Pas de chiffres d'audience ici : ils appartiennent au SIG. Voici le travail livré.</p>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.done.audit.value">Audit</div>
-                        <div class="stat-label" data-i18n="gouv.done.audit.label">DSFR et accessibilité RGAA</div>
-                        <div class="stat-description" data-i18n="gouv.done.audit.desc">Écarts de composants, tailles, interlignages, états focus et survol, contrastes : relevés dans un rapport, puis corrigés dans les maquettes.</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.done.journeys.value">Parcours</div>
-                        <div class="stat-label" data-i18n="gouv.done.journeys.label">Pages des politiques prioritaires refondues</div>
-                        <div class="stat-description" data-i18n="gouv.done.journeys.desc">Sitemap simplifié, wireframes mobile-first annotés, hiérarchie hero, preuves et CTA, variantes de hero proposées aux équipes.</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" data-i18n="gouv.done.live.value">En ligne</div>
-                        <div class="stat-label" data-i18n="gouv.done.live.label">info.gouv.fr</div>
-                        <div class="stat-description done-link" data-i18n="gouv.done.live.desc" data-i18n-mode="html">Le site sur lequel j'ai travaillé au SIG est en ligne : <a href="https://www.info.gouv.fr/" target="_blank" rel="noopener">www.info.gouv.fr</a>. Il a continué d'évoluer depuis.</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Livrables -->
-            <section id="livrables" class="content-section">
-                <h2 data-i18n="gouv.deliverables.title">Livrables & Design System</h2>
-                
-                <p data-i18n="gouv.deliverables.intro">
-                    Au-delà des écrans, j'ai contribué à la production d'un ensemble de livrables pour garantir la pérennité et la scalabilité du projet :
-                </p>
-
-                <div class="methodology-grid">
-                    <div class="method-card">
-                        <div class="method-icon">📋</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.wireframes.title">Wireframes annotés</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.wireframes.desc">
-                            Séries complètes de wireframes mobile-first avec annotations détaillées sur la hiérarchie d'information et les comportements.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">🎨</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.mockups.title">Maquettes haute-fidélité</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.mockups.desc">
-                            Maquettes Figma avec micro-interactions et transitions douces. Variantes de hero (titre court orienté bénéfice + preuve + CTA).
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">📚</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.ds.title">Design System DSFR</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.ds.desc">
-                            Librairie Figma unifiée (atoms → templates) avec tokens normalisés (typo, spacing, couleurs) et guidelines d'usage.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">🔧</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.doc.title">Documentation développeur</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.doc.desc">
-                            J'ai participé à la documentation technique avec règles de responsive, nomenclature des composants, et exemples d'intégration.
-                        </p>
-                    </div>
-
-                    <div class="method-card">
-                        <div class="method-icon">✅</div>
-                        <h3 class="method-title" data-i18n="gouv.deliverables.audit.title">Rapport d'audit RGAA</h3>
-                        <p class="method-description" data-i18n="gouv.deliverables.audit.desc">Rapport détaillé des écarts identifiés et des corrections appliquées pour respecter le RGAA.</p>
-                    </div>
-
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong data-i18n="gouv.deliverables.ds.highlight.label">Design System :</strong> <span data-i18n="gouv.deliverables.ds.highlight.text">Participation à la normalisation autour du DSFR via l'utilisation et l'enrichissement d'une bibliothèque Figma déjà en place (atoms → templates) avec tokens normalisés et guidelines d'usage par composant (quand/comment, do/don't). Cette rationalisation rend l'interface plus homogène d'un projet à l'autre.</span></p>
-                </div>
-            </section>
-
-            <!-- Apprentissages -->
-            <section id="apprentissages" class="content-section">
-                <h2 data-i18n="gouv.learnings.title">Apprentissages & Insights</h2>
-                
-                <ul class="icon-list">
-                    <li>
-                        <strong data-i18n="gouv.learnings.item1.label">L'accessibilité comme contrainte créative :</strong> <span data-i18n="gouv.learnings.item1.text">Le respect strict du RGAA n'est pas un frein à l'innovation, mais un cadre qui force à penser clarté et lisibilité. Les contraintes de contraste et de hiérarchie ont conduit à des choix de design plus forts et plus efficaces.</span>
-                    </li>
-                    <li>
-                        <strong data-i18n="gouv.learnings.item2.label">La puissance des messages orientés bénéfices :</strong> <span data-i18n="gouv.learnings.item2.text">Remplacer les titres institutionnels par des messages centrés sur les avantages concrets pour le citoyen a guidé toutes les variantes de hero proposées aux équipes.</span>
-                    </li>
-                    <li>
-                        <strong data-i18n="gouv.learnings.item3.label">L'importance du cadrage multi-parties :</strong> <span data-i18n="gouv.learnings.item3.text">Les ateliers FigJam avec métiers, communication et tech ont permis d'aligner rapidement toutes les parties prenantes et d'éviter les allers-retours coûteux en fin de projet.</span>
-                    </li>
-                    <li>
-                        <strong data-i18n="gouv.learnings.item5.label">Le Design System comme investissement stratégique :</strong> <span data-i18n="gouv.learnings.item5.text">La normalisation DSFR et l'enrichissement de la librairie Figma unifiée donnent aux équipes une base commune pour les pages suivantes.</span>
-                    </li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong data-i18n="gouv.learnings.reflection.label">Réflexion clé :</strong> <span data-i18n="gouv.learnings.reflection.text">Dans un contexte de service public, chaque décision de design a un impact direct sur l'accès aux droits et aux services pour des millions de citoyens. Cette responsabilité impose une rigueur méthodologique et une attention aux détails qui vont bien au-delà de l'esthétique.</span></p>
-                </div>
-            </section>
-
-
-            <!-- Section CTA finale -->
-            <section id="cta" class="content-section cta-section">
-                <h2 data-i18n="gouv.cta.title">Prêt·e à faire évoluer vos services publics&nbsp;?</h2>
-                <p data-i18n="gouv.cta.subtitle">
-                    J'accompagne les organisations publiques et parapubliques pour transformer leurs plateformes numériques en expériences inclusives, accessibles et orientées impact. Parlons de vos prochains défis.
-                </p>
-                <div class="cta-actions">
-                    <a class="cta-button primary" href="https://calendly.com/ferrerhugo91300/freelance" data-i18n="gouv.cta.primary" target="_blank" rel="noopener" data-rdv>
-                        Parler d'une mission
-                    </a>
-                    <a class="cta-button secondary" href="index.html#projets" data-i18n="gouv.cta.secondary">
-                        Explorer d'autres études de cas
-                    </a>
-                </div>
-                <span class="cta-disclaimer" data-i18n="gouv.cta.disclaimer">
-                    Réponse sous 48h – Possibilité de collaboration en régie ou en mission ciblée.
-                </span>
-            </section>
-
-        </main>
-
-        <!-- Sidebar Table des matières -->
-        <aside class="sidebar">
-            <div class="table-of-contents">
-                <h3 class="toc-title" data-i18n="gouv.toc.title">Sommaire</h3>
-                <div class="toc-item" data-section="contexte" data-i18n="gouv.toc.contexte">Contexte & Enjeux</div>
-                <div class="toc-item" data-section="methodologie" data-i18n="gouv.toc.methodologie">Méthodologie UX</div>
-                <div class="toc-item" data-section="benchmark" data-i18n="gouv.toc.benchmark">Benchmark UX</div>
-                <div class="toc-item" data-section="ateliers" data-i18n="gouv.toc.ateliers">Ateliers Collaboratifs</div>
-                <div class="toc-item" data-section="prototypage" data-i18n="gouv.toc.prototypage">Prototypage & DS</div>
-                <div class="toc-item" data-section="transformation" data-i18n="gouv.toc.transformation">Avant / Après</div>
-                <div class="toc-item" data-section="processus" data-i18n="gouv.toc.processus">Processus Design</div>
-                <div class="toc-item" data-section="resultats" data-i18n="gouv.toc.resultats">Ce qui a été livré</div>
-                <div class="toc-item" data-section="livrables" data-i18n="gouv.toc.livrables">Livrables & DS</div>
-                <div class="toc-item" data-section="apprentissages" data-i18n="gouv.toc.apprentissages">Apprentissages</div>
-                <div class="toc-item" data-section="cta" data-i18n="gouv.toc.cta">Passer à l'action</div>
+            <div class="gp-insight" data-reveal>
+                <div class="gp-insight-col gp-insight-col--from"><p data-i18n="gp.comparer.17" class="gp-insight-k">Institution d'abord</p><p data-i18n="gp.comparer.18">Ce que le Gouvernement veut dire&nbsp;: axes, actualités, communication.</p></div>
+                <svg class="ag-ic gp-insight-arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg>
+                <div class="gp-insight-col gp-insight-col--to"><p data-i18n="gp.comparer.19" class="gp-insight-k">Service d'abord</p><p data-i18n="gp.comparer.20">Ce que le citoyen vient faire&nbsp;: comprendre ce qui change pour lui, et agir.</p></div>
+                <p data-i18n="gp.comparer.21" data-i18n-mode="html" class="gp-insight-note"><b>Le constat clé.</b> Les sites de référence, GOV.UK et Canada.ca en tête, partent de ce que l'utilisateur peut accomplir plutôt que de la communication gouvernementale. C'est ce renversement qui a guidé la refonte.</p>
             </div>
-        </aside>
-    </div>
-
-    <!-- Lightbox -->
-    <div class="lightbox-overlay" id="lightboxOverlay">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">×</button>
-            <img src="" alt="Vue agrandie de l'interface Gouvernement.fr - Refonte UX/UI avec design system DSFR et accessibilité RGAA" data-i18n="gouv.img.zoom" data-i18n-attr="alt" data-i18n-no-text class="lightbox-image" id="lightboxImage">
         </div>
-    </div>
+    </section>
 
-    <script type="application/json" data-inline-disabled>
-        // Intersection Observer pour animations
-        const sections = document.querySelectorAll('.content-section');
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
+    <!-- ───────── Cadrer : les ateliers ───────── -->
+    <section class="ag-sec ag-sec--tint" id="ateliers" aria-labelledby="gp-at-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.ateliers.01" class="ag-sec-k">Cadrer</p>
+            <h2 data-i18n="gp.ateliers.02" class="ag-h2" id="gp-at-t">Trois ateliers pour aligner métiers, communication et technique</h2>
+            <p data-i18n="gp.ateliers.03" class="ag-intro">Des ateliers FigJam à plusieurs parties prenantes, en design thinking adapté au contexte institutionnel&nbsp;: d'abord ouvrir les pistes, puis converger, avec une priorisation RICE puis MoSCoW. La faisabilité technique était vérifiée en séance, pas après.</p>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+            <div class="ag-day gp-sessions" data-sessions>
+                <div class="ag-day-head">
+                    <h3 data-i18n="gp.ateliers.04" class="ag-h3">Du diagnostic à la décision</h3>
+                    <p data-i18n="gp.ateliers.05" class="ag-day-hint">Faites glisser, ou utilisez les flèches du clavier.</p>
+                </div>
+                <div class="ag-day-track gp-sess-track">
+                    <input data-i18n="gp.ateliers.06" data-i18n-attr="aria-label" data-i18n-no-text type="range" min="0" max="2" step="1" value="0" data-sess-range aria-label="Atelier" aria-valuetext="Atelier 1, diagnostic">
+                    <ol class="ag-day-marks gp-sess-marks" aria-hidden="true"><li data-i18n="gp.ateliers.07">Diagnostic</li><li data-i18n="gp.ateliers.08">Idées</li><li data-i18n="gp.ateliers.09">Décision</li></ol>
+                </div>
+                <div class="ag-day-cards">
+                    <article class="ag-day-card" data-sess-card>
+                        <p data-i18n="gp.ateliers.10" class="ag-day-time">Atelier 1 · diagnostic</p>
+                        <h4 data-i18n="gp.ateliers.11">Mettre les irritants sur la table</h4>
+                        <ul class="gp-sess-list"><li data-i18n="gp.ateliers.12">Les points de friction des utilisateurs</li><li data-i18n="gp.ateliers.13">Les contraintes techniques et éditoriales</li><li data-i18n="gp.ateliers.14">Les objectifs métiers de chaque direction</li></ul>
+                        <p data-i18n="gp.ateliers.15" data-i18n-mode="html" class="ag-day-fix"><b>Ce qui en sort</b>Une même vision des problèmes, partagée par toutes les équipes.</p>
+                    </article>
+                    <article class="ag-day-card" data-sess-card hidden>
+                        <p data-i18n="gp.ateliers.16" class="ag-day-time">Atelier 2 · idées</p>
+                        <h4 data-i18n="gp.ateliers.17">Ouvrir les pistes, vérifier la faisabilité</h4>
+                        <ul class="gp-sess-list"><li data-i18n="gp.ateliers.18">Des solutions d'expérience&nbsp;: un baromètre simplifié, des boutons clairs</li><li data-i18n="gp.ateliers.19">De nouveaux principes d'interaction explorés</li><li data-i18n="gp.ateliers.20">La faisabilité technique vérifiée en direct</li></ul>
+                        <p data-i18n="gp.ateliers.21" data-i18n-mode="html" class="ag-day-fix"><b>Ce qui en sort</b>Le baromètre simplifié et des appels à l'action lisibles.</p>
+                    </article>
+                    <article class="ag-day-card" data-sess-card hidden>
+                        <p data-i18n="gp.ateliers.22" class="ag-day-time">Atelier 3 · décision</p>
+                        <h4 data-i18n="gp.ateliers.23">Trancher, puis planifier</h4>
+                        <ul class="gp-sess-list"><li data-i18n="gp.ateliers.24">Les fonctions priorisées en MoSCoW</li><li data-i18n="gp.ateliers.25">L'architecture d'information cible</li><li data-i18n="gp.ateliers.26">Une feuille de route de déploiement par étapes</li></ul>
+                        <p data-i18n="gp.ateliers.27" data-i18n-mode="html" class="ag-day-fix"><b>Ce qui en sort</b>La structure de la nouvelle page, prête à maquetter.</p>
+                    </article>
+                </div>
+            </div>
 
-        sections.forEach(section => observer.observe(section));
+            <figure class="gp-shot gp-shot--wire">
+                <img data-i18n="gp.ateliers.28" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/wireframe-ppg.webp" alt="Wireframe de la page Politiques prioritaires : en-tête du site, bloc d'introduction en gris avec emplacement d'image, trois cartes à icônes, sélecteur de territoire « France », puis le bloc des axes avec un bouton « Découvrir l'axe »." width="1200" height="1922" loading="lazy">
+                <figcaption data-i18n="gp.ateliers.29">Le wireframe brut, exporté tel quel de Figma (frame «&nbsp;Accueil - National&nbsp;»)&nbsp;: la structure décidée en atelier, avant toute couleur.</figcaption>
+            </figure>
+        </div>
+    </section>
 
-        // Table des matières interactive
-        const tocItems = document.querySelectorAll('.toc-item');
-        tocItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const sectionId = item.dataset.section;
-                const section = document.getElementById(sectionId);
-                const headerOffset = 100;
-                const elementPosition = section.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    <!-- ───────── Structurer : la nouvelle page ───────── -->
+    <section class="ag-sec" id="structure" aria-labelledby="gp-st-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.structure.01" class="ag-sec-k">Structurer</p>
+            <h2 data-i18n="gp.structure.02" class="ag-h2" id="gp-st-t">Une page qui répond à une seule question&nbsp;: qu'est-ce qui change pour moi&nbsp;?</h2>
+            <p data-i18n="gp.structure.03" class="ag-intro">Le sitemap est resserré, la navigation moins profonde, et la page suit l'ordre de lecture du citoyen. Dans chaque bloc, la même hiérarchie&nbsp;: un titre court orienté bénéfice, une preuve, une action.</p>
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
+            <div class="ag-modules" data-modules>
+                <div data-i18n="gp.structure.04" data-i18n-attr="aria-label" data-i18n-no-text class="ag-modules-tabs" role="tablist" aria-label="Les quatre blocs de la page">
+                    <button type="button" role="tab" id="gp-mt-1" aria-controls="gp-mp-1" aria-selected="true" data-mod="0"><svg class="ag-ic" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="gp.structure.05">Ce qui change pour moi</span></button>
+                    <button type="button" role="tab" id="gp-mt-2" aria-controls="gp-mp-2" aria-selected="false" tabindex="-1" data-mod="1"><svg class="ag-ic" aria-hidden="true"><use href="#i-grid"/></svg><span data-i18n="gp.structure.06">Quatre priorités</span></button>
+                    <button type="button" role="tab" id="gp-mt-3" aria-controls="gp-mp-3" aria-selected="false" tabindex="-1" data-mod="2"><svg class="ag-ic" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="gp.structure.07">Près de chez moi</span></button>
+                    <button type="button" role="tab" id="gp-mt-4" aria-controls="gp-mp-4" aria-selected="false" tabindex="-1" data-mod="3"><svg class="ag-ic" aria-hidden="true"><use href="#i-chart"/></svg><span data-i18n="gp.structure.08">Les résultats récents</span></button>
+                </div>
+                <div class="ag-modules-panels">
+                    <div class="ag-mod-panel" id="gp-mp-1" role="tabpanel" aria-labelledby="gp-mt-1" data-mod-panel><p data-i18n="gp.structure.09" data-i18n-mode="html"><b>Se présenter en une phrase.</b> Le baromètre s'ouvre sur sa promesse, puis quatre engagements lisibles d'un coup d'œil, avant le moindre détail.</p><ul><li data-i18n="gp.structure.10">Des actions regroupées en 4 priorités</li><li data-i18n="gp.structure.11">Des résultats chiffrés accessibles à tous</li><li data-i18n="gp.structure.12">Un impact local, dans mon territoire</li><li data-i18n="gp.structure.13">Des dispositifs pour m'accompagner</li></ul></div>
+                    <div class="ag-mod-panel" id="gp-mp-2" role="tabpanel" aria-labelledby="gp-mt-2" data-mod-panel hidden><p data-i18n="gp.structure.14" data-i18n-mode="html"><b>Une carte par priorité.</b> Une illustration, un titre, un résumé, les objectifs prioritaires, et un seul bouton&nbsp;: «&nbsp;Consulter la priorité&nbsp;».</p><ul><li data-i18n="gp.structure.15">Plein emploi et réindustrialisation</li><li data-i18n="gp.structure.16">Progrès et services publics</li><li data-i18n="gp.structure.17">Transition écologique</li><li data-i18n="gp.structure.18">Ordre républicain et engagement</li></ul></div>
+                    <div class="ag-mod-panel" id="gp-mp-3" role="tabpanel" aria-labelledby="gp-mt-3" data-mod-panel hidden><p data-i18n="gp.structure.19" data-i18n-mode="html"><b>Ramener l'action publique chez soi.</b> Une carte de France à cliquer pour découvrir les résultats chiffrés des actions de l'État dans sa région et son département.</p><ul><li data-i18n="gp.structure.20">Carte cliquable</li><li data-i18n="gp.structure.21">Région</li><li data-i18n="gp.structure.22">Département</li><li data-i18n="gp.structure.23">Explorer les données</li></ul></div>
+                    <div class="ag-mod-panel" id="gp-mp-4" role="tabpanel" aria-labelledby="gp-mt-4" data-mod-panel hidden><p data-i18n="gp.structure.24" data-i18n-mode="html"><b>Montrer, avec une date.</b> Les derniers indicateurs mis à jour, chacun avec sa date, et un accès aux données de sa région ou de son département.</p><ul><li data-i18n="gp.structure.25">Dernières mises à jour</li><li data-i18n="gp.structure.26">Date visible sur chaque carte</li><li data-i18n="gp.structure.27">Filtre par territoire</li><li data-i18n="gp.structure.23">Explorer les données</li></ul></div>
+                </div>
+            </div>
 
-        // Activer l'item de TOC selon la section visible
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
+            <ul class="ag-principles" data-reveal>
+                <li><b data-i18n="gp.structure.28">Une architecture simplifiée</b><span data-i18n="gp.structure.29">Moins de niveaux de navigation, un sitemap resserré.</span></li>
+                <li><b data-i18n="gp.structure.30">Des messages orientés bénéfices</b><span data-i18n="gp.structure.31">Le citoyen lit ce qui change pour lui, pas un intitulé administratif.</span></li>
+                <li><b data-i18n="gp.structure.32">Titre, preuve, action</b><span data-i18n="gp.structure.33">La même hiérarchie dans chaque bloc de la page.</span></li>
+                <li><b data-i18n="gp.structure.34">Des actions visibles</b><span data-i18n="gp.structure.35">Des boutons identifiables et accessibles, sortis du texte.</span></li>
+                <li><b data-i18n="gp.structure.36">Le téléphone d'abord</b><span data-i18n="gp.structure.37">Des wireframes annotés pensés pour le mobile, puis élargis.</span></li>
+                <li><b data-i18n="gp.structure.38">Dans le DSFR</b><span data-i18n="gp.structure.39">Composants et tokens de l'État, adaptés seulement quand le besoin l'exige.</span></li>
+            </ul>
 
-            tocItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.section === current) {
-                    item.classList.add('active');
-                }
-            });
-        });
+            <!-- mini-jeu : le parcours au clavier, avec ou sans focus visible -->
+            <div class="gp-keys" data-keys>
+                <div class="gp-keys-text">
+                    <h3 data-i18n="gp.structure.40" class="ag-h3">Faites le parcours au clavier</h3>
+                    <p data-i18n="gp.structure.41">Le RGAA demande que tout se fasse sans souris, avec un repère de focus toujours visible. Les prototypes ont été vérifiés avec les lecteurs d'écran NVDA et VoiceOver. Avancez avec la touche Tab (ou le bouton), puis retirez le focus visible pour voir ce qu'il évite.</p>
+                    <div data-i18n="gp.structure.42" data-i18n-attr="aria-label" data-i18n-no-text class="ag-seg ag-seg--s" role="group" aria-label="Repère de focus">
+                        <button data-i18n="gp.structure.43" type="button" data-focus-mode="on" aria-pressed="true">Focus visible</button>
+                        <button data-i18n="gp.structure.44" type="button" data-focus-mode="off" aria-pressed="false">Sans repère</button>
+                    </div>
+                    <p class="gp-keys-btns"><button type="button" class="ag-btn-soft" data-keys-next><svg class="ag-ic" aria-hidden="true"><use href="#i-key"/></svg><span data-i18n="gp.structure.45">Élément suivant</span></button><button type="button" class="ag-replay" data-keys-reset><svg class="ag-ic" aria-hidden="true"><use href="#i-replay"/></svg><span data-i18n="gp.structure.46">Recommencer</span></button></p>
+                </div>
+                <div class="gp-keys-arena">
+                    <div class="gp-mini" data-keys-stage data-focus="on">
+                        <div class="gp-mini-head"><span class="gp-flag" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="gp.structure.47" class="gp-mini-search" data-stop="search">Rechercher</span><span data-i18n="gp.structure.48" class="gp-mini-set" data-stop="settings">Paramètres d'affichage</span></div>
+                        <p class="gp-mini-menu"><span data-i18n="gp.structure.49" data-stop="menu">Politiques prioritaires</span><span data-i18n="gp.structure.50">Le Gouvernement</span></p>
+                        <div class="gp-mini-card"><b data-i18n="gp.structure.51">Atteindre le plein emploi et réindustrialiser le pays</b><span data-i18n="gp.structure.52" class="gp-mini-btn" data-stop="card">Consulter la priorité</span></div>
+                        <p class="gp-mini-foot"><span data-i18n="gp.structure.23" class="gp-mini-link" data-stop="link">Explorer les données</span></p>
+                    </div>
+                    <p class="gp-keys-say" data-keys-say aria-live="polite"><span data-i18n="gp.structure.53">Ce qu'annonce un lecteur d'écran</span><b data-keys-out>Appuyez sur Tab pour commencer.</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Lightbox controller
-        const lightboxController = (() => {
-            const overlay = document.getElementById('lightboxOverlay');
-            const image = document.getElementById('lightboxImage');
-            const closeBtn = document.getElementById('lightboxClose');
+    <!-- ───────── Concevoir : le composant Tableau ───────── -->
+    <section class="ag-sec ag-sec--tint" id="composant" aria-labelledby="gp-cp-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.composant.01" class="ag-sec-k">Concevoir</p>
+            <h2 data-i18n="gp.composant.02" class="ag-h2" id="gp-cp-t">Un tableau du DSFR, adapté au baromètre</h2>
+            <p data-i18n="gp.composant.03" class="ag-intro">Pour présenter les résultats du baromètre, j'ai contribué à adapter le composant Tableau du DSFR en composants spécifiques, construits en atomic design et documentés pour les développeurs. Innover, oui, mais sans casser la cohérence du design system de l'État.</p>
 
-            function open(src, alt = '') {
-                if (!src) return;
-                image.src = src;
-                image.alt = alt;
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+            <!-- le comportement du composant, redessiné d'après les planches : sélection, actions groupées, vue en cartes -->
+            <div class="gp-table-demo" data-table>
+                <div class="gp-table-top">
+                    <p class="gp-table-count" data-table-count aria-live="polite">Aucune ligne sélectionnée</p>
+                    <div class="gp-table-actions">
+                        <button data-i18n="gp.composant.04" type="button" class="gp-dsfr-btn gp-dsfr-btn--s" data-group-action hidden>Action groupée</button>
+                        <div data-i18n="gp.composant.05" data-i18n-attr="aria-label" data-i18n-no-text class="ag-seg ag-seg--s" role="group" aria-label="Affichage">
+                            <button type="button" data-view="table" aria-pressed="true"><svg class="ag-ic" aria-hidden="true"><use href="#i-table"/></svg><span data-i18n="gp.composant.06">Tableau</span></button>
+                            <button type="button" data-view="list" aria-pressed="false"><svg class="ag-ic" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="gp.composant.07">Liste</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gp-table-wrap" data-table-wrap data-view-mode="table">
+                    <table class="gp-table">
+                        <caption data-i18n="gp.composant.08" class="gp-sr">Exemple du composant, avec trois indicateurs de la maquette finale</caption>
+                        <thead><tr><th scope="col"><span data-i18n="gp.composant.09" class="gp-sr">Sélection</span></th><th data-i18n="gp.composant.10" scope="col">Indicateur</th><th data-i18n="gp.composant.11" scope="col">Territoire</th><th data-i18n="gp.composant.12" scope="col" class="num">Valeur</th><th data-i18n="gp.composant.13" scope="col">Mise à jour</th><th data-i18n="gp.composant.14" scope="col">Lien</th></tr></thead>
+                        <tbody>
+                            <tr><td><input data-i18n="gp.composant.15" data-i18n-attr="aria-label" data-i18n-no-text type="checkbox" aria-label="Sélectionner : Nombre d'actes mensuels réalisés en France services" data-row></td><td data-i18n="gp.composant.16" data-th="Indicateur">Nombre d'actes mensuels réalisés en France services</td><td data-th="Territoire"><span class="gp-tag">Bouches-du-Rhône</span></td><td data-i18n="gp.composant.17" data-th="Valeur" class="num">17&nbsp;287</td><td data-i18n="gp.composant.18" data-th="Mise à jour">01/09/2025</td><td data-th="Lien"><a data-i18n="gp.composant.19" href="#composant" class="gp-tlink">Voir les données</a></td></tr>
+                            <tr><td><input data-i18n="gp.composant.20" data-i18n-attr="aria-label" data-i18n-no-text type="checkbox" aria-label="Sélectionner : Nombre de dossiers MaPrimeRénov' validés" data-row></td><td data-i18n="gp.composant.21" data-th="Indicateur">Nombre de dossiers MaPrimeRénov' validés</td><td data-th="Territoire"><span class="gp-tag">Ardennes</span></td><td data-i18n="gp.composant.22" data-th="Valeur" class="num">15&nbsp;868</td><td data-i18n="gp.composant.18" data-th="Mise à jour">01/09/2025</td><td data-th="Lien"><a data-i18n="gp.composant.19" href="#composant" class="gp-tlink">Voir les données</a></td></tr>
+                            <tr><td><input data-i18n="gp.composant.23" data-i18n-attr="aria-label" data-i18n-no-text type="checkbox" aria-label="Sélectionner : Nombre de volontaires en Service Civique" data-row></td><td data-i18n="gp.composant.24" data-th="Indicateur">Nombre de volontaires en Service Civique</td><td data-th="Territoire"><span class="gp-tag">Pays de la Loire</span></td><td data-i18n="gp.composant.25" data-th="Valeur" class="num">5&nbsp;545</td><td data-i18n="gp.composant.18" data-th="Mise à jour">01/09/2025</td><td data-th="Lien"><a data-i18n="gp.composant.19" href="#composant" class="gp-tlink">Voir les données</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p data-i18n="gp.composant.26" class="gp-table-note">Trois indicateurs tels qu'ils figurent sur la maquette finale. Cochez une ligne, puis passez en liste&nbsp;: les états et la vue en cartes reprennent les planches ci-dessous.</p>
+            </div>
 
-            function close() {
-                overlay.classList.remove('active');
-                setTimeout(() => {
-                    image.src = '';
-                    image.alt = '';
-                }, 200);
-                document.body.style.overflow = '';
-            }
+            <div class="ag-modules gp-plates" data-plates>
+                <div data-i18n="gp.composant.27" data-i18n-attr="aria-label" data-i18n-no-text class="ag-modules-tabs" role="tablist" aria-label="Les quatre planches du composant">
+                    <button type="button" role="tab" id="gp-pl-1" aria-controls="gp-pp-1" aria-selected="true" data-plate="0"><svg class="ag-ic" aria-hidden="true"><use href="#i-grid"/></svg><span data-i18n="gp.composant.28">Structure</span></button>
+                    <button type="button" role="tab" id="gp-pl-2" aria-controls="gp-pp-2" aria-selected="false" tabindex="-1" data-plate="1"><svg class="ag-ic" aria-hidden="true"><use href="#i-pointer"/></svg><span data-i18n="gp.composant.29">États</span></button>
+                    <button type="button" role="tab" id="gp-pl-3" aria-controls="gp-pp-3" aria-selected="false" tabindex="-1" data-plate="2"><svg class="ag-ic" aria-hidden="true"><use href="#i-pen"/></svg><span data-i18n="gp.composant.30">Style</span></button>
+                    <button type="button" role="tab" id="gp-pl-4" aria-controls="gp-pp-4" aria-selected="false" tabindex="-1" data-plate="3"><svg class="ag-ic" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="gp.composant.31">Vues alternatives</span></button>
+                </div>
+                <div class="ag-modules-panels">
+                    <figure class="gp-plate" id="gp-pp-1" role="tabpanel" aria-labelledby="gp-pl-1" data-plate-panel><img data-i18n="gp.composant.32" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/tableau-structure.webp" alt="Planche « Éléments de composant » : types de données des cellules, fond de cellule, cellules en tailles SM, MD et LG." width="1400" height="1232" loading="lazy"><figcaption data-i18n="gp.composant.33" data-i18n-mode="html"><b>Structure.</b> Les éléments du composant, avec une hiérarchie claire et des espacements calés sur les tokens du DSFR.</figcaption></figure>
+                    <figure class="gp-plate" id="gp-pp-2" role="tabpanel" aria-labelledby="gp-pl-2" data-plate-panel hidden><img data-i18n="gp.composant.34" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/tableau-etats.webp" alt="Planche « États du composant » : état par défaut et ligne sélectionnée, avec actions groupées, bascule Tableau ou Liste et pagination." width="1400" height="1232" loading="lazy"><figcaption data-i18n="gp.composant.35" data-i18n-mode="html"><b>États.</b> Défaut, survol, focus, désactivé, ligne sélectionnée&nbsp;: chaque état interactif respecte les contraintes du RGAA.</figcaption></figure>
+                    <figure class="gp-plate" id="gp-pp-3" role="tabpanel" aria-labelledby="gp-pl-3" data-plate-panel hidden><img data-i18n="gp.composant.36" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/tableau-style.webp" alt="Planche « Style du composant » : bordures horizontales par défaut, puis bordures horizontales et verticales." width="1400" height="1164" loading="lazy"><figcaption data-i18n="gp.composant.37" data-i18n-mode="html"><b>Style.</b> Des déclinaisons à bordures horizontales ou verticales, une typographie système cohérente.</figcaption></figure>
+                    <figure class="gp-plate" id="gp-pp-4" role="tabpanel" aria-labelledby="gp-pl-4" data-plate-panel hidden><img data-i18n="gp.composant.38" data-i18n-attr="alt" data-i18n-no-text src="image/gouv-proposition/tableau-vues.webp" alt="Planche « Vues alternatives » : la vue ordinateur en cartes verticales, avec pagination." width="1400" height="1164" loading="lazy"><figcaption data-i18n="gp.composant.39" data-i18n-mode="html"><b>Vues alternatives.</b> Une vue en cartes verticales pour l'ordinateur et le mobile, pour que les données restent lisibles sur tous les écrans.</figcaption></figure>
+                </div>
+            </div>
 
-            closeBtn.addEventListener('click', close);
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) close();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && overlay.classList.contains('active')) close();
-            });
+            <div class="ag-ds gp-ds">
+                <div class="ag-ds-card"><p data-i18n="gp.composant.40" class="ag-ds-k">Bibliothèque Figma</p><p data-i18n="gp.composant.41">L'enrichissement d'une bibliothèque déjà en place, des atomes aux gabarits&nbsp;: tokens normalisés (typographie, espacements, couleurs) et règles d'usage par composant, quand et comment, à faire et à éviter.</p></div>
+                <div class="ag-ds-card"><p data-i18n="gp.composant.42" class="ag-ds-k">Documentation développeur</p><p data-i18n="gp.composant.43">Une participation à la documentation technique&nbsp;: règles de responsive, nomenclature des composants, exemples d'intégration. Des wireframes structurés qui ont facilité le travail de l'équipe de développement.</p></div>
+                <div class="ag-ds-card"><p data-i18n="gp.composant.44" class="ag-ds-k">Accessibilité</p><p data-i18n="gp.composant.45">Tailles, interlignages, états de focus et de survol, ratios de contraste&nbsp;: les tokens et composants ajustés pour le RGAA, puis vérifiés au clavier et avec NVDA et VoiceOver.</p></div>
+            </div>
+        </div>
+    </section>
 
-            return { open, close };
-        })();
+    <!-- ───────── Cinq changements, de l'audit à la page ───────── -->
+    <section class="ag-sec" id="changements" aria-labelledby="gp-ch-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.changements.01" class="ag-sec-k">Avant, après</p>
+            <h2 data-i18n="gp.changements.02" class="ag-h2" id="gp-ch-t">Cinq nœuds, cinq réponses</h2>
+            <p data-i18n="gp.changements.03" class="ag-intro">Chaque problème relevé à l'audit a sa réponse dans la page livrée. Ici, pas de chiffres d'audience&nbsp;: les changements se voient dans les maquettes et sur le site.</p>
+            <ol class="ag-adjust" data-reveal>
+                <li><span class="ag-adj-n">01</span><p data-i18n="gp.changements.04" class="ag-adj-from">Une navigation trop profonde</p><p data-i18n="gp.changements.05" data-i18n-mode="html" class="ag-adj-to"><b>Une architecture simplifiée</b>Un sitemap resserré, moins de niveaux.</p></li>
+                <li><span class="ag-adj-n">02</span><p data-i18n="gp.changements.06" class="ag-adj-from">Un discours de communication</p><p data-i18n="gp.changements.07" data-i18n-mode="html" class="ag-adj-to"><b>Des messages orientés bénéfices</b>«&nbsp;Ce qui change pour moi&nbsp;».</p></li>
+                <li><span class="ag-adj-n">03</span><p data-i18n="gp.changements.08" class="ag-adj-from">Une hiérarchie floue</p><p data-i18n="gp.changements.09" data-i18n-mode="html" class="ag-adj-to"><b>Titre, preuve, action</b>Le même ordre dans chaque bloc.</p></li>
+                <li><span class="ag-adj-n">04</span><p data-i18n="gp.changements.10" class="ag-adj-from">Des actions noyées</p><p data-i18n="gp.changements.11" data-i18n-mode="html" class="ag-adj-to"><b>Un bouton par priorité</b>Identifiable et accessible.</p></li>
+                <li><span class="ag-adj-n">05</span><p data-i18n="gp.changements.12" class="ag-adj-from">Des écarts au RGAA et au DSFR</p><p data-i18n="gp.changements.13" data-i18n-mode="html" class="ag-adj-to"><b>Un rapport d'audit</b>Les écarts et leurs corrections, consignés.</p></li>
+            </ol>
+        </div>
+    </section>
 
-        // Hero image zoom → ouvre la vraie image
-        const zoomBtn = document.querySelector('.hero-zoom-button');
-        const dataHero = document.querySelector('.hero-image.data-hero');
-        if (zoomBtn && dataHero) {
-            zoomBtn.addEventListener('click', () => {
-                const heroImg = dataHero.querySelector('img');
-                if (!heroImg) return;
-                const src = heroImg.currentSrc || heroImg.src;
-                if (!src) return;
-                lightboxController.open(src, heroImg.alt || 'Hero Info.gouv.fr');
-            });
-        }
+    <!-- ───────── Livrer ───────── -->
+    <section class="ag-sec ag-sec--tint" id="livrables" aria-labelledby="gp-lv-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.livrables.01" class="ag-sec-k">Livrer</p>
+            <h2 data-i18n="gp.livrables.02" class="ag-h2" id="gp-lv-t">Cinq livrables, pour que le travail dure</h2>
+            <p data-i18n="gp.livrables.03" class="ag-intro">Au-delà des écrans, des livrables pensés pour que le projet tienne dans le temps, avec les équipes du SIG. Ils sont internes au SIG&nbsp;: cette page en montre des extraits (maquettes, wireframe, planches du composant).</p>
+            <ul class="gp-deliv" data-reveal>
+                <li><svg class="ag-ic" aria-hidden="true"><use href="#i-grid"/></svg><b data-i18n="gp.livrables.04">Wireframes annotés</b><span data-i18n="gp.livrables.05">Des séries mobile d'abord, annotées sur la hiérarchie de l'information et les comportements.</span></li>
+                <li><svg class="ag-ic" aria-hidden="true"><use href="#i-pen"/></svg><b data-i18n="gp.livrables.06">Maquettes haute fidélité</b><span data-i18n="gp.livrables.07">Dans Figma, avec micro-interactions et transitions douces, et des variantes de hero&nbsp;: titre orienté bénéfice, preuve, action.</span></li>
+                <li><svg class="ag-ic" aria-hidden="true"><use href="#i-layers"/></svg><b data-i18n="gp.livrables.08">Bibliothèque DSFR</b><span data-i18n="gp.livrables.09">Des atomes aux gabarits, tokens normalisés et règles d'usage par composant.</span></li>
+                <li><svg class="ag-ic" aria-hidden="true"><use href="#i-book"/></svg><b data-i18n="gp.livrables.10">Documentation développeur</b><span data-i18n="gp.livrables.11">Règles de responsive, nomenclature des composants, exemples d'intégration.</span></li>
+                <li><svg class="ag-ic" aria-hidden="true"><use href="#i-shield"/></svg><b data-i18n="gp.livrables.12">Rapport d'audit RGAA</b><span data-i18n="gp.livrables.13">Les écarts relevés et les corrections appliquées.</span></li>
+            </ul>
+            <div class="gp-online">
+                <p class="gp-online-t"><svg class="ag-ic" aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="gp.livrables.14">En ligne, pour situer le travail</span></p>
+                <ul>
+                    <li><a class="gp-ext" href="https://www.info.gouv.fr/" target="_blank" rel="noopener">info.gouv.fr<svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a><span data-i18n="gp.livrables.15">Le site officiel du Gouvernement, sur lequel j'ai travaillé. La page Politiques prioritaires n'y est plus sous cette forme&nbsp;: en novembre 2026, son ancienne adresse mène au «&nbsp;Suivi des engagements du Gouvernement&nbsp;».</span></li>
+                    <li><a class="gp-ext" href="https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau" target="_blank" rel="noopener"><span data-i18n="gp.livrables.16">Le composant Tableau du DSFR</span><svg class="ag-ic" aria-hidden="true"><use href="#i-ext"/></svg></a><span data-i18n="gp.livrables.17">La documentation officielle du composant d'origine, avant son adaptation au baromètre.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        // Lightbox automatique pour toutes les images
-        function enableLightboxOnImages() {
-            const candidates = document.querySelectorAll('img:not(#lightboxImage):not([data-no-lightbox])');
+    <!-- ───────── Les leçons ───────── -->
+    <section class="ag-sec" id="lecons" aria-labelledby="gp-le-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.lecons.01" class="ag-sec-k">Retenir</p>
+            <h2 data-i18n="gp.lecons.02" class="ag-h2" id="gp-le-t">Ce que ce projet m'a appris</h2>
+            <ul class="ag-lesson-panel gp-lessons" data-reveal>
+                <li data-i18n="gp.lecons.03" data-i18n-mode="html"><b>L'accessibilité, une contrainte créative</b>Le RGAA n'est pas un frein&nbsp;: les exigences de contraste et de hiérarchie m'ont poussé vers des choix plus nets.</li>
+                <li data-i18n="gp.lecons.04" data-i18n-mode="html"><b>Parler de bénéfices, pas d'institutions</b>Remplacer les titres institutionnels par ce qui change concrètement pour le citoyen change toute la lecture de la page.</li>
+                <li data-i18n="gp.lecons.05" data-i18n-mode="html"><b>Cadrer à plusieurs, et tôt</b>Les ateliers avec métiers, communication et technique ont permis d'aligner tôt toutes les parties prenantes et d'éviter des allers-retours en fin de projet.</li>
+                <li data-i18n="gp.lecons.06" data-i18n-mode="html"><b>Le design system, un investissement</b>Normaliser autour du DSFR et enrichir la bibliothèque Figma donne aux équipes une base commune pour les pages suivantes.</li>
+            </ul>
+            <blockquote data-i18n="gp.lecons.07" class="ag-reflect">Dans un service public, chaque décision de design touche directement l'accès aux droits et aux services. Cette responsabilité demande une rigueur qui va bien au-delà de l'esthétique.</blockquote>
+        </div>
+    </section>
 
-            candidates.forEach(img => {
-                if (img.dataset.lightboxInit === '1') return;
-                if (img.closest('.lightbox-overlay')) return;
+    <!-- ───────── Questions fréquentes ───────── -->
+    <section class="ag-sec ag-sec--tint ag-faq" id="faq" aria-labelledby="gp-faq-t">
+        <div class="ag-wrap">
+            <p data-i18n="gp.faq.01" class="ag-sec-k">En questions</p>
+            <h2 data-i18n="gp.faq.02" class="ag-h2" id="gp-faq-t">Questions fréquentes</h2>
+            <div class="ag-faq-list">
+                <details><summary data-i18n="gp.faq.03">Quel était mon rôle&nbsp;?</summary><p data-i18n="gp.faq.04">UX/UI designer au Service d'information du Gouvernement (Services du Premier ministre) pendant deux ans, dans une équipe de designers, de PM, de data-analystes et de développeurs. J'ai contribué à la refonte avec l'équipe design du SIG&nbsp;: audit, ateliers, wireframes, maquettes, prototypes et documentation.</p></details>
+                <details><summary data-i18n="gp.faq.05">Qu'est-ce que le DSFR&nbsp;?</summary><p data-i18n="gp.faq.06">Le Système de design de l'État&nbsp;: les composants, les tokens et les règles communs aux sites publics. J'ai travaillé dans ce cadre et contribué à adapter son composant Tableau pour le baromètre des Politiques prioritaires.</p></details>
+                <details><summary data-i18n="gp.faq.07">Comment l'accessibilité a-t-elle été traitée&nbsp;?</summary><p data-i18n="gp.faq.08">Par un audit des écarts (tailles, interlignages, états de focus et de survol, contrastes), des corrections consignées dans un rapport d'audit RGAA, et des tests des prototypes avec les lecteurs d'écran NVDA et VoiceOver.</p></details>
+                <details><summary data-i18n="gp.faq.09">Pourquoi aucun chiffre d'audience&nbsp;?</summary><p data-i18n="gp.faq.10">Je n'ai pas d'export des données de mesure du site. Plutôt que d'avancer des chiffres que je ne peux pas sourcer, cette page montre le travail livré, vérifiable dans les maquettes et en ligne.</p></details>
+                <details><summary data-i18n="gp.faq.11">Où voir le travail&nbsp;?</summary><p data-i18n="gp.faq.12">Sur info.gouv.fr. L'adresse de l'ancienne page Politiques prioritaires mène aujourd'hui au «&nbsp;Suivi des engagements du Gouvernement&nbsp;»&nbsp;; les maquettes de la refonte sont présentées sur cette page.</p></details>
+            </div>
+        </div>
+    </section>
 
-                const bind = () => {
-                    if (img.dataset.lightboxInit === '1') return;
-                    const src = img.currentSrc || img.src;
-                    if (!src) return;
-                    if (!img.dataset.forceLightbox && img.naturalWidth && img.naturalHeight && img.naturalWidth <= 60 && img.naturalHeight <= 60) {
-                        return;
-                    }
+    <!-- ───────── Contact : un seul bouton, « Mission » ───────── -->
+    <section class="ag-end" aria-labelledby="gp-end-t">
+        <div class="ag-wrap">
+            <div class="ag-end-card gp-end-card">
+                <span class="gp-flag gp-flag--xl" aria-hidden="true"><i></i><i></i><i></i></span>
+                <h2 data-i18n="gp.contact.01" class="ag-h2" id="gp-end-t">Un produit B2B dense à rendre clair, dans votre design system&nbsp;?</h2>
+                <p data-i18n="gp.contact.02">Ce que j'ai fait au SIG, je le fais pour vos équipes produit&nbsp;: audit d'accessibilité et de cohérence, ateliers de cadrage avec métiers et technique, composants documentés pour les développeurs, dans votre design system existant ou à construire. Du MVP au produit, en freelance, en régie ou sur une mission ciblée.</p>
+                <p class="ag-end-cta"><a data-i18n="gp.contact.03" class="gp-btn-mission" href="https://calendly.com/ferrerhugo91300/freelance" target="_blank" rel="noopener" data-rdv>Parler d'une mission</a></p>
+            </div>
+        </div>
+    </section>
 
-                    img.dataset.lightbox = 'true';
-                    img.dataset.lightboxInit = '1';
-                    img.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        const targetSrc = img.currentSrc || img.src;
-                        if (!targetSrc) return;
-                        lightboxController.open(targetSrc, img.alt || '');
-                    });
-                };
+</main>
 
-                if (img.complete && img.naturalWidth) {
-                    bind();
-                } else {
-                    img.addEventListener('load', bind, { once: true });
-                }
-            });
-        }
+<footer class="ag-foot">
+    <div class="ag-wrap"><p data-i18n="gp.foot.01">© 2026 Hugo Ferrer · Product designer B2B · Du MVP au produit, design systems AI-ready</p><a data-i18n="gp.foot.02" href="index.html#projets">Toutes les études de cas</a></div>
+</footer>
 
-        enableLightboxOnImages();
-        document.addEventListener('DOMContentLoaded', enableLightboxOnImages);
-        window.addEventListener('load', () => {
-            setTimeout(enableLightboxOnImages, 400);
-        });
+<!-- phrases écrites par le script : traduites par js/i18n.js, relues par js/gouvernement-proposition.js -->
+<div hidden data-strings>
+    <span data-s="theme-light" data-i18n="gp.js.01">Paramètres d'affichage : thème clair</span>
+    <span data-s="theme-dark" data-i18n="gp.js.02">Paramètres d'affichage : thème sombre</span>
+    <span data-s="sess-0" data-i18n="gp.js.03">Atelier 1, diagnostic</span>
+    <span data-s="sess-1" data-i18n="gp.js.04">Atelier 2, idées</span>
+    <span data-s="sess-2" data-i18n="gp.js.05">Atelier 3, décision</span>
+    <span data-s="keys-start" data-i18n="gp.js.06">Appuyez sur Tab pour commencer.</span>
+    <span data-s="keys-miss" data-i18n="gp.js.07">Où est le focus ? Sans repère visible, impossible de le savoir à l'écran.</span>
+    <span data-s="stop-search" data-i18n="gp.js.08">Champ de recherche, Rechercher sur le site</span>
+    <span data-s="stop-settings" data-i18n="gp.js.09">Paramètres d'affichage, bouton</span>
+    <span data-s="stop-menu" data-i18n="gp.js.10">Politiques prioritaires, menu, réduit</span>
+    <span data-s="stop-card" data-i18n="gp.js.11">Consulter la priorité, Atteindre le plein emploi et réindustrialiser le pays, bouton</span>
+    <span data-s="stop-link" data-i18n="gp.js.12">Explorer les données, lien</span>
+    <span data-s="rows-0" data-i18n="gp.js.13">Aucune ligne sélectionnée</span>
+    <span data-s="rows-1" data-i18n="gp.js.14">1 ligne sélectionnée</span>
+    <span data-s="rows-n" data-i18n="gp.js.15">{n} lignes sélectionnées</span>
+    <span data-s="group-done" data-i18n="gp.js.16">Action groupée appliquée à {n} ligne(s)</span>
+</div>
 
-        // Compteurs KPI animés
-        (function () {
-            const hero = document.querySelector('.hero-image.data-hero');
-            if (!hero) return;
-
-            const counters = hero.querySelectorAll('[data-count]');
-            if (!counters.length) return;
-
-            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (reduced) {
-                counters.forEach(el => {
-                    el.textContent =
-                        (el.dataset.prefix || '') +
-                        (el.dataset.count || '0') +
-                        (el.dataset.suffix || '');
-                    el.dataset.done = '1';
-                });
-                return;
-            }
-
-            function animate(el) {
-                el.dataset.done = '1';
-                const target = parseFloat(el.dataset.count || '0');
-                const prefix = el.dataset.prefix || '';
-                const suffix = el.dataset.suffix || '';
-                const duration = 1200;
-                const startTime = performance.now();
-                const ease = t => 1 - Math.pow(1 - t, 3);
-
-                function tick(now) {
-                    const progress = Math.min(1, (now - startTime) / duration);
-                    const value = Math.round(target * ease(progress));
-                    el.textContent = prefix + value + suffix;
-                    if (progress < 1) requestAnimationFrame(tick);
-                }
-
-                requestAnimationFrame(tick);
-            }
-
-            function run() {
-                counters.forEach(el => {
-                    if (!el.dataset.done) animate(el);
-                });
-            }
-
-            function isVisible(el) {
-                const rect = el.getBoundingClientRect();
-                return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
-            }
-
-            if (isVisible(hero)) run();
-
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        run();
-                        io.disconnect();
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            io.observe(hero);
-
-            let armed = true;
-            function onScroll() {
-                if (armed && isVisible(hero)) {
-                    armed = false;
-                    run();
-                    window.removeEventListener('scroll', onScroll);
-                }
-            }
-
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('load', () => {
-                if (isVisible(hero)) run();
-            });
-        })();
-
-        // Graphiques Chart.js
-        const palette = {
-            primary: 'rgba(99, 102, 241, 0.8)',
-            secondary: 'rgba(245, 87, 108, 0.8)',
-            tertiary: 'rgba(0, 0, 145, 0.8)',
-            quaternary: 'rgba(200, 200, 200, 0.5)'
-        };
-
-        const chartInstances = {
-            kpi: null,
-            beforeAfter: null,
-        };
-
-        const translate = (key, fallback) => {
-            if (window.__i18n && typeof window.__i18n.t === 'function') {
-                const value = window.__i18n.t(key);
-                if (value && value !== key) return value;
-            }
-            return fallback || key;
-        };
-
-        const renderCharts = () => {
-            if (typeof Chart === 'undefined') return;
-
-            const kpiCtx = document.getElementById('kpiChart');
-            if (chartInstances.kpi) {
-                chartInstances.kpi.destroy();
-                chartInstances.kpi = null;
-            }
-            if (kpiCtx) {
-                chartInstances.kpi = new Chart(kpiCtx, {
-                    type: 'line',
-                    data: {
-                        labels: [
-                            translate('gouv.chart.month1', 'Mois 1'),
-                            translate('gouv.chart.month2', 'Mois 2'),
-                            translate('gouv.chart.month3', 'Mois 3'),
-                            translate('gouv.chart.month4', 'Mois 4'),
-                            translate('gouv.chart.month5', 'Mois 5'),
-                            translate('gouv.chart.month6', 'Mois 6'),
-                        ],
-                        datasets: [
-                            {
-                                label: translate('gouv.chart.cta.label', 'Taux de clic CTA (%)'),
-                                data: [18, 22, 28, 35, 39, 42],
-                                borderColor: palette.primary,
-                                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: translate('gouv.chart.engagement.label', 'Engagement utilisateur (%)'),
-                                data: [45, 48, 52, 58, 63, 68],
-                                borderColor: palette.tertiary,
-                                backgroundColor: 'rgba(0, 0, 145, 0.1)',
-                                tension: 0.4,
-                                fill: true,
-                            },
-                        ],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                            },
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)',
-                                },
-                            },
-                            x: {
-                                grid: {
-                                    display: false,
-                                },
-                            },
-                        },
-                    },
-                });
-            }
-
-            const beforeAfterCtx = document.getElementById('beforeAfterChart');
-            if (chartInstances.beforeAfter) {
-                chartInstances.beforeAfter.destroy();
-                chartInstances.beforeAfter = null;
-            }
-            if (beforeAfterCtx) {
-                chartInstances.beforeAfter = new Chart(beforeAfterCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: [
-                            translate('gouv.chart.metric1', 'Taux de clic CTA'),
-                            translate('gouv.chart.metric2', 'Temps accès info (min)'),
-                            translate('gouv.chart.metric3', 'Taux de rebond'),
-                            translate('gouv.chart.metric4', 'Engagement'),
-                        ],
-                        datasets: [
-                            {
-                                label: translate('gouv.chart.before', 'Avant refonte'),
-                                data: [18, 5.2, 62, 45],
-                                backgroundColor: palette.quaternary,
-                                borderRadius: 8,
-                            },
-                            {
-                                label: translate('gouv.chart.after', 'Après refonte'),
-                                data: [42, 3.4, 34, 68],
-                                backgroundColor: palette.primary,
-                                borderRadius: 8,
-                            },
-                        ],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                            },
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)',
-                                },
-                            },
-                            x: {
-                                grid: {
-                                    display: false,
-                                },
-                            },
-                        },
-                    },
-                });
-            }
-        };
-
-        renderCharts();
-        document.addEventListener('i18n:updated', renderCharts);
-    </script>
-    <script src="js/i18n.js" defer></script>
-    <script src="js/rendez-vous.js" defer></script>
-    <script src="js/nav.js" defer></script>
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/rendez-vous.js" defer></script>
+<script>
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <script src="js/mesure.js?v=30" defer></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ Works on B2B SaaS products, public sector services (DSFR, RGAA) and internal bus
 
 - Délicorner (B2B foodtech, freelance mission): Corner Digital client portal and a design system built from scratch in 2 weeks, then CX Copilot, an anti-churn Slack AI bot. https://www.designeruxuihugo.com/delico%20projet/delicorner-preview.html
 
-- Gouvernement.fr: UX/UI work at the Government Information Service (SIG) on info.gouv.fr: DSFR and RGAA audit, redesigned priority policy journeys, mockups and design system contributions. Live site: https://www.info.gouv.fr/
+- Gouvernement.fr: two years at the Government Information Service (SIG), contributing to the redesign of key info.gouv.fr pages: DSFR and RGAA audit, scoping workshops, and a Table component adapted from the DSFR and documented for developers. Case study: https://www.designeruxuihugo.com/gouvernement-detail.html Live site: https://www.info.gouv.fr/
 
 - AgoraSquare: B2B platform redesign for Rungis market wholesalers. Digital transformation combining order management, solvency checks, electronic invoicing, and accounting. https://www.designeruxuihugo.com/agorasquare-good.html
 
