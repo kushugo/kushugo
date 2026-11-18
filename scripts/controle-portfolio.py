@@ -202,6 +202,57 @@ for p, src in sources.items():
     principaux = [b for b in boutons if b.startswith("Parler d'une mission") or b.startswith('Parler d’une mission')]
     ok(f'Bouton principal « Parler d’une mission » · {p}', principaux, ' | '.join(boutons))
 
+# ---------- 7. Positionnement dans les données structurées, llms.txt, images ----------
+def blocs_jsonld(src):
+    return [json.loads(b) for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', src, re.S)]
+
+
+def parcours(o, cle=''):
+    """Génère (clé, valeur, type du parent) pour chaque valeur texte d'un JSON-LD."""
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if isinstance(v, str):
+                yield k, v, o.get('@type', '')
+            else:
+                yield from parcours(v, k)
+    elif isinstance(o, list):
+        for v in o:
+            if isinstance(v, str):
+                yield cle, v, ''
+            else:
+                yield from parcours(v, cle)
+
+
+PAGES_JSONLD = ['/', '/agorasquare-good.html', '/gouvernement-detail.html', '/data-collection.html', '/delico%20projet/delicorner-preview.html']
+anciens_jsonld, images_jsonld = [], {}
+for p in PAGES_JSONLD:
+    try:
+        blocs = blocs_jsonld(sources[p])
+    except ValueError as e:
+        ok(f'JSON-LD valide · {p}', False, str(e))
+        continue
+    for b in blocs:
+        for cle, val, typ in parcours(b):
+            if cle in ('jobTitle', 'description', 'name', 'headline', 'caption') and 'UX/UI Designer' in val:
+                anciens_jsonld.append(f'{p}:{cle}')
+            if cle in ('image', 'logo') or (cle == 'url' and typ == 'ImageObject'):
+                if val.startswith('http'):
+                    images_jsonld.setdefault(val, p)
+ok('JSON-LD : aucun « UX/UI Designer » dans jobTitle, description ou name', not anciens_jsonld, ', '.join(anciens_jsonld))
+llms = tout['/llms.txt']
+ok('llms.txt : « B2B product designer » et « Délicorner » présents', 'B2B product designer' in llms and bool(re.search(r'D[ée]licorner', llms)))
+ok('llms.txt : plus de « UX/UI Designer »', 'UX/UI Designer' not in llms)
+ko_img = []
+for u, p in images_jsonld.items():
+    try:
+        chemin = urllib.parse.urlparse(u).path
+        st = get(chemin, binaire=True)[0]
+    except urllib.error.HTTPError as e:
+        st = e.code
+    if st != 200:
+        ko_img.append(f'{u} ({st})')
+ok(f'JSON-LD : les {len(images_jsonld)} images citées répondent 200', not ko_img, ', '.join(ko_img))
+
 # ---------- rapport ----------
 nb_ko = sum(1 for r in resultats if not r[0])
 print(f'Contrôle du portfolio · {BASE} · {time.strftime("%d/%m/%Y %H:%M")}')

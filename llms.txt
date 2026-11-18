@@ -1,28 +1,27 @@
-# Hugo Ferrer - UX/UI Designer Portfolio
+# Hugo Ferrer · B2B product designer · From MVP to product, AI-ready design systems
 
 ## About
 
-Hugo Ferrer is a Lead UX/UI Designer based in Paris, France.
-Specializes in: Government digital services, SaaS B2B platforms, 
-e-learning, accessibility (RGAA/WCAG), Design Systems (DSFR).
+Hugo Ferrer is a B2B product designer based in Paris, France.
+Works on B2B SaaS products, public sector services (DSFR, RGAA) and internal business tools.
 
 ## Key Projects
 
+- Délicorner (B2B foodtech, freelance mission): Corner Digital client portal and a design system built from scratch in 2 weeks, then CX Copilot, an anti-churn Slack AI bot. https://www.designeruxuihugo.com/delico%20projet/delicorner-preview.html
+
 - Gouvernement.fr: UX/UI work at the Government Information Service (SIG) on info.gouv.fr: DSFR and RGAA audit, redesigned priority policy journeys, mockups and design system contributions. Live site: https://www.info.gouv.fr/
 
-- AgoraSquare: B2B platform redesign for Rungis market wholesalers. Digital transformation combining order management, solvency checks, electronic invoicing, and accounting.
+- AgoraSquare: B2B platform redesign for Rungis market wholesalers. Digital transformation combining order management, solvency checks, electronic invoicing, and accounting. https://www.designeruxuihugo.com/agorasquare-good.html
 
-- Data Collection (B2B SaaS, client name withheld): discovery and design of document collection for an HR and finance consulting firm: eight user interviews, then four user journeys (sales, client, manager, consultant) to request, upload, check and follow up on payroll and HR documents.
+- Data Collection (B2B SaaS, client name withheld): discovery and design of document collection for an HR and finance consulting firm: eight user interviews, then four user journeys (sales, client, manager, consultant) to request, upload, check and follow up on payroll and HR documents. https://www.designeruxuihugo.com/data-collection.html
 
 ## Expertise
 
 - UX Research & Strategy
 - UI Design & Prototyping
-- Design Systems (especially DSFR for French government)
+- Design Systems (including DSFR for French government)
 - Accessibility compliance (RGAA/WCAG standards)
 - Figma, Design Tokens, Component Libraries
-- Front-end Development (HTML/CSS/JavaScript/React)
-- Video Production (Premiere Pro, After Effects)
 
 ## Contact
 
@@ -31,27 +30,9 @@ Location: Paris, France
 LinkedIn: https://www.linkedin.com/in/hugo-ferrer-0038a517a/
 Available for: Freelance, Consulting, Full-time opportunities
 
-## Notable Achievements
-
-- Expert in DSFR (Design System de l'État français)
-- RGAA/WCAG accessibility compliance specialist
-
-## Skills & Technologies
-
-- Design Tools: Figma, Adobe Creative Suite, Webflow, Notion
-- Front-end: HTML5, CSS3, JavaScript, React
-- Design Systems: DSFR, Component Libraries, Design Tokens
-- Accessibility: RGAA 4.1, WCAG 2.1 AA/AAA
-- Video: Premiere Pro, After Effects, Storytelling
-
 ## Services
 
-- UX/UI Design for web and mobile applications
+- B2B SaaS product design, from MVP to product
 - Design System creation and implementation
 - Accessibility audits and compliance (RGAA/WCAG)
 - Government digital services design (DSFR)
-- B2B SaaS platform design
-- EdTech and e-learning platform design
-- Front-end development
-- Video content production
-
