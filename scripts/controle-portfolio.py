@@ -124,7 +124,7 @@ tout = {**{p: s for p, s in sources.items()}, **{'/i18n/' + k + '.json': json.du
 for extra in ('/llms.txt', '/sitemap.xml', '/404.html'):
     tout[extra] = get(extra)[2]
 n_tiret = {k: v.count('—') for k, v in tout.items() if v.count('—')}
-ok('0 tiret cadratin « — » (pages, dictionnaires, scripts, llms.txt, sitemap, 404)', not n_tiret, json.dumps(n_tiret, ensure_ascii=False) if n_tiret else f'{len(tout)} fichiers lus')
+ok('0 tiret cadratin (U+2014) (pages, dictionnaires, scripts, llms.txt, sitemap, 404)', not n_tiret, json.dumps(n_tiret, ensure_ascii=False) if n_tiret else f'{len(tout)} fichiers lus')
 n_aa = {k: v.count('AA+') for k, v in tout.items() if v.count('AA+')}
 ok('0 « AA+ »', not n_aa, json.dumps(n_aa, ensure_ascii=False) if n_aa else '')
 
