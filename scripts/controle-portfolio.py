@@ -176,7 +176,15 @@ ok('AgoraSquare : « temps moyens, variables selon l’affluence »', "variables
 ok('AgoraSquare : 92 % « selon la direction d’AgoraSquare »', "selon la direction d'AgoraSquare" in afr and "selon la direction d'AgoraSquare" in asrc)
 ok('AgoraSquare : impayés et délai en constat des dirigeants', afr.count('selon les dirigeants des grossistes équipés') >= 3)
 ok('AgoraSquare : +70 % remplacé par « 3 h à 0,8 h » par jour', '+70' not in afr + asrc and 'productivité' not in texte(afr) and '3&nbsp;h à 0,8&nbsp;h' in asrc)
-ok('AgoraSquare : -60 % absent', not re.search(r'[-−]\s?60\s?%', afr + asrc))
+aen = json.dumps(dicts['agora.en'], ensure_ascii=False)
+atxt = texte(afr + aen + re.sub(r'<(script|style|svg)\b.*?</\1>', ' ', asrc, flags=re.S))
+ok('AgoraSquare : -60 % absent (aucun « 60 % »)', not re.search(r'60\s?%', atxt), ', '.join(re.findall(r'.{30}60\s?%.{10}', atxt)))
+ok('AgoraSquare : « 40 % à 6 % » (erreurs de facturation) absent', not re.search(r'40\s?%', atxt) and not re.search(r'(?<![\d,.])6\s?%', atxt))
+ok('AgoraSquare : « 15 000 € » absent', not re.search(r'15[\s,.]?000', atxt))
+ok('AgoraSquare : aucun autre résultat non sourcé (42 %, 95 %, +25, « divisée par trois »)', not re.search(r'42\s?%|95\s?%|\+25\b|divis[ée]+ par trois|divided by three', atxt))
+anciens = [k for lg in ('fr', 'en') for k in dicts[lg] if k.startswith('agora.')]
+ok('Dictionnaires communs : plus d’anciennes clés « agora.* » (anciens chiffres)', not anciens, str(len(anciens)))
+ok('llms.txt : plus de « 3M+ » ni de « 84% » ni de « 15+ »', not re.search(r'3M\+|84\s?%|15\+', tout['/llms.txt']))
 
 zeros = []
 for p, src in sources.items():

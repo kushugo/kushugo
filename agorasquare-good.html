@@ -122,7 +122,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.1.0/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.1.0/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/caveat@5.1.0/400.css">
-    <link rel="stylesheet" href="styles/agorasquare.css?v=7">
+    <link rel="stylesheet" href="styles/agorasquare.css?v=8">
     <link rel="stylesheet" href="styles/rendez-vous.css">
     <script src="js/agorasquare-page.js?v=4"></script>
 <link rel="stylesheet" href="styles/mesure.css?v=28">
@@ -370,11 +370,6 @@
                     <p data-i18n="ag.bref.03" class="ag-bar-t">Temps passé à l'administratif</p>
                     <span class="ag-bar" aria-hidden="true"><i class="was"></i><i class="now"></i></span>
                     <p class="ag-bar-v"><s data-i18n="ag.bref.04">3&nbsp;h</s><svg class="ag-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg><b data-i18n="ag.bref.05">0,8&nbsp;h</b><span data-i18n="ag.bref.06">par jour, plus de deux heures rendues au métier</span></p>
-                </li>
-                <li>
-                    <p data-i18n="ag.bref.07" class="ag-bar-t">Erreurs de facturation</p>
-                    <span class="ag-bar" aria-hidden="true"><i class="was"></i><i class="now"></i></span>
-                    <p class="ag-bar-v"><s data-i18n="ag.bref.08">40&nbsp;%</s><svg class="ag-ic" aria-hidden="true"><use href="#i-arrow-r"/></svg><b data-i18n="ag.bref.09">6&nbsp;%</b><span data-i18n="ag.bref.10">près de 15&nbsp;000&nbsp;€ économisés par an et par grossiste</span></p>
                 </li>
                 <li>
                     <p data-i18n="ag.bref.11" class="ag-bar-t">Délai moyen de paiement</p>
@@ -693,7 +688,7 @@
                             <p data-i18n="ag.st2.01" class="ag-st-k">Étape 2 · au marché · les commandes</p>
                             <h3 data-i18n="ag.st2.02">Un appel, une commande en quatre étapes</h3>
                             <p data-i18n="ag.st2.03">Un restaurateur appelle. Le grossiste retrouve le client en trois lettres, même mal tapées, ou d'un geste dans ses favoris. La commande tient en quatre étapes et part même sans réseau.</p>
-                            <p data-i18n="ag.st2.04" data-i18n-mode="html" class="ag-dec"><b>Ajustement après test</b>Les favoris pour les clients réguliers ont réduit le temps de saisie de 60&nbsp;%.</p>
+                            <p data-i18n="ag.st2.04" data-i18n-mode="html" class="ag-dec"><b>Ajustement après test</b>Des favoris pour les clients réguliers : ils se retrouvent d'un geste, sans ressaisie.</p>
                         </div>
                         <div class="ag-screen ag-screen--tab">
                             <p class="ag-sc-top"><b data-i18n="ag.st2.05">Favoris</b><span data-i18n="ag.st2.06" class="ag-sc-sub">clients réguliers</span></p>
@@ -943,7 +938,7 @@
             <p data-i18n="ag.ajustements.03" class="ag-intro">Les premières versions étaient trop complexes. Testées tous les quinze jours avec 8 grossistes, elles ont été simplifiées écran par écran. Voici ce que les tests ont changé.</p>
             <ol class="ag-adjust" data-reveal>
                 <li><span class="ag-adj-n">01</span><p data-i18n="ag.ajustements.04" class="ag-adj-from">Des clics manqués sur les boutons</p><p data-i18n="ag.ajustements.05" data-i18n-mode="html" class="ag-adj-to"><b>Boutons de 38 à 50&nbsp;px</b>Le taux de réussite des appuis a augmenté.</p></li>
-                <li><span class="ag-adj-n">02</span><p data-i18n="ag.ajustements.06" class="ag-adj-from">Les mêmes clients ressaisis chaque matin</p><p data-i18n="ag.ajustements.07" data-i18n-mode="html" class="ag-adj-to"><b>Des favoris</b>60&nbsp;% de temps de saisie en moins.</p></li>
+                <li><span class="ag-adj-n">02</span><p data-i18n="ag.ajustements.06" class="ag-adj-from">Les mêmes clients ressaisis chaque matin</p><p data-i18n="ag.ajustements.07" data-i18n-mode="html" class="ag-adj-to"><b>Des favoris</b>Les clients réguliers se retrouvent d'un geste, sans ressaisie.</p></li>
                 <li><span class="ag-adj-n">03</span><p data-i18n="ag.ajustements.08" class="ag-adj-from">Une facturation trop longue</p><p data-i18n="ag.ajustements.09" data-i18n-mode="html" class="ag-adj-to"><b>7 étapes ramenées à 3</b>Sur les retours des utilisateurs.</p></li>
                 <li><span class="ag-adj-n">04</span><p data-i18n="ag.ajustements.10" class="ag-adj-from">Des noms mal tapés, des clients introuvables</p><p data-i18n="ag.ajustements.11" data-i18n-mode="html" class="ag-adj-to"><b>Une recherche prédictive</b>Tolérante aux fautes de frappe.</p></li>
                 <li><span class="ag-adj-n">05</span><p data-i18n="ag.ajustements.12" class="ag-adj-from">Des statuts mal interprétés</p><p data-i18n="ag.ajustements.13" data-i18n-mode="html" class="ag-adj-to"><b>Des indicateurs visuels renforcés</b>Une couleur et un libellé par état.</p></li>
@@ -970,8 +965,8 @@
                     <span data-i18n="ag.preuves.07" hidden data-sync-msg="on">Synchronisé</span><span data-i18n="ag.preuves.08" hidden data-sync-msg="off">Hors ligne</span><span data-i18n="ag.preuves.09" hidden data-sync-msg="btn-off">Couper le réseau</span><span data-i18n="ag.preuves.10" hidden data-sync-msg="btn-on">Rétablir le réseau</span>
                     <ul class="ag-poc-list">
                         <li data-i18n="ag.preuves.11">Synchronisation différée testée à Rungis à 5&nbsp;h du matin avec 6 grossistes volontaires.</li>
-                        <li data-i18n="ag.preuves.12">Latence perçue divisée par trois, grâce au cache local et aux messages d'état instantanés.</li>
-                        <li data-i18n="ag.preuves.13">Après deux itérations, 42&nbsp;% d'erreurs d'article scanné en moins.</li>
+                        <li data-i18n="ag.preuves.12">Latence perçue réduite grâce au cache local et aux messages d'état instantanés.</li>
+                        <li data-i18n="ag.preuves.13">Après deux itérations, moins d'erreurs d'article scanné.</li>
                     </ul>
                 </article>
                 <article class="ag-poc" data-poc-score>
@@ -987,7 +982,7 @@
                     <button data-i18n="ag.preuves.18" data-i18n-mode="html" type="button" class="ag-btn-soft" data-lookup><svg class="ag-ic" aria-hidden="true"><use href="#i-search"/></svg>Chercher la note</button>
                     <span data-i18n="ag.preuves.19" hidden data-lookup-msg>Note reçue en</span><span data-i18n="ag.preuves.idle" hidden data-lookup-idle>Lancez la recherche</span>
                     <ul class="ag-poc-list">
-                        <li data-i18n="ag.preuves.20">Un mini-serveur Node et une maquette connectés à l'API Experian, avec un repli sur Excel, éprouvés avec l'équipe finance&nbsp;: 95&nbsp;% du portefeuille clients couvert.</li>
+                        <li data-i18n="ag.preuves.20">Un mini-serveur Node et une maquette connectés à l'API Experian, avec un repli sur Excel, éprouvés avec l'équipe finance.</li>
                         <li data-i18n="ag.preuves.21">Codes couleur et messages d'interprétation validés en 3 ateliers, pour une lecture en moins de 3&nbsp;secondes.</li>
                         <li data-i18n="ag.preuves.22">La passerelle de notation présentée au CTO, pour sécuriser l'intégration et la conformité au RGPD.</li>
                     </ul>
@@ -1055,7 +1050,7 @@
                 <ul class="ag-res-list">
                     <li><b data-i18n="ag.resultat.07">3&nbsp;h à 0,8&nbsp;h</b><span data-i18n="ag.resultat.08">de temps administratif par jour, chronométré</span></li>
                     <li><b data-i18n="ag.resultat.09">−30&nbsp;%</b><span data-i18n="ag.resultat.10">d'impayés, selon les dirigeants des grossistes équipés</span></li>
-                    <li><b>+25</b><span data-i18n="ag.resultat.11">grossistes venus d'eux-mêmes en 6 mois, attirés par les premiers retours</span></li>
+                    <li><b data-i18n="ag.resultat.11b">45 à 30&nbsp;j</b><span data-i18n="ag.resultat.11">de délai moyen de paiement, selon les dirigeants des grossistes équipés</span></li>
                 </ul>
             </div>
             <div class="ag-quotes">

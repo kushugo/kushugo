@@ -271,11 +271,10 @@ body.is-nav-open .ag-site .nav-toggle-bar:nth-child(3) { bottom: 6px; transform:
 .ag-brief { padding-block: clamp(72px, 10vw, 120px) clamp(56px, 8vw, 96px); }
 .ag-sec-k { font: 700 .74rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--violet); }
 .ag-h2 { margin-top: 12px; max-width: 20em; font: 800 clamp(1.8rem, 3.4vw, 2.7rem)/1.06 var(--sans); letter-spacing: -.035em; text-wrap: balance; }
-.ag-bars { margin-top: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.ag-bars { margin-top: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
 .ag-bars li { padding: 22px 22px 20px; border-radius: 22px; background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 0 0 1px rgba(255, 255, 255, .95), 0 30px 50px -36px rgba(60, 40, 160, .5); }
 .ag-bars li:nth-child(1) { --to: .267; }
-.ag-bars li:nth-child(2) { --to: .15; }
-.ag-bars li:nth-child(3) { --to: .667; }
+.ag-bars li:nth-child(2) { --to: .667; }
 .ag-bar-t { font-size: .95rem; font-weight: 650; }
 .ag-bar { position: relative; display: block; height: 10px; margin-top: 18px; border-radius: 999px; background: #ebe7f6; overflow: hidden; }
 .ag-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 999px; }
